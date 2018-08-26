@@ -3,6 +3,8 @@
 #' @param di.net a directed network
 #'
 #' @return directed network converted to undirected network
+#'
+#' @export
 ConvertDinetToUndinet <- function(di.net) {
 
   ## Initilize undirected network with zeroes
@@ -16,9 +18,9 @@ ConvertDinetToUndinet <- function(di.net) {
         undi.net[col.idx, row.idx] <- 1
       }
     }
-    rm(col.idx)
+    base::rm(col.idx)
   }
-  rm(row.idx)
+  base::rm(row.idx)
 
 return(undi.net)
 }

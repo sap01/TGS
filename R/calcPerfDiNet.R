@@ -6,6 +6,7 @@
 #' @param n Number of nodes in each of the nets.
 #'
 #' @return the performance metrics
+#' @export
 calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
 {
   TrPos = 0
@@ -91,6 +92,8 @@ calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
 #' between genes." Bioinformatics 25.12 (2009): i128-i136.
 #'
 #' @param di.net.adj.matrix predicted directed gene reuglatory network adjacency matrix
+#'
+#' @export
 eval.wrt.known.gene.ias <- function(di.net.adj.matrix)
 {
   di.net.adj.matrix['CycE', 'CycA']

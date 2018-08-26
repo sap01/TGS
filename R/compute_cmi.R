@@ -29,17 +29,19 @@
 #'
 #' [2] Function declaration: 'function cmiv=cmi(v1,v2,vcs)',
 #' Source code file: http://www.comp-sysbio.org/grn/pca_cmi.m .
+#'
+#' @export
 ComputeCmiPcaCmi <- function(v1,v2,vcs) {
   cmiv <- 0
 
   if(nargs() == 2) {
     c1 <-  stats::var(v1)
     c2 <-  stats::var(v2)
-    v <-cbind(v1,v2)
-    c3 <- det(stats::cov(v))
+    v <-base::cbind(v1,v2)
+    c3 <- base::det(stats::cov(v))
 
     if (c3 != 0) {
-      cmiv <- 0.5*log(c1*c2/c3)
+      cmiv <- 0.5*(base::log(c1*c2/c3))
     }
     # else {
     #   ## Perfectly correlated
@@ -47,22 +49,22 @@ ComputeCmiPcaCmi <- function(v1,v2,vcs) {
     # }
 
   } else if(nargs() == 3) {
-    v <-cbind(v1,vcs)
-    c1 <- det(stats::cov(v))
-    v <-cbind(v2,vcs)
-    c2 <- det(stats::cov(v))
+    v <-base::cbind(v1,vcs)
+    c1 <- base::det(stats::cov(v))
+    v <-base::cbind(v2,vcs)
+    c2 <- base::det(stats::cov(v))
 
     if (ncol(vcs) > 1) {
-      c3 <- det(stats::cov(vcs))
+      c3 <- base::det(stats::cov(vcs))
     } else {
       c3  <- stats::var(vcs)
     }
 
-    v <- cbind(v1,v2,vcs)
-    c4 <- det(stats::cov(v))
+    v <- base::cbind(v1,v2,vcs)
+    c4 <- base::det(stats::cov(v))
 
     if ((c3*c4) != 0) {
-      cmiv <- 0.5 * log(abs((c1 * c2) / (c3 * c4)))
+      cmiv <- 0.5 * base::log(base::abs((c1 * c2) / (c3 * c4)))
     }
   }
   return (cmiv)

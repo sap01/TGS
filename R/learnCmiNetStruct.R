@@ -9,13 +9,17 @@
 #' @param num.nodes the number of nodes
 #' @param beta value of parameter beta
 #'
+#' @import utils
+#'
 #' @return the directed network adjacency matrix after learning the CMI network
+#'
+#' @export
 learnCmiNetStruct <- function(di.net.adj.matrix, input.data, num.nodes, beta)
 {
   for(i in 1:num.nodes) # for each node i
   {
-    adj_list_1 <- c()
-    adj_list_2 <- c()
+    adj_list_1 <- base::c()
+    adj_list_2 <- base::c()
 
     for(j in 1:num.nodes) # for each node j
     {
@@ -33,7 +37,7 @@ learnCmiNetStruct <- function(di.net.adj.matrix, input.data, num.nodes, beta)
           {
             # Append 'k' to 'adj_list_1'
             # 'adj_list_1' contains all grandparents of 'j' except 'j'
-            adj_list_1 <- c(adj_list_1, k)
+            adj_list_1 <- base::c(adj_list_1, k)
           }
         }
         #ToDo: Can not we merge this for loop with the prev for loop?
@@ -43,13 +47,13 @@ learnCmiNetStruct <- function(di.net.adj.matrix, input.data, num.nodes, beta)
           if(di.net.adj.matrix[k,j] == 1 && k != i)
           {
             # 'adj_list_2' contains all parents of 'j' except 'i'
-            adj_list_2 <- c(adj_list_2, k)
+            adj_list_2 <- base::c(adj_list_2, k)
           }
         }
 
         # 'commom_node' contains all nodes except 'i' that are grandparents
         # as well as parents of 'j'
-        common_node <- intersect(adj_list_1,adj_list_2)
+        common_node <- base::intersect(adj_list_1,adj_list_2)
 
         #print(length(common_node)) #---test
 
@@ -77,7 +81,7 @@ learnCmiNetStruct <- function(di.net.adj.matrix, input.data, num.nodes, beta)
           {
             # All combination of the nodes in 'commom_node' taken 2 at a time.
             # In 'comb2', row = memeber index, col = combination index.
-            comb_2 <- combn(common_node, 2)
+            comb_2 <- utils::combn(common_node, 2)
 
             # ToDo: 'colunm in 1:ncol(comb_2)'
             # ToDo: Correct spelling 'colunm'

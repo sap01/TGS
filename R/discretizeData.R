@@ -11,6 +11,7 @@
 #'
 #' @return input data discretized into 2 levels
 #'
+#' @export
 discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename)
 {
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
@@ -53,6 +54,7 @@ discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename)
 #'
 #' @return input data discretized into 2 levels
 #'
+#' @export
 discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
 {
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
@@ -101,6 +103,7 @@ discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
 #'
 #' @return input data discretized into 3 levels
 #'
+#' @export
 discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, num.discr.levels)
 {
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
@@ -139,21 +142,21 @@ discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, 
   nodes.discr.sizes <- c()
   for (node.idx in 1:ncol(input.data.discr))
   {
-    if (length(unique(input.data.discr[, node.idx])) > 0)
+    if (base::length(base::unique(input.data.discr[, node.idx])) > 0)
     {
-      discr.levels <- sort(unique(input.data.discr[, node.idx]))
+      discr.levels <- base::sort(base::unique(input.data.discr[, node.idx]))
 
       for (discr.level.idx in 1:length(discr.levels))
       {
         input.data.discr[input.data.discr[, node.idx] == discr.levels[discr.level.idx], node.idx] <- discr.level.idx
       }
 
-      node.discr.size <- length(discr.levels)
-      nodes.discr.sizes <- c(nodes.discr.sizes, node.discr.size)
+      node.discr.size <- base::length(discr.levels)
+      nodes.discr.sizes <- base::c(nodes.discr.sizes, node.discr.size)
     }
   }
 
-  return(list(input.data.discr, nodes.discr.sizes))
+  return(base::list(input.data.discr, nodes.discr.sizes))
 }
 
 ##########################################################################################################################
@@ -176,6 +179,7 @@ discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, 
 #'
 #' @return input data discretized into 5 levels
 #'
+#' @export
 discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.levels)
 {
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
@@ -218,10 +222,10 @@ discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.l
   ## Each level index must be in [1, number of discrete levels of that node].
   for (node.idx in 1:ncol(input.data.discr))
   {
-    if ((length(unique(input.data.discr[, node.idx])) > 0) &&
-        (length(unique(input.data.discr[, node.idx])) != num.discr.levels))
+    if ((base::length(base::unique(input.data.discr[, node.idx])) > 0) &&
+        (base::length(base::unique(input.data.discr[, node.idx])) != num.discr.levels))
     {
-      discr.levels <- sort(unique(input.data.discr[, node.idx]))
+      discr.levels <- base::sort(base::unique(input.data.discr[, node.idx]))
 
       for (discr.level.idx in 1:length(discr.levels))
       {
@@ -251,6 +255,7 @@ discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.l
 #' 1. Ahmed, Amr, and Eric P. Xing. "Recovering time-varying networks of dependencies in social and biological studies."
 #' Proceedings of the National Academy of Sciences 106.29 (2009): 11878-11883.]
 #'
+#' @export
 discretizeData.2L.Tesla <- function(input.data)
 {
   ## For each variable

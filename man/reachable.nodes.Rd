@@ -2,7 +2,7 @@
 % Please edit documentation in R/graphFns.R
 \name{reachable.nodes}
 \alias{reachable.nodes}
-\title{returns all the nodes reachable from the given node in the directed adjacency matrix}
+\title{Returns all the nodes reachable from the given node in the directed adjacency matrix}
 \usage{
 reachable.nodes(di.net.adj.matrix, src.node.name)
 }
