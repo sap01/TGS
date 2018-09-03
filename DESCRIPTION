@@ -11,4 +11,8 @@ RoxygenNote: 6.1.0
 Imports: minet,
     stats,
     base,
-    utils
+    utils,
+    bnstruct,
+    ggm,
+    foreach,
+    doParallel
