@@ -23,11 +23,11 @@ learnDbnStructLayer3dParDeg1(input.data.discr.3D, mi.net.adj.matrix,
 
 \item{output.dirname}{output directory to store files}
 
-\item{input.data.3D}{Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.}
+\item{input.data.discr.3D}{Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.}
 
-\item{mi.net.adj.matrix:}{Adjacency matrix of the mutual information network. Rownames and colnames should be node names.}
+\item{mi.net.adj.matrix}{Adjacency matrix of the mutual information network. Rownames and colnames should be node names.}
 
-\item{num.discr.levels:}{If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized for performing the DBN structure learning.}
+\item{num.discr.levels}{If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized for performing the DBN structure learning.}
 
 \item{num.nodes}{number of nodes}
 
