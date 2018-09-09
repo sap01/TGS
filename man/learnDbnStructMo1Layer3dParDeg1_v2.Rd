@@ -19,7 +19,7 @@ learnDbnStructMo1Layer3dParDeg1_v2(input.data.discr.3D, mi.net.adj.matrix,
 
 \item{num.timepts}{number of timepoints}
 
-\item{max.fanin}{maximum fanin}
+\item{max.fanin}{maximum incoming edges in the graph}
 
 \item{node.names}{name of the nodes}
 

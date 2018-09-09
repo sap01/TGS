@@ -1,681 +1,382 @@
-#Goal: Infer Dynamic Bayesian Network (DBN)
-
-#---------------------------------
-# Begin: Step 2: Decomposing the network
-#---------------------------------
-
-
-#' Unrolled DBN structure learning with all possible Markov Orders.
-#'
-#' Unrolled DBN structure learning with all possible Markov Orders.
-#' Candidate parents: The target node itself and its CLR net neighbours at any previous and current time pt.
-#'
-#' @import bnstruct
-#' @import ggm
-#' @import foreach
-#' @import doParallel
-#'
-#' @param input.data.discr.3D 3D input data Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.
-#' @param mi.net.adj.matrix Adjacency matrix of the mutual information network. Rownames and colnames should be node names.
-#' @param num.discr.levels If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized
-#' @param num.nodes number of nodes
-#' @param num.timepts number of timepoints
-#'
-#' @return Unrolled DBN adjacency matrix
-#'
-#' @export
-learnDbnStruct3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts)
-{
-  # load('dream3.yeast1.size10.trajectory.3D.Rdata')
-  # input.data.3D <- dream3.yeast1.size10.trajectory.3D.data
-  # load('mi.net.adj.matrix.Rdata')
-
-  # In 'di.net.adj.matrix', rows are src nodes and cols are tgt nodes
-  di.net.adj.matrix <- mi.net.adj.matrix
-  di.net.adj.matrix[1:base::nrow(di.net.adj.matrix), 1:base::ncol(di.net.adj.matrix)] <- 0
-
-  no_cores <- num.nodes
-  cl <- parallel::makeCluster(no_cores)
-  doParallel::registerDoParallel(cl)
-
-  #base::print('going inside foreach')
-
-  # For each central node, learn local DBN struct in parallel.
-  # Package names, specified by '.packages' must be copied to each worker core.
-  # Current environmental variables that are referenced inside the foreach loop are copied
-  # to each worker automatically.
-  # local.unrolled.DBN.adj.matrix.list <- foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = 'bnstruct')  %dopar%
-  # local.unrolled.DBN.adj.matrix.list <- as.list(1:10)
-
-  # local.unrolled.DBN.adj.matrix.list <- foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = 'bnstruct') %:% when(sum(mi.net.adj.matrix[, centralNodeIdx]) != 0)  %dopar%
-  # {
-  #   print('now inside foreach 1')
-  #
-  #   centralNodeName <- rownames(mi.net.adj.matrix)[centralNodeIdx]
-  #
-  #   # List names of the central node's neighbours in mi.net.adj.matrix
-  #   nbghNames <- c()
-  #   if (sum(mi.net.adj.matrix[, centralNodeIdx]) == 1) # Just 1 neighbour
-  #   {
-  #     for (nbrIdx in 1:n)
-  #     {
-  #       if (mi.net.adj.matrix[nbrIdx, centralNodeIdx] == 1)
-  #       {
-  #         nbghNames <- rownames(mi.net.adj.matrix)[nbrIdx]
-  #         break
-  #       }
-  #     }
-  #   }
-  #   else if (sum(mi.net.adj.matrix[, centralNodeIdx]) > 1) # Multiple neighbours
-  #   {
-  #     nbghNames <- rownames(mi.net.adj.matrix[which(mi.net.adj.matrix[, centralNodeIdx] == 1),])
-  #   }
-  #
-  #   local.net.node.names <- c(centralNodeName, nbghNames)
-  #
-  #   local.input.data.3D <- input.data.discr.3D[, local.net.node.names, ]
-  #
-  #   #---------------------------------
-  #   # Begin: Local Unrolled DBN struct learning
-  #   #---------------------------------
-  #
-  #   sampleIdx <- 1
-  #
-  #   local.DBN.input.data <- matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
-  #                                  ncol = dim(local.input.data.3D)[2])
-  #
-  #   for (time.pt in 2:dim(local.input.data.3D)[1])
-  #   {
-  #     data.to.combine <- matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
-  #                               ncol = dim(local.input.data.3D)[2])
-  #     local.DBN.input.data <- cbind(local.DBN.input.data, data.to.combine)
-  #   }
-  #
-  #   local.DBN.input.data.var.names <- c()
-  #   for (time.pt in 1:dim(local.input.data.3D)[1]) {
-  #     for (var.name in dimnames(local.input.data.3D)[2]) {
-  #       local.DBN.input.data.var.names <- c(local.DBN.input.data.var.names,
-  #                                           paste(var.name, as.character(time.pt), sep = "_t"))
-  #     }
-  #   }
-  #   colnames(local.DBN.input.data) <- local.DBN.input.data.var.names
-  #
-  #   if (dim(local.input.data.3D)[3] > 1) # If there are multiple samples per time pt
-  #   {
-  #     for (sampleIdx in 2:dim(local.input.data.3D)[3])
-  #     {
-  #       sample.to.combine <- matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
-  #                                   ncol = dim(local.input.data.3D)[2])
-  #
-  #       for (time.pt in 2:dim(local.input.data.3D)[1])
-  #       {
-  #         data.to.combine <- matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
-  #                                   ncol = dim(local.input.data.3D)[2])
-  #         sample.to.combine <- cbind(sample.to.combine, data.to.combine)
-  #       }
-  #
-  #       local.DBN.input.data <- rbind(local.DBN.input.data, sample.to.combine)
-  #     }
-  #   }
-  #
-  #   rownames(local.DBN.input.data) <- as.vector(unlist(dimnames(local.input.data.3D)[3]))
-  #
-  #   local.unrolled.DBN.adj.matrix <- matrix(0, nrow = ncol(local.DBN.input.data), ncol = ncol(local.DBN.input.data),
-  #                                           dimnames = list(colnames(local.DBN.input.data), colnames(local.DBN.input.data)))
-  #
-  #   # 'fixed = FALSE' represents that the given pattern is a regular expression.
-  #   local.unrolled.DBN.central.node.indices <- grep(paste('^', centralNodeName, sep = ''),
-  #                                                   colnames(local.unrolled.DBN.adj.matrix),
-  #                                                   fixed = FALSE)
-  #
-  #   # Assuming there are > 1 time points. Otherwise, 'local.unrolled.DBN.adj.submatrix' would become a vector.
-  #   local.unrolled.DBN.adj.submatrix <- local.unrolled.DBN.adj.matrix[, local.unrolled.DBN.central.node.indices]
-  #
-  #   #---------------------------------
-  #   # End: Local Unrolled DBN struct learning
-  #   #---------------------------------
-  #
-  #   local.unrolled.DBN.adj.submatrix
-  # }
-  #
-  # print(local.unrolled.DBN.adj.matrix.list)
-
-  local.unrolled.DBN.adj.matrix.list <- foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = 'bnstruct') %:% when(base::sum(mi.net.adj.matrix[, centralNodeIdx]) != 0)  %dopar%
-  {
-
-    # print('now inside foreach')
-
-    # centralNodeIdx <- 1
-
-    centralNodeName <- base::rownames(mi.net.adj.matrix)[centralNodeIdx]
-
-    # if central node does not have any neighbour in mutual information net
-    if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) == 0)
-    {
-      next
-    }
-
-    # List names of the central node's neighbours in mi.net.adj.matrix
-    nbghNames <- base::c()
-    if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) == 1) # Just 1 neighbour
-    {
-      for (nbrIdx in 1:n)
-      {
-        if (mi.net.adj.matrix[nbrIdx, centralNodeIdx] == 1)
-        {
-          nbghNames <- base::rownames(mi.net.adj.matrix)[nbrIdx]
-          break
-        }
-      }
-    }
-    else if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) > 1) # Multiple neighbours
-    {
-      nbghNames <- base::rownames(mi.net.adj.matrix[which(mi.net.adj.matrix[, centralNodeIdx] == 1),])
-    }
-
-    local.net.node.names <- base::c(centralNodeName, nbghNames)
-
-    local.input.data.3D <- input.data.discr.3D[, local.net.node.names, ]
-
-
-    # #---------------------------------
-    # # Begin: Local BN struct learning
-    # #---------------------------------
-    # local.BN.input.data <- bnstruct::BNDataset(local.discr.data,
-    #                                         variables = colnames(local.discr.data),
-    #                                         discreteness = rep(TRUE, ncol(local.discr.data)),
-    #                                         node.sizes = rep(2, ncol(local.discr.data)),
-    #                                         starts.from = 0)
-    #
-    # # Default params: scoring.func = "BDeu"
-    # local.BN <- bnstruct::learn.network(local.discr.data, algo = 'sm')
-    # plot(local.BN)
-    #
-    # # Rows are src nodes and cols are tgt nodes
-    # local.BN.adj.matrix <- bnstruct::dag(local.BN)
-    # local.BN.adj.matrix <- matrix(local.BN.adj.matrix, nrow = length(local.BN@variables),
-    #                               ncol = length(local.BN@variables),
-    #                               dimnames = c(list(local.BN@variables), list(local.BN@variables)))
-    #
-    # local.BN.adj.matrix[, centralNodeName]
-    # #---------------------------------
-    # # End: Local BN struct learning
-    # #---------------------------------
-
-
-    #---------------------------------
-    # Begin: Local Unrolled DBN struct learning
-    #---------------------------------
-
-    sampleIdx <- 1
-
-    local.DBN.input.data <- base::matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
-                                   ncol = base::dim(local.input.data.3D)[2])
-
-    for (time.pt in 2:base::dim(local.input.data.3D)[1])
-    {
-      data.to.combine <- base::matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
-                                ncol = base::dim(local.input.data.3D)[2])
-      local.DBN.input.data <- base::cbind(local.DBN.input.data, data.to.combine)
-    }
-
-    local.DBN.input.data.var.names <- base::c()
-    for (time.pt in 1:base::dim(local.input.data.3D)[1]) {
-      for (var.name in base::dimnames(local.input.data.3D)[2]) {
-        local.DBN.input.data.var.names <- base::c(local.DBN.input.data.var.names,
-                                                  base::paste(var.name, as.character(time.pt), sep = "_t"))
-      }
-    }
-    base::colnames(local.DBN.input.data) <- local.DBN.input.data.var.names
-
-    if (base::dim(local.input.data.3D)[3] > 1) # If there are multiple samples per time pt
-    {
-      for (sampleIdx in 2:base::dim(local.input.data.3D)[3])
-      {
-        sample.to.combine <- base::matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
-                                    ncol = base::dim(local.input.data.3D)[2])
-
-        for (time.pt in 2:base::dim(local.input.data.3D)[1])
-        {
-          data.to.combine <- base::matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
-                                          ncol = base::dim(local.input.data.3D)[2])
-          sample.to.combine <- base::cbind(sample.to.combine, data.to.combine)
-        }
-
-        # local.DBN.input.data.var.names <- c()
-        # for (time.pt in 1:dim(local.input.data.3D)[1]) {
-        #   for (var.name in dimnames(local.input.data.3D)[2]) {
-        #     local.DBN.input.data.var.names <- c(local.DBN.input.data.var.names,
-        #                                         paste(var.name, as.character(time.pt), sep = "_t"))
-        #   }
-        # }
-        # colnames(local.DBN.input.data) <- local.DBN.input.data.var.names
-
-        local.DBN.input.data <- base::rbind(local.DBN.input.data, sample.to.combine)
-      }
-    }
-
-    base::rownames(local.DBN.input.data) <- base::as.vector(base::unlist(base::dimnames(local.input.data.3D)[3]))
-
-    # local.DBN.input.data.BNDataset <- bnstruct::BNDataset(local.DBN.input.data,
-    #                                         discreteness = rep(TRUE, ncol(local.DBN.input.data)),
-    #                                         variables = colnames(local.DBN.input.data),
-    #                                         node.sizes = rep(num.discr.levels, ncol(local.DBN.input.data)),
-    #                                         starts.from = 0,
-    #                                         num.time.steps = nrow(local.input.data.3D))
-
-
-    # Begin: Uncomment this section after testing
-    local.DBN.input.data.BNDataset <- bnstruct::BNDataset(local.DBN.input.data,
-                                                          discreteness = base::rep(TRUE, base::ncol(local.DBN.input.data)),
-                                                          variables = base::colnames(local.DBN.input.data),
-                                                          node.sizes = base::rep(num.discr.levels, base::ncol(local.DBN.input.data)),
-                                                          num.time.steps = base::nrow(local.input.data.3D))
-
-    # algo = "mmhc", scoring.func = "BDeu", no layering
-    # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-    #                                                        num.time.steps =
-    #                                                          bnstruct::num.time.steps(local.DBN.input.data.BNDataset))
-
-    # algo = "mmhc", scoring.func = "BDeu", with layering.
-    # A node with layer idx j can have parents from layer idx i such that i =< j.
-    layers <- base::c()
-    for (time.pt in 1:num.timepts)
-    {
-      layers <- base::c(layers, base::rep(time.pt, base::dim(local.input.data.3D)[2]))
-    }
-    local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-initial.network = 'random.chain', seed = 12345,
-algo = 'mmhc',
-                                                           scoring.func = 'BDeu',
-                                                           num.time.steps =
-                                                             bnstruct::num.time.steps(local.DBN.input.data.BNDataset),
-                                                           layering = layers)
-
-
-    # algo = "sm", scoring.func = "BDeu", no layering
-    # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-    #                                                        algo = 'sm',
-    #                                                        num.time.steps =
-    #                                                          bnstruct::num.time.steps(local.DBN.input.data.BNDataset))
-
-
-    # # The following four lines must be executed at the same time
-    # save.plot.to.filename = paste(paste('LocalUnrolledDbn', centralNodeName, sep = '_'), '.jpg', sep = '')
-    # jpeg(file = paste('LocalUnrolledDbn_', centralNodeName, '.jpg', sep = ''))
-    # plot(local.unrolled.DBN)
-    # dev.off()
-
-    # Extracting the adjacency matrix of the local DBN
-    local.unrolled.DBN.adj.matrix <- bnstruct::dag(local.unrolled.DBN)
-    local.unrolled.DBN.adj.matrix <- base::matrix(local.unrolled.DBN.adj.matrix,
-                                            nrow = base::length(local.unrolled.DBN@variables),
-                                            ncol = base::length(local.unrolled.DBN@variables),
-                                            dimnames = base::c(base::list(local.unrolled.DBN@variables), base::list(local.unrolled.DBN@variables)))
-    # End: Uncomment this section after testing
-
-    # # Begin: This section is for testing
-    # local.unrolled.DBN.adj.matrix <- matrix(0,
-    #                                         nrow = ncol(local.DBN.input.data),
-    #                                         ncol = ncol(local.DBN.input.data),
-    #                                         dimnames = list(colnames(local.DBN.input.data), colnames(local.DBN.input.data)))
-    # # End: This section is for testing
-
-    # 'fixed = FALSE' represents that the given pattern is a regular expression.
-    local.unrolled.DBN.central.node.indices <- base::grep(base::paste('^', centralNodeName, sep = ''),
-                                                          base::colnames(local.unrolled.DBN.adj.matrix),
-                                          fixed = FALSE)
-
-    # Assuming there are > 1 time points. Otherwise, 'local.unrolled.DBN.adj.submatrix' would become a vector.
-    local.unrolled.DBN.adj.submatrix <- local.unrolled.DBN.adj.matrix[, local.unrolled.DBN.central.node.indices]
-
-    #---------------------------------
-    # End: Local Unrolled DBN struct learning
-    #---------------------------------
-
-    # Return value for each 'foreach' iteration
-    local.unrolled.DBN.adj.submatrix
-  }
-
-  # print('foreach ended')
-
-  # Shut down the cluster
-  parallel::stopCluster(cl)
-
-  # print('after stopCluster')
-
-  # Begin: Unrolled DBN struct learning
-
-  # Begin: Initialize 'unrolled.DBN.adj.matrix' as a zero matrix
-  unrolled.DBN.adj.matrix.node.names <- base::c()
-  for (time.pt in 1:num.timepts) {
-    for (node.name in base::dimnames(input.data.discr.3D)[2]) {
-      unrolled.DBN.adj.matrix.node.names <- base::c(unrolled.DBN.adj.matrix.node.names,
-                                                    base::paste(node.name, as.character(time.pt), sep = "_t"))
-    }
-  }
-
-  unrolled.DBN.adj.matrix <- base::matrix(0, nrow = base::length(unrolled.DBN.adj.matrix.node.names),
-                                    ncol = base::length(unrolled.DBN.adj.matrix.node.names),
-                                    dimnames = base::c(base::list(unrolled.DBN.adj.matrix.node.names),
-                                                       base::list(unrolled.DBN.adj.matrix.node.names)))
-
-  # End: Initialize 'unrolled.DBN.adj.matrix' as a zero matrix
-
-  for (list.idx in 1:base::length(local.unrolled.DBN.adj.matrix.list))
-  {
-    # 'submatrix.to.combine'
-    submatrix.to.combine <- local.unrolled.DBN.adj.matrix.list[[list.idx]]
-
-	unrolled.DBN.adj.matrix[base::rownames(submatrix.to.combine), base::colnames(submatrix.to.combine)] <- submatrix.to.combine
-  }
-
-  # End: Unrolled DBN struct learning
-
-  # Return the final directed net of the current iteration
-  return (unrolled.DBN.adj.matrix)
-}
+# #Goal: Infer Dynamic Bayesian Network (DBN)
+#
+# #---------------------------------
+# # Begin: Step 2: Decomposing the network
+# #---------------------------------
+#
+#
+# #' Unrolled DBN structure learning with all possible Markov Orders.
+# #'
+# #' Unrolled DBN structure learning with all possible Markov Orders.
+# #' Candidate parents: The target node itself and its CLR net neighbours at any previous and current time pt.
+# #'
+# #' @import bnstruct
+# #' @import ggm
+# #' @import foreach
+# #' @import doParallel
+# #'
+# #' @param input.data.discr.3D 3D input data Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.
+# #' @param mi.net.adj.matrix Adjacency matrix of the mutual information network. Rownames and colnames should be node names.
+# #' @param num.discr.levels If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized
+# #' @param num.nodes number of nodes
+# #' @param num.timepts number of timepoints
+# #'
+# #' @return Unrolled DBN adjacency matrix
+# #'
+# #' @export
+# learnDbnStruct3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts)
+# {
+#   # load('dream3.yeast1.size10.trajectory.3D.Rdata')
+#   # input.data.3D <- dream3.yeast1.size10.trajectory.3D.data
+#   # load('mi.net.adj.matrix.Rdata')
+#
+#   # In 'di.net.adj.matrix', rows are src nodes and cols are tgt nodes
+#   di.net.adj.matrix <- mi.net.adj.matrix
+#   di.net.adj.matrix[1:base::nrow(di.net.adj.matrix), 1:base::ncol(di.net.adj.matrix)] <- 0
+#
+#   no_cores <- num.nodes
+#   cl <- parallel::makeCluster(no_cores)
+#   doParallel::registerDoParallel(cl)
+#
+#   #base::print('going inside foreach')
+#
+#   # For each central node, learn local DBN struct in parallel.
+#   # Package names, specified by '.packages' must be copied to each worker core.
+#   # Current environmental variables that are referenced inside the foreach loop are copied
+#   # to each worker automatically.
+#   # local.unrolled.DBN.adj.matrix.list <- foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = 'bnstruct')  %dopar%
+#   # local.unrolled.DBN.adj.matrix.list <- as.list(1:10)
+#
+#   # local.unrolled.DBN.adj.matrix.list <- foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = 'bnstruct') %:% when(sum(mi.net.adj.matrix[, centralNodeIdx]) != 0)  %dopar%
+#   # {
+#   #   print('now inside foreach 1')
+#   #
+#   #   centralNodeName <- rownames(mi.net.adj.matrix)[centralNodeIdx]
+#   #
+#   #   # List names of the central node's neighbours in mi.net.adj.matrix
+#   #   nbghNames <- c()
+#   #   if (sum(mi.net.adj.matrix[, centralNodeIdx]) == 1) # Just 1 neighbour
+#   #   {
+#   #     for (nbrIdx in 1:n)
+#   #     {
+#   #       if (mi.net.adj.matrix[nbrIdx, centralNodeIdx] == 1)
+#   #       {
+#   #         nbghNames <- rownames(mi.net.adj.matrix)[nbrIdx]
+#   #         break
+#   #       }
+#   #     }
+#   #   }
+#   #   else if (sum(mi.net.adj.matrix[, centralNodeIdx]) > 1) # Multiple neighbours
+#   #   {
+#   #     nbghNames <- rownames(mi.net.adj.matrix[which(mi.net.adj.matrix[, centralNodeIdx] == 1),])
+#   #   }
+#   #
+#   #   local.net.node.names <- c(centralNodeName, nbghNames)
+#   #
+#   #   local.input.data.3D <- input.data.discr.3D[, local.net.node.names, ]
+#   #
+#   #   #---------------------------------
+#   #   # Begin: Local Unrolled DBN struct learning
+#   #   #---------------------------------
+#   #
+#   #   sampleIdx <- 1
+#   #
+#   #   local.DBN.input.data <- matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
+#   #                                  ncol = dim(local.input.data.3D)[2])
+#   #
+#   #   for (time.pt in 2:dim(local.input.data.3D)[1])
+#   #   {
+#   #     data.to.combine <- matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
+#   #                               ncol = dim(local.input.data.3D)[2])
+#   #     local.DBN.input.data <- cbind(local.DBN.input.data, data.to.combine)
+#   #   }
+#   #
+#   #   local.DBN.input.data.var.names <- c()
+#   #   for (time.pt in 1:dim(local.input.data.3D)[1]) {
+#   #     for (var.name in dimnames(local.input.data.3D)[2]) {
+#   #       local.DBN.input.data.var.names <- c(local.DBN.input.data.var.names,
+#   #                                           paste(var.name, as.character(time.pt), sep = "_t"))
+#   #     }
+#   #   }
+#   #   colnames(local.DBN.input.data) <- local.DBN.input.data.var.names
+#   #
+#   #   if (dim(local.input.data.3D)[3] > 1) # If there are multiple samples per time pt
+#   #   {
+#   #     for (sampleIdx in 2:dim(local.input.data.3D)[3])
+#   #     {
+#   #       sample.to.combine <- matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
+#   #                                   ncol = dim(local.input.data.3D)[2])
+#   #
+#   #       for (time.pt in 2:dim(local.input.data.3D)[1])
+#   #       {
+#   #         data.to.combine <- matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
+#   #                                   ncol = dim(local.input.data.3D)[2])
+#   #         sample.to.combine <- cbind(sample.to.combine, data.to.combine)
+#   #       }
+#   #
+#   #       local.DBN.input.data <- rbind(local.DBN.input.data, sample.to.combine)
+#   #     }
+#   #   }
+#   #
+#   #   rownames(local.DBN.input.data) <- as.vector(unlist(dimnames(local.input.data.3D)[3]))
+#   #
+#   #   local.unrolled.DBN.adj.matrix <- matrix(0, nrow = ncol(local.DBN.input.data), ncol = ncol(local.DBN.input.data),
+#   #                                           dimnames = list(colnames(local.DBN.input.data), colnames(local.DBN.input.data)))
+#   #
+#   #   # 'fixed = FALSE' represents that the given pattern is a regular expression.
+#   #   local.unrolled.DBN.central.node.indices <- grep(paste('^', centralNodeName, sep = ''),
+#   #                                                   colnames(local.unrolled.DBN.adj.matrix),
+#   #                                                   fixed = FALSE)
+#   #
+#   #   # Assuming there are > 1 time points. Otherwise, 'local.unrolled.DBN.adj.submatrix' would become a vector.
+#   #   local.unrolled.DBN.adj.submatrix <- local.unrolled.DBN.adj.matrix[, local.unrolled.DBN.central.node.indices]
+#   #
+#   #   #---------------------------------
+#   #   # End: Local Unrolled DBN struct learning
+#   #   #---------------------------------
+#   #
+#   #   local.unrolled.DBN.adj.submatrix
+#   # }
+#   #
+#   # print(local.unrolled.DBN.adj.matrix.list)
+#
+#   local.unrolled.DBN.adj.matrix.list <- foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = 'bnstruct') %:% when(base::sum(mi.net.adj.matrix[, centralNodeIdx]) != 0)  %dopar%
+#   {
+#
+#     # print('now inside foreach')
+#
+#     # centralNodeIdx <- 1
+#
+#     centralNodeName <- base::rownames(mi.net.adj.matrix)[centralNodeIdx]
+#
+#     # if central node does not have any neighbour in mutual information net
+#     if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) == 0)
+#     {
+#       next
+#     }
+#
+#     # List names of the central node's neighbours in mi.net.adj.matrix
+#     nbghNames <- base::c()
+#     if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) == 1) # Just 1 neighbour
+#     {
+#       for (nbrIdx in 1:n)
+#       {
+#         if (mi.net.adj.matrix[nbrIdx, centralNodeIdx] == 1)
+#         {
+#           nbghNames <- base::rownames(mi.net.adj.matrix)[nbrIdx]
+#           break
+#         }
+#       }
+#     }
+#     else if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) > 1) # Multiple neighbours
+#     {
+#       nbghNames <- base::rownames(mi.net.adj.matrix[which(mi.net.adj.matrix[, centralNodeIdx] == 1),])
+#     }
+#
+#     local.net.node.names <- base::c(centralNodeName, nbghNames)
+#
+#     local.input.data.3D <- input.data.discr.3D[, local.net.node.names, ]
+#
+#
+#     # #---------------------------------
+#     # # Begin: Local BN struct learning
+#     # #---------------------------------
+#     # local.BN.input.data <- bnstruct::BNDataset(local.discr.data,
+#     #                                         variables = colnames(local.discr.data),
+#     #                                         discreteness = rep(TRUE, ncol(local.discr.data)),
+#     #                                         node.sizes = rep(2, ncol(local.discr.data)),
+#     #                                         starts.from = 0)
+#     #
+#     # # Default params: scoring.func = "BDeu"
+#     # local.BN <- bnstruct::learn.network(local.discr.data, algo = 'sm')
+#     # plot(local.BN)
+#     #
+#     # # Rows are src nodes and cols are tgt nodes
+#     # local.BN.adj.matrix <- bnstruct::dag(local.BN)
+#     # local.BN.adj.matrix <- matrix(local.BN.adj.matrix, nrow = length(local.BN@variables),
+#     #                               ncol = length(local.BN@variables),
+#     #                               dimnames = c(list(local.BN@variables), list(local.BN@variables)))
+#     #
+#     # local.BN.adj.matrix[, centralNodeName]
+#     # #---------------------------------
+#     # # End: Local BN struct learning
+#     # #---------------------------------
+#
+#
+#     #---------------------------------
+#     # Begin: Local Unrolled DBN struct learning
+#     #---------------------------------
+#
+#     sampleIdx <- 1
+#
+#     local.DBN.input.data <- base::matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
+#                                    ncol = base::dim(local.input.data.3D)[2])
+#
+#     for (time.pt in 2:base::dim(local.input.data.3D)[1])
+#     {
+#       data.to.combine <- base::matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
+#                                 ncol = base::dim(local.input.data.3D)[2])
+#       local.DBN.input.data <- base::cbind(local.DBN.input.data, data.to.combine)
+#     }
+#
+#     local.DBN.input.data.var.names <- base::c()
+#     for (time.pt in 1:base::dim(local.input.data.3D)[1]) {
+#       for (var.name in base::dimnames(local.input.data.3D)[2]) {
+#         local.DBN.input.data.var.names <- base::c(local.DBN.input.data.var.names,
+#                                                   base::paste(var.name, as.character(time.pt), sep = "_t"))
+#       }
+#     }
+#     base::colnames(local.DBN.input.data) <- local.DBN.input.data.var.names
+#
+#     if (base::dim(local.input.data.3D)[3] > 1) # If there are multiple samples per time pt
+#     {
+#       for (sampleIdx in 2:base::dim(local.input.data.3D)[3])
+#       {
+#         sample.to.combine <- base::matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
+#                                     ncol = base::dim(local.input.data.3D)[2])
+#
+#         for (time.pt in 2:base::dim(local.input.data.3D)[1])
+#         {
+#           data.to.combine <- base::matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
+#                                           ncol = base::dim(local.input.data.3D)[2])
+#           sample.to.combine <- base::cbind(sample.to.combine, data.to.combine)
+#         }
+#
+#         # local.DBN.input.data.var.names <- c()
+#         # for (time.pt in 1:dim(local.input.data.3D)[1]) {
+#         #   for (var.name in dimnames(local.input.data.3D)[2]) {
+#         #     local.DBN.input.data.var.names <- c(local.DBN.input.data.var.names,
+#         #                                         paste(var.name, as.character(time.pt), sep = "_t"))
+#         #   }
+#         # }
+#         # colnames(local.DBN.input.data) <- local.DBN.input.data.var.names
+#
+#         local.DBN.input.data <- base::rbind(local.DBN.input.data, sample.to.combine)
+#       }
+#     }
+#
+#     base::rownames(local.DBN.input.data) <- base::as.vector(base::unlist(base::dimnames(local.input.data.3D)[3]))
+#
+#     # local.DBN.input.data.BNDataset <- bnstruct::BNDataset(local.DBN.input.data,
+#     #                                         discreteness = rep(TRUE, ncol(local.DBN.input.data)),
+#     #                                         variables = colnames(local.DBN.input.data),
+#     #                                         node.sizes = rep(num.discr.levels, ncol(local.DBN.input.data)),
+#     #                                         starts.from = 0,
+#     #                                         num.time.steps = nrow(local.input.data.3D))
+#
+#
+#     # Begin: Uncomment this section after testing
+#     local.DBN.input.data.BNDataset <- bnstruct::BNDataset(local.DBN.input.data,
+#                                                           discreteness = base::rep(TRUE, base::ncol(local.DBN.input.data)),
+#                                                           variables = base::colnames(local.DBN.input.data),
+#                                                           node.sizes = base::rep(num.discr.levels, base::ncol(local.DBN.input.data)),
+#                                                           num.time.steps = base::nrow(local.input.data.3D))
+#
+#     # algo = "mmhc", scoring.func = "BDeu", no layering
+#     # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
+#     #                                                        num.time.steps =
+#     #                                                          bnstruct::num.time.steps(local.DBN.input.data.BNDataset))
+#
+#     # algo = "mmhc", scoring.func = "BDeu", with layering.
+#     # A node with layer idx j can have parents from layer idx i such that i =< j.
+#     layers <- base::c()
+#     for (time.pt in 1:num.timepts)
+#     {
+#       layers <- base::c(layers, base::rep(time.pt, base::dim(local.input.data.3D)[2]))
+#     }
+#     local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
+# initial.network = 'random.chain', seed = 12345,
+# algo = 'mmhc',
+#                                                            scoring.func = 'BDeu',
+#                                                            num.time.steps =
+#                                                              bnstruct::num.time.steps(local.DBN.input.data.BNDataset),
+#                                                            layering = layers)
+#
+#
+#     # algo = "sm", scoring.func = "BDeu", no layering
+#     # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
+#     #                                                        algo = 'sm',
+#     #                                                        num.time.steps =
+#     #                                                          bnstruct::num.time.steps(local.DBN.input.data.BNDataset))
+#
+#
+#     # # The following four lines must be executed at the same time
+#     # save.plot.to.filename = paste(paste('LocalUnrolledDbn', centralNodeName, sep = '_'), '.jpg', sep = '')
+#     # jpeg(file = paste('LocalUnrolledDbn_', centralNodeName, '.jpg', sep = ''))
+#     # plot(local.unrolled.DBN)
+#     # dev.off()
+#
+#     # Extracting the adjacency matrix of the local DBN
+#     local.unrolled.DBN.adj.matrix <- bnstruct::dag(local.unrolled.DBN)
+#     local.unrolled.DBN.adj.matrix <- base::matrix(local.unrolled.DBN.adj.matrix,
+#                                             nrow = base::length(local.unrolled.DBN@variables),
+#                                             ncol = base::length(local.unrolled.DBN@variables),
+#                                             dimnames = base::c(base::list(local.unrolled.DBN@variables), base::list(local.unrolled.DBN@variables)))
+#     # End: Uncomment this section after testing
+#
+#     # # Begin: This section is for testing
+#     # local.unrolled.DBN.adj.matrix <- matrix(0,
+#     #                                         nrow = ncol(local.DBN.input.data),
+#     #                                         ncol = ncol(local.DBN.input.data),
+#     #                                         dimnames = list(colnames(local.DBN.input.data), colnames(local.DBN.input.data)))
+#     # # End: This section is for testing
+#
+#     # 'fixed = FALSE' represents that the given pattern is a regular expression.
+#     local.unrolled.DBN.central.node.indices <- base::grep(base::paste('^', centralNodeName, sep = ''),
+#                                                           base::colnames(local.unrolled.DBN.adj.matrix),
+#                                           fixed = FALSE)
+#
+#     # Assuming there are > 1 time points. Otherwise, 'local.unrolled.DBN.adj.submatrix' would become a vector.
+#     local.unrolled.DBN.adj.submatrix <- local.unrolled.DBN.adj.matrix[, local.unrolled.DBN.central.node.indices]
+#
+#     #---------------------------------
+#     # End: Local Unrolled DBN struct learning
+#     #---------------------------------
+#
+#     # Return value for each 'foreach' iteration
+#     local.unrolled.DBN.adj.submatrix
+#   }
+#
+#   # print('foreach ended')
+#
+#   # Shut down the cluster
+#   parallel::stopCluster(cl)
+#
+#   # print('after stopCluster')
+#
+#   # Begin: Unrolled DBN struct learning
+#
+#   # Begin: Initialize 'unrolled.DBN.adj.matrix' as a zero matrix
+#   unrolled.DBN.adj.matrix.node.names <- base::c()
+#   for (time.pt in 1:num.timepts) {
+#     for (node.name in base::dimnames(input.data.discr.3D)[2]) {
+#       unrolled.DBN.adj.matrix.node.names <- base::c(unrolled.DBN.adj.matrix.node.names,
+#                                                     base::paste(node.name, as.character(time.pt), sep = "_t"))
+#     }
+#   }
+#
+#   unrolled.DBN.adj.matrix <- base::matrix(0, nrow = base::length(unrolled.DBN.adj.matrix.node.names),
+#                                     ncol = base::length(unrolled.DBN.adj.matrix.node.names),
+#                                     dimnames = base::c(base::list(unrolled.DBN.adj.matrix.node.names),
+#                                                        base::list(unrolled.DBN.adj.matrix.node.names)))
+#
+#   # End: Initialize 'unrolled.DBN.adj.matrix' as a zero matrix
+#
+#   for (list.idx in 1:base::length(local.unrolled.DBN.adj.matrix.list))
+#   {
+#     # 'submatrix.to.combine'
+#     submatrix.to.combine <- local.unrolled.DBN.adj.matrix.list[[list.idx]]
+#
+# 	unrolled.DBN.adj.matrix[base::rownames(submatrix.to.combine), base::colnames(submatrix.to.combine)] <- submatrix.to.combine
+#   }
+#
+#   # End: Unrolled DBN struct learning
+#
+#   # Return the final directed net of the current iteration
+#   return (unrolled.DBN.adj.matrix)
+# }
 
 ###############################################################################################################################
-
-#' Unrolled DBN structure learning with all possible Markov Orders.
-#'
-#' Unrolled DBN structure learning with all possible Markov Orders.
-#' Candidate parents: The target node itself and its CLR net neighbours at any previous and current time pt.
-#'
-#' @import bnstruct
-#' @import ggm
-#' @import foreach
-#' @import doParallel
-#'
-#' @param input.data.discr.3D Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.
-#' @param mi.net.adj.matrix Adjacency matrix of the mutual information network. Rownames and colnames should be node names.
-#' @param num.discr.levels If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized
-#' @param num.nodes number of nodes
-#' @param num.timepts number of timepoints
-#' @param output.dirname output directory to store files
-#'
-#' @return Unrolled DBN adjacency matrix
-#'
-#' @export
-learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts, output.dirname="./OUTPUT")
-{
-  num.time.trans <- (num.timepts - 1)
-
-  no_cores <- num.nodes
-  cl <- parallel::makeCluster(no_cores, outfile = base::paste(output.dirname, 'outfile.txt', sep = '/' ))
-  doParallel::registerDoParallel(cl)
-
-  # '.verbose = TRUE' is used for debugging
-  # 'when(sum(mi.net.adj.matrix[, centralNodeIdx]) != 0' means when central node does not have any neighbour in the mutual info net
-  local.unrolled.DBN.adj.matrix.list <-
-    foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = base::c('foreach', 'bnstruct'), .verbose = TRUE) %:%
-    # when(sum(mi.net.adj.matrix[, centralNodeIdx]) != 0) %:%
-    foreach::foreach(time.trans.idx = 1:num.time.trans, .packages = base::c('foreach', 'bnstruct'), .verbose = TRUE) %:%
-    when(base::sum(mi.net.adj.matrix[, centralNodeIdx]) != 0) %do% # %dopar%
-  {
-    centralNodeName <- base::rownames(mi.net.adj.matrix)[centralNodeIdx]
-
-    # List names of the central node's neighbours in mi.net.adj.matrix
-    nbghNames <- base::c()
-    if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) == 1) # Just 1 neighbour
-    {
-      for (nbrIdx in 1:n)
-      {
-        if (mi.net.adj.matrix[nbrIdx, centralNodeIdx] == 1)
-        {
-          nbghNames <- base::rownames(mi.net.adj.matrix)[nbrIdx]
-          break
-        }
-      }
-    }
-    else if (sum(mi.net.adj.matrix[, centralNodeIdx]) > 1) # Multiple neighbours
-    {
-      nbghNames <- base::rownames(mi.net.adj.matrix[which(mi.net.adj.matrix[, centralNodeIdx] == 1),])
-    }
-
-    local.net.node.names <- base::c(centralNodeName, nbghNames)
-
-    # Select subdataset corr. to the nodes in 'local.net.node.names' and time points 'c(time.trans.idx, (time.trans.idx + 1))'
-    local.input.data.3D <- input.data.discr.3D[base::c(time.trans.idx, (time.trans.idx + 1)), local.net.node.names, ]
-
-    #---------------------------------
-    # Begin: Local Unrolled DBN struct learning
-    #---------------------------------
-
-    ## Begin: Generate 2D 'local.DBN.input.data' from 'local.input.data.3D'
-    # Say, the local nodes are {v1, v2, v3} and the time points are {t1, t2}.
-    # Then 'local.DBN.input.data.var.names' contains {v1_t1, v2_t1, v3_t1, v1_t2, v2_t2, v3_t2}.
-    # In that case, 'local.DBN.input.data' will contain columns corr. to elements in 'local.DBN.input.data.var.names' and
-    # rows corr. to different samples.
-
-    ## Begin: Generate first row of 'local.DBN.input.data'
-    sampleIdx <- 1
-    local.DBN.input.data <- base::matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
-                                   ncol = base::dim(local.input.data.3D)[2])
-    data.to.combine <- base::matrix(local.input.data.3D[2, , sampleIdx], nrow = 1,
-                              ncol = base::dim(local.input.data.3D)[2])
-    local.DBN.input.data <- base::cbind(local.DBN.input.data, data.to.combine)
-    base::rm(data.to.combine)
-
-#     for (time.pt in 2:dim(local.input.data.3D)[1])
-#     {
-#       data.to.combine <- matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
-#                                 ncol = dim(local.input.data.3D)[2])
-#       local.DBN.input.data <- cbind(local.DBN.input.data, data.to.combine)
-#     }
-
-    local.DBN.input.data.var.names <- base::c()
-    for (time.pt in time.trans.idx:(time.trans.idx + 1)) {
-      for (var.name in base::dimnames(local.input.data.3D)[2]) {
-        local.DBN.input.data.var.names <- base::c(local.DBN.input.data.var.names,
-                                                  base::paste(var.name, base::as.character(time.pt), sep = "_t"))
-      }
-    }
-    base::colnames(local.DBN.input.data) <- local.DBN.input.data.var.names
-    ## End: Generate first row of 'local.DBN.input.data'
-
-    ## Begin: Generate rest of the rows of 'local.DBN.input.data'
-    if (base::dim(local.input.data.3D)[3] > 1) # If there are multiple samples per time pt
-    {
-      for (sampleIdx in 2:base::dim(local.input.data.3D)[3])
-      {
-        sample.to.combine <- base::matrix(local.input.data.3D[1, , sampleIdx], nrow = 1,
-                                    ncol = base::dim(local.input.data.3D)[2])
-        data.to.combine <- base::matrix(local.input.data.3D[2, , sampleIdx], nrow = 1,
-                                  ncol = base::dim(local.input.data.3D)[2])
-        sample.to.combine <- base::cbind(sample.to.combine, data.to.combine)
-        # rm(data.to.combine)
-
-        # for (time.pt in 2:dim(local.input.data.3D)[1])
-        # {
-        #   data.to.combine <- matrix(local.input.data.3D[time.pt, , sampleIdx], nrow = 1,
-        #                             ncol = dim(local.input.data.3D)[2])
-        #   sample.to.combine <- cbind(sample.to.combine, data.to.combine)
-        # }
-
-        # local.DBN.input.data.var.names <- c()
-        # for (time.pt in 1:dim(local.input.data.3D)[1]) {
-        #   for (var.name in dimnames(local.input.data.3D)[2]) {
-        #     local.DBN.input.data.var.names <- c(local.DBN.input.data.var.names,
-        #                                         paste(var.name, as.character(time.pt), sep = "_t"))
-        #   }
-        # }
-        # colnames(local.DBN.input.data) <- local.DBN.input.data.var.names
-
-        local.DBN.input.data <- base::rbind(local.DBN.input.data, sample.to.combine)
-      }
-    }
-
-    base::rownames(local.DBN.input.data) <- base::as.vector(base::unlist(base::dimnames(local.input.data.3D)[3]))
-    ## End: Generate rest of the rows of 'local.DBN.input.data'
-    ## End: Generate 2D 'local.DBN.input.data' from 'local.input.data.3D'
-
-    # local.DBN.input.data.BNDataset <- bnstruct::BNDataset(local.DBN.input.data,
-    #                                         discreteness = rep(TRUE, ncol(local.DBN.input.data)),
-    #                                         variables = colnames(local.DBN.input.data),
-    #                                         node.sizes = rep(num.discr.levels, ncol(local.DBN.input.data)),
-    #                                         starts.from = 0,
-    #                                         num.time.steps = nrow(local.input.data.3D))
-
-
-    # Begin: Uncomment this section after testing
-    local.DBN.input.data.BNDataset <- bnstruct::BNDataset(local.DBN.input.data,
-                                                          discreteness = base::rep(TRUE, base::ncol(local.DBN.input.data)),
-                                                          variables = base::colnames(local.DBN.input.data),
-                                                          node.sizes = base::rep(num.discr.levels, base::ncol(local.DBN.input.data)),
-                                                          num.time.steps = base::nrow(local.input.data.3D))
-
-    # algo = "mmhc", scoring.func = "BDeu", layering = c()
-    # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-    #                                                        num.time.steps =
-    #                                                          bnstruct::num.time.steps(local.DBN.input.data.BNDataset))
-
-
-    # algo = "sm", scoring.func = "BDeu", layering = c()
-    # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-      #                                                      algo = 'sm',
-      #                                                      num.time.steps =
-      #                                                        bnstruct::num.time.steps(local.DBN.input.data.BNDataset))
-
-    # algo = "sm", scoring.func = "BDeu", with layering
-    # There are two time pts. represented by c(time.trans.idx, time.trans.idx + 1).
-    # The nodes belonging to these time pts. are labeled with layer idx 1 and 2, resp.
-    # A node with layer idx j can have parents from layer idx i such that i =< j.
-    # layers <- c(rep(1, dim(local.input.data.3D)[2]), rep(2, dim(local.input.data.3D)[2]))
-    # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-    #                                                        algo = 'sm',
-    #                                                        num.time.steps =
-    #                                                          bnstruct::num.time.steps(local.DBN.input.data.BNDataset),
-    #                                                        layering = layers)
-
-    # algo = "sm", scoring.func = "BIC", with layering
-    # There are two time pts. represented by c(time.trans.idx, time.trans.idx + 1).
-    # The nodes belonging to these time pts. are labeled with layer idx 1 and 2, resp.
-    # A node with layer idx j can have parents from layer idx i such that i =< j.
-    # layers <- c(rep(1, dim(local.input.data.3D)[2]), rep(2, dim(local.input.data.3D)[2]))
-    # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-    #                                                        algo = 'sm',
-    #                                                        scoring.func = 'BIC',
-    #                                                        num.time.steps =
-    #                                                          bnstruct::num.time.steps(local.DBN.input.data.BNDataset),
-    #                                                        layering = layers)
-
-    # algo = "mmhc", scoring.func = "BDeu", with layering, initial.network = 'random.chain', seed = 12345
-    # There are two time pts. represented by c(time.trans.idx, time.trans.idx + 1).
-    # The nodes belonging to these time pts. are labeled with layer idx 1 and 2, resp.
-    # A node with layer idx j can have parents from layer idx i such that i =< j.
-    layers <- base::c(base::rep(1, base::dim(local.input.data.3D)[2]), base::rep(2, base::dim(local.input.data.3D)[2]))
-    local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-                                                           initial.network = 'random.chain',
-                                                           seed = 12345,
-                                                           algo = 'mmhc',
-                                                           scoring.func = 'BDeu',
-                                                           num.time.steps =
-                                                             bnstruct::num.time.steps(local.DBN.input.data.BNDataset),
-                                                           layering = layers)
-
-    # algo = "mmhc", scoring.func = "BDeu", with layering
-    # There are two time pts. represented by c(time.trans.idx, time.trans.idx + 1).
-    # The nodes belonging to these time pts. are labeled with layer idx 1 and 2, resp.
-    # A node with layer idx j can have parents from layer idx i such that i =< j.
-    # layers <- c(rep(1, dim(local.input.data.3D)[2]), rep(2, dim(local.input.data.3D)[2]))
-    # local.unrolled.DBN <-  bnstruct::learn.dynamic.network(local.DBN.input.data.BNDataset,
-    #                                                        num.time.steps =
-    #                                                          bnstruct::num.time.steps(local.DBN.input.data.BNDataset),
-    #                                                        layering = layers)
-
-
-    # # The following four lines must be executed at the same time
-    # save.plot.to.filename = paste(paste('LocalUnrolledDbn', centralNodeName, sep = '_'), '.jpg', sep = '')
-    # jpeg(file = paste('LocalUnrolledDbn_', centralNodeName, '.jpg', sep = ''))
-    # plot(local.unrolled.DBN)
-    # dev.off()
-
-    # Extracting the adjacency matrix of the local DBN
-    local.unrolled.DBN.adj.matrix <- bnstruct::dag(local.unrolled.DBN)
-    local.unrolled.DBN.adj.matrix <- base::matrix(local.unrolled.DBN.adj.matrix,
-                                            nrow = base::length(local.unrolled.DBN@variables),
-                                            ncol = base::length(local.unrolled.DBN@variables),
-                                            dimnames = base::c(base::list(local.unrolled.DBN@variables), base::list(local.unrolled.DBN@variables)))
-    # End: Uncomment this section after testing
-
-    # # Begin: This section is for testing
-    # local.unrolled.DBN.adj.matrix <- matrix(0,
-    #                                         nrow = ncol(local.DBN.input.data),
-    #                                         ncol = ncol(local.DBN.input.data),
-    #                                         dimnames = list(colnames(local.DBN.input.data), colnames(local.DBN.input.data)))
-    # # End: This section is for testing
-
-    # 'fixed = FALSE' represents that the given pattern is a regular expression.
-    # local.unrolled.DBN.central.node.indices <- grep(paste('^', centralNodeName, sep = ''),
-    #                                                 colnames(local.unrolled.DBN.adj.matrix),
-    #                                                 fixed = FALSE)
-    # Assuming there are > 1 time points. Otherwise, 'local.unrolled.DBN.adj.submatrix' would become a vector.
-    # local.unrolled.DBN.adj.submatrix <- local.unrolled.DBN.adj.matrix[, local.unrolled.DBN.central.node.indices]
-
-    local.unrolled.DBN.src.node.names <- local.unrolled.DBN@variables[1:base::dim(local.input.data.3D)[2]]
-    local.unrolled.DBN.tgt.node.name <- base::paste(centralNodeName, base::as.character((time.trans.idx + 1)), sep = "_t")
-
-
-    # Assuming there are > 1 time points. Otherwise, 'local.unrolled.DBN.adj.submatrix' would become a vector.
-    local.unrolled.DBN.adj.submatrix <- base::matrix(
-      local.unrolled.DBN.adj.matrix[local.unrolled.DBN.src.node.names, local.unrolled.DBN.tgt.node.name],
-      nrow = base::length(local.unrolled.DBN.src.node.names),
-      ncol = 1,
-      dimnames = base::c(base::list(local.unrolled.DBN.src.node.names), base::list(local.unrolled.DBN.tgt.node.name)))
-
-    # print(local.unrolled.DBN.adj.submatrix)
-    #---------------------------------
-    # End: Local Unrolled DBN struct learning
-    #---------------------------------
-
-    # Return value for each 'foreach' iteration
-    local.unrolled.DBN.adj.submatrix
-  }
-
-  # Shut down the cluster
-  parallel::stopCluster(cl)
-
-  # Begin: Unrolled DBN struct learning
-
-  # Begin: Initialize 'unrolled.DBN.adj.matrix' as a zero matrix
-  unrolled.DBN.adj.matrix.node.names <- base::c()
-  for (time.pt in 1:num.timepts) {
-    for (node.name in base::dimnames(input.data.discr.3D)[2]) {
-      unrolled.DBN.adj.matrix.node.names <- base::c(unrolled.DBN.adj.matrix.node.names,
-                                                    base::paste(node.name, base::as.character(time.pt), sep = "_t"))
-    }
-  }
-
-  unrolled.DBN.adj.matrix <- base::matrix(0, nrow = base::length(unrolled.DBN.adj.matrix.node.names),
-                                    ncol = base::length(unrolled.DBN.adj.matrix.node.names),
-                                    dimnames = base::c(base::list(unrolled.DBN.adj.matrix.node.names),
-                                                       base::list(unrolled.DBN.adj.matrix.node.names)))
-
-  # End: Initialize 'unrolled.DBN.adj.matrix' as a zero matrix
-
-  # 'local.unrolled.DBN.adj.matrix.list' is a list of lists of matrices.
-  # The outer list contains 'local.unrolled.DBN.adj.matrix.list' inner lists.
-  # Each inner list contains 'num.time.trans' matrices.
-  # length(local.unrolled.DBN.adj.matrix.list) = num.nodes
-  for (outer.list.idx in 1:base::length(local.unrolled.DBN.adj.matrix.list))
-  {
-    # length(local.unrolled.DBN.adj.matrix.list[[outer.list.idx]]) = num.time.trans
-    for (inner.list.idx in 1:base::length(local.unrolled.DBN.adj.matrix.list[[outer.list.idx]]))
-    {
-      # 'submatrix.to.combine'
-      submatrix.to.combine <- local.unrolled.DBN.adj.matrix.list[[outer.list.idx]][[inner.list.idx]]
-      unrolled.DBN.adj.matrix[base::rownames(submatrix.to.combine), base::colnames(submatrix.to.combine)] <- submatrix.to.combine
-    }
-  }
-
-  # End: Unrolled DBN struct learning
-
-  # Return the final directed net of the current iteration
-  return (unrolled.DBN.adj.matrix)
-}
-
 ###############################################################################################################################
 #' Unrolled DBN structure learning with Markov Order 0 and 1.
 #'
@@ -704,7 +405,8 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
   no_cores <- num.nodes
   cl <- parallel::makeCluster(no_cores, outfile = base::paste(output.dirname, 'outfile.txt', sep = '/' ))
   doParallel::registerDoParallel(cl)
-
+  centralNodeIdx <- NULL
+  time.trans.idx <- NULL
   # '.verbose = TRUE' is used for debugging
   # 'when(sum(mi.net.adj.matrix[, centralNodeIdx]) != 0' means when central node does not have any neighbour in the mutual info net
   local.unrolled.DBN.adj.matrix.list <-
@@ -932,7 +634,8 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
       # Return value for each 'foreach' iteration
       local.unrolled.DBN.adj.submatrix
     }
-
+  base::rm(time.trans.idx)
+  base::rm(centralNodeIdx)
   # Shut down the cluster
   parallel::stopCluster(cl)
 
@@ -991,7 +694,7 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
 #' @param num.discr.levels If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized for performing the DBN structure learning.
 #' @param num.nodes number of nodes
 #' @param num.timepts number of timepoints
-#' @param max.fanin maximum fanin
+#' @param max.fanin maximum incoming edges in the graph
 #' @param output.dirname output directory to store files
 #'
 #' @return Unrolled DBN adjacency matrix
@@ -1010,6 +713,8 @@ learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matr
   # '.verbose = TRUE' is used for debugging
   # 'when(sum(mi.net.adj.matrix[, centralNodeIdx]) > 0' means when central node has at least one neighbour in the mutual info net
   # Use %do% amd %dopar% for serial and parallel computing, resp.
+  centralNodeIdx <- NULL
+  time.trans.idx <- NULL
   local.unrolled.DBN.adj.matrix.list <-
     foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = base::c('foreach', 'bnstruct'), .verbose = TRUE) %:%
     # when(sum(mi.net.adj.matrix[, centralNodeIdx]) != 0) %:%
@@ -1201,6 +906,8 @@ learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matr
       # Return value for each 'foreach' iteration
       local.unrolled.DBN.adj.submatrix
     }
+  base::rm(centralNodeIdx)
+  base::rm(time.trans.idx)
 
   ##print('End of foreach loops')
 
@@ -1291,7 +998,7 @@ learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matr
 #' @param num.discr.levels If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized for performing the DBN structure learning.
 #' @param num.nodes number of nodes
 #' @param num.timepts number of timepoints
-#' @param max.fanin maximum fanin
+#' @param max.fanin maximum incoming edges in the graph
 #' @param node.names name of the nodes
 #' @param clr.algo clr algorithm to use
 #'
@@ -1313,6 +1020,8 @@ learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.m
   # '.verbose = TRUE' is used for debugging
   # 'when(sum(mi.net.adj.matrix[, centralNodeIdx]) > 0' means when central node has at least one neighbour in the mutual info net
   # Use %do% amd %dopar% for serial and parallel computing, resp.
+  centralNodeIdx <-NULL
+  time.trans.idx <-NULL
   local.unrolled.DBN.adj.matrix.list <-
     foreach::foreach(centralNodeIdx = 1:num.nodes, .packages = base::c('foreach', 'bnstruct'), .verbose = TRUE) %:%
     # when(sum(mi.net.adj.matrix[, centralNodeIdx]) != 0) %:%
@@ -1365,7 +1074,7 @@ learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.m
         local.unrolled.DBN.src.node.names <- base::c(local.unrolled.DBN.src.node.names,
                                                      base::paste(var.name, base::as.character(time.trans.idx), sep = "_t"))
       }
-      rm(var.name)
+      base::rm(var.name)
 
       local.unrolled.DBN.tgt.node.name <- base::paste(centralNodeName, base::as.character(time.trans.idx + 1), sep = "_t")
 
@@ -1518,6 +1227,8 @@ learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.m
       # Return value for each 'foreach' iteration
       local.unrolled.DBN.adj.submatrix
     }
+  base::rm(centralNodeIdx)
+  base::rm(time.trans.idx)
   ##print('End of foreach loops')
 
   # save(local.unrolled.DBN.adj.matrix.list, file = paste(getwd(), 'asset/local.unrolled.DBN.adj.matrix.list.RData', sep = '/'))
@@ -1645,7 +1356,7 @@ learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.m
 #' @param num.discr.levels If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized for performing the DBN structure learning.
 #' @param num.nodes number of nodes
 #' @param num.timepts number of timepoints
-#' @param max.fanin maximum fanin
+#' @param max.fanin maximum incoming edges in the graph
 #' @param node.names name of the nodes
 #' @param unrolled.DBN.adj.matrix.list List of unrolled DBN adjacency matrices
 #'

@@ -15,4 +15,5 @@ Imports: minet,
     bnstruct,
     ggm,
     foreach,
-    doParallel
+    doParallel,
+    rjson

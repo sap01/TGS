@@ -19,7 +19,7 @@ LearnDbnStructMo1Clr3Ser(input.data.discr.3D,
 
 \item{num.timepts}{number of timepoints}
 
-\item{max.fanin}{maximum fanin}
+\item{max.fanin}{maximum incoming edges in the graph}
 
 \item{node.names}{name of the nodes}
 

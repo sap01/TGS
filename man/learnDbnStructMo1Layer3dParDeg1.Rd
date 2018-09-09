@@ -18,7 +18,7 @@ learnDbnStructMo1Layer3dParDeg1(input.data.discr.3D, mi.net.adj.matrix,
 
 \item{num.timepts}{number of timepoints}
 
-\item{max.fanin}{maximum fanin}
+\item{max.fanin}{maximum incoming edges in the graph}
 
 \item{output.dirname}{output directory to store files}
 }
