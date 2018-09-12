@@ -421,6 +421,7 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
       nbghNames <- base::c()
       if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) == 1) # Just 1 neighbour
       {
+        n <- base::nrow(mi.net.adj.matrix)
         for (nbrIdx in 1:n)
         {
           if (mi.net.adj.matrix[nbrIdx, centralNodeIdx] == 1)
@@ -429,6 +430,7 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
             break
           }
         }
+        base::rm(n)
       }
       else if (base::sum(mi.net.adj.matrix[, centralNodeIdx]) > 1) # Multiple neighbours
       {

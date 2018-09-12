@@ -34,7 +34,7 @@
 ComputeCmiPcaCmi <- function(v1,v2,vcs) {
   cmiv <- 0
 
-  if(nargs() == 2) {
+  if(base::nargs() == 2) {
     c1 <-  stats::var(v1)
     c2 <-  stats::var(v2)
     v <-base::cbind(v1,v2)
@@ -48,13 +48,13 @@ ComputeCmiPcaCmi <- function(v1,v2,vcs) {
     #   cmiv <- .Machine$double.xmax
     # }
 
-  } else if(nargs() == 3) {
+  } else if(base::nargs() == 3) {
     v <-base::cbind(v1,vcs)
     c1 <- base::det(stats::cov(v))
     v <-base::cbind(v2,vcs)
     c2 <- base::det(stats::cov(v))
 
-    if (ncol(vcs) > 1) {
+    if (base::ncol(vcs) > 1) {
       c3 <- base::det(stats::cov(vcs))
     } else {
       c3  <- stats::var(vcs)
