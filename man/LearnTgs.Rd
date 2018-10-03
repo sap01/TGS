@@ -17,25 +17,25 @@ LearnTgs(isfile = 0, input.data.filename = "", num.timepts = 0,
 
 \item{input.data.filename}{name of the file containing the data without the directory name. It can be .tsv or .Rdata file only.}
 
-\item{num.timepts}{number of timepoints}
+\item{num.timepts}{number of distinct timepoints}
 
-\item{true.net.filename}{File containing the true network without the directory name}
+\item{true.net.filename}{File containing the true network without the directory name. In case non empty then should contain .Rdata filw with object name 'true.net.adj.matrix'}
 
-\item{input.wt.data.filename}{File containing Input weighted data without the directory name}
+\item{input.wt.data.filename}{File containing Input Wild Type data without the directory name. If it is not empty hen must be a .tsv file having first row containing names of genes except (1,1) and second row should have the WT values except (2,1)th cell.}
 
 \item{is.discrete}{whether the data is discretized or not}
 
-\item{num.discr.levels}{number of discreteized levels}
+\item{num.discr.levels}{number of discreteized levels that each gene has (if already discretized) or it should have (if it is to be discretized)}
 
 \item{discr.algo}{The algo to follow in case of not discretized. Possible values:- {discretizeData.2L.Tesla,discretizeData.2L.wt.l}}
 
-\item{mi.estimator}{The mi estimator to use}
+\item{mi.estimator}{which method to use for estimating the mutual information matrix. Generally ‘mi.pca.cmi’ is used}
 
-\item{apply.aracne}{Whether to apply aracne}
+\item{apply.aracne}{ARACNE is applied to refine the mutual infor-mation matrix. In case true then TGS+ version is used otherwise the original TGS variant is executed}
 
 \item{clr.algo}{CLR algo to use Posible values :- {CLR, CLR2, CLR2.1, CLR3, spearman}}
 
-\item{max.fanin}{Maximum number of input edges in the graph per node}
+\item{max.fanin}{the maximum number of regulators each gene can have}
 
 \item{allow.self.loop}{Whether to allow self loops in the graph}
 
