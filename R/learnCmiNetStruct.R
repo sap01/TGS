@@ -5,7 +5,7 @@
 #' Learns the CMI structure
 #'
 #' @param di.net.adj.matrix a directed network adjacency matrix
-#' @param input.data data given as input
+#' @param input.data data given as input data frame
 #' @param num.nodes the number of nodes
 #' @param beta value of parameter beta
 #'
@@ -16,6 +16,14 @@
 #' @export
 learnCmiNetStruct <- function(di.net.adj.matrix, input.data, num.nodes, beta)
 {
+  if(!base::is.matrix(di.net.adj.matrix))
+  {
+    base::stop("Error in learnCmiNetStruct. di.net.adj.matrix is not a matrix")
+  }
+  if(!base::is.data.frame(input.data))
+  {
+    base::stop("Error in learnCmiNetStruct. input.data is not a data frame")
+  }
   for(i in 1:num.nodes) # for each node i
   {
     adj_list_1 <- base::c()

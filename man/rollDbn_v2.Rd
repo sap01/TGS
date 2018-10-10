@@ -18,9 +18,9 @@ rollDbn_v2(num.nodes, node.names, num.timepts,
 
 \item{num.timepts}{Number of time points in the unrolled DBN}
 
-\item{unrolled.DBN.adj.matrix.list}{Given time-varying network adjacency list. Its length = 
-num.time.trans = (num.timepts - 1). The t^{th} element of the list represents the predicted 
-network adjacency matrix of the t^{th} time transition. This matrix is of dimension 
+\item{unrolled.DBN.adj.matrix.list}{Given time-varying network adjacency list. Its length =
+num.time.trans = (num.timepts - 1). The t^{th} element of the list represents the predicted
+network adjacency matrix of the t^{th} time transition. This matrix is of dimension
 (num.nodes \ times num.nodes).}
 
 \item{roll.method}{Which rolling method to use from {'any', 'all', or some real number in (0, 1), like - 0.5}.}

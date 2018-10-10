@@ -1,8 +1,8 @@
-#' Create a .sif file from given adjacency matrix 
-#' 
+#' Create a .sif file from given adjacency matrix
+#'
 #' Given a network adjacency matrix, creates an equivaluent '.sif' file that
-#' is readable in Cytoscape. SIF file extension stands for Simple Interaction 
-#' Format. 
+#' is readable in Cytoscape. SIF file extension stands for Simple Interaction
+#' Format.
 #' Ref: http://manual.cytoscape.org/en/3.4.0/Supported_Network_File_Formats.html#sif-format
 #' E.g., if the input network adjacency matrix is as follows: (rows = src nodes, cols = tgt nodes,
 #' (A, B) = 0 and 1 implies that the edge 'A->B' does not exist and does exist, resp.)
@@ -22,18 +22,22 @@
 #'
 #' @param adj.mx adjacency matrix that needs to be converted
 #' @param output.dirname name of the output directory where the file will be stored
-#' 
+#'
 #' @export
 adjmxToSif <- function(adj.mx, output.dirname = "./OUTPUT")
 {
+  if(!base::is.matrix(adj.mx))
+  {
+    base::stop("Error in adjmxToSif adj.mx is not a matrix")
+  }
   ## Open an output file connection in write mode
   output.sif <- base::file(base::paste(output.dirname, 'net.sif', sep = '/'), 'w')
-  
+
   for (src.node.idx in 1:nrow(adj.mx))
   {
     ## 'pd' stands for Protein-DNA interaction type in Cytoscape.
     line.to.write <- base::paste(base::rownames(adj.mx)[src.node.idx], 'pd', sep = '\t')
-    
+
     for (tgt.node.idx in 1:ncol(adj.mx))
     {
       if (adj.mx[src.node.idx, tgt.node.idx] == 1)
@@ -42,7 +46,7 @@ adjmxToSif <- function(adj.mx, output.dirname = "./OUTPUT")
       }
     }
     base::rm(tgt.node.idx)
-    
+
     base::cat(line.to.write, file = output.sif, '\n')
   }
   base::rm(src.node.idx)

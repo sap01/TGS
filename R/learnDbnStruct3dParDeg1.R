@@ -400,6 +400,14 @@
 #' @export
 learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts,  output.dirname="./OUTPUT")
 {
+  if(!base::is.array(input.data.discr.3D))
+  {
+    base::stop("Error in learnDbnStructLayer3dParDeg1 input.data.discr.3D is not an array")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in learnDbnStructLayer3dParDeg1 mi.net.adj.matrix is not a matrix")
+  }
   num.time.trans <- (num.timepts - 1)
 
   no_cores <- num.nodes
@@ -704,6 +712,14 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
 #' @export
 learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts, max.fanin, output.dirname)
 {
+  if(!base::is.array(input.data.discr.3D))
+  {
+    base::stop("Error in learnDbnStructMo1Layer3dParDeg1 input.data.discr.3D is not an array")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in learnDbnStructMo1Layer3dParDeg1 mi.net.adj.matrix is not a matrix")
+  }
   num.time.trans <- (num.timepts - 1)
 
   ## Start and register a parallel backend for parallel computing
@@ -1011,6 +1027,14 @@ learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.m
                                                num.discr.levels, num.nodes, num.timepts, max.fanin,
                                                node.names, clr.algo)
 {
+  if(!base::is.array(input.data.discr.3D))
+  {
+    base::stop("Error in learnDbnStructMo1Layer3dParDeg1_v2 input.data.discr.3D is not an array")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in learnDbnStructMo1Layer3dParDeg1_v2 mi.net.adj.matrix is not a matrix")
+  }
   num.time.trans <- (num.timepts - 1)
 
   ## Start and register a parallel backend for parallel computing
@@ -1369,7 +1393,18 @@ LearnDbnStructMo1Clr3Ser <- function(input.data.discr.3D, mi.net.adj.matrix.list
                                      num.discr.levels, num.nodes, num.timepts, max.fanin,
                                      node.names, unrolled.DBN.adj.matrix.list)
 {
-
+  if(!base::is.array(input.data.discr.3D))
+  {
+    base::stop("Error in LearnDbnStructMo1Clr3Ser input.data.discr.3D is not an array")
+  }
+  if(!base::is.list(mi.net.adj.matrix.list.filename))
+  {
+    base::stop("Error in LearnDbnStructMo1Clr3Ser mi.net.adj.matrix.list.filename is not a list")
+  }
+  if(!base::is.list(unrolled.DBN.adj.matrix.list))
+  {
+    base::stop("Error in LearnDbnStructMo1Clr3Ser unrolled.DBN.adj.matrix.list is not a list")
+  }
   ## Here, each 'time.pt.idx' represents time interval
   ## ('time.pt.idx', ('time.pt.idx' + 1))
   for (time.pt.idx in 1:(num.timepts - 1)) {

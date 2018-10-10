@@ -13,8 +13,8 @@ adjmxToSif(adj.mx, output.dirname = "./OUTPUT")
 }
 \description{
 Given a network adjacency matrix, creates an equivaluent '.sif' file that
-is readable in Cytoscape. SIF file extension stands for Simple Interaction 
-Format. 
+is readable in Cytoscape. SIF file extension stands for Simple Interaction
+Format.
 Ref: http://manual.cytoscape.org/en/3.4.0/Supported_Network_File_Formats.html#sif-format
 E.g., if the input network adjacency matrix is as follows: (rows = src nodes, cols = tgt nodes,
 (A, B) = 0 and 1 implies that the edge 'A->B' does not exist and does exist, resp.)

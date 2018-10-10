@@ -14,6 +14,10 @@
 #' @export
 reachable.nodes <- function(di.net.adj.matrix, src.node.name)
 {
+  if(!base::is.matrix(di.net.adj.matrix))
+  {
+    base::stop("Error in reachable.nodes. di.net.adj.matrix is not a matrix")
+  }
   reachable.node.names <- base::c()
 
   ## If the given node has at least one target node

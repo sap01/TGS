@@ -2,13 +2,17 @@
 #'
 #' @import stats
 #'
-#' @param input.data input data
+#' @param input.data input data matrix
 #'
 #' @return entropy matrix
 #'
 #' @export
 ComputEntropy <- function(input.data)
 {
+  if(!base::is.data.frame(input.data))
+  {
+    base::stop("Error in ComputEntropy. input.data is not a data frame")
+  }
   n <- base::ncol(input.data)
   entropy.matrix <- base::matrix(0, nrow = 1, ncol = n)
 
@@ -36,6 +40,19 @@ ComputEntropy <- function(input.data)
 #' @export
 LearnMiNetStructZstat <- function(mut.info.matrix, mi.net.adj.matrix, entropy.matrix, alpha)
 {
+  if(!base::is.matrix(mut.info.matrix))
+  {
+    base::stop("Error in LearnMiNetStructZstat mut.info.matrix is not a matrix")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in LearnMiNetStructZstat mi.net.adj.matrix is not a matrix")
+  }
+  if(!base::is.matrix(entropy.matrix))
+  {
+    base::stop("Error in LearnMiNetStructZstat entropy.matrix is not a matrix")
+  }
+
   n <- base::ncol(mut.info.matrix)
 
   threshold <- stats::qnorm(1-(alpha/2))
@@ -73,6 +90,14 @@ LearnMiNetStructZstat <- function(mut.info.matrix, mi.net.adj.matrix, entropy.ma
 #' @export
 LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes)
 {
+  if(!base::is.matrix(mut.info.matrix))
+  {
+    base::stop("Error in LearnMiNetStructRowMedian mut.info.matrix is not a matrix")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in LearnMiNetStructRowMedian mi.net.adj.matrix is not a matrix")
+  }
   for (rowIdx in 1:num.nodes)
   {
     threshold <- stats::median(mut.info.matrix[rowIdx, -rowIdx])
@@ -104,6 +129,14 @@ LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.no
 #' @export
 LearnMiNetStructClr <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, output.dirname="./OUTPUT")
 {
+  if(!base::is.matrix(mut.info.matrix))
+  {
+    base::stop("Error in LearnMiNetStructClr mut.info.matrix is not a matrix")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in LearnMiNetStructClr mi.net.adj.matrix is not a matrix")
+  }
   mi.net.adj.matrix.wt <- minet::clr(mut.info.matrix) # weighted adj matrix
 
   # Replace 'NaN' with zero. 'NaN' is produced when a corr. variable has variance zero.
@@ -148,6 +181,10 @@ LearnMiNetStructClr <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, o
 #' @export
 LearnClrNetFromDiscrData <- function(input.data.discr, num.nodes, node.names, num.timepts,max.fanin, output.dirname = "./OUTPUT")
 {
+  if(!base::is.data.frame(input.data.discr))
+  {
+    base::stop("Error in LearnClrNetFromDiscrData input.data.discr is not a data frame")
+  }
   # Initialize mutual information matrix with zeroes
   mut.info.matrix <- base::matrix(0, nrow = num.nodes, ncol = num.nodes, dimnames = base::c(base::list(node.names), base::list(node.names)))
 
@@ -249,6 +286,14 @@ LearnClrNetFromDiscrData <- function(input.data.discr, num.nodes, node.names, nu
 #' @export
 LearnClrNetMfi <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fanin, output.dirname = "./OUTPUT")
 {
+  if(!base::is.matrix(mut.info.matrix))
+  {
+    base::stop("Error in LearnClrNetMfi mut.info.matrix is not a matrix")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in LearnClrNetMfi mi.net.adj.matrix is not a matrix")
+  }
   mi.net.adj.matrix.wt <- minet::clr(mut.info.matrix) # weighted adj matrix
 
   # Replace 'NaN' with zero. 'NaN' is produced when a corr. variable has variance zero.
@@ -312,6 +357,14 @@ LearnClrNetMfi <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fa
 LearnClr2NetMfi <- function(input.data.discr, num.nodes, node.names, num.timepts,
                             max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix)
 {
+  if(!base::is.data.frame(input.data.discr))
+  {
+    base::stop("Error in LearnClr2NetMfi input.data.discr is not a data frame")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in LearnClr2NetMfi mi.net.adj.matrix is not a matrix")
+  }
   ## Initialize weighted adjacency matrix of the mutual information network
   mi.net.adj.matrix.wt <- base::matrix(0, nrow = num.nodes, ncol = num.nodes,
                               dimnames = base::c(base::list(node.names), base::list(node.names)))
@@ -443,6 +496,14 @@ LearnClr2NetMfi <- function(input.data.discr, num.nodes, node.names, num.timepts
 LearnClrNetMfiVer2.1 <- function(input.data.discr, num.nodes, node.names, num.timepts,
                                  max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix)
 {
+  if(!base::is.data.frame(input.data.discr))
+  {
+    base::stop("Error in LearnClrNetMfiVer2.1 input.data.discr is not a data frame")
+  }
+  if(!base::is.matrix(mi.net.adj.matrix))
+  {
+    base::stop("Error in LearnClrNetMfiVer2.1 mi.net.adj.matrix is not a matrix")
+  }
   ## Initialize weighted adjacency matrix of the mutual information network
   mi.net.adj.matrix.wt <- base::matrix(0, nrow = num.nodes, ncol = num.nodes,
                                  dimnames = base::c(base::list(node.names), base::list(node.names)))
@@ -644,6 +705,14 @@ LearnClrNetMfiVer2.1 <- function(input.data.discr, num.nodes, node.names, num.ti
 LearnClr3NetMfi <- function(input.data.discr.3D, num.nodes, node.names, num.timepts,
                             max.fanin, mi.net.adj.matrix.list)
 {
+  if(!base::is.array(input.data.discr.3D))
+  {
+    base::stop("Error in LearnClr3NetMfi input.data.discr.3D is not an array")
+  }
+  if(!base::is.list(mi.net.adj.matrix.list))
+  {
+    base::stop("Error in LearnClr3NetMfi mi.net.adj.matrix.list is not a matrix")
+  }
   ## Here, each 'time.pt.idx' represents time interval
   ## ('time.pt.idx', ('time.pt.idx' + 1))
   for (time.pt.idx in 1:(num.timepts - 1)) {

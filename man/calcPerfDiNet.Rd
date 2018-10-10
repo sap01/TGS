@@ -11,7 +11,7 @@ calcPerfDiNet(inferredNet, targetNet, Result, n)
 
 \item{targetNet}{directed net 'targetNet'}
 
-\item{Result}{Metri to store the results}
+\item{Result}{Matrix to store the results}
 
 \item{n}{Number of nodes in each of the nets.}
 }

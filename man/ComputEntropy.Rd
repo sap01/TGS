@@ -7,7 +7,7 @@
 ComputEntropy(input.data)
 }
 \arguments{
-\item{input.data}{input data}
+\item{input.data}{input data matrix}
 }
 \value{
 entropy matrix

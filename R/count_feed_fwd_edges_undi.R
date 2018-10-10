@@ -6,7 +6,10 @@
 #'
 #' @export
 CountFeedFwdEdgesUndi <- function(undi.net.adj.matrix) {
-
+  if(!base::is.matrix(undi.net.adj.matrix))
+  {
+    base::stop("Error in CountFeedFwdEdgesUndi undi.net.adj.matrix is not a matrix")
+  }
   num.nodes <- base::nrow(undi.net.adj.matrix)
 
   count <- 0

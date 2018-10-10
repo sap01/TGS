@@ -2,13 +2,25 @@
 #'
 #' @param inferredNet directed net 'inferredNet'
 #' @param targetNet directed net 'targetNet'
-#' @param Result Metri to store the results
+#' @param Result Matrix to store the results
 #' @param n Number of nodes in each of the nets.
 #'
 #' @return the performance metrics
 #' @export
 calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
 {
+  if(!base::is.matrix(inferredNet))
+  {
+    base::stop("Error in calcPerfDiNet. inferredNet is not a matrix")
+  }
+  if(!base::is.matrix(targetNet))
+  {
+    base::stop("Error in calcPerfDiNet. targetNet is not a matrix")
+  }
+  if(!base::is.matrix(Result))
+  {
+    base::stop("Error in calcPerfDiNet. Result is not a matrix")
+  }
   TrPos = 0
   TrNeg = 0
   FlPos = 0
@@ -96,6 +108,10 @@ calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
 #' @export
 eval.wrt.known.gene.ias <- function(di.net.adj.matrix)
 {
+  if(!base::is.matrix(di.net.adj.matrix))
+  {
+    base::stop("Error in eval.wrt.known.gene.ias di.net.adj.matrix is not a matrix")
+  }
   di.net.adj.matrix['CycE', 'CycA']
   di.net.adj.matrix['CycA', 'CycE']
 

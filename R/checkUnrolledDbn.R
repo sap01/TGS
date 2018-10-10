@@ -6,6 +6,10 @@
 #' @export
 checkUnrolledDbn <- function(unrolled.DBN.adj.matrix)
 {
+  if(!base::is.matrix(unrolled.DBN.adj.matrix))
+  {
+    base::stop("Error in checkUnrolledDbn. unrolled.DBN.adj.matrix is not a matrix")
+  }
   for(row.idx in 1:nrow(unrolled.DBN.adj.matrix))
   {
     for(col.idx in 1:ncol(unrolled.DBN.adj.matrix))

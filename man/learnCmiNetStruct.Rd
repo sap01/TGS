@@ -9,7 +9,7 @@ learnCmiNetStruct(di.net.adj.matrix, input.data, num.nodes, beta)
 \arguments{
 \item{di.net.adj.matrix}{a directed network adjacency matrix}
 
-\item{input.data}{data given as input}
+\item{input.data}{data given as input data frame}
 
 \item{num.nodes}{the number of nodes}
 

@@ -6,7 +6,10 @@
 #'
 #' @export
 ConvertDinetToUndinet <- function(di.net) {
-
+  if(!base::is.matrix(di.net))
+  {
+    base::stop("Error in ConvertDinetToUndinet di.net is not a matrix")
+  }
   ## Initilize undirected network with zeroes
   undi.net <- di.net
   undi.net[undi.net] <- 0

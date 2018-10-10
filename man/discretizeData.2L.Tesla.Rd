@@ -7,7 +7,7 @@
 discretizeData.2L.Tesla(input.data)
 }
 \arguments{
-\item{input.data}{rows have samples and cols have variables.}
+\item{input.data}{data frame to be discretized. rows have samples and cols have variables.}
 }
 \value{
 data discretized into 2 levels

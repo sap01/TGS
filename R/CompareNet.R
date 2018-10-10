@@ -9,6 +9,14 @@
 #' @export
 CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node)
 {
+  if(!base::is.matrix(di.net.adj.matrix))
+  {
+    base::stop("Error in CompareNet di.net.adj.matrix is not a matrix")
+  }
+  if(!base::is.matrix(cmi.net.adj.matrix))
+  {
+    base::stop("Error in CompareNet cmi.net.adj.matrix is not a matrix")
+  }
   for(i in 1:num.node)
   {
     for(j in 1:num.node)
@@ -36,6 +44,14 @@ CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node)
 #' @export
 Print.common.di.edges <- function(di.net.adj.matrix1, di.net.adj.matrix2,  output.dirname="./OUTPUT")
 {
+  if(!base::is.matrix(di.net.adj.matrix1))
+  {
+    base::stop("Error in Print.common.di.edges di.net.adj.matrix1 is not a matrix")
+  }
+  if(!base::is.matrix(di.net.adj.matrix2))
+  {
+    base::stop("Error in Print.common.di.edges di.net.adj.matrix2 is not a matrix")
+  }
   if ((dim(di.net.adj.matrix1)[1] != dim(di.net.adj.matrix2)[1]) |
       (dim(di.net.adj.matrix1)[2] != dim(di.net.adj.matrix2)[2]))
   {

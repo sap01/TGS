@@ -6,7 +6,7 @@
 #'
 #' @import utils
 #'
-#' @param input.data the data that is given as the input
+#' @param input.data the data that is given as the input, data frame to be discretized
 #' @param input.wt.data.filename path of the file containing the table
 #'
 #' @return input data discretized into 2 levels
@@ -14,6 +14,10 @@
 #' @export
 discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename)
 {
+  if(!base::is.data.frame(input.data))
+  {
+    base::stop("Error in discretizeData.2L.wt.l input.data is not a matrix")
+  }
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
 
   wt.data <- input.wt.data[1, -1]
@@ -49,7 +53,7 @@ discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename)
 #'
 #' @import utils
 #'
-#' @param input.data the data that is given as the input
+#' @param input.data the data that is given as the input, data frame to be discretized
 #' @param input.wt.data.filename path of the file containing the table
 #'
 #' @return input data discretized into 2 levels
@@ -57,6 +61,10 @@ discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename)
 #' @export
 discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
 {
+  if(!base::is.data.frame(input.data))
+  {
+    base::stop("Error in discretizeData.2L.wt.le input.data is not a matrix")
+  }
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
 
   wt.data <- input.wt.data[1, -1]
@@ -96,7 +104,7 @@ discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
 #'
 #' @import utils
 #'
-#' @param input.data the data that is given as the input
+#' @param input.data the data that is given as the input, data frame to be discretized
 #' @param input.wt.data.filename path of the file containing the table
 #' @param tolerance the tolerance
 #' @param num.discr.levels number of discrete levels
@@ -106,6 +114,10 @@ discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
 #' @export
 discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, num.discr.levels)
 {
+  if(!base::is.data.frame(input.data))
+  {
+    base::stop("Error in discretizeData.3L.wt input.data is not a matrix")
+  }
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
 
   wt.data <- input.wt.data[1, -1]
@@ -173,7 +185,7 @@ discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, 
 #'
 #' @import utils
 #'
-#' @param input.data the data that is given as the input
+#' @param input.data the data that is given as the input, data frame to be discretized
 #' @param input.wt.data.filename path of the file containing the table
 #' @param num.discr.levels number of discrete levels
 #'
@@ -182,6 +194,10 @@ discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, 
 #' @export
 discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.levels)
 {
+  if(!base::is.data.frame(input.data))
+  {
+    base::stop("Error in discretizeData.5L.wt input.data is not a matrix")
+  }
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
 
   wt.data <- input.wt.data[1, -1]
@@ -247,7 +263,7 @@ discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.l
 #' which the value is binarized as 'Level 2' and 'Level 1' otherwise. Here, 2 means
 #' the expression of a gene is up-regulated, and 1 means down-regulated.
 #' @import stats
-#' @param input.data rows have samples and cols have variables.
+#' @param input.data data frame to be discretized. rows have samples and cols have variables.
 #'
 #' @return data discretized into 2 levels
 #'
@@ -258,6 +274,10 @@ discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.l
 #' @export
 discretizeData.2L.Tesla <- function(input.data)
 {
+  if(!base::is.data.frame(input.data))
+  {
+    base::stop("Error in discretizeData.2L.Tesla input.data is not a matrix")
+  }
   ## For each variable
   for (var.idx in 1:ncol(input.data))
   {

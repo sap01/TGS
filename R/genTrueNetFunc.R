@@ -21,12 +21,12 @@ GenTrueAdjMatrix <- function(input.file, output.file, num.nodes)
 
   # Param 'colClasses' must be given. Otherwise, the node names get converted into factors.
   true.net.adj.list <- utils::read.table(input.file, header = FALSE, sep = '\t',
-                                  col.names = c('src.node', 'tgt.node', 'isEdge'),
-                                  colClasses = c('character', 'character', 'integer'))
+                                  col.names = base::c('src.node', 'tgt.node', 'isEdge'),
+                                  colClasses = base::c('character', 'character', 'integer'))
 
   ## Begin: Convert adjacency list to adjacency matrix
   true.net.adj.matrix <- base::matrix(0, nrow = num.nodes, ncol = num.nodes,
-                                dimnames = list(node.names, node.names))
+                                dimnames = base::list(node.names, node.names))
   for (row.idx in 1:nrow(true.net.adj.list))
   {
     if (true.net.adj.list[row.idx, 'isEdge'] == 1)

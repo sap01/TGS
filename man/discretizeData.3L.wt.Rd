@@ -8,7 +8,7 @@ discretizeData.3L.wt(input.data, input.wt.data.filename, tolerance,
   num.discr.levels)
 }
 \arguments{
-\item{input.data}{the data that is given as the input}
+\item{input.data}{the data that is given as the input, data frame to be discretized}
 
 \item{input.wt.data.filename}{path of the file containing the table}
 
