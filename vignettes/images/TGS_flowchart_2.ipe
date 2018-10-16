@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<!DOCTYPE ipe SYSTEM "ipe.dtd">
+<ipe version="70206" creator="Ipe 7.2.7">
+<info created="D:20180609104622" modified="D:20180609131324"/>
+<ipestyle name="basic">
+<symbol name="arrow/arc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/farc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/ptarc(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fptarc(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="mark/circle(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</symbol>
+<symbol name="mark/disk(sx)" transformations="translations">
+<path fill="sym-stroke">
+0.6 0 0 0.6 0 0 e
+</path>
+</symbol>
+<symbol name="mark/fdisk(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+0.5 0 0 0.5 0 0 e
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+0.6 0 0 0.6 0 0 e
+0.4 0 0 0.4 0 0 e
+</path>
+</group>
+</symbol>
+<symbol name="mark/box(sx)" transformations="translations">
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</symbol>
+<symbol name="mark/square(sx)" transformations="translations">
+<path fill="sym-stroke">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+</path>
+</symbol>
+<symbol name="mark/fsquare(sfx)" transformations="translations">
+<group>
+<path fill="sym-fill">
+-0.5 -0.5 m
+0.5 -0.5 l
+0.5 0.5 l
+-0.5 0.5 l
+h
+</path>
+<path fill="sym-stroke" fillrule="eofill">
+-0.6 -0.6 m
+0.6 -0.6 l
+0.6 0.6 l
+-0.6 0.6 l
+h
+-0.4 -0.4 m
+0.4 -0.4 l
+0.4 0.4 l
+-0.4 0.4 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="mark/cross(sx)" transformations="translations">
+<group>
+<path fill="sym-stroke">
+-0.43 -0.57 m
+0.57 0.43 l
+0.43 0.57 l
+-0.57 -0.43 l
+h
+</path>
+<path fill="sym-stroke">
+-0.43 0.57 m
+0.57 -0.43 l
+0.43 -0.57 l
+-0.57 0.43 l
+h
+</path>
+</group>
+</symbol>
+<symbol name="arrow/fnormal(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/pointed(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/fpointed(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-0.8 0 l
+-1 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/linear(spx)">
+<path stroke="sym-stroke" pen="sym-pen">
+-1 0.333 m
+0 0 l
+-1 -0.333 l
+</path>
+</symbol>
+<symbol name="arrow/fdouble(spx)">
+<path stroke="sym-stroke" fill="white" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<symbol name="arrow/double(spx)">
+<path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
+0 0 m
+-1 0.333 l
+-1 -0.333 l
+h
+-1 0 m
+-2 0.333 l
+-2 -0.333 l
+h
+</path>
+</symbol>
+<pen name="heavier" value="0.8"/>
+<pen name="fat" value="1.2"/>
+<pen name="ultrafat" value="2"/>
+<symbolsize name="large" value="5"/>
+<symbolsize name="small" value="2"/>
+<symbolsize name="tiny" value="1.1"/>
+<arrowsize name="large" value="10"/>
+<arrowsize name="small" value="5"/>
+<arrowsize name="tiny" value="3"/>
+<color name="red" value="1 0 0"/>
+<color name="green" value="0 1 0"/>
+<color name="blue" value="0 0 1"/>
+<color name="yellow" value="1 1 0"/>
+<color name="orange" value="1 0.647 0"/>
+<color name="gold" value="1 0.843 0"/>
+<color name="purple" value="0.627 0.125 0.941"/>
+<color name="gray" value="0.745"/>
+<color name="brown" value="0.647 0.165 0.165"/>
+<color name="navy" value="0 0 0.502"/>
+<color name="pink" value="1 0.753 0.796"/>
+<color name="seagreen" value="0.18 0.545 0.341"/>
+<color name="turquoise" value="0.251 0.878 0.816"/>
+<color name="violet" value="0.933 0.51 0.933"/>
+<color name="darkblue" value="0 0 0.545"/>
+<color name="darkcyan" value="0 0.545 0.545"/>
+<color name="darkgray" value="0.663"/>
+<color name="darkgreen" value="0 0.392 0"/>
+<color name="darkmagenta" value="0.545 0 0.545"/>
+<color name="darkorange" value="1 0.549 0"/>
+<color name="darkred" value="0.545 0 0"/>
+<color name="lightblue" value="0.678 0.847 0.902"/>
+<color name="lightcyan" value="0.878 1 1"/>
+<color name="lightgray" value="0.827"/>
+<color name="lightgreen" value="0.565 0.933 0.565"/>
+<color name="lightyellow" value="1 1 0.878"/>
+<dashstyle name="dashed" value="[4] 0"/>
+<dashstyle name="dotted" value="[1 3] 0"/>
+<dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
+<dashstyle name="dash dot dotted" value="[4 2 1 2 1 2] 0"/>
+<textsize name="large" value="\large"/>
+<textsize name="Large" value="\Large"/>
+<textsize name="LARGE" value="\LARGE"/>
+<textsize name="huge" value="\huge"/>
+<textsize name="Huge" value="\Huge"/>
+<textsize name="small" value="\small"/>
+<textsize name="footnote" value="\footnotesize"/>
+<textsize name="tiny" value="\tiny"/>
+<textstyle name="center" begin="\begin{center}" end="\end{center}"/>
+<textstyle name="itemize" begin="\begin{itemize}" end="\end{itemize}"/>
+<textstyle name="item" begin="\begin{itemize}\item{}" end="\end{itemize}"/>
+<gridsize name="4 pts" value="4"/>
+<gridsize name="8 pts (~3 mm)" value="8"/>
+<gridsize name="16 pts (~6 mm)" value="16"/>
+<gridsize name="32 pts (~12 mm)" value="32"/>
+<gridsize name="10 pts (~3.5 mm)" value="10"/>
+<gridsize name="20 pts (~7 mm)" value="20"/>
+<gridsize name="14 pts (~5 mm)" value="14"/>
+<gridsize name="28 pts (~10 mm)" value="28"/>
+<gridsize name="56 pts (~20 mm)" value="56"/>
+<anglesize name="90 deg" value="90"/>
+<anglesize name="60 deg" value="60"/>
+<anglesize name="45 deg" value="45"/>
+<anglesize name="30 deg" value="30"/>
+<anglesize name="22.5 deg" value="22.5"/>
+<opacity name="10%" value="0.1"/>
+<opacity name="30%" value="0.3"/>
+<opacity name="50%" value="0.5"/>
+<opacity name="75%" value="0.75"/>
+<tiling name="falling" angle="-60" step="4" width="1"/>
+<tiling name="rising" angle="30" step="4" width="1"/>
+</ipestyle>
+<page>
+<layer name="alpha"/>
+<view layers="alpha" active="alpha"/>
+<path layer="alpha" matrix="0.682107 -0.693379 0.676721 0.698898 14.9785 419.102" stroke="black">
+192.119 256.027 m
+192.119 129.085 l
+320.511 129.085 l
+320.511 256.027 l
+h
+</path>
+<text matrix="1 0 0 1 66.9695 169.658" transformations="translations" pos="207.352 223.384" stroke="black" type="minipage" width="97.2011" height="22.178" depth="17.23" valign="top" size="large">\centering
+$j \le V$ \\
+(for each gene $v_j \in \mathcal{V}$) ?
+</text>
+<path matrix="1 0 0 1 -15.8929 559.926" stroke="black" fill="lightgray">
+320 240 m
+352 240 l
+352 224 l
+336 208 l
+320 224 l
+h
+</path>
+<path matrix="1 0 0 1 63.8411 0.330169" stroke="black" arrow="normal/normal">
+256 768 m
+256 736 l
+</path>
+<text matrix="1 0 0 1 63.9848 448.358" transformations="translations" pos="207.352 223.384" stroke="black" type="minipage" width="97.2011" height="30.46" depth="25.53" valign="top" size="large">\centering
+$p &lt; T$\\
+(for each time interval $\left(t_p, t_{\left(p + 1\right)}\right)$)?</text>
+<text matrix="1.00277 0 0 0.698661 64.6392 228.611" transformations="translations" pos="79.1338 415.707" stroke="black" type="minipage" width="336" height="7.744" depth="2.75" valign="top" size="large">\centering
+Set $j \leftarrow 1$</text>
+<path matrix="0.95686 0 0 0.258486 68.1233 379.779" stroke="black">
+63.2353 576.751 m
+447.851 575.212 l
+447.346 449.079 l
+62.7308 450.617 l
+h
+</path>
+<path matrix="1 0 0 1 63.8411 0.330169" stroke="black" arrow="normal/normal">
+256 560 m
+256 528 l
+</path>
+<path matrix="0.690852 -0.688764 0.685396 0.694246 11.0143 690.916" stroke="black">
+192.119 256.027 m
+192.119 129.085 l
+320.511 129.085 l
+320.511 256.027 l
+h
+</path>
+<text matrix="1 0 0 1 64.957 38.2732" transformations="translations" pos="351.259 574.594" stroke="black" type="minipage" width="64.7263" height="7.175" depth="2.19" valign="top" size="large">\centering
+\textbf{Return} $\mathcal{G}$</text>
+<path matrix="1 0 0 1 64.3991 32.1354" stroke="black">
+352 592 m
+336 560 l
+416 560 l
+432 592 l
+h
+</path>
+<text matrix="1 0 0 1 55.589 -127.345" transformations="translations" pos="379.389 683.674" stroke="black" type="label" width="23.412" height="8.174" depth="2.32" valign="baseline" size="large">Stop</text>
+<path matrix="1 0 0 1 191.368 -191.439" stroke="black">
+240 768 m
+272 768 l
+</path>
+<path matrix="1 0 0 1 191.368 -191.439" stroke="black">
+240 736 m
+272 736 l
+</path>
+<path matrix="1 0 0 1 191.368 -191.439" stroke="black">
+272 768 m
+16 0 0 -16 272 752 272 736 a
+</path>
+<path matrix="1 0 0 1 191.368 -191.439" stroke="black">
+240 768 m
+16 0 0 16 240 752 240 736 a
+</path>
+<path matrix="1 0 0 1 63.8411 0.330169" stroke="black" arrow="normal/normal">
+384 592 m
+384 576 l
+</path>
+<path matrix="1 0 0 1 63.8411 0.330169" stroke="black" arrow="normal/normal">
+344.079 647.575 m
+384.112 647.575 l
+384.112 623.805 l
+</path>
+<text matrix="1 0 0 1 52.1234 -5.24969" transformations="translations" pos="270.082 547.65" stroke="black" type="label" width="17.62" height="8.169" depth="0" valign="baseline" size="large">Yes</text>
+<text matrix="1 0 0 1 140.843 102.441" transformations="translations" pos="270.082 547.65" stroke="black" type="label" width="14.628" height="8.169" depth="0" valign="baseline" size="large">No</text>
+<path matrix="1 0 0 1 63.8411 0.330169" stroke="black" arrow="normal/normal">
+256 496 m
+256 464 l
+</path>
+<path matrix="1 0 0 1 63.8411 0.330169" stroke="black" arrow="normal/normal">
+256 288 m
+256 256 l
+</path>
+<text matrix="1 0 0 1 65.7595 -168.336" transformations="translations" pos="79.1338 415.707" stroke="black" type="minipage" width="336" height="15.283" depth="10.31" valign="top" size="large">\centering
+Candidate regulators of $v_j\_t_{\left(p + 1\right)} \leftarrow$ \\
+$\{v_i\_t_p : \left(v_i, v_j\right) \in {Edgeset}\left(\mathcal{G}_{{CLR}}\right)\}$</text>
+<path matrix="0.951679 0 0 0.381338 69.393 36.9028" stroke="black">
+63.2353 576.751 m
+447.851 575.212 l
+447.346 449.079 l
+62.7308 450.617 l
+h
+</path>
+<path matrix="1 0 0 1 -16.2019 -63.4606" stroke="black" fill="lightgray">
+320 240 m
+352 240 l
+352 224 l
+336 208 l
+320 224 l
+h
+</path>
+<path matrix="1 0 0 1 63.8411 0.330169" stroke="black" arrow="normal/normal">
+256 208 m
+256 176 l
+</path>
+<text matrix="1 0 0 1 51.9115 -277.987" transformations="translations" pos="270.082 547.65" stroke="black" type="label" width="17.62" height="8.169" depth="0" valign="baseline" size="large">Yes</text>
+<group matrix="-0.999943 -0.0106966 0.0106966 -0.999943 572.325 753.395">
+<path matrix="1 0 0 1 -117.458 -23.4662" stroke="black" fill="black">
+15.8998 0 0 15.8998 255.81 400.338 e
+</path>
+<path stroke="black" arrow="normal/normal">
+154.194 375.519 m
+169.538 375.777 l
+</path>
+</group>
+<text matrix="1 0 0 1 7.08919 -22.7992" transformations="translations" pos="50.485 406.106" stroke="black" type="minipage" width="77.3257" height="8.465" depth="3.49" valign="top" size="large">\centering
+$p \leftarrow \left(p + 1\right)$</text>
+<path matrix="0.980811 0 0 1 1.64644 -6.52843" stroke="black">
+48 400 m
+144 400 l
+144 368 l
+48 368 l
+h
+</path>
+<path stroke="black" arrow="normal/normal">
+233.379 376.108 m
+142.883 375.995 l
+</path>
+<path matrix="1.00401 0 0 0.991252 -2.71722 3.511" stroke="black" arrow="normal/normal">
+95.6663 393.472 m
+95.6663 650.08 l
+234.062 650.08 l
+</path>
+<text matrix="1 0 0 1 -55.3 -168.482" transformations="translations" pos="270.082 547.65" stroke="black" type="label" width="14.628" height="8.169" depth="0" valign="baseline" size="large">No</text>
+</page>
+</ipe>

@@ -18,6 +18,5 @@ Imports: minet,
     foreach,
     doParallel,
     rjson
-Suggests: knitr,
-    rmarkdown
-VignetteBuilder: knitr
+Suggests: R.rsp
+VignetteBuilder: R.rsp
