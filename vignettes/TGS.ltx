@@ -105,19 +105,125 @@
 
 %Document information
 \title{TGS.R}
-\author{Saptarshi Pyne and Manan Gupta}
+\author{Saptarshi Pyne, Manan Gupta and Ashish Anand}
 \date{}
 
 \pdfinfo{%
   /Title    (TGS.R)
-  /Author   (Saptarshi Pyne)
+  /Author   (Saptarshi Pyne, Ashish Anand, Alok Ranjan Kumar)
   /Creator  (Manan Gupta)
   /Producer ()
   /Keywords ()
 }
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\bfseries#2}}
+
 \begin{document}
 \pagenumbering{roman}
 \maketitle
+
+\chapter{A Quick Example - Drosophila}
+\section{Running the Datasets}
+In this example we use Drosophila melanogaster Life Cycle (DmLc) datasets that have been experimentally produced by Arbeitman et. The discretized DmLc dataset is obtained from the KELLER website \href{http://www.sailing.cs.cmu.edu/main/keller/data.zip}{link to datasets}. 
+
+The datasets are slightly modified to create time series instead of a single timestamp observation. These datasets can be found in the /extdata directory of the package. For more information on the modification of datasets refer to the \href{http://dx.doi.org/10.1109/TCBB.2018.2861698}{main paper}
+The datasets are named DmLc3E, DmLc3L, DmLc3P, DmLc3A corresponding to embryo, pupil, larva and adult stages of drosophila.
+
+To run LearnTgs on these datasets call the function as follows:-
+\begin{verbatim}
+## Learn DmLc3E.RData dataset
+> LearnTgs(0,input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE, 
+        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE, 
+        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE, 
+        input.dirname = "location where file is stored",
+        output.dirname = "location where output needs to be stored")
+
+## Learn DmLc3L.RData dataset
+> LearnTgs(0,input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE, 
+        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE, 
+        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE, 
+        input.dirname = "location where file is stored",
+        output.dirname = "location where output needs to be stored")
+
+## Learn DmLc3P.RData dataset
+> LearnTgs(0,input.data.filename = "DmLc3P.RData", num.timepts = 3, is.discrete = TRUE, 
+        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE, 
+        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE, 
+        input.dirname = "location where file is stored",
+        output.dirname = "location where output needs to be stored")
+        
+## Learn DmLc3A.RData dataset
+> LearnTgs(0,input.data.filename = "DmLc3A.RData", num.timepts = 2, is.discrete = TRUE, 
+        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE, 
+        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE, 
+        input.dirname = "location where file is stored",
+        output.dirname = "location where output needs to be stored")
+\end{verbatim}
+\clearpage
+
+In order to run the DmLc3E.RData dataset with json file as input, create a json file and give it an appropriate name (say example.json).
+The json file should look like this:
+\begin{verbatim}
+{ 
+   "input.data.filename": "DmLc3E.RData",
+   "num.timepts": 6,
+   "true.net.filename": "",
+   "input.wt.data.filename": "",
+   "is.discrete": true,
+   "num.discr.levels": 2,
+   "discr.algo": "",
+   "mi.estimator": "mi.pca.cmi",
+   "apply.aracne": false,
+   "clr.algo": "CLR",
+   "max.fanin": 14,
+   "allow.self.loop": true
+}
+\end{verbatim}
+And then call the function as follows:
+\begin{verbatim}
+## Learn DmLc3E.RData dataset
+> LearnTgs(1,json.file = " location of json file. eg - /home/cse/Desktop/example.json", 
+        input.dirname = "location where file is stored",
+        output.dirname = "location where output needs to be stored")
+\end{verbatim}
+
+The net.sif files that are generated can be plotted in \href{https://cytoscape.org/}{Cytoscape}. The results are as follows.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width = 1\textwidth]{images/drosophilaLifeCycle}
+		\caption{Resulting graphs from LearnTgs alogorithm}
+		\label{fig:ResultGraphs}
+	\end{center}
+\end{figure}
+
+\clearpage
+\section{Analysis of the results}
+Before diving into the analysis, we introduce what prd gene is. 'prd' is a gene that is known to have a positive cell specificity in the embryo stage. It is also known that ‘prd’ participates in the regulation of anterior-posterior segmentation of the embryo.
+\\
+\\
+Therefore there should be an edge between 'eve' and 'prd'. This information has been retrieved from \href{http://gene-regulation.com/cgi-bin/pub/databases/transfac/search.cgi}{TRANSFAC Public Database version 7.0} which is claimed to be the gold standard in the area of transcriptional regulation.
+\\
+\\
+We know look at the graph obtained from DmLc3E.RData dataset.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width = 1\textwidth]{images/eve-prdEedge}
+		\caption{Magnified graph of DmLc3E dataset}
+		\label{fig:MagnifyDmLc3E}
+	\end{center}
+\end{figure}
+
+The magnified image reveals that there indeed is an edge between 'prd' and 'eve' in the graph obtained from running LearnTgs on DmLc3E.RData.
+\\
+\\
+This provides a biological support for the results of the algorithm.
+\\
+\\
+\\
+For further analysis refer to section 4.8 of the \href{http://dx.doi.org/10.1109/TCBB.2018.2861698}{main paper}.
+
+\clearpage
 
 \chapter{Introduction}
 
@@ -135,7 +241,9 @@ T_{\text{ARACNE}}\left(V\right) + T_{\text{TGS}}\left(V\right) \nonumber \\
 &= \mathcal{O}\left(V^3\right) + \mathcal{O}\left(V^3\ {\left(\lg{V}\right)}^2\right) \nonumber \\
 &= \mathcal{O}\left(V^3\ {\left(\lg{V}\right)}^2\right)
 \end{align}
-
+\\
+\\
+Reference to the main paper \url{http://dx.doi.org/10.1109/TCBB.2018.2861698}
 \clearpage
 
 \section{A Flowchart of the \textit{TGS} Algorithm}
