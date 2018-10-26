@@ -1,0 +1,14 @@
+{ 
+   "input.data.filename": "DmLc3P.RData",
+   "num.timepts": 3,
+   "true.net.filename": "",
+   "input.wt.data.filename": "",
+   "is.discrete": true,
+   "num.discr.levels": 2,
+   "discr.algo": "",
+   "mi.estimator": "mi.pca.cmi",
+   "apply.aracne": false,
+   "clr.algo": "CLR",
+   "max.fanin": 14,
+   "allow.self.loop": true
+}

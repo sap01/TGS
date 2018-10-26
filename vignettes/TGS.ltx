@@ -124,7 +124,7 @@
 
 \chapter{A Quick Example - Drosophila}
 \section{Running the Datasets}
-In this example we use Drosophila melanogaster Life Cycle (DmLc) datasets that have been experimentally produced by Arbeitman et. The discretized DmLc dataset is obtained from the KELLER website \href{http://www.sailing.cs.cmu.edu/main/keller/data.zip}{link to datasets}. 
+In this example we use Drosophila melanogaster Life Cycle (DmLc) datasets that have been experimentally produced by Arbeitman et. The discretized DmLc dataset is obtained from the KELLER website \href{http://www.sailing.cs.cmu.edu/main/keller/data.zip}{link to datasets}.
 
 The datasets are slightly modified to create time series instead of a single timestamp observation. These datasets can be found in the /extdata directory of the package. For more information on the modification of datasets refer to the \href{http://dx.doi.org/10.1109/TCBB.2018.2861698}{main paper}
 The datasets are named DmLc3E, DmLc3L, DmLc3P, DmLc3A corresponding to embryo, pupil, larva and adult stages of drosophila.
@@ -132,30 +132,30 @@ The datasets are named DmLc3E, DmLc3L, DmLc3P, DmLc3A corresponding to embryo, p
 To run LearnTgs on these datasets call the function as follows:-
 \begin{verbatim}
 ## Learn DmLc3E.RData dataset
-> LearnTgs(0,input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE, 
-        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE, 
-        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE, 
+> LearnTgs(0,input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE,
+        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
+        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
         input.dirname = "location where file is stored",
         output.dirname = "location where output needs to be stored")
 
 ## Learn DmLc3L.RData dataset
-> LearnTgs(0,input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE, 
-        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE, 
-        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE, 
+> LearnTgs(0,input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE,
+        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
+        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
         input.dirname = "location where file is stored",
         output.dirname = "location where output needs to be stored")
 
 ## Learn DmLc3P.RData dataset
-> LearnTgs(0,input.data.filename = "DmLc3P.RData", num.timepts = 3, is.discrete = TRUE, 
-        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE, 
-        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE, 
+> LearnTgs(0,input.data.filename = "DmLc3P.RData", num.timepts = 3, is.discrete = TRUE,
+        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
+        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
         input.dirname = "location where file is stored",
         output.dirname = "location where output needs to be stored")
-        
+
 ## Learn DmLc3A.RData dataset
-> LearnTgs(0,input.data.filename = "DmLc3A.RData", num.timepts = 2, is.discrete = TRUE, 
-        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE, 
-        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE, 
+> LearnTgs(0,input.data.filename = "DmLc3A.RData", num.timepts = 2, is.discrete = TRUE,
+        num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
+        clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
         input.dirname = "location where file is stored",
         output.dirname = "location where output needs to be stored")
 \end{verbatim}
@@ -164,7 +164,7 @@ To run LearnTgs on these datasets call the function as follows:-
 In order to run the DmLc3E.RData dataset with json file as input, create a json file and give it an appropriate name (say example.json).
 The json file should look like this:
 \begin{verbatim}
-{ 
+{
    "input.data.filename": "DmLc3E.RData",
    "num.timepts": 6,
    "true.net.filename": "",
@@ -182,11 +182,13 @@ The json file should look like this:
 And then call the function as follows:
 \begin{verbatim}
 ## Learn DmLc3E.RData dataset
-> LearnTgs(1,json.file = " location of json file. eg - /home/cse/Desktop/example.json", 
+> LearnTgs(1,json.file = " location of json file. eg - /home/cse/Desktop/example.json",
         input.dirname = "location where file is stored",
         output.dirname = "location where output needs to be stored")
 \end{verbatim}
-
+The json files for the examples are also available in the /extdata directory.
+\\
+\\
 The net.sif files that are generated can be plotted in \href{https://cytoscape.org/}{Cytoscape}. The results are as follows.
 
 \begin{figure}[H]
