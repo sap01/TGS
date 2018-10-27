@@ -19,7 +19,7 @@ LearnTgs(isfile = 0, input.data.filename = "", num.timepts = 0,
 
 \item{num.timepts}{number of distinct timepoints}
 
-\item{true.net.filename}{File containing the true network without the directory name. In case non empty then should contain .Rdata filw with object name 'true.net.adj.matrix'}
+\item{true.net.filename}{File containing the true network without the directory name. In case non empty then should contain .Rdata file with object name 'true.net.adj.matrix'}
 
 \item{input.wt.data.filename}{File containing Input Wild Type data without the directory name. If it is not empty hen must be a .tsv file having first row containing names of genes except (1,1) and second row should have the WT values except (2,1)th cell.}
 
@@ -31,9 +31,9 @@ LearnTgs(isfile = 0, input.data.filename = "", num.timepts = 0,
 
 \item{mi.estimator}{which method to use for estimating the mutual information matrix. Generally ‘mi.pca.cmi’ is used}
 
-\item{apply.aracne}{ARACNE is applied to refine the mutual infor-mation matrix. In case true then TGS+ version is used otherwise the original TGS variant is executed}
+\item{apply.aracne}{ARACNE is applied to refine the mutual information matrix. In case true then TGS+ version is used otherwise the original TGS variant is executed}
 
-\item{clr.algo}{CLR algo to use Posible values :- {CLR, CLR2, CLR2.1, CLR3, spearman}}
+\item{clr.algo}{CLR algo to use Possible values :- {CLR, CLR2, CLR2.1, CLR3, spearman}}
 
 \item{max.fanin}{the maximum number of regulators each gene can have}
 

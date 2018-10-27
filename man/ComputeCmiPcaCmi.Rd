@@ -2,7 +2,7 @@
 % Please edit documentation in R/compute_cmi.R
 \name{ComputeCmiPcaCmi}
 \alias{ComputeCmiPcaCmi}
-\title{Compute Conditional Mutual Infortion (CMI) the way it is done in the implementaion of the PCA-CMI algo}
+\title{Compute Conditional Mutual Information (CMI) the way it is done in the implementation of the PCA-CMI algo}
 \usage{
 ComputeCmiPcaCmi(v1, v2, vcs)
 }

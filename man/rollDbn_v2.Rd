@@ -25,7 +25,7 @@ network adjacency matrix of the t^{th} time transition. This matrix is of dimens
 
 \item{roll.method}{Which rolling method to use from {'any', 'all', or some real number in (0, 1), like - 0.5}.}
 
-\item{allow.self.loop}{Boolean to decide whehter to allow self loop or not in the rolled DBN}
+\item{allow.self.loop}{Boolean to decide whether to allow self loop or not in the rolled DBN}
 }
 \value{
 rolled.DBN.adj.matrix Return the rolled DBN adjacency matrix. It is a 2D matrix of dimension (num.nodes * num.nodes).

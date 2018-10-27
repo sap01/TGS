@@ -12,7 +12,7 @@ adjmxToSif(adj.mx, output.dirname = "./OUTPUT")
 \item{output.dirname}{name of the output directory where the file will be stored}
 }
 \description{
-Given a network adjacency matrix, creates an equivaluent '.sif' file that
+Given a network adjacency matrix, creates an equivalent '.sif' file that
 is readable in Cytoscape. SIF file extension stands for Simple Interaction
 Format.
 Ref: http://manual.cytoscape.org/en/3.4.0/Supported_Network_File_Formats.html#sif-format
