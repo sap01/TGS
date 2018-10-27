@@ -441,6 +441,7 @@ LearnTgs <- function(isfile = 0,
   ## Create an '.sif' file equivalent to the directed net adjacency matrix
   ## that is readable in Cytoscape.
   adjmxToSif(di.net.adj.matrix, output.dirname)
+  print("after sif")
   # rm(unrolled.DBN.adj.matrix)
   base::rm(unrolled.DBN.adj.matrix.list)
   ##------------------------------------------------------------
@@ -470,20 +471,29 @@ LearnTgs <- function(isfile = 0,
   }
 
   base::rm(di.net.adj.matrix)
+  print("after perf")
 
   elapsed.time <- (base::proc.time() - start.time) # Stop the timer
   base::writeLines('elapsed.time = \n')
   base::print(elapsed.time)
   base::rm(elapsed.time)
+  print("after etime")
 
   base::sink()
-
+  base::close(output.file.conn)
   ##------------------------------------------------------------
   ## Begin: Save R session info in a File
-  ##------------------------------------------------------------
-  base::sink(base::paste(output.dirname, 'sessionInfo.txt', sep = '/'))
+  ##-----------------------------------------------------------
+  print("1")
+  session.file <- base::file(base::paste(output.dirname, 'sessionInfo.txt', sep = '/'), open = "wt")
+  print("2")
+  base::sink(session.file)
+  print("3")
   utils::sessionInfo()
+  print("4")
   base::sink()
+  print("5")
+  base::close(session.file)
   ##------------------------------------------------------------
   ## End: Save R session info in a File
   ##------------------------------------------------------------
