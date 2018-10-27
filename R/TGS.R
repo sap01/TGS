@@ -7,14 +7,14 @@
 #' @param isfile 0 if the parameters are given in a json file otherwise 1.
 #' @param input.data.filename name of the file containing the data without the directory name. It can be .tsv or .Rdata file only.
 #' @param num.timepts number of distinct timepoints
-#' @param true.net.filename File containing the true network without the directory name. In case non empty then should contain .Rdata filw with object name 'true.net.adj.matrix'
+#' @param true.net.filename File containing the true network without the directory name. In case non empty then should contain .Rdata file with object name 'true.net.adj.matrix'
 #' @param input.wt.data.filename File containing Input Wild Type data without the directory name. If it is not empty hen must be a .tsv file having first row containing names of genes except (1,1) and second row should have the WT values except (2,1)th cell.
 #' @param is.discrete whether the data is discretized or not
 #' @param num.discr.levels number of discreteized levels that each gene has (if already discretized) or it should have (if it is to be discretized)
 #' @param discr.algo The algo to follow in case of not discretized. Possible values:- {discretizeData.2L.Tesla,discretizeData.2L.wt.l}
 #' @param mi.estimator which method to use for estimating the mutual information matrix. Generally ‘mi.pca.cmi’ is used
-#' @param apply.aracne ARACNE is applied to refine the mutual infor-mation matrix. In case true then TGS+ version is used otherwise the original TGS variant is executed
-#' @param clr.algo CLR algo to use Posible values :- {CLR, CLR2, CLR2.1, CLR3, spearman}
+#' @param apply.aracne ARACNE is applied to refine the mutual information matrix. In case true then TGS+ version is used otherwise the original TGS variant is executed
+#' @param clr.algo CLR algo to use Possible values :- {CLR, CLR2, CLR2.1, CLR3, spearman}
 #' @param max.fanin the maximum number of regulators each gene can have
 #' @param allow.self.loop Whether to allow self loops in the graph
 #' @param scoring.func Which scoring func to use
@@ -456,7 +456,7 @@ LearnTgs <- function(isfile = 0,
     ## Loads R obj 'true.net.adj.matrix'
     true.net.adj.matrix <- NULL
     base::load(true.net.filename)
-    
+
 
     ## Begin: Create the format for result
     Result <- base::matrix(0, nrow = 1, ncol = 11)

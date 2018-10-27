@@ -1,4 +1,4 @@
-#' Compute Conditional Mutual Infortion (CMI) the way it is done in the implementaion of the PCA-CMI algo
+#' Compute Conditional Mutual Information (CMI) the way it is done in the implementation of the PCA-CMI algo
 #'
 #' Compute Conditional Mutual Info between random variables 'v1' and 'v2'
 #' given random vector 'vcs'.

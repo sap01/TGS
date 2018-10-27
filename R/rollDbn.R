@@ -9,7 +9,7 @@
 #' @param num.timepts Number of time points in the unrolled DBN
 #' @param unrolled.DBN.adj.matrix Given unrolled DBN adjacency matrix. It is a 2D matrix of dimension ((num.nodes X num.timepts) X (num.nodes X num.timepts)).
 #' @param roll.method Which rolling method to use from {'any', 'all', or some real number in (0, 1), like - 0.5}.
-#' @param allow.self.loop Boolean to decide whehter to allow self loop or not in the rolled DBN
+#' @param allow.self.loop Boolean to decide whether to allow self loop or not in the rolled DBN
 #'
 #' @return rolled.DBN.adj.matrix Return the rolled DBN adjacency matrix. It is a 2D matrix of dimension (num.nodes * num.nodes).
 #'
@@ -131,7 +131,7 @@ rollDbn <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix,
 #' network adjacency matrix of the t^{th} time transition. This matrix is of dimension
 #' (num.nodes \ times num.nodes).
 #' @param roll.method Which rolling method to use from {'any', 'all', or some real number in (0, 1), like - 0.5}.
-#' @param allow.self.loop Boolean to decide whehter to allow self loop or not in the rolled DBN
+#' @param allow.self.loop Boolean to decide whether to allow self loop or not in the rolled DBN
 #'
 #' @return rolled.DBN.adj.matrix Return the rolled DBN adjacency matrix. It is a 2D matrix of dimension (num.nodes * num.nodes).
 #'
