@@ -13,7 +13,7 @@ LearnTgs(isfile = 0, input.data.filename = "", num.timepts = 0,
   json.file = "")
 }
 \arguments{
-\item{isfile}{0 if the parameters are given in a json file otherwise 1.}
+\item{isfile}{1 if the parameters are given in a json file otherwise 0.}
 
 \item{input.data.filename}{name of the file containing the data without the directory name. It can be .tsv or .Rdata file only.}
 

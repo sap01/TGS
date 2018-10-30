@@ -4,7 +4,7 @@
 #' It learns the time-varying GRN structures independently of each other, without imposing any structural constraint. However,
 #' it is time intensive and hence not suitable for large-scale GRNs.
 #'
-#' @param isfile 0 if the parameters are given in a json file otherwise 1.
+#' @param isfile 1 if the parameters are given in a json file otherwise 0.
 #' @param input.data.filename name of the file containing the data without the directory name. It can be .tsv or .Rdata file only.
 #' @param num.timepts number of distinct timepoints
 #' @param true.net.filename File containing the true network without the directory name. In case non empty then should contain .Rdata file with object name 'true.net.adj.matrix'

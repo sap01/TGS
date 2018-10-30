@@ -4,3 +4,7 @@
 
 ## R CMD check results
 There were no ERRORs, WARNINGs or NOTEs.
+
+## Non-FOSS License
+We have to use non-FOSS license as minet uses the same license and since we are importing the package
+we must also use the same license under the share-alike clause.
