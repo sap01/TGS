@@ -10,6 +10,8 @@
 #' @param vcs random vector 'vcs'
 #'
 #' @return Conditional Mutual info between 'v1' and 'v2'
+#' @examples
+#' computeCmi(c(3,5),c(3,5))
 #'
 #' @export
 computeCmi <- function(v1,v2,vcs)

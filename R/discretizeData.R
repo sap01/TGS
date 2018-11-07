@@ -16,7 +16,7 @@ discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename)
 {
   if(!base::is.data.frame(input.data))
   {
-    base::stop("Error in discretizeData.2L.wt.l input.data is not a matrix")
+    base::stop("Error in discretizeData.2L.wt.l input.data is not a data frame")
   }
   input.wt.data <- utils::read.table(input.wt.data.filename, header = TRUE, sep="\t")
 

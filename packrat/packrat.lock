@@ -79,6 +79,11 @@ Version: 1.0.4
 Hash: a4480dd4700fde82847d94ccb407888d
 Requires: Matrix, bitops, igraph
 
+Package: brew
+Source: CRAN
+Version: 1.0-6
+Hash: 931f9972deae0f205e1c78a51f33149b
+
 Package: callr
 Source: CRAN
 Version: 3.0.0
@@ -150,6 +155,11 @@ Package: evaluate
 Source: CRAN
 Version: 0.12
 Hash: c32505adba4f6eca5aa20dd32300b019
+
+Package: fansi
+Source: CRAN
+Version: 0.4.0
+Hash: f147621f72b561485bfffcae78c4f5d5
 
 Package: foreach
 Source: CRAN
@@ -282,6 +292,12 @@ Source: CRAN
 Version: 1.1.3
 Hash: 85902ad85833c2e722af340d486ef256
 
+Package: pillar
+Source: CRAN
+Version: 1.3.0
+Hash: 3e43f774fa6dfba877caca1aebbeaa6a
+Requires: cli, crayon, fansi, rlang, utf8
+
 Package: pkgbuild
 Source: CRAN
 Version: 1.0.2
@@ -295,8 +311,8 @@ Hash: b0fd6ed908e150b77e5f00c6478bd58c
 
 Package: pkgload
 Source: CRAN
-Version: 1.0.1
-Hash: c4d7f7af3ce71b09f3dc944de4522c57
+Version: 1.0.2
+Hash: 41eb2db35be61f6f9e8864cf87a1ecb0
 Requires: desc, pkgbuild, rlang, rprojroot, rstudioapi, withr
 
 Package: prettyunits
@@ -315,6 +331,12 @@ Package: ps
 Source: CRAN
 Version: 1.2.0
 Hash: 74783b96567e137000f5706e8f391d5f
+
+Package: purrr
+Source: CRAN
+Version: 0.2.5
+Hash: 8b0c16db10c7e20b70cd37779a673a8b
+Requires: magrittr, rlang, tibble
 
 Package: rappdirs
 Source: CRAN
@@ -356,6 +378,13 @@ Source: CRAN
 Version: 0.3.0.1
 Hash: 35fb7a51d5d756c56f793ed9c381fb84
 
+Package: roxygen2
+Source: CRAN
+Version: 6.1.1
+Hash: 7151eb5cb1ac685c7c40aa2582f66278
+Requires: R6, Rcpp, brew, commonmark, desc, digest, pkgload, purrr,
+    stringi, stringr, xml2
+
 Package: rprojroot
 Source: CRAN
 Version: 1.3-2
@@ -396,12 +425,23 @@ Version: 1.3.1
 Hash: 9f417a1d899ed1f080942ab36998e8b5
 Requires: glue, magrittr, stringi
 
+Package: tibble
+Source: CRAN
+Version: 1.4.2
+Hash: 83895360ce4f8d2ce92eee00526b5b0b
+Requires: cli, crayon, pillar, rlang
+
 Package: usethis
 Source: CRAN
 Version: 1.4.0
 Hash: bdf0ce7802818c5dfc592dd73d62db5b
 Requires: clipr, clisymbols, crayon, curl, desc, fs, gh, git2r, glue,
     rlang, rprojroot, rstudioapi, whisker
+
+Package: utf8
+Source: CRAN
+Version: 1.1.4
+Hash: f3f97ce59092abc8ed3fd098a59e236c
 
 Package: whisker
 Source: CRAN

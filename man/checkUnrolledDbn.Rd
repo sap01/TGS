@@ -15,3 +15,7 @@ whether the given unrolled DBN follows 1st Markov order or not
 \description{
 Checks whether the given unrolled DBN follows 1st Markov order or not
 }
+\examples{
+checkUnrolledDbn(matrix(c(0,0,0,0),nrow=2,ncol=2))
+
+}

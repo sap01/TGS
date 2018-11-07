@@ -28,6 +28,10 @@ function used in the PCA-CMI algo [1].
 The original funciton, namely 'cmi()' [2],
 is written in MATLAB.
 }
+\examples{
+ComputeCmiPcaCmi(c(3,5),c(4,2))
+
+}
 \references{
 [1] Zhang X, Zhao X M, He K, et al. Inferring gene
 regulatory networks from gene expression data by

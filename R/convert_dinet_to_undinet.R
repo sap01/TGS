@@ -3,6 +3,8 @@
 #' @param di.net a directed network
 #'
 #' @return directed network converted to undirected network
+#' @examples
+#' ConvertDinetToUndinet(matrix(c(0,1,0,0),nrow=2))
 #'
 #' @export
 ConvertDinetToUndinet <- function(di.net) {

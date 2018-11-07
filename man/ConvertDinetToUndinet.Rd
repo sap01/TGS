@@ -15,3 +15,7 @@ directed network converted to undirected network
 \description{
 Given a directed network, convert it into an undirected network
 }
+\examples{
+ConvertDinetToUndinet(matrix(c(0,1,0,0),nrow=2))
+
+}

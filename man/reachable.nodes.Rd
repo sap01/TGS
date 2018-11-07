@@ -21,3 +21,9 @@ rows = source nodes, cols = tgt nodes. (i, j)th cell = 1 implies a directed edge
 to j; = 0 implies no directed edge from i to j. Row names of the given matrix must be
 the names of the nodes.
 }
+\examples{
+x = matrix(c(1,0,0,0,1,1,0,1,1),nrow=3)
+rownames(x) <- c('A','B','C')
+colnames(x) <- c('A','B','C')
+reachable.nodes(x,'A')
+}

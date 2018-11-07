@@ -1,4 +1,5 @@
-#' Calculating performance metrics of the directed net 'inferredNet' w.r.t. the directed net 'targetNet'.
+#' Calculating performance metrics of the directed net 'inferredNet' w.r.t. the
+#' directed net 'targetNet'.
 #'
 #' @param inferredNet directed net 'inferredNet'
 #' @param targetNet directed net 'targetNet'
@@ -6,6 +7,12 @@
 #' @param n Number of nodes in each of the nets.
 #'
 #' @return the performance metrics
+#'
+#' @examples
+#' res<-calcPerfDiNet(matrix(c(1,0,1,1,1,1,1,0,1),nrow=3,ncol=3),
+#' + matrix(c(0,1,0,1,1,1,1,0,1),nrow=3,ncol=3),
+#' + matrix(nrow=1,ncol=11),3)
+#'
 #' @export
 calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
 {

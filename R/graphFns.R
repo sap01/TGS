@@ -10,7 +10,11 @@
 #' @param src.node.name The node whose reachable nodes need to be returned
 #'
 #' @return A vector containing all the nodes reachable from the given node
-#'
+#' @examples
+#' x = matrix(c(1,0,0,0,1,1,0,1,1),nrow=3)
+#' rownames(x) <- c('A','B','C')
+#' colnames(x) <- c('A','B','C')
+#' reachable.nodes(x,'A')
 #' @export
 reachable.nodes <- function(di.net.adj.matrix, src.node.name)
 {

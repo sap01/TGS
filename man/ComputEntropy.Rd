@@ -15,3 +15,7 @@ entropy matrix
 \description{
 Compute Entropy matrix from the input data
 }
+\examples{
+df = data.frame(c(2,3,5), c(1,3,2), c(2,31,4))
+ComputEntropy(df)
+}

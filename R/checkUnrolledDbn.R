@@ -3,6 +3,10 @@
 #' @param unrolled.DBN.adj.matrix An unrolled DBN adjacency matrix
 #'
 #' @return whether the given unrolled DBN follows 1st Markov order or not
+#'
+#' @examples
+#' checkUnrolledDbn(matrix(c(0,0,0,0),nrow=2,ncol=2))
+#'
 #' @export
 checkUnrolledDbn <- function(unrolled.DBN.adj.matrix)
 {

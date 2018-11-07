@@ -20,3 +20,7 @@ Conditional Mutual info between 'v1' and 'v2'
 Compute Conditional Mutual Info between random variables 'v1' and 'v2'
 given random vector 'vcs'.
 }
+\examples{
+computeCmi(c(3,5),c(3,5))
+
+}

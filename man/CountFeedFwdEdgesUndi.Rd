@@ -15,3 +15,7 @@ count of the number of feed-forward edges
 \description{
 Count the number of feed-forward edges in a given undirected network.
 }
+\examples{
+CountFeedFwdEdgesUndi(matrix(c(0,1,0,1,0,1,0,0,0),nrow=3))
+
+}

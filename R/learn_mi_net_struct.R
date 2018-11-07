@@ -5,7 +5,9 @@
 #' @param input.data input data matrix
 #'
 #' @return entropy matrix
-#'
+#' @examples
+#' df = data.frame(c(2,3,5), c(1,3,2), c(2,31,4))
+#' ComputEntropy(df)
 #' @export
 ComputEntropy <- function(input.data)
 {
@@ -86,6 +88,11 @@ LearnMiNetStructZstat <- function(mut.info.matrix, mi.net.adj.matrix, entropy.ma
 #' @param num.nodes number of nodes
 #'
 #' @return mi network adjacency matrix
+#' @examples
+#' LearnMiNetStructRowMedian(
+#' + matrix(c(0.1,0.5,0.53,0.76,0,0.12,0.43,0.65,0.23),nrow=3),
+#' + matrix(c(1,0,1,0,0,0,1,0,1),nrow=3),
+#' + 3)
 #'
 #' @export
 LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes)

@@ -19,3 +19,10 @@ mi network adjacency matrix
 \description{
 Learn the mi network structure
 }
+\examples{
+LearnMiNetStructRowMedian(
++ matrix(c(0.1,0.5,0.53,0.76,0,0.12,0.43,0.65,0.23),nrow=3),
++ matrix(c(1,0,1,0,0,0,1,0,1),nrow=3),
++ 3)
+
+}

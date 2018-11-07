@@ -2,7 +2,8 @@
 % Please edit documentation in R/calcPerfDiNet.R
 \name{calcPerfDiNet}
 \alias{calcPerfDiNet}
-\title{Calculating performance metrics of the directed net 'inferredNet' w.r.t. the directed net 'targetNet'.}
+\title{Calculating performance metrics of the directed net 'inferredNet' w.r.t. the
+directed net 'targetNet'.}
 \usage{
 calcPerfDiNet(inferredNet, targetNet, Result, n)
 }
@@ -19,5 +20,12 @@ calcPerfDiNet(inferredNet, targetNet, Result, n)
 the performance metrics
 }
 \description{
-Calculating performance metrics of the directed net 'inferredNet' w.r.t. the directed net 'targetNet'.
+Calculating performance metrics of the directed net 'inferredNet' w.r.t. the
+directed net 'targetNet'.
+}
+\examples{
+res<-calcPerfDiNet(matrix(c(1,0,1,1,1,1,1,0,1),nrow=3,ncol=3),
++ matrix(c(0,1,0,1,1,1,1,0,1),nrow=3,ncol=3),
++ matrix(nrow=1,ncol=11),3)
+
 }

@@ -52,3 +52,19 @@ It Uncovers the underlying temporal sequence of gene regulatory events in the fo
 It learns the time-varying GRN structures independently of each other, without imposing any structural constraint. However,
 it is time intensive and hence not suitable for large-scale GRNs.
 }
+\examples{
+\dontrun{
+LearnTgs(0,input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE,
+ num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
+ clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
+ input.dirname = "location where file is stored",
+ output.dirname = "location where output needs to be stored")
+
+LearnTgs(0,input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE,
+ num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
+ clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
+ input.dirname = "location where file is stored",
+ output.dirname = "location where output needs to be stored")
+}
+
+}

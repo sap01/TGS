@@ -26,6 +26,21 @@
 #' @import minet
 #' @import utils
 #'
+#' @examples
+#' \dontrun{
+#' LearnTgs(0,input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE,
+#'  num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
+#'  clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
+#'  input.dirname = "location where file is stored",
+#'  output.dirname = "location where output needs to be stored")
+#'
+#' LearnTgs(0,input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE,
+#'  num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
+#'  clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
+#'  input.dirname = "location where file is stored",
+#'  output.dirname = "location where output needs to be stored")
+#' }
+#'
 #' @export
 LearnTgs <- function(isfile = 0,
                       input.data.filename = "",

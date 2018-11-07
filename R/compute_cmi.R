@@ -30,6 +30,9 @@
 #' [2] Function declaration: 'function cmiv=cmi(v1,v2,vcs)',
 #' Source code file: http://www.comp-sysbio.org/grn/pca_cmi.m .
 #'
+#' @examples
+#' ComputeCmiPcaCmi(c(3,5),c(4,2))
+#'
 #' @export
 ComputeCmiPcaCmi <- function(v1,v2,vcs) {
   cmiv <- 0
