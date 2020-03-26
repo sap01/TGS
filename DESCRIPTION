@@ -1,10 +1,12 @@
 Package: TGS
 Title: Rapid Reconstruction of Time-Varying Gene Regulatory Networks
 Version: 1.0.0.9000
-Authors@R: c(person("Manan", "Gupta", email = "guptamanan100@gmail.com", role = c("aut", "cre")),
-person("Saptarshi", "Pyne", email = "saptarshipyne01@gmail.com", role = c("aut", "cre")),
-person("Alok", "Kumar", email = "alok4039@gmail.com", role = "aut"), 
-person("Ashish", "Anand", email = "anand.ashish@iitg.ac.in", role = "aut"))
+Authors@R: c(person(given = "Manan", family = "Gupta", email = "guptamanan100@gmail.com", role = c("aut", "cre")),
+person(given = "Saptarshi", family = "Pyne", email = "saptarshipyne01@gmail.com", role = c("aut", "cre"), 
+        comment = c(ORCID = "0000-0001-9710-6749")),
+person(given = "Alok", family = "Kumar", middle = "Ranjan", email = "alok4039@gmail.com", role = "aut"), 
+person(given = "Ashish", family = "Anand", email = "anand.ashish@iitg.ac.in", role = "aut", 
+        comment = c(ORCID = "0000-0002-0024-3358")))
 Description: Rapid advancement in high-throughput gene expression measurement technologies has resulted in genome- scale time series datasets. Uncovering the underlying temporal sequence of gene regulatory events in the form of time-varying Gene Regulatory Networks (GRNs) demands computationally fast, accurate and highly scalable algorithms. To provide a flexible framework in a significantly time-efficient manner, a novel algorithm, namely TGS (Ashish Anand et al., 2018 <doi:10.1109/TCBB.2018.2861698>), is proposed here. TGS is shown to consume only 29 minutes for a microarray dataset with 4028 genes. Moreover, it provides the flexibility and time-efficiency, without losing the accuracy. Nevertheless, TGS’s main memory requirement grows exponentially with the number of genes, which it tackles by restricting the maximum number of regulators for each gene. Relaxing this restriction remains an important challenge as the true number of regulators is not known a prior. 
 License: CC BY-NC-SA 4.0
 Encoding: UTF-8
