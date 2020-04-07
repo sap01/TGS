@@ -11,10 +11,10 @@ Description: Rapid advancement in high-throughput gene expression measurement
     only 29 minutes for a microarray dataset with 4028 genes. This package
     provides an implementation of the TGS algorithm.
 Authors@R: c(
-    person(given = "Manan", family = "Gupta", email = "guptamanan100@gmail.com", role = c("aut", "cre")),
-    person(given = "Saptarshi", family = "Pyne", email = "saptarshipyne01@gmail.com", role = c("aut", "cre"), 
+    person(given = "Saptarshi", family = "Pyne", email = "saptarshipyne01@gmail.com", role = c("aut", "cre"),
         comment = c(ORCID = "0000-0001-9710-6749")),
-    person(given = "Alok", family = "Kumar", middle = "Ranjan", email = "alok4039@gmail.com", role = "aut"), 
+    person(given = "Manan", family = "Gupta", email = "guptamanan100@gmail.com", role = "aut"),
+    person(given = "Alok", family = "Kumar", email = "alok4039@gmail.com", role = "aut"), 
     person(given = "Ashish", family = "Anand", email = "anand.ashish@iitg.ac.in", role = "aut", 
         comment = c(ORCID = "0000-0002-0024-3358"))) 
 License: CC BY-NC-SA 4.0
@@ -31,7 +31,9 @@ Imports: minet,
     foreach,
     doParallel,
     rjson
-Suggests: R.rsp
+Suggests: 
+    R.rsp,
+    glue
 VignetteBuilder: R.rsp
 URL: http://dx.doi.org/10.1109/TCBB.2018.2861698, https://www.biorxiv.org/content/early/2018/06/14/272484
 BugReports: https://github.com/sap01/TGS/issues
