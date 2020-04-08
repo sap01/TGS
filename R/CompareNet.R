@@ -5,14 +5,13 @@
 #' @param num.node Number of nodes in the metrices
 #'
 #' @return Returns 1 if 'di.net.adj.matrix' = 'cmi.net.adj.matrix' else returns 0
+#'
 #' @examples
 #' CompareNet(matrix(c(0,0,0,0),nrow=2,ncol=2),
-#' + matrix(c(0,0,0,0),nrow=2,ncol=2),
-#' + 2)
+#' matrix(c(0,0,0,0),nrow=2,ncol=2), 2)
 #'
 #' CompareNet(matrix(c(0,0,1,0),nrow=2,ncol=2),
-#' + matrix(c(0,0,0,0),nrow=2,ncol=2),
-#' + 2)
+#' matrix(c(0,0,0,0),nrow=2,ncol=2), 2)
 #'
 #' @keywords internal
 CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node) {

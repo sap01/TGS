@@ -391,6 +391,7 @@
 #' @return Unrolled DBN adjacency matrix
 #'
 #' @keywords internal
+#' @importFrom foreach %do% %:% when
 learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts,  output.dirname="./OUTPUT") {
   if(!base::is.array(input.data.discr.3D))
   {
