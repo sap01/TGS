@@ -2,10 +2,17 @@
 % Please edit documentation in R/learnDbnStruct3dParDeg1.R
 \name{learnDbnStructMo1Layer3dParDeg1}
 \alias{learnDbnStructMo1Layer3dParDeg1}
-\title{Goal: Unrolled DBN structure learning with Markov Order 1.}
+\title{Unrolled DBN structure learning with Markov Order 1}
 \usage{
-learnDbnStructMo1Layer3dParDeg1(input.data.discr.3D, mi.net.adj.matrix,
-  num.discr.levels, num.nodes, num.timepts, max.fanin, output.dirname)
+learnDbnStructMo1Layer3dParDeg1(
+  input.data.discr.3D,
+  mi.net.adj.matrix,
+  num.discr.levels,
+  num.nodes,
+  num.timepts,
+  max.fanin,
+  output.dirname
+)
 }
 \arguments{
 \item{input.data.discr.3D}{Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.}
@@ -26,6 +33,6 @@ learnDbnStructMo1Layer3dParDeg1(input.data.discr.3D, mi.net.adj.matrix,
 Unrolled DBN adjacency matrix
 }
 \description{
-Goal: Unrolled DBN structure learning with Markov Order 1.
 Candidate parents: The target node itself and its CLR net neighbours at immediately previous time pt.
 }
+\keyword{internal}

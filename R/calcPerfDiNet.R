@@ -13,7 +13,7 @@
 #' + matrix(c(0,1,0,1,1,1,1,0,1),nrow=3,ncol=3),
 #' + matrix(nrow=1,ncol=11),3)
 #'
-#' @export
+#' @keywords internal
 calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
 {
   if(!base::is.matrix(inferredNet))
@@ -99,9 +99,6 @@ calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
   return (Result)
 }
 
-################################################################################################
-
-
 #' Accuracy of predicted directed gene reuglatory network adjacency matrix
 #'
 #' Given a predicted directed gene reuglatory network adjacency matrix, evaluate its
@@ -112,7 +109,7 @@ calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
 #'
 #' @param di.net.adj.matrix predicted directed gene reuglatory network adjacency matrix
 #'
-#' @export
+#' @keywords internal
 eval.wrt.known.gene.ias <- function(di.net.adj.matrix)
 {
   if(!base::is.matrix(di.net.adj.matrix))

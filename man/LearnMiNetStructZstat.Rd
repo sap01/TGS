@@ -4,8 +4,12 @@
 \alias{LearnMiNetStructZstat}
 \title{Learn the mi network structure}
 \usage{
-LearnMiNetStructZstat(mut.info.matrix, mi.net.adj.matrix, entropy.matrix,
-  alpha)
+LearnMiNetStructZstat(
+  mut.info.matrix,
+  mi.net.adj.matrix,
+  entropy.matrix,
+  alpha
+)
 }
 \arguments{
 \item{mut.info.matrix}{matrix containing mut info}
@@ -22,3 +26,4 @@ mi network adjacency matrix
 \description{
 Learn the mi network structure
 }
+\keyword{internal}

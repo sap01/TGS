@@ -27,4 +27,6 @@ CompareNet(matrix(c(0,0,0,0),nrow=2,ncol=2),
 CompareNet(matrix(c(0,0,1,0),nrow=2,ncol=2),
 + matrix(c(0,0,0,0),nrow=2,ncol=2),
 + 2)
+
 }
+\keyword{internal}

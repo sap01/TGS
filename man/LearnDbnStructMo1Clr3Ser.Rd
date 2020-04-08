@@ -2,11 +2,18 @@
 % Please edit documentation in R/learnDbnStruct3dParDeg1.R
 \name{LearnDbnStructMo1Clr3Ser}
 \alias{LearnDbnStructMo1Clr3Ser}
-\title{Learns DBN structure of Markov order 1 where candidate parents are selected using the CLR3 algo.}
+\title{Learns DBN structure of Markov order 1 where candidate parents are selected using the CLR3 algo}
 \usage{
-LearnDbnStructMo1Clr3Ser(input.data.discr.3D,
-  mi.net.adj.matrix.list.filename, num.discr.levels, num.nodes,
-  num.timepts, max.fanin, node.names, unrolled.DBN.adj.matrix.list)
+LearnDbnStructMo1Clr3Ser(
+  input.data.discr.3D,
+  mi.net.adj.matrix.list.filename,
+  num.discr.levels,
+  num.nodes,
+  num.timepts,
+  max.fanin,
+  node.names,
+  unrolled.DBN.adj.matrix.list
+)
 }
 \arguments{
 \item{input.data.discr.3D}{Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.}
@@ -29,6 +36,6 @@ LearnDbnStructMo1Clr3Ser(input.data.discr.3D,
 Unrolled DBN adjacency matrix
 }
 \description{
-Learns DBN structure of Markov order 1 where candidate parents are selected using the CLR3 algo.
 It is a serial algorithmic implementation.
 }
+\keyword{internal}

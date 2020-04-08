@@ -43,3 +43,4 @@ https://sites.google.com/site/xiujunzhangcsb/software/pca-cmi
 [2] Function declaration: 'function cmiv=cmi(v1,v2,vcs)',
 Source code file: http://www.comp-sysbio.org/grn/pca_cmi.m .
 }
+\keyword{internal}

@@ -4,16 +4,13 @@
 #' Less than wild type => level 1
 #' Greater than equal to wild type => level 2
 #'
-#' @import utils
-#'
 #' @param input.data the data that is given as the input, data frame to be discretized
 #' @param input.wt.data.filename path of the file containing the table
 #'
 #' @return input data discretized into 2 levels
 #'
-#' @export
-discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename)
-{
+#' @keywords internal
+discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename) {
   if(!base::is.data.frame(input.data))
   {
     base::stop("Error in discretizeData.2L.wt.l input.data is not a data frame")
@@ -44,23 +41,19 @@ discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename)
   return(input.data.discr)
 }
 
-##########################################################################################################################
 #' Discretizes input data into two levels.
 #'
 #' Discretizes input data into the following two levels:
 #' Less than wild type => level 1
 #' Greater than equal to wild type => level 2
 #'
-#' @import utils
-#'
 #' @param input.data the data that is given as the input, data frame to be discretized
 #' @param input.wt.data.filename path of the file containing the table
 #'
 #' @return input data discretized into 2 levels
 #'
-#' @export
-discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
-{
+#' @keywords internal
+discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename) {
   if(!base::is.data.frame(input.data))
   {
     base::stop("Error in discretizeData.2L.wt.le input.data is not a matrix")
@@ -91,8 +84,6 @@ discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
   return(input.data.discr)
 }
 
-
-##########################################################################################################################
 #' Discretizes input data into three levels, given a tolerance.
 #'
 #' Discretizes input data into three levels, given a tolerance.
@@ -102,8 +93,6 @@ discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
 #' Level 2: (wt(i) - tolerance) =< x_i =< (wt(i) + tolerance). Expression of gene i is at a steady-state.
 #' Level 3: (wt(i) + tolerance) < x_i =< 1. Gene i is up regulated.
 #'
-#' @import utils
-#'
 #' @param input.data the data that is given as the input, data frame to be discretized
 #' @param input.wt.data.filename path of the file containing the table
 #' @param tolerance the tolerance
@@ -111,9 +100,8 @@ discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename)
 #'
 #' @return input data discretized into 3 levels
 #'
-#' @export
-discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, num.discr.levels)
-{
+#' @keywords internal
+discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, num.discr.levels) {
   if(!base::is.data.frame(input.data))
   {
     base::stop("Error in discretizeData.3L.wt input.data is not a matrix")
@@ -171,7 +159,6 @@ discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, 
   return(base::list(input.data.discr, nodes.discr.sizes))
 }
 
-##########################################################################################################################
 #' Discretizes input data into five levels.
 #'
 #' Discretizes input data into the following five levels:
@@ -183,17 +170,14 @@ discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, 
 #' Level 4: wt(i) < x_i < 1. Gene i is up regulated but not maximally activated.
 #' Level 5: x_i = 1. Gene i is maximally activated.
 #'
-#' @import utils
-#'
 #' @param input.data the data that is given as the input, data frame to be discretized
 #' @param input.wt.data.filename path of the file containing the table
 #' @param num.discr.levels number of discrete levels
 #'
 #' @return input data discretized into 5 levels
 #'
-#' @export
-discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.levels)
-{
+#' @keywords internal
+discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.levels) {
   if(!base::is.data.frame(input.data))
   {
     base::stop("Error in discretizeData.5L.wt input.data is not a matrix")
@@ -253,7 +237,6 @@ discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.l
   return(input.data.discr)
 }
 
-##########################################################################################################################
 #' Discretize input data into 2 levels.
 #'
 #' Discretize input data into the following two levels as done in
@@ -262,7 +245,7 @@ discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.l
 #' the median of the remaining values is used as the threshold above
 #' which the value is binarized as 'Level 2' and 'Level 1' otherwise. Here, 2 means
 #' the expression of a gene is up-regulated, and 1 means down-regulated.
-#' @import stats
+#'
 #' @param input.data data frame to be discretized. rows have samples and cols have variables.
 #'
 #' @return data discretized into 2 levels
@@ -271,9 +254,8 @@ discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.l
 #' 1. Ahmed, Amr, and Eric P. Xing. "Recovering time-varying networks of dependencies in social and biological studies."
 #' Proceedings of the National Academy of Sciences 106.29 (2009): 11878-11883.]
 #'
-#' @export
-discretizeData.2L.Tesla <- function(input.data)
-{
+#' @keywords internal
+discretizeData.2L.Tesla <- function(input.data) {
   if(!base::is.data.frame(input.data))
   {
     base::stop("Error in discretizeData.2L.Tesla input.data is not a matrix")

@@ -4,8 +4,12 @@
 \alias{LearnMiNetStructClr}
 \title{Learns the CLR network Replaces all non-zero edge weights with 1.}
 \usage{
-LearnMiNetStructClr(mut.info.matrix, mi.net.adj.matrix, num.nodes,
-  output.dirname = "./OUTPUT")
+LearnMiNetStructClr(
+  mut.info.matrix,
+  mi.net.adj.matrix,
+  num.nodes,
+  output.dirname = "./OUTPUT"
+)
 }
 \arguments{
 \item{mut.info.matrix}{matrix containing mut info}
@@ -22,3 +26,4 @@ mi network adjacency matrix
 \description{
 Learns the CLR network Replaces all non-zero edge weights with 1.
 }
+\keyword{internal}

@@ -4,8 +4,12 @@
 \alias{discretizeData.3L.wt}
 \title{Discretizes input data into three levels, given a tolerance.}
 \usage{
-discretizeData.3L.wt(input.data, input.wt.data.filename, tolerance,
-  num.discr.levels)
+discretizeData.3L.wt(
+  input.data,
+  input.wt.data.filename,
+  tolerance,
+  num.discr.levels
+)
 }
 \arguments{
 \item{input.data}{the data that is given as the input, data frame to be discretized}
@@ -27,3 +31,4 @@ Level 1: 0 =< x_i < (wt(i) - tolerance). Gene i is down regulated or knocked out
 Level 2: (wt(i) - tolerance) =< x_i =< (wt(i) + tolerance). Expression of gene i is at a steady-state.
 Level 3: (wt(i) + tolerance) < x_i =< 1. Gene i is up regulated.
 }
+\keyword{internal}

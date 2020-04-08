@@ -4,8 +4,13 @@
 \alias{LearnClrNetMfi}
 \title{Learns CLR network}
 \usage{
-LearnClrNetMfi(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fanin,
-  output.dirname = "./OUTPUT")
+LearnClrNetMfi(
+  mut.info.matrix,
+  mi.net.adj.matrix,
+  num.nodes,
+  max.fanin,
+  output.dirname = "./OUTPUT"
+)
 }
 \arguments{
 \item{mut.info.matrix}{matrix containing mut info}
@@ -26,3 +31,4 @@ Learns CLR net. For each node, retains top 'max.fanin' number of neighbours w.r.
 and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 If there are less than that number of edges for a node, then retain all its neighbours.
 }
+\keyword{internal}

@@ -4,8 +4,14 @@
 \alias{learnDbnStructLayer3dParDeg1}
 \title{Unrolled DBN structure learning with Markov Order 0 and 1.}
 \usage{
-learnDbnStructLayer3dParDeg1(input.data.discr.3D, mi.net.adj.matrix,
-  num.discr.levels, num.nodes, num.timepts, output.dirname = "./OUTPUT")
+learnDbnStructLayer3dParDeg1(
+  input.data.discr.3D,
+  mi.net.adj.matrix,
+  num.discr.levels,
+  num.nodes,
+  num.timepts,
+  output.dirname = "./OUTPUT"
+)
 }
 \arguments{
 \item{input.data.discr.3D}{Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.}
@@ -27,3 +33,4 @@ Unrolled DBN adjacency matrix
 Unrolled DBN structure learning with Markov Order 0 and 1.
 Candidate parents: The target node itself and its CLR net neighbours at immediately previous and current time pt.
 }
+\keyword{internal}

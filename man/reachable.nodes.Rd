@@ -26,4 +26,6 @@ x = matrix(c(1,0,0,0,1,1,0,1,1),nrow=3)
 rownames(x) <- c('A','B','C')
 colnames(x) <- c('A','B','C')
 reachable.nodes(x,'A')
+
 }
+\keyword{internal}

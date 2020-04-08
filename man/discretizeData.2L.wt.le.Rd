@@ -19,3 +19,4 @@ Discretizes input data into the following two levels:
 Less than wild type => level 1
 Greater than equal to wild type => level 2
 }
+\keyword{internal}

@@ -19,3 +19,4 @@ Checks whether the given unrolled DBN follows 1st Markov order or not
 checkUnrolledDbn(matrix(c(0,0,0,0),nrow=2,ncol=2))
 
 }
+\keyword{internal}

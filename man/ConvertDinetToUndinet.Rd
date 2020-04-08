@@ -19,3 +19,4 @@ Given a directed network, convert it into an undirected network
 ConvertDinetToUndinet(matrix(c(0,1,0,0),nrow=2))
 
 }
+\keyword{internal}

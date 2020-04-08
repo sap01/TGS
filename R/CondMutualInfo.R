@@ -3,8 +3,6 @@
 #' Compute Conditional Mutual Info between random variables 'v1' and 'v2'
 #' given random vector 'vcs'.
 #'
-#' @import stats
-#'
 #' @param v1 random variable 1
 #' @param v2 random variable 2
 #' @param vcs random vector 'vcs'
@@ -13,9 +11,8 @@
 #' @examples
 #' computeCmi(c(3,5),c(3,5))
 #'
-#' @export
-computeCmi <- function(v1,v2,vcs)
-{
+#' @keywords internal
+computeCmi <- function(v1,v2,vcs) {
   if(nargs() == 2)
   {
     c1 <-  stats::var(v1)

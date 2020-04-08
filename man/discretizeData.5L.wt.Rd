@@ -26,3 +26,4 @@ Level 3: x_i = wt(i). Expression of gene i is at a steady-state.
 Level 4: wt(i) < x_i < 1. Gene i is up regulated but not maximally activated.
 Level 5: x_i = 1. Gene i is maximally activated.
 }
+\keyword{internal}

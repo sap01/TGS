@@ -4,8 +4,11 @@
 \alias{Print.common.di.edges}
 \title{Given two di network adjacency matrices, it prints the common edges in an output file}
 \usage{
-Print.common.di.edges(di.net.adj.matrix1, di.net.adj.matrix2,
-  output.dirname = "./OUTPUT")
+Print.common.di.edges(
+  di.net.adj.matrix1,
+  di.net.adj.matrix2,
+  output.dirname = "./OUTPUT"
+)
 }
 \arguments{
 \item{di.net.adj.matrix1}{first di network adjacency matrix}
@@ -19,3 +22,4 @@ Given two di nets' adjacency matrices (must of of same dim, same rownames, same 
 where rows = source nodes, cols = tgt nodes, 0 and 1 represent absence and presence of
 an edge, resp.), this function prints the common edges in an output text file.
 }
+\keyword{internal}

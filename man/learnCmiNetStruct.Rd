@@ -21,3 +21,4 @@ the directed network adjacency matrix after learning the CMI network
 \description{
 Learns the CMI structure
 }
+\keyword{internal}

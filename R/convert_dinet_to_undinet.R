@@ -6,7 +6,7 @@
 #' @examples
 #' ConvertDinetToUndinet(matrix(c(0,1,0,0),nrow=2))
 #'
-#' @export
+#' @keywords internal
 ConvertDinetToUndinet <- function(di.net) {
   if(!base::is.matrix(di.net))
   {

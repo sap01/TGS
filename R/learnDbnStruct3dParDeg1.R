@@ -376,17 +376,10 @@
 #   return (unrolled.DBN.adj.matrix)
 # }
 
-###############################################################################################################################
-###############################################################################################################################
 #' Unrolled DBN structure learning with Markov Order 0 and 1.
 #'
 #' Unrolled DBN structure learning with Markov Order 0 and 1.
 #' Candidate parents: The target node itself and its CLR net neighbours at immediately previous and current time pt.
-#'
-#' @import bnstruct
-#' @import ggm
-#' @import foreach
-#' @import doParallel
 #'
 #' @param input.data.discr.3D Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.
 #' @param mi.net.adj.matrix Adjacency matrix of the mutual information network. Rownames and colnames should be node names.
@@ -397,9 +390,8 @@
 #'
 #' @return Unrolled DBN adjacency matrix
 #'
-#' @export
-learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts,  output.dirname="./OUTPUT")
-{
+#' @keywords internal
+learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts,  output.dirname="./OUTPUT") {
   if(!base::is.array(input.data.discr.3D))
   {
     base::stop("Error in learnDbnStructLayer3dParDeg1 input.data.discr.3D is not an array")
@@ -689,15 +681,9 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
   return (unrolled.DBN.adj.matrix)
 }
 
-###############################################################################################################################
-#' Goal: Unrolled DBN structure learning with Markov Order 1.
+#' Unrolled DBN structure learning with Markov Order 1
 #'
-#' Goal: Unrolled DBN structure learning with Markov Order 1.
 #' Candidate parents: The target node itself and its CLR net neighbours at immediately previous time pt.
-#'
-#' @import bnstruct
-#' @import foreach
-#' @import doParallel
 #'
 #' @param input.data.discr.3D Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.
 #' @param mi.net.adj.matrix Adjacency matrix of the mutual information network. Rownames and colnames should be node names.
@@ -709,9 +695,8 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
 #'
 #' @return Unrolled DBN adjacency matrix
 #'
-#' @export
-learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts, max.fanin, output.dirname)
-{
+#' @keywords internal
+learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts, max.fanin, output.dirname) {
   if(!base::is.array(input.data.discr.3D))
   {
     base::stop("Error in learnDbnStructMo1Layer3dParDeg1 input.data.discr.3D is not an array")
@@ -992,8 +977,7 @@ learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matr
   return (unrolled.DBN.adj.matrix)
 }
 
-###############################################################################################################################
-#' Goal: Unrolled DBN structure learning with Markov Order 1.
+#' Unrolled DBN structure learning with Markov Order 1
 #'
 #' This function is the newer version of learnDbnStructMo1Layer3dParDeg1().
 #' The only difference is in the size of unrolled DBN adjacency matrix. In earlier version,
@@ -1007,10 +991,6 @@ learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matr
 #' adjacency list is ((T - 1) \ times (V \ times V)).
 #' Candidate parents: The target node itself and its CLR net neighbours at immediately previous time pt.
 #'
-#' @import bnstruct
-#' @import foreach
-#' @import doParallel
-#'
 #' @param input.data.discr.3D Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.
 #' @param mi.net.adj.matrix Adjacency matrix of the mutual information network. Rownames and colnames should be node names.
 #' @param num.discr.levels If input data is discretized, then number of discrete levels for each variable. Else if input data is continuous, then number of levels in which data needs to be discretized for performing the DBN structure learning.
@@ -1022,11 +1002,10 @@ learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matr
 #'
 #' @return Unrolled DBN adjacency matrix
 #'
-#' @export
+#' @keywords internal
 learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.matrix,
                                                num.discr.levels, num.nodes, num.timepts, max.fanin,
-                                               node.names, clr.algo)
-{
+                                               node.names, clr.algo) {
   if(!base::is.array(input.data.discr.3D))
   {
     base::stop("Error in learnDbnStructMo1Layer3dParDeg1_v2 input.data.discr.3D is not an array")
@@ -1367,15 +1346,9 @@ learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.m
   return (unrolled.DBN.adj.matrix.list)
 }
 
-############################################################################################
-
-############################################################################################
-#' Learns DBN structure of Markov order 1 where candidate parents are selected using the CLR3 algo.
+#' Learns DBN structure of Markov order 1 where candidate parents are selected using the CLR3 algo
 #'
-#' Learns DBN structure of Markov order 1 where candidate parents are selected using the CLR3 algo.
 #' It is a serial algorithmic implementation.
-#'
-#' @import bnstruct
 #'
 #' @param input.data.discr.3D Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.
 #' @param mi.net.adj.matrix.list.filename List of filenames (relative/absolute path) of adjacency matrices of the mutual information network.
@@ -1388,11 +1361,10 @@ learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.m
 #'
 #' @return Unrolled DBN adjacency matrix
 #'
-#' @export
+#' @keywords internal
 LearnDbnStructMo1Clr3Ser <- function(input.data.discr.3D, mi.net.adj.matrix.list.filename,
                                      num.discr.levels, num.nodes, num.timepts, max.fanin,
-                                     node.names, unrolled.DBN.adj.matrix.list)
-{
+                                     node.names, unrolled.DBN.adj.matrix.list) {
   if(!base::is.array(input.data.discr.3D))
   {
     base::stop("Error in LearnDbnStructMo1Clr3Ser input.data.discr.3D is not an array")
@@ -1568,4 +1540,3 @@ LearnDbnStructMo1Clr3Ser <- function(input.data.discr.3D, mi.net.adj.matrix.list
 
   return(unrolled.DBN.adj.matrix.list)
 }
-############################################################################################

@@ -19,3 +19,4 @@ Count the number of feed-forward edges in a given undirected network.
 CountFeedFwdEdgesUndi(matrix(c(0,1,0,1,0,1,0,0,0),nrow=3))
 
 }
+\keyword{internal}

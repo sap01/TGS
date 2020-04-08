@@ -32,3 +32,4 @@ The way Cytoscape interprets each line in this SIF file is as follows:
 <Source node name> <Target node1 name (if any)>  <Target node2 name (if any)> ...
 Note that the values are delimited by tab.
 }
+\keyword{internal}

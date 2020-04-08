@@ -13,9 +13,9 @@
 #' CompareNet(matrix(c(0,0,1,0),nrow=2,ncol=2),
 #' + matrix(c(0,0,0,0),nrow=2,ncol=2),
 #' + 2)
-#' @export
-CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node)
-{
+#'
+#' @keywords internal
+CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node) {
   if(!base::is.matrix(di.net.adj.matrix))
   {
     base::stop("Error in CompareNet di.net.adj.matrix is not a matrix")
@@ -37,7 +37,6 @@ CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node)
   return (1)
 }
 
-################################################################################################3
 #' Given two di network adjacency matrices, it prints the common edges in an output file
 #'
 #' Given two di nets' adjacency matrices (must of of same dim, same rownames, same colnames
@@ -48,9 +47,8 @@ CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node)
 #' @param di.net.adj.matrix2 second di network adjacency matrix
 #' @param output.dirname output directory to store files
 #'
-#' @export
-Print.common.di.edges <- function(di.net.adj.matrix1, di.net.adj.matrix2,  output.dirname="./OUTPUT")
-{
+#' @keywords internal
+Print.common.di.edges <- function(di.net.adj.matrix1, di.net.adj.matrix2,  output.dirname="./OUTPUT") {
   if(!base::is.matrix(di.net.adj.matrix1))
   {
     base::stop("Error in Print.common.di.edges di.net.adj.matrix1 is not a matrix")

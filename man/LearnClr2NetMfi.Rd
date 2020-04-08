@@ -4,8 +4,15 @@
 \alias{LearnClr2NetMfi}
 \title{Learns CLR2 network}
 \usage{
-LearnClr2NetMfi(input.data.discr, num.nodes, node.names, num.timepts,
-  max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix)
+LearnClr2NetMfi(
+  input.data.discr,
+  num.nodes,
+  node.names,
+  num.timepts,
+  max.fanin,
+  output.dirname = "./OUTPUT",
+  mi.net.adj.matrix
+)
 }
 \arguments{
 \item{input.data.discr}{Discretized dataset}
@@ -30,3 +37,4 @@ Learns CLR2 net. For each node, retains top 'max.fanin' number of neighbours w.r
 and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 If there are less than that number of edges for a node, then retain all its neighbours.
 }
+\keyword{internal}

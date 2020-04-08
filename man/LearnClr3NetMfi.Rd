@@ -4,8 +4,14 @@
 \alias{LearnClr3NetMfi}
 \title{Learn CLR3 network}
 \usage{
-LearnClr3NetMfi(input.data.discr.3D, num.nodes, node.names, num.timepts,
-  max.fanin, mi.net.adj.matrix.list)
+LearnClr3NetMfi(
+  input.data.discr.3D,
+  num.nodes,
+  node.names,
+  num.timepts,
+  max.fanin,
+  mi.net.adj.matrix.list
+)
 }
 \arguments{
 \item{input.data.discr.3D}{3D Discretized dataset}
@@ -28,3 +34,4 @@ Learns CLR3 net. For each node, retains top 'max.fanin' number of neighbours w.r
 and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 If there are less than that number of edges for a node, then retain all its neighbours.
 }
+\keyword{internal}

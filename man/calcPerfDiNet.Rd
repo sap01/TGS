@@ -29,3 +29,4 @@ res<-calcPerfDiNet(matrix(c(1,0,1,1,1,1,1,0,1),nrow=3,ncol=3),
 + matrix(nrow=1,ncol=11),3)
 
 }
+\keyword{internal}

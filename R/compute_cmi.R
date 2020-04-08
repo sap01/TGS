@@ -11,8 +11,6 @@
 #' The original funciton, namely 'cmi()' [2],
 #' is written in MATLAB.
 #'
-#' @import stats
-#'
 #' @param v1 random variable 1
 #' @param v2 random variable 2
 #' @param vcs random vector 'vcs'
@@ -33,7 +31,7 @@
 #' @examples
 #' ComputeCmiPcaCmi(c(3,5),c(4,2))
 #'
-#' @export
+#' @keywords internal
 ComputeCmiPcaCmi <- function(v1,v2,vcs) {
   cmiv <- 0
 

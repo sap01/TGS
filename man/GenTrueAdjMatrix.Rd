@@ -19,3 +19,4 @@ also returns the adjacency matrix
 \description{
 Generates True net adjacency matrix and save as an R object
 }
+\keyword{internal}

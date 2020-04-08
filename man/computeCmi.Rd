@@ -24,3 +24,4 @@ given random vector 'vcs'.
 computeCmi(c(3,5),c(3,5))
 
 }
+\keyword{internal}

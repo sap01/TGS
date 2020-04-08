@@ -4,8 +4,14 @@
 \alias{LearnClrNetFromDiscrData}
 \title{Learns CLR network from a given discretized dataset.}
 \usage{
-LearnClrNetFromDiscrData(input.data.discr, num.nodes, node.names,
-  num.timepts, max.fanin, output.dirname = "./OUTPUT")
+LearnClrNetFromDiscrData(
+  input.data.discr,
+  num.nodes,
+  node.names,
+  num.timepts,
+  max.fanin,
+  output.dirname = "./OUTPUT"
+)
 }
 \arguments{
 \item{input.data.discr}{Discretized dataset}
@@ -28,3 +34,4 @@ Learns CLR net from a given discretized dataset. For each node, retains top 'max
 and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 If there are less than that number of edges for a node, then retain all its neighbours.
 }
+\keyword{internal}

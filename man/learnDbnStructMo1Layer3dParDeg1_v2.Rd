@@ -2,11 +2,18 @@
 % Please edit documentation in R/learnDbnStruct3dParDeg1.R
 \name{learnDbnStructMo1Layer3dParDeg1_v2}
 \alias{learnDbnStructMo1Layer3dParDeg1_v2}
-\title{Goal: Unrolled DBN structure learning with Markov Order 1.}
+\title{Unrolled DBN structure learning with Markov Order 1}
 \usage{
-learnDbnStructMo1Layer3dParDeg1_v2(input.data.discr.3D, mi.net.adj.matrix,
-  num.discr.levels, num.nodes, num.timepts, max.fanin, node.names,
-  clr.algo)
+learnDbnStructMo1Layer3dParDeg1_v2(
+  input.data.discr.3D,
+  mi.net.adj.matrix,
+  num.discr.levels,
+  num.nodes,
+  num.timepts,
+  max.fanin,
+  node.names,
+  clr.algo
+)
 }
 \arguments{
 \item{input.data.discr.3D}{Dimensions {1 = time points, 2 = variables, 3 = samples under the same time point}.}
@@ -41,3 +48,4 @@ is a binary matrix of dimension (V \ times V). Hence, the total size of the unro
 adjacency list is ((T - 1) \ times (V \ times V)).
 Candidate parents: The target node itself and its CLR net neighbours at immediately previous time pt.
 }
+\keyword{internal}

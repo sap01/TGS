@@ -4,13 +4,10 @@
 #' @param output.file full path where output adjacency matrix is to be stored
 #' @param num.nodes the number of nodes
 #'
-#' @import utils
-#'
 #' @return also returns the adjacency matrix
 #'
-#' @export
-GenTrueAdjMatrix <- function(input.file, output.file, num.nodes)
-{
+#' @keywords internal
+GenTrueAdjMatrix <- function(input.file, output.file, num.nodes) {
   node.names <- base::c()
   for (node.idx in 1:num.nodes)
   {

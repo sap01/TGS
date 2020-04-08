@@ -2,14 +2,16 @@
 % Please edit documentation in R/rollDbn.R
 \name{rollDbn}
 \alias{rollDbn}
-\title{Convert a given unrolled Dynamic Bayesian Network (DBN) into a rolled DBN using different rolling methods
-
-Rolls time-varying networks into a single time-invariant network.
-This function is compatible with the time-varying networks learnt through
-learnDbnStruct3dParDeg1.R::learnDbnStructMo1Layer3dParDeg1().}
+\title{Convert a given unrolled Dynamic Bayesian Network (DBN) into a rolled DBN using different rolling methods}
 \usage{
-rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix,
-  roll.method, allow.self.loop)
+rollDbn(
+  num.nodes,
+  node.names,
+  num.timepts,
+  unrolled.DBN.adj.matrix,
+  roll.method,
+  allow.self.loop
+)
 }
 \arguments{
 \item{num.nodes}{Number of the desired nodes in the rolled DBN}
@@ -28,9 +30,8 @@ rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix,
 rolled.DBN.adj.matrix Return the rolled DBN adjacency matrix. It is a 2D matrix of dimension (num.nodes * num.nodes).
 }
 \description{
-Convert a given unrolled Dynamic Bayesian Network (DBN) into a rolled DBN using different rolling methods
-
 Rolls time-varying networks into a single time-invariant network.
 This function is compatible with the time-varying networks learnt through
 learnDbnStruct3dParDeg1.R::learnDbnStructMo1Layer3dParDeg1().
 }
+\keyword{internal}

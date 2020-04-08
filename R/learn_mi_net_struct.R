@@ -1,16 +1,15 @@
 #' Compute Entropy matrix from the input data
 #'
-#' @import stats
-#'
 #' @param input.data input data matrix
 #'
 #' @return entropy matrix
+#'
 #' @examples
 #' df = data.frame(c(2,3,5), c(1,3,2), c(2,31,4))
 #' ComputEntropy(df)
-#' @export
-ComputEntropy <- function(input.data)
-{
+#'
+#' @keywords internal
+ComputEntropy <- function(input.data) {
   if(!base::is.data.frame(input.data))
   {
     base::stop("Error in ComputEntropy. input.data is not a data frame")
@@ -26,11 +25,7 @@ ComputEntropy <- function(input.data)
   return(entropy.matrix)
 }
 
-############################################################################################
-
 #' Learn the mi network structure
-#'
-#' @import stats
 #'
 #' @param mut.info.matrix matrix containing mut info
 #' @param mi.net.adj.matrix mi network adjacency matrix
@@ -39,9 +34,8 @@ ComputEntropy <- function(input.data)
 #'
 #' @return mi network adjacency matrix
 #'
-#' @export
-LearnMiNetStructZstat <- function(mut.info.matrix, mi.net.adj.matrix, entropy.matrix, alpha)
-{
+#' @keywords internal
+LearnMiNetStructZstat <- function(mut.info.matrix, mi.net.adj.matrix, entropy.matrix, alpha) {
   if(!base::is.matrix(mut.info.matrix))
   {
     base::stop("Error in LearnMiNetStructZstat mut.info.matrix is not a matrix")
@@ -77,26 +71,22 @@ LearnMiNetStructZstat <- function(mut.info.matrix, mi.net.adj.matrix, entropy.ma
   return(mi.net.adj.matrix)
 }
 
-############################################################################################
-
 #' Learn the mi network structure
-#'
-#' @import stats
 #'
 #' @param mut.info.matrix matrix containing mut info
 #' @param mi.net.adj.matrix mi network adjacency matrix
 #' @param num.nodes number of nodes
 #'
 #' @return mi network adjacency matrix
+#'
 #' @examples
 #' LearnMiNetStructRowMedian(
 #' + matrix(c(0.1,0.5,0.53,0.76,0,0.12,0.43,0.65,0.23),nrow=3),
 #' + matrix(c(1,0,1,0,0,0,1,0,1),nrow=3),
 #' + 3)
 #'
-#' @export
-LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes)
-{
+#' @keywords internal
+LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes) {
   if(!base::is.matrix(mut.info.matrix))
   {
     base::stop("Error in LearnMiNetStructRowMedian mut.info.matrix is not a matrix")
@@ -121,10 +111,7 @@ LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.no
   return(mi.net.adj.matrix)
 }
 
-############################################################################################
 #' Learns the CLR network Replaces all non-zero edge weights with 1.
-#'
-#' @import minet
 #'
 #' @param mut.info.matrix matrix containing mut info
 #' @param mi.net.adj.matrix mi network adjacency matrix
@@ -133,9 +120,8 @@ LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.no
 #'
 #' @return mi network adjacency matrix
 #'
-#' @export
-LearnMiNetStructClr <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, output.dirname="./OUTPUT")
-{
+#' @keywords internal
+LearnMiNetStructClr <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, output.dirname="./OUTPUT") {
   if(!base::is.matrix(mut.info.matrix))
   {
     base::stop("Error in LearnMiNetStructClr mut.info.matrix is not a matrix")
@@ -167,14 +153,11 @@ LearnMiNetStructClr <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, o
   return(mi.net.adj.matrix)
 }
 
-############################################################################################
 #' Learns CLR network from a given discretized dataset.
 #'
 #' Learns CLR net from a given discretized dataset. For each node, retains top 'max.fanin' number of neighbours w.r.t. edge weight
 #' and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 #' If there are less than that number of edges for a node, then retain all its neighbours.
-#'
-#' @import minet
 #'
 #' @param input.data.discr Discretized dataset
 #' @param num.nodes number of nodes
@@ -185,9 +168,8 @@ LearnMiNetStructClr <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, o
 #'
 #' @return mi network adjacency matrix
 #'
-#' @export
-LearnClrNetFromDiscrData <- function(input.data.discr, num.nodes, node.names, num.timepts,max.fanin, output.dirname = "./OUTPUT")
-{
+#' @keywords internal
+LearnClrNetFromDiscrData <- function(input.data.discr, num.nodes, node.names, num.timepts,max.fanin, output.dirname = "./OUTPUT") {
   if(!base::is.data.frame(input.data.discr))
   {
     base::stop("Error in LearnClrNetFromDiscrData input.data.discr is not a data frame")
@@ -273,14 +255,11 @@ LearnClrNetFromDiscrData <- function(input.data.discr, num.nodes, node.names, nu
 
 }
 
-############################################################################################
 #' Learns CLR network
 #'
 #' Learns CLR net. For each node, retains top 'max.fanin' number of neighbours w.r.t. edge weight
 #' and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 #' If there are less than that number of edges for a node, then retain all its neighbours.
-#'
-#' @import minet
 #'
 #' @param mut.info.matrix matrix containing mut info
 #' @param mi.net.adj.matrix mi network adjacency matrix
@@ -290,9 +269,8 @@ LearnClrNetFromDiscrData <- function(input.data.discr, num.nodes, node.names, nu
 #'
 #' @return mi network adjacency matrix
 #'
-#' @export
-LearnClrNetMfi <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fanin, output.dirname = "./OUTPUT")
-{
+#' @keywords internal
+LearnClrNetMfi <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fanin, output.dirname = "./OUTPUT") {
   if(!base::is.matrix(mut.info.matrix))
   {
     base::stop("Error in LearnClrNetMfi mut.info.matrix is not a matrix")
@@ -341,14 +319,11 @@ LearnClrNetMfi <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fa
   return(mi.net.adj.matrix)
 }
 
-############################################################################################
 #' Learns CLR2 network
 #'
 #' Learns CLR2 net. For each node, retains top 'max.fanin' number of neighbours w.r.t. edge weight
 #' and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 #' If there are less than that number of edges for a node, then retain all its neighbours.
-#'
-#' @import minet
 #'
 #' @param input.data.discr Discretized dataset
 #' @param num.nodes number of nodes
@@ -360,10 +335,9 @@ LearnClrNetMfi <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fa
 #'
 #' @return mi network adjacency matrix
 #'
-#' @export
+#' @keywords internal
 LearnClr2NetMfi <- function(input.data.discr, num.nodes, node.names, num.timepts,
-                            max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix)
-{
+                            max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix) {
   if(!base::is.data.frame(input.data.discr))
   {
     base::stop("Error in LearnClr2NetMfi input.data.discr is not a data frame")
@@ -478,16 +452,11 @@ LearnClr2NetMfi <- function(input.data.discr, num.nodes, node.names, num.timepts
 
 }
 
-############################################################################################
-
-############################################################################################
 #' Learn CLR2.1 network
 #'
 #' Learns CLR2.1 net. For each node, retains top 'max.fanin' number of neighbours w.r.t. edge weight
 #' and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 #' If there are less than that number of edges for a node, then retain all its neighbours.
-#'
-#' @import stats
 #'
 #' @param input.data.discr Discretized dataset
 #' @param num.nodes number of nodes
@@ -499,10 +468,9 @@ LearnClr2NetMfi <- function(input.data.discr, num.nodes, node.names, num.timepts
 #'
 #' @return mi network adjacency matrix
 #'
-#' @export
+#' @keywords internal
 LearnClrNetMfiVer2.1 <- function(input.data.discr, num.nodes, node.names, num.timepts,
-                                 max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix)
-{
+                                 max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix) {
   if(!base::is.data.frame(input.data.discr))
   {
     base::stop("Error in LearnClrNetMfiVer2.1 input.data.discr is not a data frame")
@@ -688,16 +656,11 @@ LearnClrNetMfiVer2.1 <- function(input.data.discr, num.nodes, node.names, num.ti
 
 }
 
-############################################################################################
-
-############################################################################################
 #' Learn CLR3 network
 #'
 #' Learns CLR3 net. For each node, retains top 'max.fanin' number of neighbours w.r.t. edge weight
 #' and removes rest of the edges. Tie is broken in favour of the neighbour having smaller node index.
 #' If there are less than that number of edges for a node, then retain all its neighbours.
-#'
-#' @import stats
 #'
 #' @param input.data.discr.3D 3D Discretized dataset
 #' @param num.nodes number of nodes
@@ -708,10 +671,9 @@ LearnClrNetMfiVer2.1 <- function(input.data.discr, num.nodes, node.names, num.ti
 #'
 #' @return mi network adjacency matrix list
 #'
-#' @export
+#' @keywords internal
 LearnClr3NetMfi <- function(input.data.discr.3D, num.nodes, node.names, num.timepts,
-                            max.fanin, mi.net.adj.matrix.list)
-{
+                            max.fanin, mi.net.adj.matrix.list) {
   if(!base::is.array(input.data.discr.3D))
   {
     base::stop("Error in LearnClr3NetMfi input.data.discr.3D is not an array")
@@ -883,5 +845,3 @@ LearnClr3NetMfi <- function(input.data.discr.3D, num.nodes, node.names, num.time
 
   return(mi.net.adj.matrix.list)
 }
-
-############################################################################################

@@ -1,4 +1,4 @@
-#' @title Convert a given unrolled Dynamic Bayesian Network (DBN) into a rolled DBN using different rolling methods
+#' Convert a given unrolled Dynamic Bayesian Network (DBN) into a rolled DBN using different rolling methods
 #'
 #' Rolls time-varying networks into a single time-invariant network.
 #' This function is compatible with the time-varying networks learnt through
@@ -13,9 +13,8 @@
 #'
 #' @return rolled.DBN.adj.matrix Return the rolled DBN adjacency matrix. It is a 2D matrix of dimension (num.nodes * num.nodes).
 #'
-#' @export
-rollDbn <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, roll.method, allow.self.loop)
-{
+#' @keywords internal
+rollDbn <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, roll.method, allow.self.loop) {
   if(!base::is.matrix(unrolled.DBN.adj.matrix))
   {
     base::stop("Error in rollDbn unrolled.DBN.adj.matrix is not a matrix")
@@ -116,8 +115,7 @@ rollDbn <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix,
   return(rolled.DBN.adj.matrix)
 }
 
-####################################################################################################3
-#' @title Convert a given unrolled Dynamic Bayesian Network (DBN) into a rolled DBN using different rolling methods
+#' Convert a given unrolled Dynamic Bayesian Network (DBN) into a rolled DBN using different rolling methods
 #'
 #' Rolls time-varying networks into a single time-invariant network.
 #' This function is compatible with the time-varying networks learnt through
@@ -135,10 +133,9 @@ rollDbn <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix,
 #'
 #' @return rolled.DBN.adj.matrix Return the rolled DBN adjacency matrix. It is a 2D matrix of dimension (num.nodes * num.nodes).
 #'
-#' @export
+#' @keywords internal
 rollDbn_v2 <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix.list,
-                       roll.method, allow.self.loop)
-{
+                       roll.method, allow.self.loop) {
   if(!base::is.list(unrolled.DBN.adj.matrix.list))
   {
     base::stop("Error in rollDbn_v2 unrolled.DBN.adj.matrix.list is not a list")

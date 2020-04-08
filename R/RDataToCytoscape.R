@@ -23,9 +23,8 @@
 #' @param adj.mx adjacency matrix that needs to be converted
 #' @param output.dirname name of the output directory where the file will be stored
 #'
-#' @export
-adjmxToSif <- function(adj.mx, output.dirname = "./OUTPUT")
-{
+#' @keywords internal
+adjmxToSif <- function(adj.mx, output.dirname = "./OUTPUT") {
   if(!base::is.matrix(adj.mx))
   {
     base::stop("Error in adjmxToSif adj.mx is not a matrix")
