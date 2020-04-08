@@ -11,12 +11,9 @@ CountFeedFwdEdgesUndi(undi.net.adj.matrix)
 }
 \value{
 count of the number of feed-forward edges
+CountFeedFwdEdgesUndi(matrix(c(0,1,0,1,0,1,0,0,0),nrow=3))
 }
 \description{
 Count the number of feed-forward edges in a given undirected network.
-}
-\examples{
-CountFeedFwdEdgesUndi(matrix(c(0,1,0,1,0,1,0,0,0),nrow=3))
-
 }
 \keyword{internal}

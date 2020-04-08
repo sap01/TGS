@@ -13,6 +13,11 @@ reachable.nodes(di.net.adj.matrix, src.node.name)
 }
 \value{
 A vector containing all the nodes reachable from the given node
+
+x = matrix(c(1,0,0,0,1,1,0,1,1),nrow=3)
+rownames(x) <- c('A','B','C')
+colnames(x) <- c('A','B','C')
+reachable.nodes(x,'A')
 }
 \description{
 Given a directed network adjacency matrix and a node name, returns names of all the nodes
@@ -20,12 +25,5 @@ reachable from the given node. In the given directed network adjacency matrix,
 rows = source nodes, cols = tgt nodes. (i, j)th cell = 1 implies a directed edge from i
 to j; = 0 implies no directed edge from i to j. Row names of the given matrix must be
 the names of the nodes.
-}
-\examples{
-x = matrix(c(1,0,0,0,1,1,0,1,1),nrow=3)
-rownames(x) <- c('A','B','C')
-colnames(x) <- c('A','B','C')
-reachable.nodes(x,'A')
-
 }
 \keyword{internal}

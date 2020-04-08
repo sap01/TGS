@@ -18,15 +18,13 @@ calcPerfDiNet(inferredNet, targetNet, Result, n)
 }
 \value{
 the performance metrics
+
+res<-calcPerfDiNet(matrix(c(1,0,1,1,1,1,1,0,1),nrow=3,ncol=3),
++ matrix(c(0,1,0,1,1,1,1,0,1),nrow=3,ncol=3),
++ matrix(nrow=1,ncol=11),3)
 }
 \description{
 Calculating performance metrics of the directed net 'inferredNet' w.r.t. the
 directed net 'targetNet'.
-}
-\examples{
-res<-calcPerfDiNet(matrix(c(1,0,1,1,1,1,1,0,1),nrow=3,ncol=3),
-+ matrix(c(0,1,0,1,1,1,1,0,1),nrow=3,ncol=3),
-+ matrix(nrow=1,ncol=11),3)
-
 }
 \keyword{internal}

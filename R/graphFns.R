@@ -11,7 +11,7 @@
 #'
 #' @return A vector containing all the nodes reachable from the given node
 #'
-#' @examples
+# #' @examples
 #' x = matrix(c(1,0,0,0,1,1,0,1,1),nrow=3)
 #' rownames(x) <- c('A','B','C')
 #' colnames(x) <- c('A','B','C')

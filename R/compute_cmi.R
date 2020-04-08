@@ -28,7 +28,7 @@
 #' [2] Function declaration: 'function cmiv=cmi(v1,v2,vcs)',
 #' Source code file: http://www.comp-sysbio.org/grn/pca_cmi.m .
 #'
-#' @examples
+# #' @examples
 #' ComputeCmiPcaCmi(c(3,5),c(4,2))
 #'
 #' @keywords internal

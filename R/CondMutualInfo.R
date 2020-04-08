@@ -8,7 +8,7 @@
 #' @param vcs random vector 'vcs'
 #'
 #' @return Conditional Mutual info between 'v1' and 'v2'
-#' @examples
+# #' @examples
 #' computeCmi(c(3,5),c(3,5))
 #'
 #' @keywords internal

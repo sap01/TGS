@@ -6,7 +6,7 @@
 #'
 #' @return Returns 1 if 'di.net.adj.matrix' = 'cmi.net.adj.matrix' else returns 0
 #'
-#' @examples
+# #' @examples
 #' CompareNet(matrix(c(0,0,0,0),nrow=2,ncol=2),
 #' matrix(c(0,0,0,0),nrow=2,ncol=2), 2)
 #'

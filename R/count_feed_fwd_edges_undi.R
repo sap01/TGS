@@ -3,7 +3,7 @@
 #' @param undi.net.adj.matrix adjacency matrix of an undirected network
 #'
 #' @return count of the number of feed-forward edges
-#' @examples
+# #' @examples
 #' CountFeedFwdEdgesUndi(matrix(c(0,1,0,1,0,1,0,0,0),nrow=3))
 #'
 #' @keywords internal

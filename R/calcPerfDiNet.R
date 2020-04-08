@@ -8,14 +8,13 @@
 #'
 #' @return the performance metrics
 #'
-#' @examples
+# #' @examples
 #' res<-calcPerfDiNet(matrix(c(1,0,1,1,1,1,1,0,1),nrow=3,ncol=3),
 #' + matrix(c(0,1,0,1,1,1,1,0,1),nrow=3,ncol=3),
 #' + matrix(nrow=1,ncol=11),3)
 #'
 #' @keywords internal
-calcPerfDiNet <-function(inferredNet, targetNet, Result, n)
-{
+calcPerfDiNet <-function(inferredNet, targetNet, Result, n) {
   if(!base::is.matrix(inferredNet))
   {
     base::stop("Error in calcPerfDiNet. inferredNet is not a matrix")

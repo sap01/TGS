@@ -15,16 +15,14 @@ CompareNet(di.net.adj.matrix, cmi.net.adj.matrix, num.node)
 }
 \value{
 Returns 1 if 'di.net.adj.matrix' = 'cmi.net.adj.matrix' else returns 0
-}
-\description{
-Checks if 'di.net.adj.matrix' = 'cmi.net.adj.matrix'
-}
-\examples{
+
 CompareNet(matrix(c(0,0,0,0),nrow=2,ncol=2),
 matrix(c(0,0,0,0),nrow=2,ncol=2), 2)
 
 CompareNet(matrix(c(0,0,1,0),nrow=2,ncol=2),
 matrix(c(0,0,0,0),nrow=2,ncol=2), 2)
-
+}
+\description{
+Checks if 'di.net.adj.matrix' = 'cmi.net.adj.matrix'
 }
 \keyword{internal}
