@@ -24,6 +24,7 @@
 #' @param output.dirname name of the output directory where the file will be stored
 #'
 #' @keywords internal
+#' @noRd
 adjmxToSif <- function(adj.mx, output.dirname = "./OUTPUT") {
   if(!base::is.matrix(adj.mx))
   {

@@ -14,6 +14,7 @@
 #' matrix(c(0,0,0,0),nrow=2,ncol=2), 2)
 #'
 #' @keywords internal
+#' @noRd
 CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node) {
   if(!base::is.matrix(di.net.adj.matrix))
   {
@@ -47,6 +48,7 @@ CompareNet <-function(di.net.adj.matrix,cmi.net.adj.matrix,num.node) {
 #' @param output.dirname output directory to store files
 #'
 #' @keywords internal
+#' @noRd
 Print.common.di.edges <- function(di.net.adj.matrix1, di.net.adj.matrix2,  output.dirname="./OUTPUT") {
   if(!base::is.matrix(di.net.adj.matrix1))
   {

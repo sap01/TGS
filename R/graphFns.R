@@ -18,6 +18,7 @@
 #' reachable.nodes(x,'A')
 #'
 #' @keywords internal
+#' @noRd
 reachable.nodes <- function(di.net.adj.matrix, src.node.name) {
   if(!base::is.matrix(di.net.adj.matrix))
   {

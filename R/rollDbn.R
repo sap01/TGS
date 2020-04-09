@@ -14,6 +14,7 @@
 #' @return rolled.DBN.adj.matrix Return the rolled DBN adjacency matrix. It is a 2D matrix of dimension (num.nodes * num.nodes).
 #'
 #' @keywords internal
+#' @noRd
 rollDbn <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, roll.method, allow.self.loop) {
   if(!base::is.matrix(unrolled.DBN.adj.matrix))
   {
@@ -134,6 +135,7 @@ rollDbn <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix,
 #' @return rolled.DBN.adj.matrix Return the rolled DBN adjacency matrix. It is a 2D matrix of dimension (num.nodes * num.nodes).
 #'
 #' @keywords internal
+#' @noRd
 rollDbn_v2 <- function(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix.list,
                        roll.method, allow.self.loop) {
   if(!base::is.list(unrolled.DBN.adj.matrix.list))

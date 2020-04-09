@@ -7,6 +7,7 @@
 #' CountFeedFwdEdgesUndi(matrix(c(0,1,0,1,0,1,0,0,0),nrow=3))
 #'
 #' @keywords internal
+#' @noRd
 CountFeedFwdEdgesUndi <- function(undi.net.adj.matrix) {
   if(!base::is.matrix(undi.net.adj.matrix))
   {

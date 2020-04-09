@@ -8,6 +8,7 @@
 #' @return the directed network adjacency matrix after learning the CMI network
 #'
 #' @keywords internal
+#' @noRd
 learnCmiNetStruct <- function(di.net.adj.matrix, input.data, num.nodes, beta) {
   if(!base::is.matrix(di.net.adj.matrix))
   {

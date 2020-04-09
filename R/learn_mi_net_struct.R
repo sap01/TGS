@@ -9,6 +9,7 @@
 #' ComputEntropy(df)
 #'
 #' @keywords internal
+#' @noRd
 ComputEntropy <- function(input.data) {
   if(!base::is.data.frame(input.data))
   {
@@ -35,6 +36,7 @@ ComputEntropy <- function(input.data) {
 #' @return mi network adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 LearnMiNetStructZstat <- function(mut.info.matrix, mi.net.adj.matrix, entropy.matrix, alpha) {
   if(!base::is.matrix(mut.info.matrix))
   {
@@ -86,6 +88,7 @@ LearnMiNetStructZstat <- function(mut.info.matrix, mi.net.adj.matrix, entropy.ma
 #' + 3)
 #'
 #' @keywords internal
+#' @noRd
 LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes) {
   if(!base::is.matrix(mut.info.matrix))
   {
@@ -121,6 +124,7 @@ LearnMiNetStructRowMedian <- function(mut.info.matrix, mi.net.adj.matrix, num.no
 #' @return mi network adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 LearnMiNetStructClr <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, output.dirname="./OUTPUT") {
   if(!base::is.matrix(mut.info.matrix))
   {
@@ -169,6 +173,7 @@ LearnMiNetStructClr <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, o
 #' @return mi network adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 LearnClrNetFromDiscrData <- function(input.data.discr, num.nodes, node.names, num.timepts,max.fanin, output.dirname = "./OUTPUT") {
   if(!base::is.data.frame(input.data.discr))
   {
@@ -270,6 +275,7 @@ LearnClrNetFromDiscrData <- function(input.data.discr, num.nodes, node.names, nu
 #' @return mi network adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 LearnClrNetMfi <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fanin, output.dirname = "./OUTPUT") {
   if(!base::is.matrix(mut.info.matrix))
   {
@@ -336,6 +342,7 @@ LearnClrNetMfi <- function(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fa
 #' @return mi network adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 LearnClr2NetMfi <- function(input.data.discr, num.nodes, node.names, num.timepts,
                             max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix) {
   if(!base::is.data.frame(input.data.discr))
@@ -469,6 +476,7 @@ LearnClr2NetMfi <- function(input.data.discr, num.nodes, node.names, num.timepts
 #' @return mi network adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 LearnClrNetMfiVer2.1 <- function(input.data.discr, num.nodes, node.names, num.timepts,
                                  max.fanin, output.dirname = "./OUTPUT", mi.net.adj.matrix) {
   if(!base::is.data.frame(input.data.discr))
@@ -672,6 +680,7 @@ LearnClrNetMfiVer2.1 <- function(input.data.discr, num.nodes, node.names, num.ti
 #' @return mi network adjacency matrix list
 #'
 #' @keywords internal
+#' @noRd
 LearnClr3NetMfi <- function(input.data.discr.3D, num.nodes, node.names, num.timepts,
                             max.fanin, mi.net.adj.matrix.list) {
   if(!base::is.array(input.data.discr.3D))

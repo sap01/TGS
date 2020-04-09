@@ -8,6 +8,7 @@
 #' checkUnrolledDbn(matrix(c(0,0,0,0),nrow=2,ncol=2))
 #'
 #' @keywords internal
+#' @noRd
 checkUnrolledDbn <- function(unrolled.DBN.adj.matrix) {
   if(!base::is.matrix(unrolled.DBN.adj.matrix))
   {

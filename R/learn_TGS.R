@@ -1,20 +1,24 @@
-#' Implement the TGS Algorithm.
+#' Implement the TGS Algorithm
 #'
-#' It Uncovers the underlying temporal sequence of gene regulatory events in the
-#' form of time-varying Gene Regulatory Networks (GRNs) It learns the
-#' time-varying GRN structures independently of each other, without imposing any
-#' structural constraint. However, it is time intensive and hence not suitable
-#' for large-scale GRNs.
+#' The TGS algorithm takes a time-series gene expression dataset
+#' as input. It analyses the data and reconstructs the
+#' underlying temporal sequence of gene regulatory events.
+#' The reconstructed output is given in the form of
+#' time-varying gene regulatory networks (GRNs). The TGS
+#' algorithm is extremely time-efficient and hence suitable
+#' for processing large datasets with hundreds to thousands
+#' of genes. More details about the algorithm can be found
+#' at \url{doi:10.1109/TCBB.2018.2861698}.
 #'
-#' @param isfile 1 if the parameters are given in a json file otherwise 0.
-#' @param input.data.filename name of the file containing the data without the
-#'   directory name. It can be .tsv or .Rdata file only.
-#' @param num.timepts number of distinct timepoints
+#' @param isfile 1 if the parameters are given in a json file; otherwise 0.
+#' @param input.data.filename Name of the file containing the data without the
+#' directory name. It can be a .tsv or .RData file.
+#' @param num.timepts Number of distinct time points
 #' @param true.net.filename File containing the true network without the
-#'   directory name. In case non empty then should contain .Rdata file with
+#'   directory name. In case non-empty then should contain .Rdata file with
 #'   object name 'true.net.adj.matrix'
-#' @param input.wt.data.filename File containing Input Wild Type data without
-#'   the directory name. If it is not empty hen must be a .tsv file having first
+#' @param input.wt.data.filename file containing input Wild Type data without
+#'   the directory name. If it is non-empty then must be a .tsv file having first
 #'   row containing names of genes except (1,1) and second row should have the
 #'   WT values except (2,1)th cell.
 #' @param is.discrete whether the data is discretized or not

@@ -2,7 +2,7 @@
 % Please edit documentation in R/learn_TGS.R
 \name{LearnTgs}
 \alias{LearnTgs}
-\title{Implement the TGS Algorithm.}
+\title{Implement the TGS Algorithm}
 \usage{
 LearnTgs(
   isfile = 0,
@@ -25,19 +25,19 @@ LearnTgs(
 )
 }
 \arguments{
-\item{isfile}{1 if the parameters are given in a json file otherwise 0.}
+\item{isfile}{1 if the parameters are given in a json file; otherwise 0.}
 
-\item{input.data.filename}{name of the file containing the data without the
-directory name. It can be .tsv or .Rdata file only.}
+\item{input.data.filename}{Name of the file containing the data without the
+directory name. It can be a .tsv or .RData file.}
 
-\item{num.timepts}{number of distinct timepoints}
+\item{num.timepts}{Number of distinct time points}
 
 \item{true.net.filename}{File containing the true network without the
-directory name. In case non empty then should contain .Rdata file with
+directory name. In case non-empty then should contain .Rdata file with
 object name 'true.net.adj.matrix'}
 
-\item{input.wt.data.filename}{File containing Input Wild Type data without
-the directory name. If it is not empty hen must be a .tsv file having first
+\item{input.wt.data.filename}{file containing input Wild Type data without
+the directory name. If it is non-empty then must be a .tsv file having first
 row containing names of genes except (1,1) and second row should have the
 WT values except (2,1)th cell.}
 
@@ -75,11 +75,15 @@ stored. By default your current directory unless specified otherwise}
 to be read from json file}
 }
 \description{
-It Uncovers the underlying temporal sequence of gene regulatory events in the
-form of time-varying Gene Regulatory Networks (GRNs) It learns the
-time-varying GRN structures independently of each other, without imposing any
-structural constraint. However, it is time intensive and hence not suitable
-for large-scale GRNs.
+The TGS algorithm takes a time-series gene expression dataset
+as input. It analyses the data and reconstructs the
+underlying temporal sequence of gene regulatory events.
+The reconstructed output is given in the form of
+time-varying gene regulatory networks (GRNs). The TGS
+algorithm is extremely time-efficient and hence suitable
+for processing large datasets with hundreds to thousands
+of genes. More details about the algorithm can be found
+at \url{doi:10.1109/TCBB.2018.2861698}.
 }
 \examples{
 \dontrun{

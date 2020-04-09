@@ -12,6 +12,7 @@
 #' computeCmi(c(3,5),c(3,5))
 #'
 #' @keywords internal
+#' @noRd
 computeCmi <- function(v1,v2,vcs) {
   if(nargs() == 2)
   {

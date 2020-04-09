@@ -7,6 +7,7 @@
 #' @return also returns the adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 GenTrueAdjMatrix <- function(input.file, output.file, num.nodes) {
   node.names <- base::c()
   for (node.idx in 1:num.nodes)

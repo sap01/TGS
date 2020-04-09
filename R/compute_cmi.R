@@ -32,6 +32,7 @@
 #' ComputeCmiPcaCmi(c(3,5),c(4,2))
 #'
 #' @keywords internal
+#' @noRd
 ComputeCmiPcaCmi <- function(v1,v2,vcs) {
   cmiv <- 0
 

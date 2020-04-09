@@ -11,5 +11,6 @@
 #' the manual for the required parameters.
 #'
 #' @docType package
-#' @name TGS
+#' @name TGS-package
+#' @aliases TGS
 NULL

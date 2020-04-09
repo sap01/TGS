@@ -10,6 +10,7 @@
 #' @return input data discretized into 2 levels
 #'
 #' @keywords internal
+#' @noRd
 discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename) {
   if(!base::is.data.frame(input.data))
   {
@@ -53,6 +54,7 @@ discretizeData.2L.wt.l <- function(input.data, input.wt.data.filename) {
 #' @return input data discretized into 2 levels
 #'
 #' @keywords internal
+#' @noRd
 discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename) {
   if(!base::is.data.frame(input.data))
   {
@@ -101,6 +103,7 @@ discretizeData.2L.wt.le <- function(input.data, input.wt.data.filename) {
 #' @return input data discretized into 3 levels
 #'
 #' @keywords internal
+#' @noRd
 discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, num.discr.levels) {
   if(!base::is.data.frame(input.data))
   {
@@ -177,6 +180,7 @@ discretizeData.3L.wt <- function(input.data, input.wt.data.filename, tolerance, 
 #' @return input data discretized into 5 levels
 #'
 #' @keywords internal
+#' @noRd
 discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.levels) {
   if(!base::is.data.frame(input.data))
   {
@@ -255,6 +259,7 @@ discretizeData.5L.wt <- function(input.data, input.wt.data.filename, num.discr.l
 #' Proceedings of the National Academy of Sciences 106.29 (2009): 11878-11883.]
 #'
 #' @keywords internal
+#' @noRd
 discretizeData.2L.Tesla <- function(input.data) {
   if(!base::is.data.frame(input.data))
   {

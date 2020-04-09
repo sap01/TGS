@@ -391,6 +391,7 @@
 #' @return Unrolled DBN adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 #' @importFrom foreach %do% %:% when
 learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts,  output.dirname="./OUTPUT") {
   if(!base::is.array(input.data.discr.3D))
@@ -697,6 +698,7 @@ learnDbnStructLayer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix,
 #' @return Unrolled DBN adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matrix, num.discr.levels, num.nodes, num.timepts, max.fanin, output.dirname) {
   if(!base::is.array(input.data.discr.3D))
   {
@@ -1004,6 +1006,7 @@ learnDbnStructMo1Layer3dParDeg1 <- function(input.data.discr.3D, mi.net.adj.matr
 #' @return Unrolled DBN adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.matrix,
                                                num.discr.levels, num.nodes, num.timepts, max.fanin,
                                                node.names, clr.algo) {
@@ -1363,6 +1366,7 @@ learnDbnStructMo1Layer3dParDeg1_v2 <- function(input.data.discr.3D, mi.net.adj.m
 #' @return Unrolled DBN adjacency matrix
 #'
 #' @keywords internal
+#' @noRd
 LearnDbnStructMo1Clr3Ser <- function(input.data.discr.3D, mi.net.adj.matrix.list.filename,
                                      num.discr.levels, num.nodes, num.timepts, max.fanin,
                                      node.names, unrolled.DBN.adj.matrix.list) {

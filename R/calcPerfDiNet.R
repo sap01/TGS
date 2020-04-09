@@ -14,6 +14,7 @@
 #' + matrix(nrow=1,ncol=11),3)
 #'
 #' @keywords internal
+#' @noRd
 calcPerfDiNet <-function(inferredNet, targetNet, Result, n) {
   if(!base::is.matrix(inferredNet))
   {
@@ -109,8 +110,8 @@ calcPerfDiNet <-function(inferredNet, targetNet, Result, n) {
 #' @param di.net.adj.matrix predicted directed gene reuglatory network adjacency matrix
 #'
 #' @keywords internal
-eval.wrt.known.gene.ias <- function(di.net.adj.matrix)
-{
+#' @noRd
+eval.wrt.known.gene.ias <- function(di.net.adj.matrix) {
   if(!base::is.matrix(di.net.adj.matrix))
   {
     base::stop("Error in eval.wrt.known.gene.ias di.net.adj.matrix is not a matrix")
