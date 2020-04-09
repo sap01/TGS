@@ -16,7 +16,7 @@
 #' @param num.timepts Number of distinct time points
 #' @param true.net.filename File containing the true network without the
 #'   directory name. In case non-empty then should contain .Rdata file with
-#'   object name 'true.net.adj.matrix'
+#'   object name 'true.net.adj.matrix'.
 #' @param input.wt.data.filename file containing input Wild Type data without
 #'   the directory name. If it is non-empty then must be a .tsv file having first
 #'   row containing names of genes except (1,1) and second row should have the
@@ -75,10 +75,9 @@ LearnTgs <- function(isfile = 0,
                      scoring.func = "BIC",
                      input.dirname = "",
                      output.dirname = "",
-                     json.file = ""
-)
+                     json.file = "")
 {
-  if(isfile!=0)
+  if (isfile != 0)
   {
     ##------------------------------------------------------------
     ## Begin: Read User-defined input Params
@@ -104,23 +103,25 @@ LearnTgs <- function(isfile = 0,
     ##------------------------------------------------------------
   }
 
-  if(input.dirname=="")
-  {
+  if (input.dirname == "") {
     input.dirname <- base::getwd()
   }
-  if(output.dirname=="")
-  {
+
+  if (output.dirname == "") {
     output.dirname <- base::getwd()
   }
 
-  input.data.filename <- base::paste(input.dirname, input.data.filename, sep = '/')
+  input.data.filename <-
+    base::paste(input.dirname, input.data.filename, sep = '/')
   if (true.net.filename != '')
   {
-    true.net.filename <- base::paste(input.dirname, true.net.filename, sep = '/')
+    true.net.filename <-
+      base::paste(input.dirname, true.net.filename, sep = '/')
   }
   if (input.wt.data.filename != '')
   {
-    input.wt.data.filename <- base::paste(input.dirname, input.wt.data.filename, sep = '/')
+    input.wt.data.filename <-
+      base::paste(input.dirname, input.wt.data.filename, sep = '/')
   }
 
   ##------------------------------------------------------------
@@ -132,7 +133,8 @@ LearnTgs <- function(isfile = 0,
   base::print('') ## to append a blank line
 
   ## Save console output in a file named 'output.txt' inside the output directory.
-  output.filename <- base::paste(output.dirname, 'output.txt', sep = '/')
+  output.filename <-
+    base::paste(output.dirname, 'output.txt', sep = '/')
   output.file.conn <- base::file(output.filename, open = "wt")
   base::sink(output.file.conn)
 
@@ -144,19 +146,21 @@ LearnTgs <- function(isfile = 0,
   ## are allowed.
   ## Split the string at every '.' and consider the last substring as the
   ## file extension.
-  input.data.filename.ext <- base::unlist(base::strsplit(input.data.filename, '[.]'))
+  input.data.filename.ext <-
+    base::unlist(base::strsplit(input.data.filename, '[.]'))
   ## End: Find file extension of the input data file. Only '.tsv' and '.RData'
   ## are allowed.
 
   ## Initialize input data
   input.data <- NULL
   if (input.data.filename.ext[base::length(input.data.filename.ext)] == 'tsv') {
-    input.data <- utils::read.table(input.data.filename, header = TRUE, sep="\t")
+    input.data <-
+      utils::read.table(input.data.filename, header = TRUE, sep = "\t")
 
     timepts.names <- input.data[1:num.timepts, 1]
 
     ## Remove first col i.e. the time point names
-    input.data <- input.data[, -1]
+    input.data <- input.data[,-1]
 
   } else if (input.data.filename.ext[base::length(input.data.filename.ext)] == 'RData') {
     ## Loads an object named input.data
@@ -176,7 +180,8 @@ LearnTgs <- function(isfile = 0,
   node.names <- base::c()
   for (col.idx in 1:base::ncol(input.data))
   {
-    new.node.name <- base::paste('v', base::as.character(col.idx), sep = '')
+    new.node.name <-
+      base::paste('v', base::as.character(col.idx), sep = '')
     node.names <- base::c(node.names, new.node.name)
   }
   base::rm(col.idx)
@@ -207,14 +212,18 @@ LearnTgs <- function(isfile = 0,
 
     } else if (discr.algo == 'discretizeData.2L.wt.l')
     {
-      input.data.discr <- discretizeData.2L.wt.l(input.data, input.wt.data.filename)
+      input.data.discr <-
+        discretizeData.2L.wt.l(input.data, input.wt.data.filename)
 
     } else if (discr.algo == 'discretizeData.2L.Tesla')
     {
       input.data.discr <- discretizeData.2L.Tesla(input.data)
     }
 
-    base::save(input.data.discr, file = base::paste(output.dirname, 'input.data.discr.RData', sep = '/'))
+    base::save(
+      input.data.discr,
+      file = base::paste(output.dirname, 'input.data.discr.RData', sep = '/')
+    )
   }
   ##------------------------------------------------------------
   ## End: Read input data
@@ -231,14 +240,22 @@ LearnTgs <- function(isfile = 0,
   ##------------------------------------------------------------
   input.data.discr.matrix <- base::data.matrix(input.data.discr)
 
-  input.data.discr.3D <- base::array(NA, base::c(num.timepts, num.nodes, num.samples.per.timept),
-                                     dimnames = base::c(base::list(timepts.names), base::list(node.names),
-                                                        base::list(1:num.samples.per.timept)))
+  input.data.discr.3D <-
+    base::array(
+      NA,
+      base::c(num.timepts, num.nodes, num.samples.per.timept),
+      dimnames = base::c(
+        base::list(timepts.names),
+        base::list(node.names),
+        base::list(1:num.samples.per.timept)
+      )
+    )
 
   for (sample.idx in 1:num.samples.per.timept) {
     start.row.idx <- (1 + (num.timepts * (sample.idx - 1)))
     end.row.idx <- (num.timepts * sample.idx)
-    input.data.discr.3D[ , , sample.idx] <- input.data.discr.matrix[start.row.idx:end.row.idx, ]
+    input.data.discr.3D[, , sample.idx] <-
+      input.data.discr.matrix[start.row.idx:end.row.idx,]
   }
   base::rm(sample.idx)
 
@@ -265,18 +282,22 @@ LearnTgs <- function(isfile = 0,
 
   mut.info.matrix <- NULL
   if (clr.algo == 'CLR') {
-
     # Initialize mutual information matrix with zeroes
-    mut.info.matrix <- base::matrix(0, nrow = num.nodes, ncol = num.nodes,
-                                    dimnames = base::c(base::list(node.names), base::list(node.names)))
+    mut.info.matrix <-
+      base::matrix(
+        0,
+        nrow = num.nodes,
+        ncol = num.nodes,
+        dimnames = base::c(base::list(node.names), base::list(node.names))
+      )
 
     if (mi.estimator == 'mi.pca.cmi') {
       ## Build mutual information matrix
       for (col.idx in 1:(num.nodes - 1)) {
         for (col.idx.2 in (col.idx + 1):num.nodes) {
-
           ## 'compute_cmi.R'
-          mut.info <- ComputeCmiPcaCmi(input.data.discr[, col.idx], input.data.discr[, col.idx.2])
+          mut.info <-
+            ComputeCmiPcaCmi(input.data.discr[, col.idx], input.data.discr[, col.idx.2])
 
           mut.info.matrix[col.idx, col.idx.2] <- mut.info
           mut.info.matrix[col.idx.2, col.idx] <- mut.info
@@ -297,7 +318,6 @@ LearnTgs <- function(isfile = 0,
     }
 
     if (apply.aracne == TRUE) {
-
       mut.info.matrix.pre.aracne <- mut.info.matrix
 
       mut.info.matrix <- minet::aracne(mut.info.matrix)
@@ -309,20 +329,36 @@ LearnTgs <- function(isfile = 0,
       base::print(elapsed.time)
       base::rm(elapsed.time)
 
-      base::save(mut.info.matrix.pre.aracne,
-                 file = base::paste(output.dirname, 'mut.info.matrix.pre.aracne.RData', sep = '/'))
+      base::save(
+        mut.info.matrix.pre.aracne,
+        file = base::paste(
+          output.dirname,
+          'mut.info.matrix.pre.aracne.RData',
+          sep = '/'
+        )
+      )
 
-      base::save(mut.info.matrix.post.aracne,
-                 file = base::paste(output.dirname, 'mut.info.matrix.post.aracne.RData', sep = '/'))
+      base::save(
+        mut.info.matrix.post.aracne,
+        file = base::paste(
+          output.dirname,
+          'mut.info.matrix.post.aracne.RData',
+          sep = '/'
+        )
+      )
 
-      base::rm(mut.info.matrix.pre.aracne, mut.info.matrix.post.aracne)
+      base::rm(mut.info.matrix.pre.aracne,
+               mut.info.matrix.post.aracne)
 
     } else {
       ## apply.aracne == FALSE
 
       # writeLines('mut.info.matrix = \n')
       # print(mut.info.matrix)
-      base::save(mut.info.matrix, file = base::paste(output.dirname, 'mut.info.matrix.RData', sep = '/'))
+      base::save(
+        mut.info.matrix,
+        file = base::paste(output.dirname, 'mut.info.matrix.RData', sep = '/')
+      )
     }
   } else {
     ## clr.algo != 'CLR'
@@ -330,22 +366,28 @@ LearnTgs <- function(isfile = 0,
     base::rm(mut.info.matrix)
   }
 
-  if ((clr.algo == 'CLR') | (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1') | (clr.algo == 'spearman')) {
-
+  if ((clr.algo == 'CLR') |
+      (clr.algo == 'CLR2') |
+      (clr.algo == 'CLR2.1') | (clr.algo == 'spearman')) {
     ## CLR net is not time-varying
     base::rm(mi.net.adj.matrix.list)
 
-    mi.net.adj.matrix <- base::matrix(0, nrow = num.nodes, ncol = num.nodes,
-                                      dimnames = base::c(base::list(node.names), base::list(node.names)))
+    mi.net.adj.matrix <-
+      base::matrix(
+        0,
+        nrow = num.nodes,
+        ncol = num.nodes,
+        dimnames = base::c(base::list(node.names), base::list(node.names))
+      )
 
   } else if (clr.algo == 'CLR3') {
-
     ## CLR net is not static
     base::rm(mi.net.adj.matrix)
 
     ## Pre-allocate an empty list of length = number of time intervals
     num.time.ivals <- (num.timepts - 1)
-    mi.net.adj.matrix.list <- base::vector(mode = 'list', length = num.time.ivals)
+    mi.net.adj.matrix.list <-
+      base::vector(mode = 'list', length = num.time.ivals)
     base::rm(num.time.ivals)
   }
   ##------------------------------------------------------------
@@ -357,7 +399,8 @@ LearnTgs <- function(isfile = 0,
   ## Initialize filename where 'mi.net.adj.matrix.list' is to be saved
   ## in case 'clr.algo == CLR3'
   mi.net.adj.matrix.list.filename <- NULL
-  if ((clr.algo == 'CLR') | (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1')) {
+  if ((clr.algo == 'CLR') |
+      (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1')) {
     base::rm(mi.net.adj.matrix.list.filename)
   }
 
@@ -365,29 +408,59 @@ LearnTgs <- function(isfile = 0,
   if (clr.algo == 'CLR') {
     # mi.net.adj.matrix <- LearnMiNetStructZstat(mut.info.matrix, mi.net.adj.matrix, entropy.matrix, alpha)
     # mi.net.adj.matrix <- LearnMiNetStructClr(mut.info.matrix, mi.net.adj.matrix, num.nodes)
-    mi.net.adj.matrix <- LearnClrNetMfi(mut.info.matrix, mi.net.adj.matrix, num.nodes, max.fanin, output.dirname)
+    mi.net.adj.matrix <-
+      LearnClrNetMfi(mut.info.matrix,
+                     mi.net.adj.matrix,
+                     num.nodes,
+                     max.fanin,
+                     output.dirname)
 
   } else if (clr.algo == 'CLR2') {
-    mi.net.adj.matrix <- LearnClr2NetMfi(input.data.discr, num.nodes, node.names, num.timepts,
-                                         max.fanin, output.dirname, mi.net.adj.matrix)
+    mi.net.adj.matrix <-
+      LearnClr2NetMfi(
+        input.data.discr,
+        num.nodes,
+        node.names,
+        num.timepts,
+        max.fanin,
+        output.dirname,
+        mi.net.adj.matrix
+      )
 
   } else if (clr.algo == 'CLR2.1') {
-    mi.net.adj.matrix <- LearnClrNetMfiVer2.1(input.data.discr, num.nodes, node.names, num.timepts,
-                                              max.fanin, output.dirname, mi.net.adj.matrix)
+    mi.net.adj.matrix <-
+      LearnClrNetMfiVer2.1(
+        input.data.discr,
+        num.nodes,
+        node.names,
+        num.timepts,
+        max.fanin,
+        output.dirname,
+        mi.net.adj.matrix
+      )
 
   } else if (clr.algo == 'CLR3') {
-    mi.net.adj.matrix.list <- LearnClr3NetMfi(input.data.discr.3D, num.nodes, node.names, num.timepts,
-                                              max.fanin, mi.net.adj.matrix.list)
+    mi.net.adj.matrix.list <-
+      LearnClr3NetMfi(
+        input.data.discr.3D,
+        num.nodes,
+        node.names,
+        num.timepts,
+        max.fanin,
+        mi.net.adj.matrix.list
+      )
 
     ## Since 'mi.net.adj.matrix.list' is very large, save it in a specific file
     ## and remove it. Then load it when necessary. No need to retain it in the
     ## workspace even when not required.
-    mi.net.adj.matrix.list.filename <- base::paste(output.dirname, 'mi.net.adj.matrix.list.RData', sep = '/')
+    mi.net.adj.matrix.list.filename <-
+      base::paste(output.dirname, 'mi.net.adj.matrix.list.RData', sep = '/')
     base::save(mi.net.adj.matrix.list, file = mi.net.adj.matrix.list.filename)
     base::rm(mi.net.adj.matrix.list)
   }
 
-  elapsed.time <- (base::proc.time() - start.time) # Check time taken by CLR
+  elapsed.time <-
+    (base::proc.time() - start.time) # Check time taken by CLR
   base::writeLines('elapsed.time just after the CLR step= \n')
   base::print(elapsed.time)
   base::rm(elapsed.time)
@@ -396,10 +469,14 @@ LearnTgs <- function(isfile = 0,
     base::rm(mut.info.matrix)
   }
 
-  if ((clr.algo == 'CLR') | (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1')) {
+  if ((clr.algo == 'CLR') |
+      (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1')) {
     # writeLines('\n mi.net.adj.matrix = \n')
     # print(mi.net.adj.matrix)
-    base::save(mi.net.adj.matrix, file = base::paste(output.dirname, 'mi.net.adj.matrix.RData', sep = '/'))
+    base::save(
+      mi.net.adj.matrix,
+      file = base::paste(output.dirname, 'mi.net.adj.matrix.RData', sep = '/')
+    )
     ## Check max number of nbrs for a node in the MI net
     # writeLines('\n Max number of nbrs = \n')
     # print(max(colSums(mi.net.adj.matrix)))
@@ -421,45 +498,77 @@ LearnTgs <- function(isfile = 0,
   ##------------------------------------------------------------
   unrolled.DBN.adj.matrix.list <- NULL
 
-  if ((clr.algo == 'CLR') | (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1')) {
-    unrolled.DBN.adj.matrix.list <- learnDbnStructMo1Layer3dParDeg1_v2(input.data.discr.3D, mi.net.adj.matrix,
-                                                                       num.discr.levels, num.nodes, num.timepts,
-                                                                       max.fanin, node.names, clr.algo)
+  if ((clr.algo == 'CLR') |
+      (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1')) {
+    unrolled.DBN.adj.matrix.list <-
+      learnDbnStructMo1Layer3dParDeg1_v2(
+        input.data.discr.3D,
+        mi.net.adj.matrix,
+        num.discr.levels,
+        num.nodes,
+        num.timepts,
+        max.fanin,
+        node.names,
+        clr.algo
+      )
     base::rm(mi.net.adj.matrix)
 
   } else if (clr.algo == 'CLR3') {
-
     num.time.ivals <- (num.timepts - 1)
-    unrolled.DBN.adj.matrix.list <- base::vector(mode = 'list', length = num.time.ivals)
+    unrolled.DBN.adj.matrix.list <-
+      base::vector(mode = 'list', length = num.time.ivals)
     # rm(num.time.ivals)
 
     ## Adjacency matrix for a time-interval-specific DBN
-    time.ival.spec.dbn.adj.matrix <- base::matrix(0, nrow = num.nodes,
-                                                  ncol = num.nodes,
-                                                  dimnames = base::c(base::list(node.names),
-                                                                     base::list(node.names)))
+    time.ival.spec.dbn.adj.matrix <-
+      base::matrix(
+        0,
+        nrow = num.nodes,
+        ncol = num.nodes,
+        dimnames = base::c(base::list(node.names),
+                           base::list(node.names))
+      )
     for (time.ival.idx in 1:num.time.ivals) {
-      unrolled.DBN.adj.matrix.list[[time.ival.idx]] <- time.ival.spec.dbn.adj.matrix
+      unrolled.DBN.adj.matrix.list[[time.ival.idx]] <-
+        time.ival.spec.dbn.adj.matrix
     }
     base::rm(time.ival.idx)
 
     base::rm(num.time.ivals, time.ival.spec.dbn.adj.matrix)
 
-    unrolled.DBN.adj.matrix.list <- LearnDbnStructMo1Clr3Ser(input.data.discr.3D, mi.net.adj.matrix.list.filename,
-                                                             num.discr.levels, num.nodes, num.timepts, max.fanin,
-                                                             node.names, unrolled.DBN.adj.matrix.list)
+    unrolled.DBN.adj.matrix.list <-
+      LearnDbnStructMo1Clr3Ser(
+        input.data.discr.3D,
+        mi.net.adj.matrix.list.filename,
+        num.discr.levels,
+        num.nodes,
+        num.timepts,
+        max.fanin,
+        node.names,
+        unrolled.DBN.adj.matrix.list
+      )
     base::rm(mi.net.adj.matrix.list.filename)
   }
 
-  base::save(unrolled.DBN.adj.matrix.list, file = base::paste(output.dirname, 'unrolled.DBN.adj.matrix.list.RData', sep = '/'))
+  base::save(
+    unrolled.DBN.adj.matrix.list,
+    file = base::paste(output.dirname, 'unrolled.DBN.adj.matrix.list.RData', sep = '/')
+  )
   base::rm(input.data.discr.3D)
 
   ## Learn the rolled DBN adj matrix
   ## source(paste(init.path, 'rollDbn.R', sep = '/'))
   # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, roll.method, allow.self.loop)
   # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, 'any', FALSE)
-  rolled.DBN.adj.matrix <- rollDbn_v2(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix.list,
-                                      'any', allow.self.loop)
+  rolled.DBN.adj.matrix <-
+    rollDbn_v2(
+      num.nodes,
+      node.names,
+      num.timepts,
+      unrolled.DBN.adj.matrix.list,
+      'any',
+      allow.self.loop
+    )
   di.net.adj.matrix <- rolled.DBN.adj.matrix
   base::rm(rolled.DBN.adj.matrix)
 
@@ -468,7 +577,10 @@ LearnTgs <- function(isfile = 0,
   ## Change the node names back to the original node names
   base::rownames(di.net.adj.matrix) <- orig.node.names
   base::colnames(di.net.adj.matrix) <- orig.node.names
-  base::save(di.net.adj.matrix, file = base::paste(output.dirname, 'di.net.adj.matrix.RData', sep = '/'))
+  base::save(
+    di.net.adj.matrix,
+    file = base::paste(output.dirname, 'di.net.adj.matrix.RData', sep = '/')
+  )
 
   ## Create an '.sif' file equivalent to the directed net adjacency matrix
   ## that is readable in Cytoscape.
@@ -492,10 +604,25 @@ LearnTgs <- function(isfile = 0,
 
     ## Begin: Create the format for result
     Result <- base::matrix(0, nrow = 1, ncol = 11)
-    base::colnames(Result) <- base::list('TP', 'TN', 'FP', 'FN', 'TPR', 'FPR', 'FDR', 'PPV', 'ACC', 'MCC',  'F')
+    base::colnames(Result) <-
+      base::list('TP',
+                 'TN',
+                 'FP',
+                 'FN',
+                 'TPR',
+                 'FPR',
+                 'FDR',
+                 'PPV',
+                 'ACC',
+                 'MCC',
+                 'F')
     # ## End: Create the format for result
 
-    ResultVsTrue <- calcPerfDiNet(predicted.net.adj.matrix, true.net.adj.matrix, Result, num.nodes)
+    ResultVsTrue <-
+      calcPerfDiNet(predicted.net.adj.matrix,
+                    true.net.adj.matrix,
+                    Result,
+                    num.nodes)
     base::rm(Result)
     base::writeLines('Result TGS vs True = \n')
     base::print(ResultVsTrue)
@@ -514,7 +641,9 @@ LearnTgs <- function(isfile = 0,
   ##------------------------------------------------------------
   ## Begin: Save R session info in a File
   ##-----------------------------------------------------------
-  session.file <- base::file(base::paste(output.dirname, 'sessionInfo.txt', sep = '/'), open = "wt")
+  session.file <-
+    base::file(base::paste(output.dirname, 'sessionInfo.txt', sep = '/'),
+               open = "wt")
   base::sink(session.file)
   utils::sessionInfo()
   base::sink()
