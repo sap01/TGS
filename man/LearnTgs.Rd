@@ -34,7 +34,7 @@ directory name. It can be a .tsv or .RData file.}
 
 \item{true.net.filename}{File containing the true network without the
 directory name. In case non-empty then should contain .Rdata file with
-object name 'true.net.adj.matrix'}
+object name 'true.net.adj.matrix'.}
 
 \item{input.wt.data.filename}{file containing input Wild Type data without
 the directory name. If it is non-empty then must be a .tsv file having first
@@ -65,14 +65,19 @@ spearman}}
 
 \item{scoring.func}{Which scoring func to use}
 
-\item{input.dirname}{Name of the directory where input files are. By default
-your current directory unless specified otherwise}
+\item{input.dirname}{Absolute path to the directory where input files are kept.
+By default, the current working directory.}
 
-\item{output.dirname}{Name of the directory where output files are to be
-stored. By default your current directory unless specified otherwise}
+\item{output.dirname}{File path to a directory where output files are to
+be saved. There are three options.
+\emph{Option 1:} It can be the absolute path to an existing directory.
+\emph{Option 2:} It can also be a directory name to be created inside the
+current directory.
+\emph{Option 3 (default):} If provided an empty string, then it will be the
+current working directory.}
 
-\item{json.file}{name of the json file along with directory if parameters are
-to be read from json file}
+\item{json.file}{Name of the JSON file along with directory if parameters are
+to be read from the JSON file.}
 }
 \description{
 The TGS algorithm takes a time-series gene expression dataset

@@ -36,12 +36,17 @@
 #' @param max.fanin the maximum number of regulators each gene can have
 #' @param allow.self.loop Whether to allow self loops in the graph
 #' @param scoring.func Which scoring func to use
-#' @param input.dirname Name of the directory where input files are. By default
-#'   your current directory unless specified otherwise
-#' @param output.dirname Name of the directory where output files are to be
-#'   stored. By default your current directory unless specified otherwise
-#' @param json.file name of the json file along with directory if parameters are
-#'   to be read from json file
+#' @param input.dirname Absolute path to the directory where input files are kept.
+#' By default, the current working directory.
+#' @param output.dirname File path to a directory where output files are to
+#' be saved. There are three options.
+#' \emph{Option 1:} It can be the absolute path to an existing directory.
+#' \emph{Option 2:} It can also be the absolute path to a non-exisitng
+#' directory. In this case, the directory will be created.
+#'\emph{Option 3 (default):} If provided an empty string, then it will be the
+#' current working directory.
+#' @param json.file Name of the JSON file along with directory if parameters are
+#'   to be read from the JSON file.
 #'
 #' @examples
 #' \dontrun{
@@ -60,25 +65,23 @@
 #'
 #' @export
 LearnTgs <- function(isfile = 0,
-                     input.data.filename = "",
+                     input.data.filename = '',
                      num.timepts = 0,
-                     true.net.filename = "",
-                     input.wt.data.filename = "",
+                     true.net.filename = '',
+                     input.wt.data.filename = '',
                      is.discrete = TRUE,
                      num.discr.levels = 2,
-                     discr.algo = "",
-                     mi.estimator = "mi.pca.cmi",
+                     discr.algo = '',
+                     mi.estimator = 'mi.pca.cmi',
                      apply.aracne = FALSE,
-                     clr.algo = "CLR",
+                     clr.algo = 'CLR',
                      max.fanin = 14,
                      allow.self.loop = TRUE,
-                     scoring.func = "BIC",
-                     input.dirname = "",
-                     output.dirname = "",
-                     json.file = "")
-{
-  if (isfile != 0)
-  {
+                     scoring.func = 'BIC',
+                     input.dirname = '',
+                     output.dirname = '',
+                     json.file = '') {
+  if (isfile != 0) {
     ##------------------------------------------------------------
     ## Begin: Read User-defined input Params
     ##------------------------------------------------------------
@@ -96,6 +99,9 @@ LearnTgs <- function(isfile = 0,
     clr.algo <- input.params$clr.algo
     max.fanin <- input.params$max.fanin
     allow.self.loop <- input.params$allow.self.loop
+    scoring.func <- input.params$scoring.func
+    input.dirname <- input.params$input.dirname
+    output.dirname <- input.params$output.dirname
     rm(input.params)
 
     ##------------------------------------------------------------
@@ -103,12 +109,37 @@ LearnTgs <- function(isfile = 0,
     ##------------------------------------------------------------
   }
 
-  if (input.dirname == "") {
+  if (input.dirname == '') {
     input.dirname <- base::getwd()
   }
 
-  if (output.dirname == "") {
+  if (output.dirname == '') {
     output.dirname <- base::getwd()
+
+  } else if (!base::file.exists(output.dirname)) {
+    ##------------------------------------------------------------
+    ## Begin: Create the output directory
+    ##------------------------------------------------------------
+    if (base::.Platform$OS.type == 'windows') {
+      ## Convert directory path to canonical form for Windows OS.
+      ## It raises the warning if the directory does not exist, which
+      ## is expected. Therefore, please ignore the warning.
+      output.dirname <- base::normalizePath(output.dirname,
+                                            winslash = '\\',
+                                            mustWork = NA)
+
+      base::shell(
+        base::paste('mkdir ', output.dirname, sep = ''),
+        intern = TRUE,
+        mustWork = TRUE
+      )
+
+    } else if (base::.Platform$OS.type == 'unix') {
+      base::system(base::paste('mkdir ', output.dirname, sep = ''))
+    }
+    ##------------------------------------------------------------
+    ## End: Create the output directory
+    ##------------------------------------------------------------
   }
 
   input.data.filename <-

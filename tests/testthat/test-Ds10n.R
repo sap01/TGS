@@ -1,36 +1,35 @@
-test_that("multiplication works", {
+test_that('Ds10n is processed correctly', {
+  testthat::skip_on_cran()
 
-  LearnTgs(
+  ## Using namespace 'base' or 'pkgLoad' with 'system.file()'
+  ## breaks the command
+  input_dir <- system.file('extdata',
+                           package = 'TGS',
+                           mustWork = TRUE)
+
+  output_dir <- base::paste(input_dir,
+                            'Output_Ds10n',
+                            sep = '/')
+
+  TGS::LearnTgs(
     isfile = 0,
-    input.data.filename = "DmLc3E.RData",
-    num.timepts = 6,
-    is.discrete = TRUE,
+    input.data.filename = 'InSilicoSize10-Yeast1-trajectories.tsv',
+    num.timepts = 21,
+    true.net.filename = 'DREAM3GoldStandard_InSilicoSize10_Yeast1_TrueNet.RData',
+    input.wt.data.filename = 'InSilicoSize10-Yeast1-null-mutants.tsv',
+    is.discrete = FALSE,
     num.discr.levels = 2,
-    mi.estimator = "mi.pca.cmi",
+    discr.algo = 'discretizeData.2L.wt.l',
+    mi.estimator = 'mi.pca.cmi',
     apply.aracne = FALSE,
-    clr.algo = "CLR",
+    clr.algo = 'CLR',
     max.fanin = 14,
-    allow.self.loop = TRUE,
-    input.dirname = "location where file is stored",
-    output.dirname = "location where output needs to be stored")
-
-  LearnTgs(isfile = 0,
-           input.data.filename = "",
-           num.timepts = 0,
-           true.net.filename = "",
-           input.wt.data.filename = "",
-           is.discrete = TRUE,
-           num.discr.levels = 2,
-           discr.algo = "",
-           mi.estimator = "mi.pca.cmi",
-           apply.aracne = FALSE,
-           clr.algo = "CLR",
-           max.fanin = 14,
-           allow.self.loop = TRUE,
-           scoring.func = "BIC",
-           input.dirname = "",
-           output.dirname = "",
-           json.file = "")
+    allow.self.loop = FALSE,
+    scoring.func = 'BIC',
+    input.dirname = input_dir,
+    output.dirname = output_dir,
+    json.file = ''
+  )
 
   expect_equal(2 * 2, 4)
 })
