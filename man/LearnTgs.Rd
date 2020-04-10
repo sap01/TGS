@@ -71,13 +71,12 @@ By default, the current working directory.}
 \item{output.dirname}{File path to a directory where output files are to
 be saved. There are three options.
 \emph{Option 1:} It can be the absolute path to an existing directory.
-\emph{Option 2:} It can also be a directory name to be created inside the
-current directory.
+\emph{Option 2:} It can also be the absolute path to a non-exisitng
+directory. In this case, the directory will be created.
 \emph{Option 3 (default):} If provided an empty string, then it will be the
 current working directory.}
 
-\item{json.file}{Name of the JSON file along with directory if parameters are
-to be read from the JSON file.}
+\item{json.file}{Absolute path to the JSON file if \code{isfile = 1}.}
 }
 \description{
 The TGS algorithm takes a time-series gene expression dataset

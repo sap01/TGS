@@ -31,5 +31,11 @@ test_that('Ds10n is processed correctly', {
     json.file = ''
   )
 
-  expect_equal(2 * 2, 4)
+  pred_result <- base::load(
+    base::paste(output_dir, 'Result.RData', sep = '/'))
+
+  expec_result <-
+    base::paste(input_dir, 'Result_Ds10n.RData', sep = '/')
+
+  testthat::expect_known_output(pred_result, expec_result, print = TRUE)
 })

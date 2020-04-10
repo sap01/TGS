@@ -45,8 +45,7 @@
 #' directory. In this case, the directory will be created.
 #'\emph{Option 3 (default):} If provided an empty string, then it will be the
 #' current working directory.
-#' @param json.file Name of the JSON file along with directory if parameters are
-#'   to be read from the JSON file.
+#' @param json.file Absolute path to the JSON file if \code{isfile = 1}.
 #'
 #' @examples
 #' \dontrun{
@@ -191,7 +190,7 @@ LearnTgs <- function(isfile = 0,
     timepts.names <- input.data[1:num.timepts, 1]
 
     ## Remove first col i.e. the time point names
-    input.data <- input.data[,-1]
+    input.data <- input.data[, -1]
 
   } else if (input.data.filename.ext[base::length(input.data.filename.ext)] == 'RData') {
     ## Loads an object named input.data
@@ -286,7 +285,7 @@ LearnTgs <- function(isfile = 0,
     start.row.idx <- (1 + (num.timepts * (sample.idx - 1)))
     end.row.idx <- (num.timepts * sample.idx)
     input.data.discr.3D[, , sample.idx] <-
-      input.data.discr.matrix[start.row.idx:end.row.idx,]
+      input.data.discr.matrix[start.row.idx:end.row.idx, ]
   }
   base::rm(sample.idx)
 
@@ -588,81 +587,137 @@ LearnTgs <- function(isfile = 0,
   base::rm(input.data.discr.3D)
 
   ## Learn the rolled DBN adj matrix
-  ## source(paste(init.path, 'rollDbn.R', sep = '/'))
-  # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, roll.method, allow.self.loop)
-  # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, 'any', FALSE)
-  rolled.DBN.adj.matrix <-
-    rollDbn_v2(
-      num.nodes,
-      node.names,
-      num.timepts,
-      unrolled.DBN.adj.matrix.list,
-      'any',
-      allow.self.loop
+  if (!base::is.null(unrolled.DBN.adj.matrix.list)) {
+    ## 'unrolled.DBN.adj.matrix.list' is NULL if any only if
+    ## none of the target nodes have any candidate parents in
+    ## their corresponding shortlists
+
+    # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, roll.method, allow.self.loop)
+    # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, 'any', FALSE)
+    rolled.DBN.adj.matrix <-
+      rollDbn_v2(
+        num.nodes,
+        node.names,
+        num.timepts,
+        unrolled.DBN.adj.matrix.list,
+        'any',
+        allow.self.loop
+      )
+    di.net.adj.matrix <- rolled.DBN.adj.matrix
+    base::rm(rolled.DBN.adj.matrix)
+
+    # writeLines('\n di.net.adj.matrix = \n')
+    # print(di.net.adj.matrix)
+    ## Change the node names back to the original node names
+    base::rownames(di.net.adj.matrix) <- orig.node.names
+    base::colnames(di.net.adj.matrix) <- orig.node.names
+    base::save(
+      di.net.adj.matrix,
+      file = base::paste(output.dirname, 'di.net.adj.matrix.RData', sep = '/')
     )
-  di.net.adj.matrix <- rolled.DBN.adj.matrix
-  base::rm(rolled.DBN.adj.matrix)
 
-  # writeLines('\n di.net.adj.matrix = \n')
-  # print(di.net.adj.matrix)
-  ## Change the node names back to the original node names
-  base::rownames(di.net.adj.matrix) <- orig.node.names
-  base::colnames(di.net.adj.matrix) <- orig.node.names
-  base::save(
-    di.net.adj.matrix,
-    file = base::paste(output.dirname, 'di.net.adj.matrix.RData', sep = '/')
-  )
+    ## Create an '.sif' file equivalent to the directed net adjacency matrix
+    ## that is readable in Cytoscape.
+    adjmxToSif(di.net.adj.matrix, output.dirname)
+    # rm(unrolled.DBN.adj.matrix)
+    base::rm(unrolled.DBN.adj.matrix.list)
+    ##------------------------------------------------------------
+    ## End: Learn Network Structures
+    ##------------------------------------------------------------
 
-  ## Create an '.sif' file equivalent to the directed net adjacency matrix
-  ## that is readable in Cytoscape.
-  adjmxToSif(di.net.adj.matrix, output.dirname)
-  # rm(unrolled.DBN.adj.matrix)
+
+    ##------------------------------------------------------------
+    ## Begin: Calc performance metrics if true net(s) is known
+    ##------------------------------------------------------------
+    if (true.net.filename != '') {
+      ## Load R obj 'true.net.adj.matrix'
+      true.net.adj.matrix <- NULL
+      base::load(true.net.filename)
+
+      ## Begin: Create the format for result
+      Result <- base::matrix(0, nrow = 1, ncol = 11)
+      base::colnames(Result) <-
+        base::list('TP',
+                   'TN',
+                   'FP',
+                   'FN',
+                   'TPR',
+                   'FPR',
+                   'FDR',
+                   'PPV',
+                   'ACC',
+                   'MCC',
+                   'F1')
+      ## End: Create the format for result
+
+      if (base::is.matrix(true.net.adj.matrix)) {
+        ## True net is time-invariant. Therefore,
+        ## 'true.net.adj.matrix' is a single matrix.
+
+        predicted.net.adj.matrix <- di.net.adj.matrix
+
+        ResultVsTrue <-
+          TGS::calcPerfDiNet(predicted.net.adj.matrix,
+                             true.net.adj.matrix,
+                             Result,
+                             num.nodes)
+        base::writeLines('Prediction vs Truth = \n')
+        base::print(ResultVsTrue)
+        base::rm(ResultVsTrue)
+
+      } else if (base::is.list(true.net.adj.matrix)) {
+        ## True nets are time-varying. Therefore,
+        ## 'true.net.adj.matrix' is a list of matrices.
+
+        for (net.idx in 1:base::length(unrolled.DBN.adj.matrix.list)) {
+          predicted.net.adj.matrix <-
+            unrolled.DBN.adj.matrix.list[[net.idx]]
+
+          ResultVsTrue <-
+            TGS::calcPerfDiNet(predicted.net.adj.matrix,
+                               true.net.adj.matrix[[net.idx]],
+                               Result,
+                               num.nodes)
+          Result <-
+            base::rbind(Result,
+                        base::matrix(
+                          ResultVsTrue[1, ],
+                          nrow = 1,
+                          ncol = ncol(Result)
+                        ))
+
+          # rm(ResultVsTrue)
+        }
+        base::rm(net.idx)
+
+        ## Print mean performance averaged over
+        ## all time-varying networks
+        ResultVsTrue <- base::colMeans(Result)
+        ResultVsTrue <-
+          base::matrix(colMeans(Result),
+                       nrow = 1,
+                       ncol = ncol(Result))
+        base::colnames(ResultVsTrue) <- base::colnames(Result)
+        base::writeLines('Prediction vs Truth = \n')
+        base::print(ResultVsTrue)
+        base::rm(ResultVsTrue)
+      }
+
+      base::save(Result,
+                 file =
+                   base::paste(output.dirname, 'Result.RData', sep = '/'))
+      base::rm(Result)
+    }
+    base::rm(di.net.adj.matrix)
+
+  }
   base::rm(unrolled.DBN.adj.matrix.list)
   ##------------------------------------------------------------
-  ## End: Learn Network Structures
+  ## End: Calc performance metrics if true net(s) is known
   ##------------------------------------------------------------
 
-  ## If the true rolled network is known a prior, then evaluate the performance
-  ## metrics of the predicted rolled network.
-  if (true.net.filename != '')
-  {
-    predicted.net.adj.matrix <- di.net.adj.matrix
-
-    ## Loads R obj 'true.net.adj.matrix'
-    true.net.adj.matrix <- NULL
-    base::load(true.net.filename)
-
-
-    ## Begin: Create the format for result
-    Result <- base::matrix(0, nrow = 1, ncol = 11)
-    base::colnames(Result) <-
-      base::list('TP',
-                 'TN',
-                 'FP',
-                 'FN',
-                 'TPR',
-                 'FPR',
-                 'FDR',
-                 'PPV',
-                 'ACC',
-                 'MCC',
-                 'F')
-    # ## End: Create the format for result
-
-    ResultVsTrue <-
-      calcPerfDiNet(predicted.net.adj.matrix,
-                    true.net.adj.matrix,
-                    Result,
-                    num.nodes)
-    base::rm(Result)
-    base::writeLines('Result TGS vs True = \n')
-    base::print(ResultVsTrue)
-    base::rm(ResultVsTrue)
-  }
-
-  base::rm(di.net.adj.matrix)
-
-  elapsed.time <- (base::proc.time() - start.time) # Stop the timer
+  ## Stop the timer
+  elapsed.time <- (base::proc.time() - start.time)
   base::writeLines('elapsed.time = \n')
   base::print(elapsed.time)
   base::rm(elapsed.time)
