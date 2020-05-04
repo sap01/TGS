@@ -1,7 +1,7 @@
 elapsed.time just after the CLR step= 
 
    user  system elapsed 
-   0.02    0.00    0.02 
+   0.03    0.00    0.03 
 nextElem.ixforeach called with redo FALSE
 evaluation # 1:
 $centralNodeIdx
@@ -17,14 +17,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t2
-v1_t1     0
-v2_t1     1
-v3_t1     0
-v5_t1     0
-v7_t1     0
-v8_t1     0
+       v1_t2
+v1_t1      0
+v2_t1      0
+v3_t1      0
+v4_t1      0
+v5_t1      0
+v6_t1      0
+v8_t1      0
+v10_t1     0
 got results for task 1
 accumulating result with tag 1
 fired:
@@ -46,14 +50,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t3
-v1_t2     0
-v2_t2     0
-v3_t2     0
-v5_t2     0
-v7_t2     0
-v8_t2     0
+       v1_t3
+v1_t2      0
+v2_t2      0
+v3_t2      0
+v4_t2      0
+v5_t2      0
+v6_t2      0
+v8_t2      0
+v10_t2     1
 got results for task 2
 accumulating result with tag 2
 fired:
@@ -75,14 +83,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t4
-v1_t3     0
-v2_t3     0
-v3_t3     0
-v5_t3     0
-v7_t3     0
-v8_t3     0
+       v1_t4
+v1_t3      1
+v2_t3      0
+v3_t3      0
+v4_t3      0
+v5_t3      0
+v6_t3      0
+v8_t3      0
+v10_t3     0
 got results for task 3
 accumulating result with tag 3
 fired:
@@ -104,14 +116,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t5
-v1_t4     0
-v2_t4     1
-v3_t4     0
-v5_t4     0
-v7_t4     0
-v8_t4     0
+       v1_t5
+v1_t4      0
+v2_t4      0
+v3_t4      0
+v4_t4      0
+v5_t4      0
+v6_t4      0
+v8_t4      0
+v10_t4     0
 got results for task 4
 accumulating result with tag 4
 fired:
@@ -133,14 +149,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t6
-v1_t5     0
-v2_t5     0
-v3_t5     0
-v5_t5     0
-v7_t5     0
-v8_t5     0
+       v1_t6
+v1_t5      0
+v2_t5      0
+v3_t5      0
+v4_t5      0
+v5_t5      0
+v6_t5      0
+v8_t5      0
+v10_t5     1
 got results for task 5
 accumulating result with tag 5
 fired:
@@ -162,14 +182,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t7
-v1_t6     0
-v2_t6     0
-v3_t6     0
-v5_t6     0
-v7_t6     0
-v8_t6     0
+       v1_t7
+v1_t6      0
+v2_t6      0
+v3_t6      0
+v4_t6      0
+v5_t6      0
+v6_t6      0
+v8_t6      1
+v10_t6     0
 got results for task 6
 accumulating result with tag 6
 fired:
@@ -191,14 +215,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t8
-v1_t7     0
-v2_t7     0
-v3_t7     0
-v5_t7     0
-v7_t7     0
-v8_t7     0
+       v1_t8
+v1_t7      0
+v2_t7      0
+v3_t7      0
+v4_t7      0
+v5_t7      1
+v6_t7      0
+v8_t7      0
+v10_t7     0
 got results for task 7
 accumulating result with tag 7
 fired:
@@ -220,14 +248,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t9
-v1_t8     0
-v2_t8     0
-v3_t8     0
-v5_t8     0
-v7_t8     0
-v8_t8     0
+       v1_t9
+v1_t8      0
+v2_t8      0
+v3_t8      0
+v4_t8      0
+v5_t8      0
+v6_t8      0
+v8_t8      1
+v10_t8     0
 got results for task 8
 accumulating result with tag 8
 fired:
@@ -249,14 +281,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v1_t10
-v1_t9      0
-v2_t9      0
-v3_t9      0
-v5_t9      0
-v7_t9      0
-v8_t9      1
+       v1_t10
+v1_t9       0
+v2_t9       0
+v3_t9       0
+v4_t9       0
+v5_t9       0
+v6_t9       0
+v8_t9       1
+v10_t9      0
 got results for task 9
 accumulating result with tag 9
 fired:
@@ -278,14 +314,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t11
-v1_t10      0
-v2_t10      0
-v3_t10      0
-v5_t10      0
-v7_t10      0
-v8_t10      0
+        v1_t11
+v1_t10       0
+v2_t10       0
+v3_t10       0
+v4_t10       0
+v5_t10       0
+v6_t10       0
+v8_t10       1
+v10_t10      0
 got results for task 10
 accumulating result with tag 10
 fired:
@@ -307,14 +347,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t12
-v1_t11      0
-v2_t11      0
-v3_t11      0
-v5_t11      0
-v7_t11      0
-v8_t11      0
+        v1_t12
+v1_t11       0
+v2_t11       0
+v3_t11       0
+v4_t11       0
+v5_t11       0
+v6_t11       0
+v8_t11       0
+v10_t11      1
 got results for task 11
 accumulating result with tag 11
 fired:
@@ -336,14 +380,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t13
-v1_t12      0
-v2_t12      0
-v3_t12      0
-v5_t12      0
-v7_t12      0
-v8_t12      0
+        v1_t13
+v1_t12       0
+v2_t12       0
+v3_t12       0
+v4_t12       0
+v5_t12       0
+v6_t12       0
+v8_t12       0
+v10_t12      1
 got results for task 12
 accumulating result with tag 12
 fired:
@@ -365,14 +413,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t14
-v1_t13      0
-v2_t13      0
-v3_t13      0
-v5_t13      0
-v7_t13      0
-v8_t13      0
+        v1_t14
+v1_t13       0
+v2_t13       0
+v3_t13       0
+v4_t13       0
+v5_t13       0
+v6_t13       0
+v8_t13       0
+v10_t13      1
 got results for task 13
 accumulating result with tag 13
 fired:
@@ -394,14 +446,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t15
-v1_t14      0
-v2_t14      0
-v3_t14      0
-v5_t14      1
-v7_t14      0
-v8_t14      0
+        v1_t15
+v1_t14       0
+v2_t14       0
+v3_t14       0
+v4_t14       0
+v5_t14       0
+v6_t14       0
+v8_t14       0
+v10_t14      1
 got results for task 14
 accumulating result with tag 14
 fired:
@@ -423,14 +479,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t16
-v1_t15      0
-v2_t15      0
-v3_t15      0
-v5_t15      0
-v7_t15      0
-v8_t15      0
+        v1_t16
+v1_t15       0
+v2_t15       0
+v3_t15       0
+v4_t15       0
+v5_t15       0
+v6_t15       0
+v8_t15       0
+v10_t15      1
 got results for task 15
 accumulating result with tag 15
 fired:
@@ -452,14 +512,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t17
-v1_t16      0
-v2_t16      0
-v3_t16      0
-v5_t16      0
-v7_t16      0
-v8_t16      0
+        v1_t17
+v1_t16       0
+v2_t16       0
+v3_t16       0
+v4_t16       0
+v5_t16       0
+v6_t16       0
+v8_t16       0
+v10_t16      1
 got results for task 16
 accumulating result with tag 16
 fired:
@@ -481,14 +545,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t18
-v1_t17      0
-v2_t17      0
-v3_t17      0
-v5_t17      1
-v7_t17      0
-v8_t17      0
+        v1_t18
+v1_t17       0
+v2_t17       0
+v3_t17       0
+v4_t17       0
+v5_t17       0
+v6_t17       0
+v8_t17       0
+v10_t17      1
 got results for task 17
 accumulating result with tag 17
 fired:
@@ -510,14 +578,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t19
-v1_t18      0
-v2_t18      0
-v3_t18      0
-v5_t18      0
-v7_t18      0
-v8_t18      0
+        v1_t19
+v1_t18       0
+v2_t18       0
+v3_t18       0
+v4_t18       0
+v5_t18       0
+v6_t18       0
+v8_t18       0
+v10_t18      1
 got results for task 18
 accumulating result with tag 18
 fired:
@@ -539,14 +611,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t20
-v1_t19      0
-v2_t19      0
-v3_t19      0
-v5_t19      0
-v7_t19      0
-v8_t19      0
+        v1_t20
+v1_t19       0
+v2_t19       0
+v3_t19       0
+v4_t19       0
+v5_t19       0
+v6_t19       0
+v8_t19       1
+v10_t19      0
 got results for task 19
 accumulating result with tag 19
 fired:
@@ -568,14 +644,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v1_t21
-v1_t20      0
-v2_t20      0
-v3_t20      0
-v5_t20      0
-v7_t20      0
-v8_t20      0
+        v1_t21
+v1_t20       0
+v2_t20       0
+v3_t20       0
+v4_t20       0
+v5_t20       0
+v6_t20       0
+v8_t20       0
+v10_t20      1
 got results for task 20
 accumulating result with tag 20
 fired:
@@ -593,184 +673,224 @@ evaluating call object to combine results:
 numValues: 20, numResults: 20, stopped: TRUE
 propagating accumulated result up to the next level from nextElem
 [[1]]
-      v1_t2
-v1_t1     0
-v2_t1     1
-v3_t1     0
-v5_t1     0
-v7_t1     0
-v8_t1     0
+       v1_t2
+v1_t1      0
+v2_t1      0
+v3_t1      0
+v4_t1      0
+v5_t1      0
+v6_t1      0
+v8_t1      0
+v10_t1     0
 
 [[2]]
-      v1_t3
-v1_t2     0
-v2_t2     0
-v3_t2     0
-v5_t2     0
-v7_t2     0
-v8_t2     0
+       v1_t3
+v1_t2      0
+v2_t2      0
+v3_t2      0
+v4_t2      0
+v5_t2      0
+v6_t2      0
+v8_t2      0
+v10_t2     1
 
 [[3]]
-      v1_t4
-v1_t3     0
-v2_t3     0
-v3_t3     0
-v5_t3     0
-v7_t3     0
-v8_t3     0
+       v1_t4
+v1_t3      1
+v2_t3      0
+v3_t3      0
+v4_t3      0
+v5_t3      0
+v6_t3      0
+v8_t3      0
+v10_t3     0
 
 [[4]]
-      v1_t5
-v1_t4     0
-v2_t4     1
-v3_t4     0
-v5_t4     0
-v7_t4     0
-v8_t4     0
+       v1_t5
+v1_t4      0
+v2_t4      0
+v3_t4      0
+v4_t4      0
+v5_t4      0
+v6_t4      0
+v8_t4      0
+v10_t4     0
 
 [[5]]
-      v1_t6
-v1_t5     0
-v2_t5     0
-v3_t5     0
-v5_t5     0
-v7_t5     0
-v8_t5     0
+       v1_t6
+v1_t5      0
+v2_t5      0
+v3_t5      0
+v4_t5      0
+v5_t5      0
+v6_t5      0
+v8_t5      0
+v10_t5     1
 
 [[6]]
-      v1_t7
-v1_t6     0
-v2_t6     0
-v3_t6     0
-v5_t6     0
-v7_t6     0
-v8_t6     0
+       v1_t7
+v1_t6      0
+v2_t6      0
+v3_t6      0
+v4_t6      0
+v5_t6      0
+v6_t6      0
+v8_t6      1
+v10_t6     0
 
 [[7]]
-      v1_t8
-v1_t7     0
-v2_t7     0
-v3_t7     0
-v5_t7     0
-v7_t7     0
-v8_t7     0
+       v1_t8
+v1_t7      0
+v2_t7      0
+v3_t7      0
+v4_t7      0
+v5_t7      1
+v6_t7      0
+v8_t7      0
+v10_t7     0
 
 [[8]]
-      v1_t9
-v1_t8     0
-v2_t8     0
-v3_t8     0
-v5_t8     0
-v7_t8     0
-v8_t8     0
+       v1_t9
+v1_t8      0
+v2_t8      0
+v3_t8      0
+v4_t8      0
+v5_t8      0
+v6_t8      0
+v8_t8      1
+v10_t8     0
 
 [[9]]
-      v1_t10
-v1_t9      0
-v2_t9      0
-v3_t9      0
-v5_t9      0
-v7_t9      0
-v8_t9      1
+       v1_t10
+v1_t9       0
+v2_t9       0
+v3_t9       0
+v4_t9       0
+v5_t9       0
+v6_t9       0
+v8_t9       1
+v10_t9      0
 
 [[10]]
-       v1_t11
-v1_t10      0
-v2_t10      0
-v3_t10      0
-v5_t10      0
-v7_t10      0
-v8_t10      0
+        v1_t11
+v1_t10       0
+v2_t10       0
+v3_t10       0
+v4_t10       0
+v5_t10       0
+v6_t10       0
+v8_t10       1
+v10_t10      0
 
 [[11]]
-       v1_t12
-v1_t11      0
-v2_t11      0
-v3_t11      0
-v5_t11      0
-v7_t11      0
-v8_t11      0
+        v1_t12
+v1_t11       0
+v2_t11       0
+v3_t11       0
+v4_t11       0
+v5_t11       0
+v6_t11       0
+v8_t11       0
+v10_t11      1
 
 [[12]]
-       v1_t13
-v1_t12      0
-v2_t12      0
-v3_t12      0
-v5_t12      0
-v7_t12      0
-v8_t12      0
+        v1_t13
+v1_t12       0
+v2_t12       0
+v3_t12       0
+v4_t12       0
+v5_t12       0
+v6_t12       0
+v8_t12       0
+v10_t12      1
 
 [[13]]
-       v1_t14
-v1_t13      0
-v2_t13      0
-v3_t13      0
-v5_t13      0
-v7_t13      0
-v8_t13      0
+        v1_t14
+v1_t13       0
+v2_t13       0
+v3_t13       0
+v4_t13       0
+v5_t13       0
+v6_t13       0
+v8_t13       0
+v10_t13      1
 
 [[14]]
-       v1_t15
-v1_t14      0
-v2_t14      0
-v3_t14      0
-v5_t14      1
-v7_t14      0
-v8_t14      0
+        v1_t15
+v1_t14       0
+v2_t14       0
+v3_t14       0
+v4_t14       0
+v5_t14       0
+v6_t14       0
+v8_t14       0
+v10_t14      1
 
 [[15]]
-       v1_t16
-v1_t15      0
-v2_t15      0
-v3_t15      0
-v5_t15      0
-v7_t15      0
-v8_t15      0
+        v1_t16
+v1_t15       0
+v2_t15       0
+v3_t15       0
+v4_t15       0
+v5_t15       0
+v6_t15       0
+v8_t15       0
+v10_t15      1
 
 [[16]]
-       v1_t17
-v1_t16      0
-v2_t16      0
-v3_t16      0
-v5_t16      0
-v7_t16      0
-v8_t16      0
+        v1_t17
+v1_t16       0
+v2_t16       0
+v3_t16       0
+v4_t16       0
+v5_t16       0
+v6_t16       0
+v8_t16       0
+v10_t16      1
 
 [[17]]
-       v1_t18
-v1_t17      0
-v2_t17      0
-v3_t17      0
-v5_t17      1
-v7_t17      0
-v8_t17      0
+        v1_t18
+v1_t17       0
+v2_t17       0
+v3_t17       0
+v4_t17       0
+v5_t17       0
+v6_t17       0
+v8_t17       0
+v10_t17      1
 
 [[18]]
-       v1_t19
-v1_t18      0
-v2_t18      0
-v3_t18      0
-v5_t18      0
-v7_t18      0
-v8_t18      0
+        v1_t19
+v1_t18       0
+v2_t18       0
+v3_t18       0
+v4_t18       0
+v5_t18       0
+v6_t18       0
+v8_t18       0
+v10_t18      1
 
 [[19]]
-       v1_t20
-v1_t19      0
-v2_t19      0
-v3_t19      0
-v5_t19      0
-v7_t19      0
-v8_t19      0
+        v1_t20
+v1_t19       0
+v2_t19       0
+v3_t19       0
+v4_t19       0
+v5_t19       0
+v6_t19       0
+v8_t19       1
+v10_t19      0
 
 [[20]]
-       v1_t21
-v1_t20      0
-v2_t20      0
-v3_t20      0
-v5_t20      0
-v7_t20      0
-v8_t20      0
+        v1_t21
+v1_t20       0
+v2_t20       0
+v3_t20       0
+v4_t20       0
+v5_t20       0
+v6_t20       0
+v8_t20       0
+v10_t20      1
 
 numValues: 1, numResults: 1, stopped: FALSE
 returning status FALSE
@@ -786,12 +906,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t2
 v2_t1     0
 v1_t1     0
-v4_t1     1
-v9_t1     0
+v3_t1     0
+v4_t1     0
+v5_t1     0
+v7_t1     1
 got results for task 21
 accumulating result with tag 21
 fired:
@@ -811,12 +935,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t3
 v2_t2     0
 v1_t2     0
-v4_t2     1
-v9_t2     0
+v3_t2     0
+v4_t2     0
+v5_t2     0
+v7_t2     0
 got results for task 22
 accumulating result with tag 22
 fired:
@@ -836,12 +964,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t4
-v2_t3     1
+v2_t3     0
 v1_t3     0
+v3_t3     0
 v4_t3     0
-v9_t3     0
+v5_t3     0
+v7_t3     0
 got results for task 23
 accumulating result with tag 23
 fired:
@@ -861,12 +993,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t5
-v2_t4     1
+v2_t4     0
 v1_t4     0
+v3_t4     0
 v4_t4     0
-v9_t4     0
+v5_t4     1
+v7_t4     0
 got results for task 24
 accumulating result with tag 24
 fired:
@@ -886,12 +1022,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t6
 v2_t5     0
 v1_t5     0
-v4_t5     1
-v9_t5     0
+v3_t5     0
+v4_t5     0
+v5_t5     0
+v7_t5     0
 got results for task 25
 accumulating result with tag 25
 fired:
@@ -911,12 +1051,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t7
 v2_t6     0
 v1_t6     0
+v3_t6     0
 v4_t6     1
-v9_t6     0
+v5_t6     0
+v7_t6     0
 got results for task 26
 accumulating result with tag 26
 fired:
@@ -936,12 +1080,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t8
-v2_t7     1
+v2_t7     0
 v1_t7     0
+v3_t7     0
 v4_t7     0
-v9_t7     0
+v5_t7     0
+v7_t7     1
 got results for task 27
 accumulating result with tag 27
 fired:
@@ -961,12 +1109,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t9
-v2_t8     1
+v2_t8     0
 v1_t8     0
+v3_t8     0
 v4_t8     0
-v9_t8     0
+v5_t8     0
+v7_t8     0
 got results for task 28
 accumulating result with tag 28
 fired:
@@ -986,12 +1138,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
       v2_t10
 v2_t9      0
 v1_t9      0
+v3_t9      0
 v4_t9      0
-v9_t9      0
+v5_t9      1
+v7_t9      0
 got results for task 29
 accumulating result with tag 29
 fired:
@@ -1011,12 +1167,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t11
 v2_t10      0
 v1_t10      0
+v3_t10      0
 v4_t10      0
-v9_t10      0
+v5_t10      0
+v7_t10      1
 got results for task 30
 accumulating result with tag 30
 fired:
@@ -1036,12 +1196,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t12
 v2_t11      0
 v1_t11      0
+v3_t11      0
 v4_t11      0
-v9_t11      0
+v5_t11      0
+v7_t11      1
 got results for task 31
 accumulating result with tag 31
 fired:
@@ -1061,12 +1225,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t13
 v2_t12      0
 v1_t12      0
+v3_t12      0
 v4_t12      0
-v9_t12      0
+v5_t12      0
+v7_t12      1
 got results for task 32
 accumulating result with tag 32
 fired:
@@ -1086,12 +1254,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t14
 v2_t13      0
 v1_t13      0
+v3_t13      0
 v4_t13      0
-v9_t13      0
+v5_t13      0
+v7_t13      1
 got results for task 33
 accumulating result with tag 33
 fired:
@@ -1111,12 +1283,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t15
 v2_t14      0
 v1_t14      0
+v3_t14      0
 v4_t14      0
-v9_t14      0
+v5_t14      0
+v7_t14      1
 got results for task 34
 accumulating result with tag 34
 fired:
@@ -1136,12 +1312,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t16
 v2_t15      0
 v1_t15      0
+v3_t15      0
 v4_t15      0
-v9_t15      0
+v5_t15      0
+v7_t15      1
 got results for task 35
 accumulating result with tag 35
 fired:
@@ -1161,12 +1341,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t17
 v2_t16      0
 v1_t16      0
+v3_t16      0
 v4_t16      0
-v9_t16      0
+v5_t16      1
+v7_t16      0
 got results for task 36
 accumulating result with tag 36
 fired:
@@ -1186,12 +1370,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t18
 v2_t17      0
 v1_t17      0
+v3_t17      0
 v4_t17      0
-v9_t17      0
+v5_t17      0
+v7_t17      1
 got results for task 37
 accumulating result with tag 37
 fired:
@@ -1211,12 +1399,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t19
 v2_t18      0
 v1_t18      0
+v3_t18      0
 v4_t18      0
-v9_t18      0
+v5_t18      1
+v7_t18      0
 got results for task 38
 accumulating result with tag 38
 fired:
@@ -1236,12 +1428,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t20
 v2_t19      0
 v1_t19      0
+v3_t19      0
 v4_t19      0
-v9_t19      0
+v5_t19      0
+v7_t19      1
 got results for task 39
 accumulating result with tag 39
 fired:
@@ -1261,12 +1457,16 @@ node  2
 node  3 
 node  4 
 node  5 
+node  6 
+node  7 
 result of evaluating expression:
        v2_t21
 v2_t20      0
 v1_t20      0
+v3_t20      0
 v4_t20      0
-v9_t20      0
+v5_t20      1
+v7_t20      0
 got results for task 40
 accumulating result with tag 40
 fired:
@@ -1287,141 +1487,181 @@ propagating accumulated result up to the next level from nextElem
       v2_t2
 v2_t1     0
 v1_t1     0
-v4_t1     1
-v9_t1     0
+v3_t1     0
+v4_t1     0
+v5_t1     0
+v7_t1     1
 
 [[2]]
       v2_t3
 v2_t2     0
 v1_t2     0
-v4_t2     1
-v9_t2     0
+v3_t2     0
+v4_t2     0
+v5_t2     0
+v7_t2     0
 
 [[3]]
       v2_t4
-v2_t3     1
+v2_t3     0
 v1_t3     0
+v3_t3     0
 v4_t3     0
-v9_t3     0
+v5_t3     0
+v7_t3     0
 
 [[4]]
       v2_t5
-v2_t4     1
+v2_t4     0
 v1_t4     0
+v3_t4     0
 v4_t4     0
-v9_t4     0
+v5_t4     1
+v7_t4     0
 
 [[5]]
       v2_t6
 v2_t5     0
 v1_t5     0
-v4_t5     1
-v9_t5     0
+v3_t5     0
+v4_t5     0
+v5_t5     0
+v7_t5     0
 
 [[6]]
       v2_t7
 v2_t6     0
 v1_t6     0
+v3_t6     0
 v4_t6     1
-v9_t6     0
+v5_t6     0
+v7_t6     0
 
 [[7]]
       v2_t8
-v2_t7     1
+v2_t7     0
 v1_t7     0
+v3_t7     0
 v4_t7     0
-v9_t7     0
+v5_t7     0
+v7_t7     1
 
 [[8]]
       v2_t9
-v2_t8     1
+v2_t8     0
 v1_t8     0
+v3_t8     0
 v4_t8     0
-v9_t8     0
+v5_t8     0
+v7_t8     0
 
 [[9]]
       v2_t10
 v2_t9      0
 v1_t9      0
+v3_t9      0
 v4_t9      0
-v9_t9      0
+v5_t9      1
+v7_t9      0
 
 [[10]]
        v2_t11
 v2_t10      0
 v1_t10      0
+v3_t10      0
 v4_t10      0
-v9_t10      0
+v5_t10      0
+v7_t10      1
 
 [[11]]
        v2_t12
 v2_t11      0
 v1_t11      0
+v3_t11      0
 v4_t11      0
-v9_t11      0
+v5_t11      0
+v7_t11      1
 
 [[12]]
        v2_t13
 v2_t12      0
 v1_t12      0
+v3_t12      0
 v4_t12      0
-v9_t12      0
+v5_t12      0
+v7_t12      1
 
 [[13]]
        v2_t14
 v2_t13      0
 v1_t13      0
+v3_t13      0
 v4_t13      0
-v9_t13      0
+v5_t13      0
+v7_t13      1
 
 [[14]]
        v2_t15
 v2_t14      0
 v1_t14      0
+v3_t14      0
 v4_t14      0
-v9_t14      0
+v5_t14      0
+v7_t14      1
 
 [[15]]
        v2_t16
 v2_t15      0
 v1_t15      0
+v3_t15      0
 v4_t15      0
-v9_t15      0
+v5_t15      0
+v7_t15      1
 
 [[16]]
        v2_t17
 v2_t16      0
 v1_t16      0
+v3_t16      0
 v4_t16      0
-v9_t16      0
+v5_t16      1
+v7_t16      0
 
 [[17]]
        v2_t18
 v2_t17      0
 v1_t17      0
+v3_t17      0
 v4_t17      0
-v9_t17      0
+v5_t17      0
+v7_t17      1
 
 [[18]]
        v2_t19
 v2_t18      0
 v1_t18      0
+v3_t18      0
 v4_t18      0
-v9_t18      0
+v5_t18      1
+v7_t18      0
 
 [[19]]
        v2_t20
 v2_t19      0
 v1_t19      0
+v3_t19      0
 v4_t19      0
-v9_t19      0
+v5_t19      0
+v7_t19      1
 
 [[20]]
        v2_t21
 v2_t20      0
 v1_t20      0
+v3_t20      0
 v4_t20      0
-v9_t20      0
+v5_t20      1
+v7_t20      0
 
 numValues: 2, numResults: 2, stopped: FALSE
 returning status FALSE
@@ -1445,11 +1685,11 @@ result of evaluating expression:
        v3_t2
 v3_t1      0
 v1_t1      0
-v4_t1      0
+v2_t1      0
 v5_t1      0
 v6_t1      0
+v7_t1      1
 v8_t1      0
-v9_t1      0
 v10_t1     0
 got results for task 41
 accumulating result with tag 41
@@ -1478,11 +1718,11 @@ result of evaluating expression:
        v3_t3
 v3_t2      0
 v1_t2      0
-v4_t2      0
+v2_t2      0
 v5_t2      0
 v6_t2      0
+v7_t2      0
 v8_t2      0
-v9_t2      0
 v10_t2     0
 got results for task 42
 accumulating result with tag 42
@@ -1511,11 +1751,11 @@ result of evaluating expression:
        v3_t4
 v3_t3      0
 v1_t3      0
-v4_t3      0
+v2_t3      0
 v5_t3      0
 v6_t3      0
+v7_t3      0
 v8_t3      0
-v9_t3      0
 v10_t3     0
 got results for task 43
 accumulating result with tag 43
@@ -1544,11 +1784,11 @@ result of evaluating expression:
        v3_t5
 v3_t4      0
 v1_t4      0
-v4_t4      0
+v2_t4      0
 v5_t4      0
 v6_t4      0
+v7_t4      0
 v8_t4      0
-v9_t4      0
 v10_t4     0
 got results for task 44
 accumulating result with tag 44
@@ -1577,11 +1817,11 @@ result of evaluating expression:
        v3_t6
 v3_t5      0
 v1_t5      0
-v4_t5      0
+v2_t5      0
 v5_t5      0
 v6_t5      0
+v7_t5      0
 v8_t5      0
-v9_t5      0
 v10_t5     0
 got results for task 45
 accumulating result with tag 45
@@ -1610,11 +1850,11 @@ result of evaluating expression:
        v3_t7
 v3_t6      0
 v1_t6      0
-v4_t6      0
+v2_t6      0
 v5_t6      0
-v6_t6      1
+v6_t6      0
+v7_t6      0
 v8_t6      0
-v9_t6      0
 v10_t6     0
 got results for task 46
 accumulating result with tag 46
@@ -1643,11 +1883,11 @@ result of evaluating expression:
        v3_t8
 v3_t7      0
 v1_t7      0
-v4_t7      0
+v2_t7      0
 v5_t7      0
 v6_t7      0
+v7_t7      1
 v8_t7      0
-v9_t7      0
 v10_t7     0
 got results for task 47
 accumulating result with tag 47
@@ -1676,11 +1916,11 @@ result of evaluating expression:
        v3_t9
 v3_t8      0
 v1_t8      0
-v4_t8      0
+v2_t8      0
 v5_t8      0
 v6_t8      0
+v7_t8      0
 v8_t8      0
-v9_t8      0
 v10_t8     0
 got results for task 48
 accumulating result with tag 48
@@ -1709,11 +1949,11 @@ result of evaluating expression:
        v3_t10
 v3_t9       0
 v1_t9       0
-v4_t9       0
+v2_t9       0
 v5_t9       0
 v6_t9       0
+v7_t9       0
 v8_t9       0
-v9_t9       0
 v10_t9      0
 got results for task 49
 accumulating result with tag 49
@@ -1742,11 +1982,11 @@ result of evaluating expression:
         v3_t11
 v3_t10       0
 v1_t10       0
-v4_t10       0
+v2_t10       0
 v5_t10       0
 v6_t10       0
-v8_t10       0
-v9_t10       0
+v7_t10       0
+v8_t10       1
 v10_t10      0
 got results for task 50
 accumulating result with tag 50
@@ -1775,12 +2015,12 @@ result of evaluating expression:
         v3_t12
 v3_t11       0
 v1_t11       0
-v4_t11       0
+v2_t11       0
 v5_t11       0
 v6_t11       0
+v7_t11       0
 v8_t11       0
-v9_t11       0
-v10_t11      0
+v10_t11      1
 got results for task 51
 accumulating result with tag 51
 fired:
@@ -1808,12 +2048,12 @@ result of evaluating expression:
         v3_t13
 v3_t12       0
 v1_t12       0
-v4_t12       0
+v2_t12       0
 v5_t12       0
 v6_t12       0
+v7_t12       0
 v8_t12       0
-v9_t12       0
-v10_t12      0
+v10_t12      1
 got results for task 52
 accumulating result with tag 52
 fired:
@@ -1841,12 +2081,12 @@ result of evaluating expression:
         v3_t14
 v3_t13       0
 v1_t13       0
-v4_t13       0
+v2_t13       0
 v5_t13       0
 v6_t13       0
+v7_t13       0
 v8_t13       0
-v9_t13       0
-v10_t13      0
+v10_t13      1
 got results for task 53
 accumulating result with tag 53
 fired:
@@ -1874,12 +2114,12 @@ result of evaluating expression:
         v3_t15
 v3_t14       0
 v1_t14       0
-v4_t14       0
+v2_t14       0
 v5_t14       0
 v6_t14       0
+v7_t14       0
 v8_t14       0
-v9_t14       0
-v10_t14      0
+v10_t14      1
 got results for task 54
 accumulating result with tag 54
 fired:
@@ -1907,12 +2147,12 @@ result of evaluating expression:
         v3_t16
 v3_t15       0
 v1_t15       0
-v4_t15       0
+v2_t15       0
 v5_t15       0
 v6_t15       0
+v7_t15       0
 v8_t15       0
-v9_t15       0
-v10_t15      0
+v10_t15      1
 got results for task 55
 accumulating result with tag 55
 fired:
@@ -1940,12 +2180,12 @@ result of evaluating expression:
         v3_t17
 v3_t16       0
 v1_t16       0
-v4_t16       0
+v2_t16       0
 v5_t16       0
 v6_t16       0
+v7_t16       0
 v8_t16       0
-v9_t16       0
-v10_t16      0
+v10_t16      1
 got results for task 56
 accumulating result with tag 56
 fired:
@@ -1973,12 +2213,12 @@ result of evaluating expression:
         v3_t18
 v3_t17       0
 v1_t17       0
-v4_t17       0
-v5_t17       1
+v2_t17       0
+v5_t17       0
 v6_t17       0
+v7_t17       0
 v8_t17       0
-v9_t17       0
-v10_t17      0
+v10_t17      1
 got results for task 57
 accumulating result with tag 57
 fired:
@@ -2006,12 +2246,12 @@ result of evaluating expression:
         v3_t19
 v3_t18       0
 v1_t18       0
-v4_t18       0
+v2_t18       0
 v5_t18       0
 v6_t18       0
+v7_t18       0
 v8_t18       0
-v9_t18       0
-v10_t18      0
+v10_t18      1
 got results for task 58
 accumulating result with tag 58
 fired:
@@ -2039,11 +2279,11 @@ result of evaluating expression:
         v3_t20
 v3_t19       0
 v1_t19       0
-v4_t19       0
+v2_t19       0
 v5_t19       0
 v6_t19       0
-v8_t19       0
-v9_t19       0
+v7_t19       0
+v8_t19       1
 v10_t19      0
 got results for task 59
 accumulating result with tag 59
@@ -2072,11 +2312,11 @@ result of evaluating expression:
         v3_t21
 v3_t20       0
 v1_t20       0
-v4_t20       0
+v2_t20       0
 v5_t20       0
 v6_t20       0
+v7_t20       0
 v8_t20       0
-v9_t20       0
 v10_t20      0
 got results for task 60
 accumulating result with tag 60
@@ -2098,220 +2338,220 @@ propagating accumulated result up to the next level from nextElem
        v3_t2
 v3_t1      0
 v1_t1      0
-v4_t1      0
+v2_t1      0
 v5_t1      0
 v6_t1      0
+v7_t1      1
 v8_t1      0
-v9_t1      0
 v10_t1     0
 
 [[2]]
        v3_t3
 v3_t2      0
 v1_t2      0
-v4_t2      0
+v2_t2      0
 v5_t2      0
 v6_t2      0
+v7_t2      0
 v8_t2      0
-v9_t2      0
 v10_t2     0
 
 [[3]]
        v3_t4
 v3_t3      0
 v1_t3      0
-v4_t3      0
+v2_t3      0
 v5_t3      0
 v6_t3      0
+v7_t3      0
 v8_t3      0
-v9_t3      0
 v10_t3     0
 
 [[4]]
        v3_t5
 v3_t4      0
 v1_t4      0
-v4_t4      0
+v2_t4      0
 v5_t4      0
 v6_t4      0
+v7_t4      0
 v8_t4      0
-v9_t4      0
 v10_t4     0
 
 [[5]]
        v3_t6
 v3_t5      0
 v1_t5      0
-v4_t5      0
+v2_t5      0
 v5_t5      0
 v6_t5      0
+v7_t5      0
 v8_t5      0
-v9_t5      0
 v10_t5     0
 
 [[6]]
        v3_t7
 v3_t6      0
 v1_t6      0
-v4_t6      0
+v2_t6      0
 v5_t6      0
-v6_t6      1
+v6_t6      0
+v7_t6      0
 v8_t6      0
-v9_t6      0
 v10_t6     0
 
 [[7]]
        v3_t8
 v3_t7      0
 v1_t7      0
-v4_t7      0
+v2_t7      0
 v5_t7      0
 v6_t7      0
+v7_t7      1
 v8_t7      0
-v9_t7      0
 v10_t7     0
 
 [[8]]
        v3_t9
 v3_t8      0
 v1_t8      0
-v4_t8      0
+v2_t8      0
 v5_t8      0
 v6_t8      0
+v7_t8      0
 v8_t8      0
-v9_t8      0
 v10_t8     0
 
 [[9]]
        v3_t10
 v3_t9       0
 v1_t9       0
-v4_t9       0
+v2_t9       0
 v5_t9       0
 v6_t9       0
+v7_t9       0
 v8_t9       0
-v9_t9       0
 v10_t9      0
 
 [[10]]
         v3_t11
 v3_t10       0
 v1_t10       0
-v4_t10       0
+v2_t10       0
 v5_t10       0
 v6_t10       0
-v8_t10       0
-v9_t10       0
+v7_t10       0
+v8_t10       1
 v10_t10      0
 
 [[11]]
         v3_t12
 v3_t11       0
 v1_t11       0
-v4_t11       0
+v2_t11       0
 v5_t11       0
 v6_t11       0
+v7_t11       0
 v8_t11       0
-v9_t11       0
-v10_t11      0
+v10_t11      1
 
 [[12]]
         v3_t13
 v3_t12       0
 v1_t12       0
-v4_t12       0
+v2_t12       0
 v5_t12       0
 v6_t12       0
+v7_t12       0
 v8_t12       0
-v9_t12       0
-v10_t12      0
+v10_t12      1
 
 [[13]]
         v3_t14
 v3_t13       0
 v1_t13       0
-v4_t13       0
+v2_t13       0
 v5_t13       0
 v6_t13       0
+v7_t13       0
 v8_t13       0
-v9_t13       0
-v10_t13      0
+v10_t13      1
 
 [[14]]
         v3_t15
 v3_t14       0
 v1_t14       0
-v4_t14       0
+v2_t14       0
 v5_t14       0
 v6_t14       0
+v7_t14       0
 v8_t14       0
-v9_t14       0
-v10_t14      0
+v10_t14      1
 
 [[15]]
         v3_t16
 v3_t15       0
 v1_t15       0
-v4_t15       0
+v2_t15       0
 v5_t15       0
 v6_t15       0
+v7_t15       0
 v8_t15       0
-v9_t15       0
-v10_t15      0
+v10_t15      1
 
 [[16]]
         v3_t17
 v3_t16       0
 v1_t16       0
-v4_t16       0
+v2_t16       0
 v5_t16       0
 v6_t16       0
+v7_t16       0
 v8_t16       0
-v9_t16       0
-v10_t16      0
+v10_t16      1
 
 [[17]]
         v3_t18
 v3_t17       0
 v1_t17       0
-v4_t17       0
-v5_t17       1
+v2_t17       0
+v5_t17       0
 v6_t17       0
+v7_t17       0
 v8_t17       0
-v9_t17       0
-v10_t17      0
+v10_t17      1
 
 [[18]]
         v3_t19
 v3_t18       0
 v1_t18       0
-v4_t18       0
+v2_t18       0
 v5_t18       0
 v6_t18       0
+v7_t18       0
 v8_t18       0
-v9_t18       0
-v10_t18      0
+v10_t18      1
 
 [[19]]
         v3_t20
 v3_t19       0
 v1_t19       0
-v4_t19       0
+v2_t19       0
 v5_t19       0
 v6_t19       0
-v8_t19       0
-v9_t19       0
+v7_t19       0
+v8_t19       1
 v10_t19      0
 
 [[20]]
         v3_t21
 v3_t20       0
 v1_t20       0
-v4_t20       0
+v2_t20       0
 v5_t20       0
 v6_t20       0
+v7_t20       0
 v8_t20       0
-v9_t20       0
 v10_t20      0
 
 numValues: 3, numResults: 3, stopped: FALSE
@@ -2330,18 +2570,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t2
-v4_t1      0
-v2_t1      1
-v3_t1      0
-v5_t1      0
-v6_t1      0
-v7_t1      0
-v9_t1      0
-v10_t1     0
+      v4_t2
+v4_t1     0
+v1_t1     0
+v2_t1     0
+v5_t1     0
+v8_t1     0
+v9_t1     0
 got results for task 61
 accumulating result with tag 61
 fired:
@@ -2363,18 +2599,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t3
-v4_t2      0
-v2_t2      0
-v3_t2      0
-v5_t2      0
-v6_t2      0
-v7_t2      0
-v9_t2      0
-v10_t2     0
+      v4_t3
+v4_t2     0
+v1_t2     0
+v2_t2     0
+v5_t2     0
+v8_t2     0
+v9_t2     1
 got results for task 62
 accumulating result with tag 62
 fired:
@@ -2396,18 +2628,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t4
-v4_t3      0
-v2_t3      0
-v3_t3      0
-v5_t3      0
-v6_t3      0
-v7_t3      0
-v9_t3      0
-v10_t3     0
+      v4_t4
+v4_t3     0
+v1_t3     0
+v2_t3     0
+v5_t3     0
+v8_t3     0
+v9_t3     0
 got results for task 63
 accumulating result with tag 63
 fired:
@@ -2429,18 +2657,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t5
-v4_t4      0
-v2_t4      1
-v3_t4      0
-v5_t4      0
-v6_t4      0
-v7_t4      0
-v9_t4      0
-v10_t4     0
+      v4_t5
+v4_t4     0
+v1_t4     0
+v2_t4     0
+v5_t4     0
+v8_t4     0
+v9_t4     0
 got results for task 64
 accumulating result with tag 64
 fired:
@@ -2462,18 +2686,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t6
-v4_t5      0
-v2_t5      1
-v3_t5      0
-v5_t5      0
-v6_t5      0
-v7_t5      0
-v9_t5      0
-v10_t5     0
+      v4_t6
+v4_t5     0
+v1_t5     0
+v2_t5     0
+v5_t5     0
+v8_t5     1
+v9_t5     0
 got results for task 65
 accumulating result with tag 65
 fired:
@@ -2495,18 +2715,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t7
-v4_t6      0
-v2_t6      0
-v3_t6      0
-v5_t6      0
-v6_t6      1
-v7_t6      0
-v9_t6      0
-v10_t6     0
+      v4_t7
+v4_t6     0
+v1_t6     0
+v2_t6     1
+v5_t6     0
+v8_t6     0
+v9_t6     0
 got results for task 66
 accumulating result with tag 66
 fired:
@@ -2528,18 +2744,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t8
-v4_t7      0
-v2_t7      0
-v3_t7      0
-v5_t7      0
-v6_t7      0
-v7_t7      0
-v9_t7      0
-v10_t7     0
+      v4_t8
+v4_t7     0
+v1_t7     0
+v2_t7     0
+v5_t7     0
+v8_t7     0
+v9_t7     1
 got results for task 67
 accumulating result with tag 67
 fired:
@@ -2561,18 +2773,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t9
-v4_t8      0
-v2_t8      0
-v3_t8      0
-v5_t8      0
-v6_t8      0
-v7_t8      0
-v9_t8      0
-v10_t8     0
+      v4_t9
+v4_t8     0
+v1_t8     0
+v2_t8     0
+v5_t8     0
+v8_t8     1
+v9_t8     0
 got results for task 68
 accumulating result with tag 68
 fired:
@@ -2594,18 +2802,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-       v4_t10
-v4_t9       0
-v2_t9       0
-v3_t9       0
-v5_t9       0
-v6_t9       0
-v7_t9       0
-v9_t9       0
-v10_t9      0
+      v4_t10
+v4_t9      0
+v1_t9      0
+v2_t9      0
+v5_t9      0
+v8_t9      0
+v9_t9      0
 got results for task 69
 accumulating result with tag 69
 fired:
@@ -2627,18 +2831,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t11
-v4_t10       0
-v2_t10       0
-v3_t10       0
-v5_t10       0
-v6_t10       0
-v7_t10       0
-v9_t10       0
-v10_t10      0
+       v4_t11
+v4_t10      0
+v1_t10      0
+v2_t10      0
+v5_t10      0
+v8_t10      0
+v9_t10      1
 got results for task 70
 accumulating result with tag 70
 fired:
@@ -2660,18 +2860,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t12
-v4_t11       0
-v2_t11       0
-v3_t11       0
-v5_t11       0
-v6_t11       0
-v7_t11       0
-v9_t11       0
-v10_t11      0
+       v4_t12
+v4_t11      0
+v1_t11      0
+v2_t11      0
+v5_t11      0
+v8_t11      1
+v9_t11      0
 got results for task 71
 accumulating result with tag 71
 fired:
@@ -2693,18 +2889,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t13
-v4_t12       0
-v2_t12       0
-v3_t12       0
-v5_t12       0
-v6_t12       0
-v7_t12       0
-v9_t12       0
-v10_t12      0
+       v4_t13
+v4_t12      0
+v1_t12      0
+v2_t12      0
+v5_t12      0
+v8_t12      0
+v9_t12      1
 got results for task 72
 accumulating result with tag 72
 fired:
@@ -2726,18 +2918,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t14
-v4_t13       0
-v2_t13       0
-v3_t13       0
-v5_t13       0
-v6_t13       0
-v7_t13       0
-v9_t13       0
-v10_t13      0
+       v4_t14
+v4_t13      0
+v1_t13      0
+v2_t13      0
+v5_t13      0
+v8_t13      0
+v9_t13      1
 got results for task 73
 accumulating result with tag 73
 fired:
@@ -2759,18 +2947,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t15
-v4_t14       0
-v2_t14       0
-v3_t14       0
-v5_t14       0
-v6_t14       0
-v7_t14       0
-v9_t14       0
-v10_t14      0
+       v4_t15
+v4_t14      0
+v1_t14      0
+v2_t14      0
+v5_t14      0
+v8_t14      0
+v9_t14      1
 got results for task 74
 accumulating result with tag 74
 fired:
@@ -2792,18 +2976,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t16
-v4_t15       0
-v2_t15       0
-v3_t15       0
-v5_t15       0
-v6_t15       0
-v7_t15       0
-v9_t15       0
-v10_t15      0
+       v4_t16
+v4_t15      0
+v1_t15      0
+v2_t15      0
+v5_t15      0
+v8_t15      1
+v9_t15      0
 got results for task 75
 accumulating result with tag 75
 fired:
@@ -2825,18 +3005,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t17
-v4_t16       0
-v2_t16       0
-v3_t16       0
-v5_t16       0
-v6_t16       0
-v7_t16       0
-v9_t16       0
-v10_t16      0
+       v4_t17
+v4_t16      0
+v1_t16      0
+v2_t16      0
+v5_t16      0
+v8_t16      0
+v9_t16      0
 got results for task 76
 accumulating result with tag 76
 fired:
@@ -2858,18 +3034,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t18
-v4_t17       0
-v2_t17       0
-v3_t17       0
-v5_t17       0
-v6_t17       0
-v7_t17       0
-v9_t17       0
-v10_t17      0
+       v4_t18
+v4_t17      0
+v1_t17      0
+v2_t17      0
+v5_t17      0
+v8_t17      1
+v9_t17      0
 got results for task 77
 accumulating result with tag 77
 fired:
@@ -2891,18 +3063,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t19
-v4_t18       0
-v2_t18       0
-v3_t18       0
-v5_t18       0
-v6_t18       0
-v7_t18       0
-v9_t18       0
-v10_t18      0
+       v4_t19
+v4_t18      0
+v1_t18      0
+v2_t18      0
+v5_t18      0
+v8_t18      0
+v9_t18      0
 got results for task 78
 accumulating result with tag 78
 fired:
@@ -2924,18 +3092,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t20
-v4_t19       0
-v2_t19       0
-v3_t19       0
-v5_t19       0
-v6_t19       0
-v7_t19       0
-v9_t19       0
-v10_t19      0
+       v4_t20
+v4_t19      0
+v1_t19      0
+v2_t19      0
+v5_t19      0
+v8_t19      1
+v9_t19      0
 got results for task 79
 accumulating result with tag 79
 fired:
@@ -2957,18 +3121,14 @@ node  4
 node  5 
 node  6 
 node  7 
-node  8 
-node  9 
 result of evaluating expression:
-        v4_t21
-v4_t20       0
-v2_t20       0
-v3_t20       0
-v5_t20       0
-v6_t20       0
-v7_t20       0
-v9_t20       0
-v10_t20      0
+       v4_t21
+v4_t20      0
+v1_t20      0
+v2_t20      0
+v5_t20      0
+v8_t20      0
+v9_t20      0
 got results for task 80
 accumulating result with tag 80
 fired:
@@ -2986,224 +3146,184 @@ evaluating call object to combine results:
 numValues: 20, numResults: 20, stopped: TRUE
 propagating accumulated result up to the next level from nextElem
 [[1]]
-       v4_t2
-v4_t1      0
-v2_t1      1
-v3_t1      0
-v5_t1      0
-v6_t1      0
-v7_t1      0
-v9_t1      0
-v10_t1     0
+      v4_t2
+v4_t1     0
+v1_t1     0
+v2_t1     0
+v5_t1     0
+v8_t1     0
+v9_t1     0
 
 [[2]]
-       v4_t3
-v4_t2      0
-v2_t2      0
-v3_t2      0
-v5_t2      0
-v6_t2      0
-v7_t2      0
-v9_t2      0
-v10_t2     0
+      v4_t3
+v4_t2     0
+v1_t2     0
+v2_t2     0
+v5_t2     0
+v8_t2     0
+v9_t2     1
 
 [[3]]
-       v4_t4
-v4_t3      0
-v2_t3      0
-v3_t3      0
-v5_t3      0
-v6_t3      0
-v7_t3      0
-v9_t3      0
-v10_t3     0
+      v4_t4
+v4_t3     0
+v1_t3     0
+v2_t3     0
+v5_t3     0
+v8_t3     0
+v9_t3     0
 
 [[4]]
-       v4_t5
-v4_t4      0
-v2_t4      1
-v3_t4      0
-v5_t4      0
-v6_t4      0
-v7_t4      0
-v9_t4      0
-v10_t4     0
+      v4_t5
+v4_t4     0
+v1_t4     0
+v2_t4     0
+v5_t4     0
+v8_t4     0
+v9_t4     0
 
 [[5]]
-       v4_t6
-v4_t5      0
-v2_t5      1
-v3_t5      0
-v5_t5      0
-v6_t5      0
-v7_t5      0
-v9_t5      0
-v10_t5     0
+      v4_t6
+v4_t5     0
+v1_t5     0
+v2_t5     0
+v5_t5     0
+v8_t5     1
+v9_t5     0
 
 [[6]]
-       v4_t7
-v4_t6      0
-v2_t6      0
-v3_t6      0
-v5_t6      0
-v6_t6      1
-v7_t6      0
-v9_t6      0
-v10_t6     0
+      v4_t7
+v4_t6     0
+v1_t6     0
+v2_t6     1
+v5_t6     0
+v8_t6     0
+v9_t6     0
 
 [[7]]
-       v4_t8
-v4_t7      0
-v2_t7      0
-v3_t7      0
-v5_t7      0
-v6_t7      0
-v7_t7      0
-v9_t7      0
-v10_t7     0
+      v4_t8
+v4_t7     0
+v1_t7     0
+v2_t7     0
+v5_t7     0
+v8_t7     0
+v9_t7     1
 
 [[8]]
-       v4_t9
-v4_t8      0
-v2_t8      0
-v3_t8      0
-v5_t8      0
-v6_t8      0
-v7_t8      0
-v9_t8      0
-v10_t8     0
+      v4_t9
+v4_t8     0
+v1_t8     0
+v2_t8     0
+v5_t8     0
+v8_t8     1
+v9_t8     0
 
 [[9]]
-       v4_t10
-v4_t9       0
-v2_t9       0
-v3_t9       0
-v5_t9       0
-v6_t9       0
-v7_t9       0
-v9_t9       0
-v10_t9      0
+      v4_t10
+v4_t9      0
+v1_t9      0
+v2_t9      0
+v5_t9      0
+v8_t9      0
+v9_t9      0
 
 [[10]]
-        v4_t11
-v4_t10       0
-v2_t10       0
-v3_t10       0
-v5_t10       0
-v6_t10       0
-v7_t10       0
-v9_t10       0
-v10_t10      0
+       v4_t11
+v4_t10      0
+v1_t10      0
+v2_t10      0
+v5_t10      0
+v8_t10      0
+v9_t10      1
 
 [[11]]
-        v4_t12
-v4_t11       0
-v2_t11       0
-v3_t11       0
-v5_t11       0
-v6_t11       0
-v7_t11       0
-v9_t11       0
-v10_t11      0
+       v4_t12
+v4_t11      0
+v1_t11      0
+v2_t11      0
+v5_t11      0
+v8_t11      1
+v9_t11      0
 
 [[12]]
-        v4_t13
-v4_t12       0
-v2_t12       0
-v3_t12       0
-v5_t12       0
-v6_t12       0
-v7_t12       0
-v9_t12       0
-v10_t12      0
+       v4_t13
+v4_t12      0
+v1_t12      0
+v2_t12      0
+v5_t12      0
+v8_t12      0
+v9_t12      1
 
 [[13]]
-        v4_t14
-v4_t13       0
-v2_t13       0
-v3_t13       0
-v5_t13       0
-v6_t13       0
-v7_t13       0
-v9_t13       0
-v10_t13      0
+       v4_t14
+v4_t13      0
+v1_t13      0
+v2_t13      0
+v5_t13      0
+v8_t13      0
+v9_t13      1
 
 [[14]]
-        v4_t15
-v4_t14       0
-v2_t14       0
-v3_t14       0
-v5_t14       0
-v6_t14       0
-v7_t14       0
-v9_t14       0
-v10_t14      0
+       v4_t15
+v4_t14      0
+v1_t14      0
+v2_t14      0
+v5_t14      0
+v8_t14      0
+v9_t14      1
 
 [[15]]
-        v4_t16
-v4_t15       0
-v2_t15       0
-v3_t15       0
-v5_t15       0
-v6_t15       0
-v7_t15       0
-v9_t15       0
-v10_t15      0
+       v4_t16
+v4_t15      0
+v1_t15      0
+v2_t15      0
+v5_t15      0
+v8_t15      1
+v9_t15      0
 
 [[16]]
-        v4_t17
-v4_t16       0
-v2_t16       0
-v3_t16       0
-v5_t16       0
-v6_t16       0
-v7_t16       0
-v9_t16       0
-v10_t16      0
+       v4_t17
+v4_t16      0
+v1_t16      0
+v2_t16      0
+v5_t16      0
+v8_t16      0
+v9_t16      0
 
 [[17]]
-        v4_t18
-v4_t17       0
-v2_t17       0
-v3_t17       0
-v5_t17       0
-v6_t17       0
-v7_t17       0
-v9_t17       0
-v10_t17      0
+       v4_t18
+v4_t17      0
+v1_t17      0
+v2_t17      0
+v5_t17      0
+v8_t17      1
+v9_t17      0
 
 [[18]]
-        v4_t19
-v4_t18       0
-v2_t18       0
-v3_t18       0
-v5_t18       0
-v6_t18       0
-v7_t18       0
-v9_t18       0
-v10_t18      0
+       v4_t19
+v4_t18      0
+v1_t18      0
+v2_t18      0
+v5_t18      0
+v8_t18      0
+v9_t18      0
 
 [[19]]
-        v4_t20
-v4_t19       0
-v2_t19       0
-v3_t19       0
-v5_t19       0
-v6_t19       0
-v7_t19       0
-v9_t19       0
-v10_t19      0
+       v4_t20
+v4_t19      0
+v1_t19      0
+v2_t19      0
+v5_t19      0
+v8_t19      1
+v9_t19      0
 
 [[20]]
-        v4_t21
-v4_t20       0
-v2_t20       0
-v3_t20       0
-v5_t20       0
-v6_t20       0
-v7_t20       0
-v9_t20       0
-v10_t20      0
+       v4_t21
+v4_t20      0
+v1_t20      0
+v2_t20      0
+v5_t20      0
+v8_t20      0
+v9_t20      0
 
 numValues: 4, numResults: 4, stopped: FALSE
 returning status FALSE
@@ -3222,13 +3342,15 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t2
 v5_t1      0
 v1_t1      0
+v2_t1      0
 v3_t1      0
 v4_t1      0
-v6_t1      0
+v7_t1      0
 v8_t1      0
 v10_t1     0
 got results for task 81
@@ -3253,13 +3375,15 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t3
 v5_t2      0
 v1_t2      0
+v2_t2      0
 v3_t2      0
 v4_t2      0
-v6_t2      0
+v7_t2      0
 v8_t2      0
 v10_t2     0
 got results for task 82
@@ -3284,13 +3408,15 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t4
 v5_t3      0
-v1_t3      0
+v1_t3      1
+v2_t3      0
 v3_t3      0
 v4_t3      0
-v6_t3      0
+v7_t3      0
 v8_t3      0
 v10_t3     0
 got results for task 83
@@ -3315,13 +3441,15 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t5
 v5_t4      0
 v1_t4      0
+v2_t4      0
 v3_t4      0
 v4_t4      0
-v6_t4      0
+v7_t4      0
 v8_t4      0
 v10_t4     0
 got results for task 84
@@ -3346,13 +3474,15 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t6
 v5_t5      0
 v1_t5      0
+v2_t5      0
 v3_t5      0
 v4_t5      0
-v6_t5      0
+v7_t5      0
 v8_t5      0
 v10_t5     0
 got results for task 85
@@ -3377,14 +3507,16 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t7
 v5_t6      0
 v1_t6      0
+v2_t6      0
 v3_t6      0
 v4_t6      0
-v6_t6      0
-v8_t6      0
+v7_t6      0
+v8_t6      1
 v10_t6     0
 got results for task 86
 accumulating result with tag 86
@@ -3408,13 +3540,15 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t8
 v5_t7      0
 v1_t7      0
+v2_t7      0
 v3_t7      0
 v4_t7      0
-v6_t7      0
+v7_t7      1
 v8_t7      0
 v10_t7     0
 got results for task 87
@@ -3439,14 +3573,16 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t9
 v5_t8      0
 v1_t8      0
-v3_t8      1
+v2_t8      0
+v3_t8      0
 v4_t8      0
-v6_t8      0
-v8_t8      0
+v7_t8      0
+v8_t8      1
 v10_t8     0
 got results for task 88
 accumulating result with tag 88
@@ -3470,14 +3606,16 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
        v5_t10
 v5_t9       0
 v1_t9       0
+v2_t9       0
 v3_t9       0
 v4_t9       0
-v6_t9       0
-v8_t9       0
+v7_t9       0
+v8_t9       1
 v10_t9      0
 got results for task 89
 accumulating result with tag 89
@@ -3501,14 +3639,16 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t11
 v5_t10       0
 v1_t10       0
+v2_t10       0
 v3_t10       0
 v4_t10       0
-v6_t10       0
-v8_t10       0
+v7_t10       0
+v8_t10       1
 v10_t10      0
 got results for task 90
 accumulating result with tag 90
@@ -3532,15 +3672,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t12
 v5_t11       0
 v1_t11       0
+v2_t11       0
 v3_t11       0
 v4_t11       0
-v6_t11       0
+v7_t11       0
 v8_t11       0
-v10_t11      0
+v10_t11      1
 got results for task 91
 accumulating result with tag 91
 fired:
@@ -3563,15 +3705,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t13
 v5_t12       0
 v1_t12       0
+v2_t12       0
 v3_t12       0
 v4_t12       0
-v6_t12       0
+v7_t12       0
 v8_t12       0
-v10_t12      0
+v10_t12      1
 got results for task 92
 accumulating result with tag 92
 fired:
@@ -3594,15 +3738,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t14
 v5_t13       0
 v1_t13       0
+v2_t13       0
 v3_t13       0
 v4_t13       0
-v6_t13       0
-v8_t13       1
-v10_t13      0
+v7_t13       0
+v8_t13       0
+v10_t13      1
 got results for task 93
 accumulating result with tag 93
 fired:
@@ -3625,15 +3771,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t15
 v5_t14       0
 v1_t14       0
+v2_t14       0
 v3_t14       0
 v4_t14       0
-v6_t14       0
+v7_t14       0
 v8_t14       0
-v10_t14      0
+v10_t14      1
 got results for task 94
 accumulating result with tag 94
 fired:
@@ -3656,15 +3804,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t16
 v5_t15       0
 v1_t15       0
+v2_t15       0
 v3_t15       0
 v4_t15       0
-v6_t15       0
+v7_t15       0
 v8_t15       0
-v10_t15      0
+v10_t15      1
 got results for task 95
 accumulating result with tag 95
 fired:
@@ -3687,15 +3837,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t17
 v5_t16       0
 v1_t16       0
+v2_t16       0
 v3_t16       0
 v4_t16       0
-v6_t16       0
+v7_t16       0
 v8_t16       0
-v10_t16      0
+v10_t16      1
 got results for task 96
 accumulating result with tag 96
 fired:
@@ -3718,15 +3870,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t18
 v5_t17       0
 v1_t17       0
+v2_t17       0
 v3_t17       0
 v4_t17       0
-v6_t17       0
+v7_t17       0
 v8_t17       0
-v10_t17      0
+v10_t17      1
 got results for task 97
 accumulating result with tag 97
 fired:
@@ -3749,15 +3903,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t19
 v5_t18       0
 v1_t18       0
+v2_t18       0
 v3_t18       0
 v4_t18       0
-v6_t18       0
+v7_t18       0
 v8_t18       0
-v10_t18      0
+v10_t18      1
 got results for task 98
 accumulating result with tag 98
 fired:
@@ -3780,14 +3936,16 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t20
 v5_t19       0
 v1_t19       0
+v2_t19       0
 v3_t19       0
 v4_t19       0
-v6_t19       0
-v8_t19       0
+v7_t19       0
+v8_t19       1
 v10_t19      0
 got results for task 99
 accumulating result with tag 99
@@ -3811,15 +3969,17 @@ node  5
 node  6 
 node  7 
 node  8 
+node  9 
 result of evaluating expression:
         v5_t21
 v5_t20       0
 v1_t20       0
+v2_t20       0
 v3_t20       0
 v4_t20       0
-v6_t20       0
+v7_t20       0
 v8_t20       0
-v10_t20      0
+v10_t20      1
 got results for task 100
 accumulating result with tag 100
 fired:
@@ -3840,9 +4000,10 @@ propagating accumulated result up to the next level from nextElem
        v5_t2
 v5_t1      0
 v1_t1      0
+v2_t1      0
 v3_t1      0
 v4_t1      0
-v6_t1      0
+v7_t1      0
 v8_t1      0
 v10_t1     0
 
@@ -3850,19 +4011,21 @@ v10_t1     0
        v5_t3
 v5_t2      0
 v1_t2      0
+v2_t2      0
 v3_t2      0
 v4_t2      0
-v6_t2      0
+v7_t2      0
 v8_t2      0
 v10_t2     0
 
 [[3]]
        v5_t4
 v5_t3      0
-v1_t3      0
+v1_t3      1
+v2_t3      0
 v3_t3      0
 v4_t3      0
-v6_t3      0
+v7_t3      0
 v8_t3      0
 v10_t3     0
 
@@ -3870,9 +4033,10 @@ v10_t3     0
        v5_t5
 v5_t4      0
 v1_t4      0
+v2_t4      0
 v3_t4      0
 v4_t4      0
-v6_t4      0
+v7_t4      0
 v8_t4      0
 v10_t4     0
 
@@ -3880,9 +4044,10 @@ v10_t4     0
        v5_t6
 v5_t5      0
 v1_t5      0
+v2_t5      0
 v3_t5      0
 v4_t5      0
-v6_t5      0
+v7_t5      0
 v8_t5      0
 v10_t5     0
 
@@ -3890,19 +4055,21 @@ v10_t5     0
        v5_t7
 v5_t6      0
 v1_t6      0
+v2_t6      0
 v3_t6      0
 v4_t6      0
-v6_t6      0
-v8_t6      0
+v7_t6      0
+v8_t6      1
 v10_t6     0
 
 [[7]]
        v5_t8
 v5_t7      0
 v1_t7      0
+v2_t7      0
 v3_t7      0
 v4_t7      0
-v6_t7      0
+v7_t7      1
 v8_t7      0
 v10_t7     0
 
@@ -3910,131 +4077,144 @@ v10_t7     0
        v5_t9
 v5_t8      0
 v1_t8      0
-v3_t8      1
+v2_t8      0
+v3_t8      0
 v4_t8      0
-v6_t8      0
-v8_t8      0
+v7_t8      0
+v8_t8      1
 v10_t8     0
 
 [[9]]
        v5_t10
 v5_t9       0
 v1_t9       0
+v2_t9       0
 v3_t9       0
 v4_t9       0
-v6_t9       0
-v8_t9       0
+v7_t9       0
+v8_t9       1
 v10_t9      0
 
 [[10]]
         v5_t11
 v5_t10       0
 v1_t10       0
+v2_t10       0
 v3_t10       0
 v4_t10       0
-v6_t10       0
-v8_t10       0
+v7_t10       0
+v8_t10       1
 v10_t10      0
 
 [[11]]
         v5_t12
 v5_t11       0
 v1_t11       0
+v2_t11       0
 v3_t11       0
 v4_t11       0
-v6_t11       0
+v7_t11       0
 v8_t11       0
-v10_t11      0
+v10_t11      1
 
 [[12]]
         v5_t13
 v5_t12       0
 v1_t12       0
+v2_t12       0
 v3_t12       0
 v4_t12       0
-v6_t12       0
+v7_t12       0
 v8_t12       0
-v10_t12      0
+v10_t12      1
 
 [[13]]
         v5_t14
 v5_t13       0
 v1_t13       0
+v2_t13       0
 v3_t13       0
 v4_t13       0
-v6_t13       0
-v8_t13       1
-v10_t13      0
+v7_t13       0
+v8_t13       0
+v10_t13      1
 
 [[14]]
         v5_t15
 v5_t14       0
 v1_t14       0
+v2_t14       0
 v3_t14       0
 v4_t14       0
-v6_t14       0
+v7_t14       0
 v8_t14       0
-v10_t14      0
+v10_t14      1
 
 [[15]]
         v5_t16
 v5_t15       0
 v1_t15       0
+v2_t15       0
 v3_t15       0
 v4_t15       0
-v6_t15       0
+v7_t15       0
 v8_t15       0
-v10_t15      0
+v10_t15      1
 
 [[16]]
         v5_t17
 v5_t16       0
 v1_t16       0
+v2_t16       0
 v3_t16       0
 v4_t16       0
-v6_t16       0
+v7_t16       0
 v8_t16       0
-v10_t16      0
+v10_t16      1
 
 [[17]]
         v5_t18
 v5_t17       0
 v1_t17       0
+v2_t17       0
 v3_t17       0
 v4_t17       0
-v6_t17       0
+v7_t17       0
 v8_t17       0
-v10_t17      0
+v10_t17      1
 
 [[18]]
         v5_t19
 v5_t18       0
 v1_t18       0
+v2_t18       0
 v3_t18       0
 v4_t18       0
-v6_t18       0
+v7_t18       0
 v8_t18       0
-v10_t18      0
+v10_t18      1
 
 [[19]]
         v5_t20
 v5_t19       0
 v1_t19       0
+v2_t19       0
 v3_t19       0
 v4_t19       0
-v6_t19       0
-v8_t19       0
+v7_t19       0
+v8_t19       1
 v10_t19      0
 
 [[20]]
         v5_t21
 v5_t20       0
 v1_t20       0
+v2_t20       0
 v3_t20       0
 v4_t20       0
-v6_t20       0
+v7_t20       0
 v8_t20       0
-v10_t20      0
+v10_t20      1
 
 numValues: 5, numResults: 5, stopped: FALSE
 returning status FALSE
@@ -4055,10 +4235,10 @@ node  7
 result of evaluating expression:
       v6_t2
 v6_t1     0
+v1_t1     0
 v3_t1     0
-v4_t1     0
-v5_t1     0
 v7_t1     0
+v8_t1     0
 v9_t1     0
 got results for task 101
 accumulating result with tag 101
@@ -4084,11 +4264,11 @@ node  7
 result of evaluating expression:
       v6_t3
 v6_t2     0
+v1_t2     0
 v3_t2     0
-v4_t2     0
-v5_t2     0
 v7_t2     0
-v9_t2     0
+v8_t2     0
+v9_t2     1
 got results for task 102
 accumulating result with tag 102
 fired:
@@ -4113,10 +4293,10 @@ node  7
 result of evaluating expression:
       v6_t4
 v6_t3     0
+v1_t3     0
 v3_t3     0
-v4_t3     0
-v5_t3     0
 v7_t3     0
+v8_t3     0
 v9_t3     0
 got results for task 103
 accumulating result with tag 103
@@ -4142,10 +4322,10 @@ node  7
 result of evaluating expression:
       v6_t5
 v6_t4     0
+v1_t4     0
 v3_t4     0
-v4_t4     0
-v5_t4     0
 v7_t4     0
+v8_t4     0
 v9_t4     0
 got results for task 104
 accumulating result with tag 104
@@ -4171,10 +4351,10 @@ node  7
 result of evaluating expression:
       v6_t6
 v6_t5     0
+v1_t5     0
 v3_t5     0
-v4_t5     0
-v5_t5     0
 v7_t5     0
+v8_t5     0
 v9_t5     0
 got results for task 105
 accumulating result with tag 105
@@ -4200,10 +4380,10 @@ node  7
 result of evaluating expression:
       v6_t7
 v6_t6     0
+v1_t6     0
 v3_t6     0
-v4_t6     0
-v5_t6     0
 v7_t6     0
+v8_t6     0
 v9_t6     0
 got results for task 106
 accumulating result with tag 106
@@ -4229,10 +4409,10 @@ node  7
 result of evaluating expression:
       v6_t8
 v6_t7     0
+v1_t7     0
 v3_t7     0
-v4_t7     0
-v5_t7     0
 v7_t7     0
+v8_t7     0
 v9_t7     0
 got results for task 107
 accumulating result with tag 107
@@ -4258,10 +4438,10 @@ node  7
 result of evaluating expression:
       v6_t9
 v6_t8     0
+v1_t8     0
 v3_t8     0
-v4_t8     0
-v5_t8     0
 v7_t8     0
+v8_t8     1
 v9_t8     0
 got results for task 108
 accumulating result with tag 108
@@ -4287,11 +4467,11 @@ node  7
 result of evaluating expression:
       v6_t10
 v6_t9      0
+v1_t9      0
 v3_t9      0
-v4_t9      0
-v5_t9      0
 v7_t9      0
-v9_t9      0
+v8_t9      0
+v9_t9      1
 got results for task 109
 accumulating result with tag 109
 fired:
@@ -4316,11 +4496,11 @@ node  7
 result of evaluating expression:
        v6_t11
 v6_t10      0
+v1_t10      0
 v3_t10      0
-v4_t10      0
-v5_t10      0
 v7_t10      0
-v9_t10      0
+v8_t10      0
+v9_t10      1
 got results for task 110
 accumulating result with tag 110
 fired:
@@ -4345,10 +4525,10 @@ node  7
 result of evaluating expression:
        v6_t12
 v6_t11      0
+v1_t11      0
 v3_t11      0
-v4_t11      0
-v5_t11      0
 v7_t11      0
+v8_t11      0
 v9_t11      0
 got results for task 111
 accumulating result with tag 111
@@ -4374,11 +4554,11 @@ node  7
 result of evaluating expression:
        v6_t13
 v6_t12      0
+v1_t12      0
 v3_t12      0
-v4_t12      0
-v5_t12      0
 v7_t12      0
-v9_t12      0
+v8_t12      0
+v9_t12      1
 got results for task 112
 accumulating result with tag 112
 fired:
@@ -4403,11 +4583,11 @@ node  7
 result of evaluating expression:
        v6_t14
 v6_t13      0
+v1_t13      0
 v3_t13      0
-v4_t13      0
-v5_t13      0
 v7_t13      0
-v9_t13      0
+v8_t13      0
+v9_t13      1
 got results for task 113
 accumulating result with tag 113
 fired:
@@ -4432,11 +4612,11 @@ node  7
 result of evaluating expression:
        v6_t15
 v6_t14      0
+v1_t14      0
 v3_t14      0
-v4_t14      0
-v5_t14      0
 v7_t14      0
-v9_t14      0
+v8_t14      0
+v9_t14      1
 got results for task 114
 accumulating result with tag 114
 fired:
@@ -4461,10 +4641,10 @@ node  7
 result of evaluating expression:
        v6_t16
 v6_t15      0
+v1_t15      0
 v3_t15      0
-v4_t15      0
-v5_t15      0
 v7_t15      0
+v8_t15      0
 v9_t15      0
 got results for task 115
 accumulating result with tag 115
@@ -4490,10 +4670,10 @@ node  7
 result of evaluating expression:
        v6_t17
 v6_t16      0
-v3_t16      0
-v4_t16      0
-v5_t16      0
+v1_t16      0
+v3_t16      1
 v7_t16      0
+v8_t16      0
 v9_t16      0
 got results for task 116
 accumulating result with tag 116
@@ -4519,10 +4699,10 @@ node  7
 result of evaluating expression:
        v6_t18
 v6_t17      0
+v1_t17      0
 v3_t17      0
-v4_t17      0
-v5_t17      0
 v7_t17      0
+v8_t17      0
 v9_t17      0
 got results for task 117
 accumulating result with tag 117
@@ -4548,10 +4728,10 @@ node  7
 result of evaluating expression:
        v6_t19
 v6_t18      0
-v3_t18      0
-v4_t18      0
-v5_t18      0
+v1_t18      0
+v3_t18      1
 v7_t18      0
+v8_t18      0
 v9_t18      0
 got results for task 118
 accumulating result with tag 118
@@ -4577,10 +4757,10 @@ node  7
 result of evaluating expression:
        v6_t20
 v6_t19      0
+v1_t19      0
 v3_t19      0
-v4_t19      0
-v5_t19      0
 v7_t19      0
+v8_t19      0
 v9_t19      0
 got results for task 119
 accumulating result with tag 119
@@ -4606,10 +4786,10 @@ node  7
 result of evaluating expression:
        v6_t21
 v6_t20      0
+v1_t20      0
 v3_t20      0
-v4_t20      0
-v5_t20      0
 v7_t20      0
+v8_t20      1
 v9_t20      0
 got results for task 120
 accumulating result with tag 120
@@ -4630,181 +4810,181 @@ propagating accumulated result up to the next level from nextElem
 [[1]]
       v6_t2
 v6_t1     0
+v1_t1     0
 v3_t1     0
-v4_t1     0
-v5_t1     0
 v7_t1     0
+v8_t1     0
 v9_t1     0
 
 [[2]]
       v6_t3
 v6_t2     0
+v1_t2     0
 v3_t2     0
-v4_t2     0
-v5_t2     0
 v7_t2     0
-v9_t2     0
+v8_t2     0
+v9_t2     1
 
 [[3]]
       v6_t4
 v6_t3     0
+v1_t3     0
 v3_t3     0
-v4_t3     0
-v5_t3     0
 v7_t3     0
+v8_t3     0
 v9_t3     0
 
 [[4]]
       v6_t5
 v6_t4     0
+v1_t4     0
 v3_t4     0
-v4_t4     0
-v5_t4     0
 v7_t4     0
+v8_t4     0
 v9_t4     0
 
 [[5]]
       v6_t6
 v6_t5     0
+v1_t5     0
 v3_t5     0
-v4_t5     0
-v5_t5     0
 v7_t5     0
+v8_t5     0
 v9_t5     0
 
 [[6]]
       v6_t7
 v6_t6     0
+v1_t6     0
 v3_t6     0
-v4_t6     0
-v5_t6     0
 v7_t6     0
+v8_t6     0
 v9_t6     0
 
 [[7]]
       v6_t8
 v6_t7     0
+v1_t7     0
 v3_t7     0
-v4_t7     0
-v5_t7     0
 v7_t7     0
+v8_t7     0
 v9_t7     0
 
 [[8]]
       v6_t9
 v6_t8     0
+v1_t8     0
 v3_t8     0
-v4_t8     0
-v5_t8     0
 v7_t8     0
+v8_t8     1
 v9_t8     0
 
 [[9]]
       v6_t10
 v6_t9      0
+v1_t9      0
 v3_t9      0
-v4_t9      0
-v5_t9      0
 v7_t9      0
-v9_t9      0
+v8_t9      0
+v9_t9      1
 
 [[10]]
        v6_t11
 v6_t10      0
+v1_t10      0
 v3_t10      0
-v4_t10      0
-v5_t10      0
 v7_t10      0
-v9_t10      0
+v8_t10      0
+v9_t10      1
 
 [[11]]
        v6_t12
 v6_t11      0
+v1_t11      0
 v3_t11      0
-v4_t11      0
-v5_t11      0
 v7_t11      0
+v8_t11      0
 v9_t11      0
 
 [[12]]
        v6_t13
 v6_t12      0
+v1_t12      0
 v3_t12      0
-v4_t12      0
-v5_t12      0
 v7_t12      0
-v9_t12      0
+v8_t12      0
+v9_t12      1
 
 [[13]]
        v6_t14
 v6_t13      0
+v1_t13      0
 v3_t13      0
-v4_t13      0
-v5_t13      0
 v7_t13      0
-v9_t13      0
+v8_t13      0
+v9_t13      1
 
 [[14]]
        v6_t15
 v6_t14      0
+v1_t14      0
 v3_t14      0
-v4_t14      0
-v5_t14      0
 v7_t14      0
-v9_t14      0
+v8_t14      0
+v9_t14      1
 
 [[15]]
        v6_t16
 v6_t15      0
+v1_t15      0
 v3_t15      0
-v4_t15      0
-v5_t15      0
 v7_t15      0
+v8_t15      0
 v9_t15      0
 
 [[16]]
        v6_t17
 v6_t16      0
-v3_t16      0
-v4_t16      0
-v5_t16      0
+v1_t16      0
+v3_t16      1
 v7_t16      0
+v8_t16      0
 v9_t16      0
 
 [[17]]
        v6_t18
 v6_t17      0
+v1_t17      0
 v3_t17      0
-v4_t17      0
-v5_t17      0
 v7_t17      0
+v8_t17      0
 v9_t17      0
 
 [[18]]
        v6_t19
 v6_t18      0
-v3_t18      0
-v4_t18      0
-v5_t18      0
+v1_t18      0
+v3_t18      1
 v7_t18      0
+v8_t18      0
 v9_t18      0
 
 [[19]]
        v6_t20
 v6_t19      0
+v1_t19      0
 v3_t19      0
-v4_t19      0
-v5_t19      0
 v7_t19      0
+v8_t19      0
 v9_t19      0
 
 [[20]]
        v6_t21
 v6_t20      0
+v1_t20      0
 v3_t20      0
-v4_t20      0
-v5_t20      0
 v7_t20      0
+v8_t20      1
 v9_t20      0
 
 numValues: 6, numResults: 6, stopped: FALSE
@@ -4823,14 +5003,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t2
-v7_t1     0
-v1_t1     0
-v4_t1     0
-v6_t1     0
-v8_t1     0
-v9_t1     0
+       v7_t2
+v7_t1      0
+v2_t1      0
+v3_t1      0
+v5_t1      0
+v6_t1      0
+v8_t1      0
+v9_t1      0
+v10_t1     1
 got results for task 121
 accumulating result with tag 121
 fired:
@@ -4852,14 +5036,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t3
-v7_t2     0
-v1_t2     0
-v4_t2     0
-v6_t2     0
-v8_t2     0
-v9_t2     0
+       v7_t3
+v7_t2      0
+v2_t2      0
+v3_t2      0
+v5_t2      0
+v6_t2      0
+v8_t2      0
+v9_t2      0
+v10_t2     0
 got results for task 122
 accumulating result with tag 122
 fired:
@@ -4881,14 +5069,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t4
-v7_t3     0
-v1_t3     0
-v4_t3     0
-v6_t3     0
-v8_t3     0
-v9_t3     0
+       v7_t4
+v7_t3      0
+v2_t3      0
+v3_t3      0
+v5_t3      0
+v6_t3      0
+v8_t3      0
+v9_t3      0
+v10_t3     0
 got results for task 123
 accumulating result with tag 123
 fired:
@@ -4910,14 +5102,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t5
-v7_t4     0
-v1_t4     0
-v4_t4     0
-v6_t4     0
-v8_t4     0
-v9_t4     0
+       v7_t5
+v7_t4      0
+v2_t4      0
+v3_t4      0
+v5_t4      1
+v6_t4      0
+v8_t4      0
+v9_t4      0
+v10_t4     0
 got results for task 124
 accumulating result with tag 124
 fired:
@@ -4939,14 +5135,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t6
-v7_t5     0
-v1_t5     0
-v4_t5     0
-v6_t5     0
-v8_t5     0
-v9_t5     0
+       v7_t6
+v7_t5      0
+v2_t5      0
+v3_t5      0
+v5_t5      0
+v6_t5      0
+v8_t5      0
+v9_t5      0
+v10_t5     0
 got results for task 125
 accumulating result with tag 125
 fired:
@@ -4968,14 +5168,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t7
-v7_t6     0
-v1_t6     0
-v4_t6     0
-v6_t6     0
-v8_t6     0
-v9_t6     0
+       v7_t7
+v7_t6      0
+v2_t6      0
+v3_t6      0
+v5_t6      0
+v6_t6      0
+v8_t6      0
+v9_t6      1
+v10_t6     0
 got results for task 126
 accumulating result with tag 126
 fired:
@@ -4997,14 +5201,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t8
-v7_t7     0
-v1_t7     0
-v4_t7     0
-v6_t7     0
-v8_t7     0
-v9_t7     0
+       v7_t8
+v7_t7      0
+v2_t7      0
+v3_t7      0
+v5_t7      0
+v6_t7      0
+v8_t7      0
+v9_t7      1
+v10_t7     0
 got results for task 127
 accumulating result with tag 127
 fired:
@@ -5026,14 +5234,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t9
-v7_t8     0
-v1_t8     0
-v4_t8     0
-v6_t8     0
-v8_t8     0
-v9_t8     0
+       v7_t9
+v7_t8      0
+v2_t8      0
+v3_t8      0
+v5_t8      0
+v6_t8      0
+v8_t8      0
+v9_t8      0
+v10_t8     0
 got results for task 128
 accumulating result with tag 128
 fired:
@@ -5055,14 +5267,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-      v7_t10
-v7_t9      0
-v1_t9      0
-v4_t9      0
-v6_t9      0
-v8_t9      0
-v9_t9      0
+       v7_t10
+v7_t9       0
+v2_t9       0
+v3_t9       0
+v5_t9       0
+v6_t9       0
+v8_t9       0
+v9_t9       1
+v10_t9      0
 got results for task 129
 accumulating result with tag 129
 fired:
@@ -5084,14 +5300,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t11
-v7_t10      0
-v1_t10      0
-v4_t10      0
-v6_t10      0
-v8_t10      0
-v9_t10      0
+        v7_t11
+v7_t10       0
+v2_t10       0
+v3_t10       0
+v5_t10       0
+v6_t10       0
+v8_t10       0
+v9_t10       1
+v10_t10      0
 got results for task 130
 accumulating result with tag 130
 fired:
@@ -5113,14 +5333,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t12
-v7_t11      0
-v1_t11      0
-v4_t11      0
-v6_t11      0
-v8_t11      0
-v9_t11      0
+        v7_t12
+v7_t11       0
+v2_t11       0
+v3_t11       0
+v5_t11       0
+v6_t11       0
+v8_t11       0
+v9_t11       0
+v10_t11      1
 got results for task 131
 accumulating result with tag 131
 fired:
@@ -5142,14 +5366,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t13
-v7_t12      0
-v1_t12      0
-v4_t12      0
-v6_t12      0
-v8_t12      0
-v9_t12      0
+        v7_t13
+v7_t12       0
+v2_t12       0
+v3_t12       0
+v5_t12       0
+v6_t12       0
+v8_t12       0
+v9_t12       0
+v10_t12      1
 got results for task 132
 accumulating result with tag 132
 fired:
@@ -5171,14 +5399,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t14
-v7_t13      0
-v1_t13      0
-v4_t13      0
-v6_t13      0
-v8_t13      0
-v9_t13      0
+        v7_t14
+v7_t13       0
+v2_t13       0
+v3_t13       0
+v5_t13       0
+v6_t13       0
+v8_t13       0
+v9_t13       0
+v10_t13      1
 got results for task 133
 accumulating result with tag 133
 fired:
@@ -5200,14 +5432,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t15
-v7_t14      0
-v1_t14      0
-v4_t14      0
-v6_t14      0
-v8_t14      0
-v9_t14      0
+        v7_t15
+v7_t14       0
+v2_t14       0
+v3_t14       0
+v5_t14       0
+v6_t14       0
+v8_t14       0
+v9_t14       0
+v10_t14      1
 got results for task 134
 accumulating result with tag 134
 fired:
@@ -5229,14 +5465,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t16
-v7_t15      0
-v1_t15      0
-v4_t15      0
-v6_t15      0
-v8_t15      0
-v9_t15      0
+        v7_t16
+v7_t15       0
+v2_t15       0
+v3_t15       0
+v5_t15       0
+v6_t15       0
+v8_t15       0
+v9_t15       0
+v10_t15      0
 got results for task 135
 accumulating result with tag 135
 fired:
@@ -5258,14 +5498,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t17
-v7_t16      0
-v1_t16      0
-v4_t16      0
-v6_t16      0
-v8_t16      0
-v9_t16      0
+        v7_t17
+v7_t16       0
+v2_t16       0
+v3_t16       0
+v5_t16       0
+v6_t16       0
+v8_t16       0
+v9_t16       0
+v10_t16      1
 got results for task 136
 accumulating result with tag 136
 fired:
@@ -5287,14 +5531,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t18
-v7_t17      0
-v1_t17      0
-v4_t17      0
-v6_t17      0
-v8_t17      0
-v9_t17      0
+        v7_t18
+v7_t17       0
+v2_t17       0
+v3_t17       0
+v5_t17       0
+v6_t17       0
+v8_t17       0
+v9_t17       0
+v10_t17      0
 got results for task 137
 accumulating result with tag 137
 fired:
@@ -5316,14 +5564,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t19
-v7_t18      0
-v1_t18      0
-v4_t18      0
-v6_t18      0
-v8_t18      0
-v9_t18      0
+        v7_t19
+v7_t18       0
+v2_t18       0
+v3_t18       0
+v5_t18       0
+v6_t18       0
+v8_t18       0
+v9_t18       0
+v10_t18      1
 got results for task 138
 accumulating result with tag 138
 fired:
@@ -5345,14 +5597,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t20
-v7_t19      0
-v1_t19      0
-v4_t19      0
-v6_t19      0
-v8_t19      0
-v9_t19      0
+        v7_t20
+v7_t19       0
+v2_t19       0
+v3_t19       0
+v5_t19       0
+v6_t19       0
+v8_t19       0
+v9_t19       0
+v10_t19      0
 got results for task 139
 accumulating result with tag 139
 fired:
@@ -5374,14 +5630,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
-       v7_t21
-v7_t20      0
-v1_t20      0
-v4_t20      0
-v6_t20      0
-v8_t20      0
-v9_t20      0
+        v7_t21
+v7_t20       0
+v2_t20       0
+v3_t20       0
+v5_t20       0
+v6_t20       0
+v8_t20       0
+v9_t20       0
+v10_t20      1
 got results for task 140
 accumulating result with tag 140
 fired:
@@ -5399,184 +5659,224 @@ evaluating call object to combine results:
 numValues: 20, numResults: 20, stopped: TRUE
 propagating accumulated result up to the next level from nextElem
 [[1]]
-      v7_t2
-v7_t1     0
-v1_t1     0
-v4_t1     0
-v6_t1     0
-v8_t1     0
-v9_t1     0
+       v7_t2
+v7_t1      0
+v2_t1      0
+v3_t1      0
+v5_t1      0
+v6_t1      0
+v8_t1      0
+v9_t1      0
+v10_t1     1
 
 [[2]]
-      v7_t3
-v7_t2     0
-v1_t2     0
-v4_t2     0
-v6_t2     0
-v8_t2     0
-v9_t2     0
+       v7_t3
+v7_t2      0
+v2_t2      0
+v3_t2      0
+v5_t2      0
+v6_t2      0
+v8_t2      0
+v9_t2      0
+v10_t2     0
 
 [[3]]
-      v7_t4
-v7_t3     0
-v1_t3     0
-v4_t3     0
-v6_t3     0
-v8_t3     0
-v9_t3     0
+       v7_t4
+v7_t3      0
+v2_t3      0
+v3_t3      0
+v5_t3      0
+v6_t3      0
+v8_t3      0
+v9_t3      0
+v10_t3     0
 
 [[4]]
-      v7_t5
-v7_t4     0
-v1_t4     0
-v4_t4     0
-v6_t4     0
-v8_t4     0
-v9_t4     0
+       v7_t5
+v7_t4      0
+v2_t4      0
+v3_t4      0
+v5_t4      1
+v6_t4      0
+v8_t4      0
+v9_t4      0
+v10_t4     0
 
 [[5]]
-      v7_t6
-v7_t5     0
-v1_t5     0
-v4_t5     0
-v6_t5     0
-v8_t5     0
-v9_t5     0
+       v7_t6
+v7_t5      0
+v2_t5      0
+v3_t5      0
+v5_t5      0
+v6_t5      0
+v8_t5      0
+v9_t5      0
+v10_t5     0
 
 [[6]]
-      v7_t7
-v7_t6     0
-v1_t6     0
-v4_t6     0
-v6_t6     0
-v8_t6     0
-v9_t6     0
+       v7_t7
+v7_t6      0
+v2_t6      0
+v3_t6      0
+v5_t6      0
+v6_t6      0
+v8_t6      0
+v9_t6      1
+v10_t6     0
 
 [[7]]
-      v7_t8
-v7_t7     0
-v1_t7     0
-v4_t7     0
-v6_t7     0
-v8_t7     0
-v9_t7     0
+       v7_t8
+v7_t7      0
+v2_t7      0
+v3_t7      0
+v5_t7      0
+v6_t7      0
+v8_t7      0
+v9_t7      1
+v10_t7     0
 
 [[8]]
-      v7_t9
-v7_t8     0
-v1_t8     0
-v4_t8     0
-v6_t8     0
-v8_t8     0
-v9_t8     0
+       v7_t9
+v7_t8      0
+v2_t8      0
+v3_t8      0
+v5_t8      0
+v6_t8      0
+v8_t8      0
+v9_t8      0
+v10_t8     0
 
 [[9]]
-      v7_t10
-v7_t9      0
-v1_t9      0
-v4_t9      0
-v6_t9      0
-v8_t9      0
-v9_t9      0
+       v7_t10
+v7_t9       0
+v2_t9       0
+v3_t9       0
+v5_t9       0
+v6_t9       0
+v8_t9       0
+v9_t9       1
+v10_t9      0
 
 [[10]]
-       v7_t11
-v7_t10      0
-v1_t10      0
-v4_t10      0
-v6_t10      0
-v8_t10      0
-v9_t10      0
+        v7_t11
+v7_t10       0
+v2_t10       0
+v3_t10       0
+v5_t10       0
+v6_t10       0
+v8_t10       0
+v9_t10       1
+v10_t10      0
 
 [[11]]
-       v7_t12
-v7_t11      0
-v1_t11      0
-v4_t11      0
-v6_t11      0
-v8_t11      0
-v9_t11      0
+        v7_t12
+v7_t11       0
+v2_t11       0
+v3_t11       0
+v5_t11       0
+v6_t11       0
+v8_t11       0
+v9_t11       0
+v10_t11      1
 
 [[12]]
-       v7_t13
-v7_t12      0
-v1_t12      0
-v4_t12      0
-v6_t12      0
-v8_t12      0
-v9_t12      0
+        v7_t13
+v7_t12       0
+v2_t12       0
+v3_t12       0
+v5_t12       0
+v6_t12       0
+v8_t12       0
+v9_t12       0
+v10_t12      1
 
 [[13]]
-       v7_t14
-v7_t13      0
-v1_t13      0
-v4_t13      0
-v6_t13      0
-v8_t13      0
-v9_t13      0
+        v7_t14
+v7_t13       0
+v2_t13       0
+v3_t13       0
+v5_t13       0
+v6_t13       0
+v8_t13       0
+v9_t13       0
+v10_t13      1
 
 [[14]]
-       v7_t15
-v7_t14      0
-v1_t14      0
-v4_t14      0
-v6_t14      0
-v8_t14      0
-v9_t14      0
+        v7_t15
+v7_t14       0
+v2_t14       0
+v3_t14       0
+v5_t14       0
+v6_t14       0
+v8_t14       0
+v9_t14       0
+v10_t14      1
 
 [[15]]
-       v7_t16
-v7_t15      0
-v1_t15      0
-v4_t15      0
-v6_t15      0
-v8_t15      0
-v9_t15      0
+        v7_t16
+v7_t15       0
+v2_t15       0
+v3_t15       0
+v5_t15       0
+v6_t15       0
+v8_t15       0
+v9_t15       0
+v10_t15      0
 
 [[16]]
-       v7_t17
-v7_t16      0
-v1_t16      0
-v4_t16      0
-v6_t16      0
-v8_t16      0
-v9_t16      0
+        v7_t17
+v7_t16       0
+v2_t16       0
+v3_t16       0
+v5_t16       0
+v6_t16       0
+v8_t16       0
+v9_t16       0
+v10_t16      1
 
 [[17]]
-       v7_t18
-v7_t17      0
-v1_t17      0
-v4_t17      0
-v6_t17      0
-v8_t17      0
-v9_t17      0
+        v7_t18
+v7_t17       0
+v2_t17       0
+v3_t17       0
+v5_t17       0
+v6_t17       0
+v8_t17       0
+v9_t17       0
+v10_t17      0
 
 [[18]]
-       v7_t19
-v7_t18      0
-v1_t18      0
-v4_t18      0
-v6_t18      0
-v8_t18      0
-v9_t18      0
+        v7_t19
+v7_t18       0
+v2_t18       0
+v3_t18       0
+v5_t18       0
+v6_t18       0
+v8_t18       0
+v9_t18       0
+v10_t18      1
 
 [[19]]
-       v7_t20
-v7_t19      0
-v1_t19      0
-v4_t19      0
-v6_t19      0
-v8_t19      0
-v9_t19      0
+        v7_t20
+v7_t19       0
+v2_t19       0
+v3_t19       0
+v5_t19       0
+v6_t19       0
+v8_t19       0
+v9_t19       0
+v10_t19      0
 
 [[20]]
-       v7_t21
-v7_t20      0
-v1_t20      0
-v4_t20      0
-v6_t20      0
-v8_t20      0
-v9_t20      0
+        v7_t21
+v7_t20       0
+v2_t20       0
+v3_t20       0
+v5_t20       0
+v6_t20       0
+v8_t20       0
+v9_t20       0
+v10_t20      1
 
 numValues: 7, numResults: 7, stopped: FALSE
 returning status FALSE
@@ -5594,13 +5894,17 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t2
 v8_t1      0
 v1_t1      0
 v3_t1      0
+v4_t1      0
 v5_t1      0
-v7_t1      0
+v6_t1      0
+v7_t1      1
 v10_t1     0
 got results for task 141
 accumulating result with tag 141
@@ -5623,12 +5927,16 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t3
 v8_t2      0
 v1_t2      0
 v3_t2      0
+v4_t2      0
 v5_t2      0
+v6_t2      0
 v7_t2      0
 v10_t2     0
 got results for task 142
@@ -5652,12 +5960,16 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t4
 v8_t3      0
 v1_t3      0
 v3_t3      0
+v4_t3      0
 v5_t3      0
+v6_t3      0
 v7_t3      0
 v10_t3     0
 got results for task 143
@@ -5681,12 +5993,16 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t5
 v8_t4      0
 v1_t4      0
 v3_t4      0
-v5_t4      0
+v4_t4      0
+v5_t4      1
+v6_t4      0
 v7_t4      0
 v10_t4     0
 got results for task 144
@@ -5710,14 +6026,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t6
 v8_t5      0
 v1_t5      0
 v3_t5      0
+v4_t5      0
 v5_t5      0
+v6_t5      0
 v7_t5      0
-v10_t5     0
+v10_t5     1
 got results for task 145
 accumulating result with tag 145
 fired:
@@ -5739,12 +6059,16 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t7
 v8_t6      0
 v1_t6      0
 v3_t6      0
+v4_t6      0
 v5_t6      0
+v6_t6      0
 v7_t6      0
 v10_t6     0
 got results for task 146
@@ -5768,13 +6092,17 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t8
 v8_t7      0
 v1_t7      0
 v3_t7      0
+v4_t7      0
 v5_t7      0
-v7_t7      0
+v6_t7      0
+v7_t7      1
 v10_t7     0
 got results for task 147
 accumulating result with tag 147
@@ -5797,12 +6125,16 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t9
 v8_t8      0
 v1_t8      0
 v3_t8      0
+v4_t8      0
 v5_t8      0
+v6_t8      0
 v7_t8      1
 v10_t8     0
 got results for task 148
@@ -5826,12 +6158,16 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
        v8_t10
-v8_t9       1
+v8_t9       0
 v1_t9       0
 v3_t9       0
+v4_t9       0
 v5_t9       0
+v6_t9       1
 v7_t9       0
 v10_t9      0
 got results for task 149
@@ -5855,13 +6191,17 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t11
 v8_t10       0
 v1_t10       0
 v3_t10       0
+v4_t10       0
 v5_t10       0
-v7_t10       0
+v6_t10       0
+v7_t10       1
 v10_t10      0
 got results for task 150
 accumulating result with tag 150
@@ -5884,14 +6224,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t12
 v8_t11       0
 v1_t11       0
 v3_t11       0
+v4_t11       0
 v5_t11       0
+v6_t11       0
 v7_t11       0
-v10_t11      0
+v10_t11      1
 got results for task 151
 accumulating result with tag 151
 fired:
@@ -5913,14 +6257,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t13
 v8_t12       0
 v1_t12       0
 v3_t12       0
+v4_t12       0
 v5_t12       0
+v6_t12       0
 v7_t12       0
-v10_t12      0
+v10_t12      1
 got results for task 152
 accumulating result with tag 152
 fired:
@@ -5942,14 +6290,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t14
 v8_t13       0
 v1_t13       0
 v3_t13       0
+v4_t13       0
 v5_t13       0
+v6_t13       0
 v7_t13       0
-v10_t13      0
+v10_t13      1
 got results for task 153
 accumulating result with tag 153
 fired:
@@ -5971,14 +6323,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t15
 v8_t14       0
 v1_t14       0
 v3_t14       0
+v4_t14       0
 v5_t14       0
+v6_t14       0
 v7_t14       0
-v10_t14      0
+v10_t14      1
 got results for task 154
 accumulating result with tag 154
 fired:
@@ -6000,12 +6356,16 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t16
 v8_t15       0
 v1_t15       0
 v3_t15       0
+v4_t15       0
 v5_t15       0
+v6_t15       0
 v7_t15       0
 v10_t15      0
 got results for task 155
@@ -6029,14 +6389,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t17
 v8_t16       0
 v1_t16       0
 v3_t16       0
+v4_t16       0
 v5_t16       0
+v6_t16       0
 v7_t16       0
-v10_t16      0
+v10_t16      1
 got results for task 156
 accumulating result with tag 156
 fired:
@@ -6058,12 +6422,16 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t18
 v8_t17       0
 v1_t17       0
 v3_t17       0
-v5_t17       1
+v4_t17       0
+v5_t17       0
+v6_t17       0
 v7_t17       0
 v10_t17      0
 got results for task 157
@@ -6087,14 +6455,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t19
 v8_t18       0
 v1_t18       0
 v3_t18       0
+v4_t18       0
 v5_t18       0
+v6_t18       0
 v7_t18       0
-v10_t18      0
+v10_t18      1
 got results for task 158
 accumulating result with tag 158
 fired:
@@ -6116,13 +6488,17 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t20
 v8_t19       0
 v1_t19       0
 v3_t19       0
+v4_t19       0
 v5_t19       0
-v7_t19       0
+v6_t19       0
+v7_t19       1
 v10_t19      0
 got results for task 159
 accumulating result with tag 159
@@ -6145,14 +6521,18 @@ node  4
 node  5 
 node  6 
 node  7 
+node  8 
+node  9 
 result of evaluating expression:
         v8_t21
 v8_t20       0
 v1_t20       0
 v3_t20       0
+v4_t20       0
 v5_t20       0
+v6_t20       0
 v7_t20       0
-v10_t20      0
+v10_t20      1
 got results for task 160
 accumulating result with tag 160
 fired:
@@ -6174,8 +6554,10 @@ propagating accumulated result up to the next level from nextElem
 v8_t1      0
 v1_t1      0
 v3_t1      0
+v4_t1      0
 v5_t1      0
-v7_t1      0
+v6_t1      0
+v7_t1      1
 v10_t1     0
 
 [[2]]
@@ -6183,7 +6565,9 @@ v10_t1     0
 v8_t2      0
 v1_t2      0
 v3_t2      0
+v4_t2      0
 v5_t2      0
+v6_t2      0
 v7_t2      0
 v10_t2     0
 
@@ -6192,7 +6576,9 @@ v10_t2     0
 v8_t3      0
 v1_t3      0
 v3_t3      0
+v4_t3      0
 v5_t3      0
+v6_t3      0
 v7_t3      0
 v10_t3     0
 
@@ -6201,7 +6587,9 @@ v10_t3     0
 v8_t4      0
 v1_t4      0
 v3_t4      0
-v5_t4      0
+v4_t4      0
+v5_t4      1
+v6_t4      0
 v7_t4      0
 v10_t4     0
 
@@ -6210,16 +6598,20 @@ v10_t4     0
 v8_t5      0
 v1_t5      0
 v3_t5      0
+v4_t5      0
 v5_t5      0
+v6_t5      0
 v7_t5      0
-v10_t5     0
+v10_t5     1
 
 [[6]]
        v8_t7
 v8_t6      0
 v1_t6      0
 v3_t6      0
+v4_t6      0
 v5_t6      0
+v6_t6      0
 v7_t6      0
 v10_t6     0
 
@@ -6228,8 +6620,10 @@ v10_t6     0
 v8_t7      0
 v1_t7      0
 v3_t7      0
+v4_t7      0
 v5_t7      0
-v7_t7      0
+v6_t7      0
+v7_t7      1
 v10_t7     0
 
 [[8]]
@@ -6237,16 +6631,20 @@ v10_t7     0
 v8_t8      0
 v1_t8      0
 v3_t8      0
+v4_t8      0
 v5_t8      0
+v6_t8      0
 v7_t8      1
 v10_t8     0
 
 [[9]]
        v8_t10
-v8_t9       1
+v8_t9       0
 v1_t9       0
 v3_t9       0
+v4_t9       0
 v5_t9       0
+v6_t9       1
 v7_t9       0
 v10_t9      0
 
@@ -6255,8 +6653,10 @@ v10_t9      0
 v8_t10       0
 v1_t10       0
 v3_t10       0
+v4_t10       0
 v5_t10       0
-v7_t10       0
+v6_t10       0
+v7_t10       1
 v10_t10      0
 
 [[11]]
@@ -6264,43 +6664,53 @@ v10_t10      0
 v8_t11       0
 v1_t11       0
 v3_t11       0
+v4_t11       0
 v5_t11       0
+v6_t11       0
 v7_t11       0
-v10_t11      0
+v10_t11      1
 
 [[12]]
         v8_t13
 v8_t12       0
 v1_t12       0
 v3_t12       0
+v4_t12       0
 v5_t12       0
+v6_t12       0
 v7_t12       0
-v10_t12      0
+v10_t12      1
 
 [[13]]
         v8_t14
 v8_t13       0
 v1_t13       0
 v3_t13       0
+v4_t13       0
 v5_t13       0
+v6_t13       0
 v7_t13       0
-v10_t13      0
+v10_t13      1
 
 [[14]]
         v8_t15
 v8_t14       0
 v1_t14       0
 v3_t14       0
+v4_t14       0
 v5_t14       0
+v6_t14       0
 v7_t14       0
-v10_t14      0
+v10_t14      1
 
 [[15]]
         v8_t16
 v8_t15       0
 v1_t15       0
 v3_t15       0
+v4_t15       0
 v5_t15       0
+v6_t15       0
 v7_t15       0
 v10_t15      0
 
@@ -6309,16 +6719,20 @@ v10_t15      0
 v8_t16       0
 v1_t16       0
 v3_t16       0
+v4_t16       0
 v5_t16       0
+v6_t16       0
 v7_t16       0
-v10_t16      0
+v10_t16      1
 
 [[17]]
         v8_t18
 v8_t17       0
 v1_t17       0
 v3_t17       0
-v5_t17       1
+v4_t17       0
+v5_t17       0
+v6_t17       0
 v7_t17       0
 v10_t17      0
 
@@ -6327,17 +6741,21 @@ v10_t17      0
 v8_t18       0
 v1_t18       0
 v3_t18       0
+v4_t18       0
 v5_t18       0
+v6_t18       0
 v7_t18       0
-v10_t18      0
+v10_t18      1
 
 [[19]]
         v8_t20
 v8_t19       0
 v1_t19       0
 v3_t19       0
+v4_t19       0
 v5_t19       0
-v7_t19       0
+v6_t19       0
+v7_t19       1
 v10_t19      0
 
 [[20]]
@@ -6345,9 +6763,11 @@ v10_t19      0
 v8_t20       0
 v1_t20       0
 v3_t20       0
+v4_t20       0
 v5_t20       0
+v6_t20       0
 v7_t20       0
-v10_t20      0
+v10_t20      1
 
 numValues: 8, numResults: 8, stopped: FALSE
 returning status FALSE
@@ -6363,14 +6783,10 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t2
 v9_t1     0
-v2_t1     0
-v3_t1     0
-v4_t1     0
+v4_t1     1
 v6_t1     0
 v7_t1     0
 got results for task 161
@@ -6392,13 +6808,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t3
 v9_t2     0
-v2_t2     0
-v3_t2     0
 v4_t2     0
 v6_t2     0
 v7_t2     0
@@ -6421,13 +6833,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t4
 v9_t3     0
-v2_t3     0
-v3_t3     0
 v4_t3     0
 v6_t3     0
 v7_t3     0
@@ -6450,13 +6858,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t5
 v9_t4     0
-v2_t4     0
-v3_t4     0
 v4_t4     0
 v6_t4     0
 v7_t4     0
@@ -6479,16 +6883,12 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t6
 v9_t5     0
-v2_t5     0
-v3_t5     0
 v4_t5     0
 v6_t5     0
-v7_t5     0
+v7_t5     1
 got results for task 165
 accumulating result with tag 165
 fired:
@@ -6508,14 +6908,10 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t7
 v9_t6     0
-v2_t6     0
-v3_t6     0
-v4_t6     0
+v4_t6     1
 v6_t6     0
 v7_t6     0
 got results for task 166
@@ -6537,14 +6933,10 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t8
 v9_t7     0
-v2_t7     0
-v3_t7     0
-v4_t7     0
+v4_t7     1
 v6_t7     0
 v7_t7     0
 got results for task 167
@@ -6566,16 +6958,12 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t9
 v9_t8     0
-v2_t8     0
-v3_t8     0
 v4_t8     0
 v6_t8     0
-v7_t8     0
+v7_t8     1
 got results for task 168
 accumulating result with tag 168
 fired:
@@ -6595,15 +6983,11 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
       v9_t10
 v9_t9      0
-v2_t9      0
-v3_t9      0
 v4_t9      0
-v6_t9      0
+v6_t9      1
 v7_t9      0
 got results for task 169
 accumulating result with tag 169
@@ -6624,13 +7008,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t11
 v9_t10      0
-v2_t10      0
-v3_t10      0
 v4_t10      0
 v6_t10      0
 v7_t10      0
@@ -6653,16 +7033,12 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t12
 v9_t11      0
-v2_t11      0
-v3_t11      0
 v4_t11      0
 v6_t11      0
-v7_t11      0
+v7_t11      1
 got results for task 171
 accumulating result with tag 171
 fired:
@@ -6682,13 +7058,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t13
 v9_t12      0
-v2_t12      0
-v3_t12      0
 v4_t12      0
 v6_t12      0
 v7_t12      1
@@ -6711,16 +7083,12 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t14
 v9_t13      0
-v2_t13      0
-v3_t13      0
 v4_t13      0
 v6_t13      0
-v7_t13      0
+v7_t13      1
 got results for task 173
 accumulating result with tag 173
 fired:
@@ -6740,13 +7108,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t15
 v9_t14      0
-v2_t14      0
-v3_t14      0
 v4_t14      0
 v6_t14      0
 v7_t14      0
@@ -6769,13 +7133,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t16
 v9_t15      0
-v2_t15      0
-v3_t15      0
 v4_t15      0
 v6_t15      0
 v7_t15      0
@@ -6798,13 +7158,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t17
 v9_t16      0
-v2_t16      0
-v3_t16      0
 v4_t16      0
 v6_t16      0
 v7_t16      0
@@ -6827,13 +7183,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t18
 v9_t17      0
-v2_t17      0
-v3_t17      0
 v4_t17      0
 v6_t17      0
 v7_t17      0
@@ -6856,13 +7208,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t19
 v9_t18      0
-v2_t18      0
-v3_t18      0
 v4_t18      0
 v6_t18      0
 v7_t18      0
@@ -6885,13 +7233,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t20
 v9_t19      0
-v2_t19      0
-v3_t19      0
 v4_t19      0
 v6_t19      0
 v7_t19      0
@@ -6914,13 +7258,9 @@ node  2
 node  3 
 node  4 
 node  5 
-node  6 
-node  7 
 result of evaluating expression:
        v9_t21
 v9_t20      0
-v2_t20      0
-v3_t20      0
 v4_t20      0
 v6_t20      0
 v7_t20      0
@@ -6943,17 +7283,13 @@ propagating accumulated result up to the next level from nextElem
 [[1]]
       v9_t2
 v9_t1     0
-v2_t1     0
-v3_t1     0
-v4_t1     0
+v4_t1     1
 v6_t1     0
 v7_t1     0
 
 [[2]]
       v9_t3
 v9_t2     0
-v2_t2     0
-v3_t2     0
 v4_t2     0
 v6_t2     0
 v7_t2     0
@@ -6961,8 +7297,6 @@ v7_t2     0
 [[3]]
       v9_t4
 v9_t3     0
-v2_t3     0
-v3_t3     0
 v4_t3     0
 v6_t3     0
 v7_t3     0
@@ -6970,8 +7304,6 @@ v7_t3     0
 [[4]]
       v9_t5
 v9_t4     0
-v2_t4     0
-v3_t4     0
 v4_t4     0
 v6_t4     0
 v7_t4     0
@@ -6979,53 +7311,41 @@ v7_t4     0
 [[5]]
       v9_t6
 v9_t5     0
-v2_t5     0
-v3_t5     0
 v4_t5     0
 v6_t5     0
-v7_t5     0
+v7_t5     1
 
 [[6]]
       v9_t7
 v9_t6     0
-v2_t6     0
-v3_t6     0
-v4_t6     0
+v4_t6     1
 v6_t6     0
 v7_t6     0
 
 [[7]]
       v9_t8
 v9_t7     0
-v2_t7     0
-v3_t7     0
-v4_t7     0
+v4_t7     1
 v6_t7     0
 v7_t7     0
 
 [[8]]
       v9_t9
 v9_t8     0
-v2_t8     0
-v3_t8     0
 v4_t8     0
 v6_t8     0
-v7_t8     0
+v7_t8     1
 
 [[9]]
       v9_t10
 v9_t9      0
-v2_t9      0
-v3_t9      0
 v4_t9      0
-v6_t9      0
+v6_t9      1
 v7_t9      0
 
 [[10]]
        v9_t11
 v9_t10      0
-v2_t10      0
-v3_t10      0
 v4_t10      0
 v6_t10      0
 v7_t10      0
@@ -7033,17 +7353,13 @@ v7_t10      0
 [[11]]
        v9_t12
 v9_t11      0
-v2_t11      0
-v3_t11      0
 v4_t11      0
 v6_t11      0
-v7_t11      0
+v7_t11      1
 
 [[12]]
        v9_t13
 v9_t12      0
-v2_t12      0
-v3_t12      0
 v4_t12      0
 v6_t12      0
 v7_t12      1
@@ -7051,17 +7367,13 @@ v7_t12      1
 [[13]]
        v9_t14
 v9_t13      0
-v2_t13      0
-v3_t13      0
 v4_t13      0
 v6_t13      0
-v7_t13      0
+v7_t13      1
 
 [[14]]
        v9_t15
 v9_t14      0
-v2_t14      0
-v3_t14      0
 v4_t14      0
 v6_t14      0
 v7_t14      0
@@ -7069,8 +7381,6 @@ v7_t14      0
 [[15]]
        v9_t16
 v9_t15      0
-v2_t15      0
-v3_t15      0
 v4_t15      0
 v6_t15      0
 v7_t15      0
@@ -7078,8 +7388,6 @@ v7_t15      0
 [[16]]
        v9_t17
 v9_t16      0
-v2_t16      0
-v3_t16      0
 v4_t16      0
 v6_t16      0
 v7_t16      0
@@ -7087,8 +7395,6 @@ v7_t16      0
 [[17]]
        v9_t18
 v9_t17      0
-v2_t17      0
-v3_t17      0
 v4_t17      0
 v6_t17      0
 v7_t17      0
@@ -7096,8 +7402,6 @@ v7_t17      0
 [[18]]
        v9_t19
 v9_t18      0
-v2_t18      0
-v3_t18      0
 v4_t18      0
 v6_t18      0
 v7_t18      0
@@ -7105,8 +7409,6 @@ v7_t18      0
 [[19]]
        v9_t20
 v9_t19      0
-v2_t19      0
-v3_t19      0
 v4_t19      0
 v6_t19      0
 v7_t19      0
@@ -7114,8 +7416,6 @@ v7_t19      0
 [[20]]
        v9_t21
 v9_t20      0
-v2_t20      0
-v3_t20      0
 v4_t20      0
 v6_t20      0
 v7_t20      0
@@ -7135,12 +7435,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t2
 v10_t1      0
+v1_t1       0
 v3_t1       0
-v4_t1       0
 v5_t1       0
+v7_t1       1
 v8_t1       0
 got results for task 181
 accumulating result with tag 181
@@ -7162,12 +7464,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t3
 v10_t2      0
+v1_t2       0
 v3_t2       0
-v4_t2       0
 v5_t2       0
+v7_t2       0
 v8_t2       0
 got results for task 182
 accumulating result with tag 182
@@ -7189,12 +7493,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t4
 v10_t3      0
+v1_t3       0
 v3_t3       0
-v4_t3       0
 v5_t3       0
+v7_t3       0
 v8_t3       0
 got results for task 183
 accumulating result with tag 183
@@ -7216,12 +7522,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t5
 v10_t4      0
+v1_t4       0
 v3_t4       0
-v4_t4       0
-v5_t4       0
+v5_t4       1
+v7_t4       0
 v8_t4       0
 got results for task 184
 accumulating result with tag 184
@@ -7243,12 +7551,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t6
 v10_t5      0
+v1_t5       0
 v3_t5       0
-v4_t5       0
 v5_t5       0
+v7_t5       0
 v8_t5       0
 got results for task 185
 accumulating result with tag 185
@@ -7270,12 +7580,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t7
 v10_t6      0
+v1_t6       0
 v3_t6       0
-v4_t6       0
 v5_t6       0
+v7_t6       0
 v8_t6       0
 got results for task 186
 accumulating result with tag 186
@@ -7297,12 +7609,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t8
 v10_t7      0
+v1_t7       0
 v3_t7       0
-v4_t7       0
 v5_t7       0
+v7_t7       0
 v8_t7       0
 got results for task 187
 accumulating result with tag 187
@@ -7324,12 +7638,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t9
 v10_t8      0
+v1_t8       0
 v3_t8       0
-v4_t8       0
 v5_t8       0
+v7_t8       0
 v8_t8       0
 got results for task 188
 accumulating result with tag 188
@@ -7351,12 +7667,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
        v10_t10
 v10_t9       0
+v1_t9        0
 v3_t9        0
-v4_t9        0
 v5_t9        0
+v7_t9        0
 v8_t9        0
 got results for task 189
 accumulating result with tag 189
@@ -7378,13 +7696,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t11
 v10_t10       0
+v1_t10        0
 v3_t10        0
-v4_t10        0
 v5_t10        0
-v8_t10        0
+v7_t10        0
+v8_t10        1
 got results for task 190
 accumulating result with tag 190
 fired:
@@ -7405,13 +7725,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t12
 v10_t11       0
+v1_t11        0
 v3_t11        0
-v4_t11        0
 v5_t11        0
-v8_t11        0
+v7_t11        0
+v8_t11        1
 got results for task 191
 accumulating result with tag 191
 fired:
@@ -7432,13 +7754,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t13
 v10_t12       0
+v1_t12        0
 v3_t12        0
-v4_t12        0
 v5_t12        0
-v8_t12        0
+v7_t12        0
+v8_t12        1
 got results for task 192
 accumulating result with tag 192
 fired:
@@ -7459,13 +7783,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t14
 v10_t13       0
+v1_t13        0
 v3_t13        0
-v4_t13        0
 v5_t13        0
-v8_t13        0
+v7_t13        0
+v8_t13        1
 got results for task 193
 accumulating result with tag 193
 fired:
@@ -7486,13 +7812,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t15
 v10_t14       0
+v1_t14        0
 v3_t14        0
-v4_t14        0
 v5_t14        0
-v8_t14        0
+v7_t14        0
+v8_t14        1
 got results for task 194
 accumulating result with tag 194
 fired:
@@ -7513,13 +7841,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t16
 v10_t15       0
+v1_t15        0
 v3_t15        0
-v4_t15        0
 v5_t15        0
-v8_t15        0
+v7_t15        0
+v8_t15        1
 got results for task 195
 accumulating result with tag 195
 fired:
@@ -7540,12 +7870,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t17
 v10_t16       0
+v1_t16        0
 v3_t16        0
-v4_t16        0
-v5_t16        0
+v5_t16        1
+v7_t16        0
 v8_t16        0
 got results for task 196
 accumulating result with tag 196
@@ -7567,13 +7899,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t18
 v10_t17       0
+v1_t17        0
 v3_t17        0
-v4_t17        0
 v5_t17        0
-v8_t17        0
+v7_t17        0
+v8_t17        1
 got results for task 197
 accumulating result with tag 197
 fired:
@@ -7594,12 +7928,14 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t19
 v10_t18       0
+v1_t18        0
 v3_t18        0
-v4_t18        0
 v5_t18        0
+v7_t18        0
 v8_t18        0
 got results for task 198
 accumulating result with tag 198
@@ -7621,13 +7957,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t20
 v10_t19       0
+v1_t19        0
 v3_t19        0
-v4_t19        0
 v5_t19        0
-v8_t19        0
+v7_t19        0
+v8_t19        1
 got results for task 199
 accumulating result with tag 199
 fired:
@@ -7648,13 +7986,15 @@ node  3
 node  4 
 node  5 
 node  6 
+node  7 
 result of evaluating expression:
         v10_t21
 v10_t20       0
+v1_t20        0
 v3_t20        0
-v4_t20        0
 v5_t20        0
-v8_t20        0
+v7_t20        0
+v8_t20        1
 got results for task 200
 accumulating result with tag 200
 fired:
@@ -7674,162 +8014,182 @@ propagating accumulated result up to the next level from nextElem
 [[1]]
        v10_t2
 v10_t1      0
+v1_t1       0
 v3_t1       0
-v4_t1       0
 v5_t1       0
+v7_t1       1
 v8_t1       0
 
 [[2]]
        v10_t3
 v10_t2      0
+v1_t2       0
 v3_t2       0
-v4_t2       0
 v5_t2       0
+v7_t2       0
 v8_t2       0
 
 [[3]]
        v10_t4
 v10_t3      0
+v1_t3       0
 v3_t3       0
-v4_t3       0
 v5_t3       0
+v7_t3       0
 v8_t3       0
 
 [[4]]
        v10_t5
 v10_t4      0
+v1_t4       0
 v3_t4       0
-v4_t4       0
-v5_t4       0
+v5_t4       1
+v7_t4       0
 v8_t4       0
 
 [[5]]
        v10_t6
 v10_t5      0
+v1_t5       0
 v3_t5       0
-v4_t5       0
 v5_t5       0
+v7_t5       0
 v8_t5       0
 
 [[6]]
        v10_t7
 v10_t6      0
+v1_t6       0
 v3_t6       0
-v4_t6       0
 v5_t6       0
+v7_t6       0
 v8_t6       0
 
 [[7]]
        v10_t8
 v10_t7      0
+v1_t7       0
 v3_t7       0
-v4_t7       0
 v5_t7       0
+v7_t7       0
 v8_t7       0
 
 [[8]]
        v10_t9
 v10_t8      0
+v1_t8       0
 v3_t8       0
-v4_t8       0
 v5_t8       0
+v7_t8       0
 v8_t8       0
 
 [[9]]
        v10_t10
 v10_t9       0
+v1_t9        0
 v3_t9        0
-v4_t9        0
 v5_t9        0
+v7_t9        0
 v8_t9        0
 
 [[10]]
         v10_t11
 v10_t10       0
+v1_t10        0
 v3_t10        0
-v4_t10        0
 v5_t10        0
-v8_t10        0
+v7_t10        0
+v8_t10        1
 
 [[11]]
         v10_t12
 v10_t11       0
+v1_t11        0
 v3_t11        0
-v4_t11        0
 v5_t11        0
-v8_t11        0
+v7_t11        0
+v8_t11        1
 
 [[12]]
         v10_t13
 v10_t12       0
+v1_t12        0
 v3_t12        0
-v4_t12        0
 v5_t12        0
-v8_t12        0
+v7_t12        0
+v8_t12        1
 
 [[13]]
         v10_t14
 v10_t13       0
+v1_t13        0
 v3_t13        0
-v4_t13        0
 v5_t13        0
-v8_t13        0
+v7_t13        0
+v8_t13        1
 
 [[14]]
         v10_t15
 v10_t14       0
+v1_t14        0
 v3_t14        0
-v4_t14        0
 v5_t14        0
-v8_t14        0
+v7_t14        0
+v8_t14        1
 
 [[15]]
         v10_t16
 v10_t15       0
+v1_t15        0
 v3_t15        0
-v4_t15        0
 v5_t15        0
-v8_t15        0
+v7_t15        0
+v8_t15        1
 
 [[16]]
         v10_t17
 v10_t16       0
+v1_t16        0
 v3_t16        0
-v4_t16        0
-v5_t16        0
+v5_t16        1
+v7_t16        0
 v8_t16        0
 
 [[17]]
         v10_t18
 v10_t17       0
+v1_t17        0
 v3_t17        0
-v4_t17        0
 v5_t17        0
-v8_t17        0
+v7_t17        0
+v8_t17        1
 
 [[18]]
         v10_t19
 v10_t18       0
+v1_t18        0
 v3_t18        0
-v4_t18        0
 v5_t18        0
+v7_t18        0
 v8_t18        0
 
 [[19]]
         v10_t20
 v10_t19       0
+v1_t19        0
 v3_t19        0
-v4_t19        0
 v5_t19        0
-v8_t19        0
+v7_t19        0
+v8_t19        1
 
 [[20]]
         v10_t21
 v10_t20       0
+v1_t20        0
 v3_t20        0
-v4_t20        0
 v5_t20        0
-v8_t20        0
+v7_t20        0
+v8_t20        1
 
 numValues: 10, numResults: 10, stopped: FALSE
 returning status FALSE
@@ -7840,9 +8200,11 @@ evaluating call object to combine results:
     result.6, result.7, result.8, result.9, result.10)
 Prediction vs Truth = 
 
-     TP TN FP FN TPR       FPR       FDR       PPV  ACC       MCC        F1
-[1,]  3 80 10  7 0.3 0.1111111 0.7692308 0.2307692 0.83 0.1684986 0.2608696
+           TP       TN       FP       FN        TPR        FPR       FDR
+[1,] 1.666667 70.90476 4.714286 17.95238 0.08742045 0.06100143 0.7039494
+           PPV       ACC        MCC  F1
+[1,] 0.2484316 0.7257143 0.03737421 NaN
 elapsed.time = 
 
    user  system elapsed 
-   4.52    0.11    4.69 
+   4.00    0.03    4.42 

@@ -25,79 +25,139 @@ LearnTgs(
 )
 }
 \arguments{
-\item{isfile}{1 if the parameters are given in a json file; otherwise 0.}
+\item{isfile}{1 if input arguments are given in a json file. Otherwise, 0.}
 
 \item{input.data.filename}{Name of the file containing the data without the
-directory name. It can be a .tsv or .RData file.}
+directory name. It can be a .tsv or .RData file. TODO}
 
-\item{num.timepts}{Number of distinct time points}
+\item{num.timepts}{Number of distinct time points.}
 
-\item{true.net.filename}{File containing the true network without the
-directory name. In case non-empty then should contain .Rdata file with
-object name 'true.net.adj.matrix'.}
+\item{true.net.filename}{Name of the file containing the true network. In case
+non-empty then should contain .Rdata file with object name
+'true.net.adj.matrix'. TODO}
 
-\item{input.wt.data.filename}{file containing input Wild Type data without
-the directory name. If it is non-empty then must be a .tsv file having first
-row containing names of genes except (1,1) and second row should have the
-WT values except (2,1)th cell.}
+\item{input.wt.data.filename}{Name of the file containing input Wild Type data
+without the directory name. If non-empty, then must be a '.tsv' file. The
+first row should contain the names of the genes; only exception is the (1,
+1)-th cell which should be empty. The second row should have the wild type
+values; again only exception is the (2, 1)-th cell which should be empty.}
 
-\item{is.discrete}{whether the data is discretized or not}
+\item{is.discrete}{1 if the input data is discrete. Otherwise, 0.}
 
-\item{num.discr.levels}{number of discreteized levels that each gene has (if
-already discretized) or it should have (if it is to be discretized)}
+\item{num.discr.levels}{Number of discrete levels that each gene has (if the
+input data is discrete) or it should have (if the input data needs to be
+discretized).}
 
-\item{discr.algo}{The algo to follow in case of not discretized. Possible
-values:- {discretizeData.2L.Tesla,discretizeData.2L.wt.l}}
+\item{discr.algo}{Discretisation algorithm to be used when the input data
+needs to be discretised. The available algorithms are --
+discretizeData.2L.Tesla and discretizeData.2L.wt.l.}
 
-\item{mi.estimator}{which method to use for estimating the mutual information
-matrix. Generally ‘mi.pca.cmi’ is used}
+\item{mi.estimator}{Algorithm for estimating the mutual information. There is
+only one algorithm available at this moment. It is 'mi.pca.cmi'.}
 
-\item{apply.aracne}{ARACNE is applied to refine the mutual information
-matrix. In case true then TGS+ version is used otherwise the original TGS
-variant is executed}
+\item{apply.aracne}{1 if you wish to apply ARACNE for refining the mutual
+information matrix. Otherwise, 0.}
 
-\item{clr.algo}{CLR algo to use Possible values :- {CLR, CLR2, CLR2.1, CLR3,
-spearman}}
+\item{clr.algo}{The CLR algorithm to use. The available algorithms are -- CLR,
+CLR2, CLR2.1, CLR3 and spearman.}
 
-\item{max.fanin}{the maximum number of regulators each gene can have}
+\item{max.fanin}{Maximum number of regulators each gene can have.}
 
-\item{allow.self.loop}{Whether to allow self loops in the graph}
+\item{allow.self.loop}{1 if you wish to allow self loops. Otherwise, 0.}
 
-\item{scoring.func}{Which scoring func to use}
+\item{scoring.func}{Scoring function to use. At this moment, the only
+available option is 'BIC'.}
 
-\item{input.dirname}{Absolute path to the directory where input files are kept.
-By default, the current working directory.}
+\item{input.dirname}{Absolute path to the directory where input files are
+kept. By default, the current working directory.}
 
-\item{output.dirname}{File path to a directory where output files are to
-be saved. There are three options.
-\emph{Option 1:} It can be the absolute path to an existing directory.
-\emph{Option 2:} It can also be the absolute path to a non-exisitng
-directory. In this case, the directory will be created.
+\item{output.dirname}{File path to a directory where output files are to be
+saved. There are three options. \emph{Option 1:} It can be the absolute path
+to an existing directory. \emph{Option 2:} It can also be the absolute path
+to a non-exisitng directory. In this case, the directory will be created.
 \emph{Option 3 (default):} If provided an empty string, then it will be the
 current working directory.}
 
 \item{json.file}{Absolute path to the JSON file if \code{isfile = 1}.}
 }
+\value{
+\describe{ \item{input.data.discr.RData}{ Discretised version of the
+ input data. This file is created only if the input data is not discretised
+ as specified by input argument 'is.discrete'. }
+
+ \item{mut.info.matrix.RData}{ Mutual information matrix of the given genes.
+ This RData file contains a matrix named 'mut.info.matrix'. The (i, j)-th
+ cell of the matrix represents the mutual information between the i-th and
+ j-th genes. This is a symmetric matrix. }
+
+ \item{mi.net.adj.matrix.wt.RData}{ Weighted Mutual information network of
+ the given genes. This RData file contains a matrix named
+ 'mi.net.adj.matrix.wt'. The (i, j)-th cell of the matrix represents the
+ weight of the edge from the i-th gene to the j-th gene. The edge weight is a
+ non-negative real number. }
+
+ \item{mi.net.adj.matrix.RData}{ Unweighted Mutual information network of the
+ given genes. This RData file contains a matrix named 'mi.net.adj.matrix'.
+ Each cell of the matrix contains a value of 1 or 0. If the (i, j)-th cell
+ contains 1, then there exists an edge from the i-th gene to the j-th gene.
+ Otherwise, the edge does not exist. }
+
+ \item{unrolled.DBN.adj.matrix.list.RData}{ Reconstructed time-varying GRNs.
+ This RData file contains a list named 'unrolled.DBN.adj.matrix.list'. The
+ length of the list is equal to the total number of time intervals, which is
+ \code{(num.timepts - 1)}. Each element in the list is a network adjacency
+ matrix. The p-th element in the list represents the adjacency matrix of the
+ GRN corresponding to the p-th time interval. In this adjacency matrix, each
+ cell contains a value of 1 or 0. If the (i, j)-th cell contains 1, then
+ there exists a directed edge from the i-th gene to the j-th gene. Otherwise,
+ the edge does not exist. }
+
+ \item{di.net.adj.matrix.RData}{ Rolled GRN. This RData file contains a
+ matrix named 'di.net.adj.matrix'. Each cell in the matrix contains a value
+ of 1 or 0. If the (i, j)-th cell contains 1, then there exists an edge from
+ the i-th gene to the j-th gene. Otherwise, the edge does not exist. }
+
+ \item{net.sif}{ Rolled GRN in the SIF format compatible with Cytoscape. }
+
+ \item{Result.RData}{ Correctness metrics. This file is created only if true
+ network is given through input argument 'true.net.filename'. Inside this
+ RData file, there is a matrix named 'Result'. The columns represent the
+ correctness metrics, such as - TP (number of true positive predictions) and
+ FP (number of false positive predictions). The rows depend upon the nature
+ of the true network. If the true network is time-varying GRNs, then the
+ number of rows is equal to the number of time intervals. In that case, the
+ p-th row contains the correctness metrics of the reconstructed GRN
+ corresponding to the p-th time interval. On the other hand, if the true
+ network is a summary GRN, then there exists only one row. This row
+ represents the correctness metrics of the rolled GRN. }
+
+ \item{output.txt}{ Console output. }
+
+ \item{sessionInfo.txt}{ R session information. } }
+}
 \description{
-The TGS algorithm takes a time-series gene expression dataset
-as input. It analyses the data and reconstructs the
-underlying temporal sequence of gene regulatory events.
-The reconstructed output is given in the form of
-time-varying gene regulatory networks (GRNs). The TGS
-algorithm is extremely time-efficient and hence suitable
-for processing large datasets with hundreds to thousands
-of genes. More details about the algorithm can be found
-at \url{doi:10.1109/TCBB.2018.2861698}.
+The TGS algorithm takes a time-series gene expression dataset as input. It
+analyses the data and reconstructs the underlying temporal sequence of gene
+regulatory events. The reconstructed output is given in the form of
+time-varying gene regulatory networks (GRNs). The TGS algorithm is extremely
+time-efficient and hence suitable for processing large datasets with hundreds
+to thousands of genes. More details about the algorithm can be found at
+\url{doi:10.1109/TCBB.2018.2861698}.
+}
+\details{
+The function does not return any values. Instead, it outputs a set of
+ files and saves them under the directory specified by \code{output.dirname}.
+ The output files are described in Section 'Value'.
 }
 \examples{
 \dontrun{
-LearnTgs(0,input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE,
+LearnTgs(0, input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE,
  num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
  clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
  input.dirname = "location where file is stored",
  output.dirname = "location where output needs to be stored")
 
-LearnTgs(0,input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE,
+LearnTgs(0, input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE,
  num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
  clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
  input.dirname = "location where file is stored",

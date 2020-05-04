@@ -1,0 +1,10 @@
+G1	pd	G1	G5 
+G2	pd	G4 
+G3	pd	G6 
+G4	pd	G2	G9 
+G5	pd	G1	G2	G7	G8	G10 
+G6	pd	G8	G9 
+G7	pd	G2	G3	G5	G8	G9	G10 
+G8	pd	G1	G3	G4	G5	G6	G10 
+G9	pd	G4	G6	G7 
+G10	pd	G1	G3	G5	G7	G8 

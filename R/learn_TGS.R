@@ -1,68 +1,142 @@
-#' Implement the TGS Algorithm
+#'Implement the TGS Algorithm
 #'
-#' The TGS algorithm takes a time-series gene expression dataset
-#' as input. It analyses the data and reconstructs the
-#' underlying temporal sequence of gene regulatory events.
-#' The reconstructed output is given in the form of
-#' time-varying gene regulatory networks (GRNs). The TGS
-#' algorithm is extremely time-efficient and hence suitable
-#' for processing large datasets with hundreds to thousands
-#' of genes. More details about the algorithm can be found
-#' at \url{doi:10.1109/TCBB.2018.2861698}.
+#'The TGS algorithm takes a time-series gene expression dataset as input. It
+#'analyses the data and reconstructs the underlying temporal sequence of gene
+#'regulatory events. The reconstructed output is given in the form of
+#'time-varying gene regulatory networks (GRNs). The TGS algorithm is extremely
+#'time-efficient and hence suitable for processing large datasets with hundreds
+#'to thousands of genes. More details about the algorithm can be found at
+#'\url{doi:10.1109/TCBB.2018.2861698}.
 #'
-#' @param isfile 1 if the parameters are given in a json file; otherwise 0.
-#' @param input.data.filename Name of the file containing the data without the
-#' directory name. It can be a .tsv or .RData file.
-#' @param num.timepts Number of distinct time points
-#' @param true.net.filename File containing the true network without the
-#'   directory name. In case non-empty then should contain .Rdata file with
-#'   object name 'true.net.adj.matrix'.
-#' @param input.wt.data.filename file containing input Wild Type data without
-#'   the directory name. If it is non-empty then must be a .tsv file having first
-#'   row containing names of genes except (1,1) and second row should have the
-#'   WT values except (2,1)th cell.
-#' @param is.discrete whether the data is discretized or not
-#' @param num.discr.levels number of discreteized levels that each gene has (if
-#'   already discretized) or it should have (if it is to be discretized)
-#' @param discr.algo The algo to follow in case of not discretized. Possible
-#'   values:- {discretizeData.2L.Tesla,discretizeData.2L.wt.l}
-#' @param mi.estimator which method to use for estimating the mutual information
-#'   matrix. Generally ‘mi.pca.cmi’ is used
-#' @param apply.aracne ARACNE is applied to refine the mutual information
-#'   matrix. In case true then TGS+ version is used otherwise the original TGS
-#'   variant is executed
-#' @param clr.algo CLR algo to use Possible values :- {CLR, CLR2, CLR2.1, CLR3,
-#'   spearman}
-#' @param max.fanin the maximum number of regulators each gene can have
-#' @param allow.self.loop Whether to allow self loops in the graph
-#' @param scoring.func Which scoring func to use
-#' @param input.dirname Absolute path to the directory where input files are kept.
-#' By default, the current working directory.
-#' @param output.dirname File path to a directory where output files are to
-#' be saved. There are three options.
-#' \emph{Option 1:} It can be the absolute path to an existing directory.
-#' \emph{Option 2:} It can also be the absolute path to a non-exisitng
-#' directory. In this case, the directory will be created.
-#'\emph{Option 3 (default):} If provided an empty string, then it will be the
-#' current working directory.
-#' @param json.file Absolute path to the JSON file if \code{isfile = 1}.
+#'@param isfile 1 if input arguments are given in a json file. Otherwise, 0.
+#'
+#'@param json.file Absolute path to the JSON file if \code{isfile = 1}.
+#'
+#'@param input.dirname Absolute path to the directory where input files are
+#'  kept. By default, the current working directory.
+#'
+#'@param input.data.filename Name of the file containing the data without the
+#'  directory name. It can be a .tsv or .RData file. TODO
+#'
+#'@param num.timepts Number of distinct time points.
+#'
+#'@param true.net.filename Name of the file containing the true network. In case
+#'  non-empty then should contain .Rdata file with object name
+#'  'true.net.adj.matrix'. TODO
+#'
+#'@param input.wt.data.filename Name of the file containing input Wild Type data
+#'  without the directory name. If non-empty, then must be a '.tsv' file. The
+#'  first row should contain the names of the genes; only exception is the (1,
+#'  1)-th cell which should be empty. The second row should have the wild type
+#'  values; again only exception is the (2, 1)-th cell which should be empty.
+#'
+#'@param is.discrete 1 if the input data is discrete. Otherwise, 0.
+#'
+#'@param num.discr.levels Number of discrete levels that each gene has (if the
+#'  input data is discrete) or it should have (if the input data needs to be
+#'  discretized).
+#'
+#'@param discr.algo Discretisation algorithm to be used when the input data
+#'  needs to be discretised. The available algorithms are --
+#'  discretizeData.2L.Tesla and discretizeData.2L.wt.l.
+#'
+#'@param mi.estimator Algorithm for estimating the mutual information. There is
+#'  only one algorithm available at this moment. It is 'mi.pca.cmi'.
+#'
+#'@param apply.aracne 1 if you wish to apply ARACNE for refining the mutual
+#'  information matrix. Otherwise, 0.
+#'
+#'@param clr.algo The CLR algorithm to use. The available algorithms are -- CLR,
+#'  CLR2, CLR2.1, CLR3 and spearman.
+#'
+#'@param max.fanin Maximum number of regulators each gene can have.
+#'
+#'@param allow.self.loop 1 if you wish to allow self loops. Otherwise, 0.
+#'
+#'@param scoring.func Scoring function to use. At this moment, the only
+#'  available option is 'BIC'.
+#'
+#'@param output.dirname File path to a directory where output files are to be
+#'  saved. There are three options. \emph{Option 1:} It can be the absolute path
+#'  to an existing directory. \emph{Option 2:} It can also be the absolute path
+#'  to a non-exisitng directory. In this case, the directory will be created.
+#'  \emph{Option 3 (default):} If provided an empty string, then it will be the
+#'  current working directory.
+#'
+#'@details The function does not return any values. Instead, it outputs a set of
+#'  files and saves them under the directory specified by \code{output.dirname}.
+#'  The output files are described in Section 'Value'.
+#'
+#'@return \describe{ \item{input.data.discr.RData}{ Discretised version of the
+#'  input data. This file is created only if the input data is not discretised
+#'  as specified by input argument 'is.discrete'. }
+#'
+#'  \item{mut.info.matrix.RData}{ Mutual information matrix of the given genes.
+#'  This RData file contains a matrix named 'mut.info.matrix'. The (i, j)-th
+#'  cell of the matrix represents the mutual information between the i-th and
+#'  j-th genes. This is a symmetric matrix. }
+#'
+#'  \item{mi.net.adj.matrix.wt.RData}{ Weighted Mutual information network of
+#'  the given genes. This RData file contains a matrix named
+#'  'mi.net.adj.matrix.wt'. The (i, j)-th cell of the matrix represents the
+#'  weight of the edge from the i-th gene to the j-th gene. The edge weight is a
+#'  non-negative real number. }
+#'
+#'  \item{mi.net.adj.matrix.RData}{ Unweighted Mutual information network of the
+#'  given genes. This RData file contains a matrix named 'mi.net.adj.matrix'.
+#'  Each cell of the matrix contains a value of 1 or 0. If the (i, j)-th cell
+#'  contains 1, then there exists an edge from the i-th gene to the j-th gene.
+#'  Otherwise, the edge does not exist. }
+#'
+#'  \item{unrolled.DBN.adj.matrix.list.RData}{ Reconstructed time-varying GRNs.
+#'  This RData file contains a list named 'unrolled.DBN.adj.matrix.list'. The
+#'  length of the list is equal to the total number of time intervals, which is
+#'  \code{(num.timepts - 1)}. Each element in the list is a network adjacency
+#'  matrix. The p-th element in the list represents the adjacency matrix of the
+#'  GRN corresponding to the p-th time interval. In this adjacency matrix, each
+#'  cell contains a value of 1 or 0. If the (i, j)-th cell contains 1, then
+#'  there exists a directed edge from the i-th gene to the j-th gene. Otherwise,
+#'  the edge does not exist. }
+#'
+#'  \item{di.net.adj.matrix.RData}{ Rolled GRN. This RData file contains a
+#'  matrix named 'di.net.adj.matrix'. Each cell in the matrix contains a value
+#'  of 1 or 0. If the (i, j)-th cell contains 1, then there exists an edge from
+#'  the i-th gene to the j-th gene. Otherwise, the edge does not exist. }
+#'
+#'  \item{net.sif}{ Rolled GRN in the SIF format compatible with Cytoscape. }
+#'
+#'  \item{Result.RData}{ Correctness metrics. This file is created only if true
+#'  network is given through input argument 'true.net.filename'. Inside this
+#'  RData file, there is a matrix named 'Result'. The columns represent the
+#'  correctness metrics, such as - TP (number of true positive predictions) and
+#'  FP (number of false positive predictions). The rows depend upon the nature
+#'  of the true network. If the true network is time-varying GRNs, then the
+#'  number of rows is equal to the number of time intervals. In that case, the
+#'  p-th row contains the correctness metrics of the reconstructed GRN
+#'  corresponding to the p-th time interval. On the other hand, if the true
+#'  network is a summary GRN, then there exists only one row. This row
+#'  represents the correctness metrics of the rolled GRN. }
+#'
+#'  \item{output.txt}{ Console output. }
+#'
+#'  \item{sessionInfo.txt}{ R session information. } }
 #'
 #' @examples
 #' \dontrun{
-#' LearnTgs(0,input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE,
+#' LearnTgs(0, input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE,
 #'  num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
 #'  clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
 #'  input.dirname = "location where file is stored",
 #'  output.dirname = "location where output needs to be stored")
 #'
-#' LearnTgs(0,input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE,
+#' LearnTgs(0, input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE,
 #'  num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
 #'  clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
 #'  input.dirname = "location where file is stored",
 #'  output.dirname = "location where output needs to be stored")
 #' }
 #'
-#' @export
+#'@export
 LearnTgs <- function(isfile = 0,
                      input.data.filename = '',
                      num.timepts = 0,
@@ -123,9 +197,10 @@ LearnTgs <- function(isfile = 0,
       ## Convert directory path to canonical form for Windows OS.
       ## It raises the warning if the directory does not exist, which
       ## is expected. Therefore, please ignore the warning.
-      output.dirname <- base::normalizePath(output.dirname,
-                                            winslash = '\\',
-                                            mustWork = NA)
+      output.dirname <-
+        base::normalizePath(output.dirname,
+                            winslash = '\\',
+                            mustWork = NA)
 
       base::shell(
         base::paste('mkdir ', output.dirname, sep = ''),
@@ -143,13 +218,13 @@ LearnTgs <- function(isfile = 0,
 
   input.data.filename <-
     base::paste(input.dirname, input.data.filename, sep = '/')
-  if (true.net.filename != '')
-  {
+
+  if (true.net.filename != '') {
     true.net.filename <-
       base::paste(input.dirname, true.net.filename, sep = '/')
   }
-  if (input.wt.data.filename != '')
-  {
+
+  if (input.wt.data.filename != '') {
     input.wt.data.filename <-
       base::paste(input.dirname, input.wt.data.filename, sep = '/')
   }
@@ -190,7 +265,7 @@ LearnTgs <- function(isfile = 0,
     timepts.names <- input.data[1:num.timepts, 1]
 
     ## Remove first col i.e. the time point names
-    input.data <- input.data[, -1]
+    input.data <- input.data[,-1]
 
   } else if (input.data.filename.ext[base::length(input.data.filename.ext)] == 'RData') {
     ## Loads an object named input.data
@@ -234,20 +309,17 @@ LearnTgs <- function(isfile = 0,
   {
     input.data.discr <- input.data
 
-  } else
-  {
-    if (discr.algo == '')
-    {
+  } else {
+    if (discr.algo == '') {
       stop('Please specify the value of discr.algo.')
 
-    } else if (discr.algo == 'discretizeData.2L.wt.l')
-    {
+    } else if (discr.algo == 'discretizeData.2L.wt.l') {
       input.data.discr <-
-        discretizeData.2L.wt.l(input.data, input.wt.data.filename)
+        TGS::discretizeData.2L.wt.l(input.data, input.wt.data.filename)
 
-    } else if (discr.algo == 'discretizeData.2L.Tesla')
-    {
-      input.data.discr <- discretizeData.2L.Tesla(input.data)
+    } else if (discr.algo == 'discretizeData.2L.Tesla') {
+      input.data.discr <-
+        TGS::discretizeData.2L.Tesla(input.data)
     }
 
     base::save(
@@ -285,7 +357,7 @@ LearnTgs <- function(isfile = 0,
     start.row.idx <- (1 + (num.timepts * (sample.idx - 1)))
     end.row.idx <- (num.timepts * sample.idx)
     input.data.discr.3D[, , sample.idx] <-
-      input.data.discr.matrix[start.row.idx:end.row.idx, ]
+      input.data.discr.matrix[start.row.idx:end.row.idx,]
   }
   base::rm(sample.idx)
 
@@ -327,7 +399,8 @@ LearnTgs <- function(isfile = 0,
         for (col.idx.2 in (col.idx + 1):num.nodes) {
           ## 'compute_cmi.R'
           mut.info <-
-            ComputeCmiPcaCmi(input.data.discr[, col.idx], input.data.discr[, col.idx.2])
+            TGS::ComputeCmiPcaCmi(input.data.discr[, col.idx],
+                                  input.data.discr[, col.idx.2])
 
           mut.info.matrix[col.idx, col.idx.2] <- mut.info
           mut.info.matrix[col.idx.2, col.idx] <- mut.info
@@ -337,14 +410,16 @@ LearnTgs <- function(isfile = 0,
       base::rm(col.idx)
 
     } else if (mi.estimator == 'mi.empirical') {
-      mut.info.matrix <- minet::build.mim(input.data.discr,
-                                          estimator = 'mi.empirical',
-                                          disc = 'none')
+      mut.info.matrix <-
+        minet::build.mim(input.data.discr,
+                         estimator = 'mi.empirical',
+                         disc = 'none')
 
     } else if (mi.estimator == 'mi.mm') {
-      mut.info.matrix <- minet::build.mim(input.data.discr,
-                                          estimator = 'mi.mm',
-                                          disc = 'none')
+      mut.info.matrix <-
+        minet::build.mim(input.data.discr,
+                         estimator = 'mi.mm',
+                         disc = 'none')
     }
 
     if (apply.aracne == TRUE) {
@@ -439,15 +514,15 @@ LearnTgs <- function(isfile = 0,
     # mi.net.adj.matrix <- LearnMiNetStructZstat(mut.info.matrix, mi.net.adj.matrix, entropy.matrix, alpha)
     # mi.net.adj.matrix <- LearnMiNetStructClr(mut.info.matrix, mi.net.adj.matrix, num.nodes)
     mi.net.adj.matrix <-
-      LearnClrNetMfi(mut.info.matrix,
-                     mi.net.adj.matrix,
-                     num.nodes,
-                     max.fanin,
-                     output.dirname)
+      TGS::LearnClrNetMfi(mut.info.matrix,
+                          mi.net.adj.matrix,
+                          num.nodes,
+                          max.fanin,
+                          output.dirname)
 
   } else if (clr.algo == 'CLR2') {
     mi.net.adj.matrix <-
-      LearnClr2NetMfi(
+      TGS::LearnClr2NetMfi(
         input.data.discr,
         num.nodes,
         node.names,
@@ -459,7 +534,7 @@ LearnTgs <- function(isfile = 0,
 
   } else if (clr.algo == 'CLR2.1') {
     mi.net.adj.matrix <-
-      LearnClrNetMfiVer2.1(
+      TGS::LearnClrNetMfiVer2.1(
         input.data.discr,
         num.nodes,
         node.names,
@@ -471,7 +546,7 @@ LearnTgs <- function(isfile = 0,
 
   } else if (clr.algo == 'CLR3') {
     mi.net.adj.matrix.list <-
-      LearnClr3NetMfi(
+      TGS::LearnClr3NetMfi(
         input.data.discr.3D,
         num.nodes,
         node.names,
@@ -531,7 +606,7 @@ LearnTgs <- function(isfile = 0,
   if ((clr.algo == 'CLR') |
       (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1')) {
     unrolled.DBN.adj.matrix.list <-
-      learnDbnStructMo1Layer3dParDeg1_v2(
+      TGS::learnDbnStructMo1Layer3dParDeg1_v2(
         input.data.discr.3D,
         mi.net.adj.matrix,
         num.discr.levels,
@@ -541,6 +616,7 @@ LearnTgs <- function(isfile = 0,
         node.names,
         clr.algo
       )
+
     base::rm(mi.net.adj.matrix)
 
   } else if (clr.algo == 'CLR3') {
@@ -567,7 +643,7 @@ LearnTgs <- function(isfile = 0,
     base::rm(num.time.ivals, time.ival.spec.dbn.adj.matrix)
 
     unrolled.DBN.adj.matrix.list <-
-      LearnDbnStructMo1Clr3Ser(
+      TGS::LearnDbnStructMo1Clr3Ser(
         input.data.discr.3D,
         mi.net.adj.matrix.list.filename,
         num.discr.levels,
@@ -595,7 +671,7 @@ LearnTgs <- function(isfile = 0,
     # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, roll.method, allow.self.loop)
     # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, 'any', FALSE)
     rolled.DBN.adj.matrix <-
-      rollDbn_v2(
+      TGS::rollDbn_v2(
         num.nodes,
         node.names,
         num.timepts,
@@ -618,9 +694,9 @@ LearnTgs <- function(isfile = 0,
 
     ## Create an '.sif' file equivalent to the directed net adjacency matrix
     ## that is readable in Cytoscape.
-    adjmxToSif(di.net.adj.matrix, output.dirname)
+    TGS::adjmxToSif(di.net.adj.matrix, output.dirname)
     # rm(unrolled.DBN.adj.matrix)
-    base::rm(unrolled.DBN.adj.matrix.list)
+    # base::rm(unrolled.DBN.adj.matrix.list)
     ##------------------------------------------------------------
     ## End: Learn Network Structures
     ##------------------------------------------------------------
@@ -681,7 +757,7 @@ LearnTgs <- function(isfile = 0,
           Result <-
             base::rbind(Result,
                         base::matrix(
-                          ResultVsTrue[1, ],
+                          ResultVsTrue[1,],
                           nrow = 1,
                           ncol = ncol(Result)
                         ))
