@@ -6,8 +6,10 @@
 \usage{
 LearnTgs(
   isfile = 0,
+  json.file = "",
+  input.dirname = "",
   input.data.filename = "",
-  num.timepts = 0,
+  num.timepts = 2,
   true.net.filename = "",
   input.wt.data.filename = "",
   is.discrete = TRUE,
@@ -19,66 +21,121 @@ LearnTgs(
   max.fanin = 14,
   allow.self.loop = TRUE,
   scoring.func = "BIC",
-  input.dirname = "",
-  output.dirname = "",
-  json.file = ""
+  output.dirname = ""
 )
 }
 \arguments{
-\item{isfile}{1 if input arguments are given in a json file. Otherwise, 0.}
+\item{isfile}{Numeric. 1 or 0. 1 if input arguments are given in a json file.
+Otherwise, 0.}
 
-\item{input.data.filename}{Name of the file containing the data without the
-directory name. It can be a .tsv or .RData file. TODO}
+\item{json.file}{Character string. Absolute path to the JSON file if
+\code{isfile = 1}.}
 
-\item{num.timepts}{Number of distinct time points.}
+\item{input.dirname}{Character string. Absolute path to the directory where
+input files are kept. By default, the current working directory.}
 
-\item{true.net.filename}{Name of the file containing the true network. In case
-non-empty then should contain .Rdata file with object name
-'true.net.adj.matrix'. TODO}
+\item{input.data.filename}{Character string. Name of the file containing the
+ input data. It can either be a '.tsv' file or an '.RData' file. \itemize{
+ \item If it is a '.tsv' file, the first column should have the time point
+ IDs. The only exception is the (1, 1)-th cell. This cell should be reserved
+ for the column header. The column header can be anything, such as - 'Time'.
+ The first row, excluding the (1, 1)-th cell, must have the gene names. The
+ rest of the cells should contain the corresponding value. For example, the
+ cell with row ID 't1' and column ID 'G2' would represent the expression
+ value of gene 'G2' at time point 't1'.
 
-\item{input.wt.data.filename}{Name of the file containing input Wild Type data
-without the directory name. If non-empty, then must be a '.tsv' file. The
-first row should contain the names of the genes; only exception is the (1,
-1)-th cell which should be empty. The second row should have the wild type
-values; again only exception is the (2, 1)-th cell which should be empty.}
+ \item If it is an '.RData' file, the underlying object should be a matrix
+ named 'input.data'. In 'input.data', the row names must represent the time
+ point IDs. On the other hand, the column names must represent the gene
+ names. Therefore, the (i, j)-th cell of the matrix contains the expression
+ value of the j-th gene at the i-th time point. }
 
-\item{is.discrete}{1 if the input data is discrete. Otherwise, 0.}
+ For both '.tsv' and '.RData' input, multiple rows with the same time point
+ ID represent multiple replicates at the same time point. In other words,
+ these rows belong to the same time point in different time series. The time
+ points belonging to the same time series must be together and in ascending
+ order. An exemplary dataset with three genes \{G1, G2, G3\}, two time points
+ \{t1, t2\} and two time series is shown below.
 
-\item{num.discr.levels}{Number of discrete levels that each gene has (if the
-input data is discrete) or it should have (if the input data needs to be
-discretized).}
+ \tabular{rrrr}{ \strong{Time} \tab \strong{G1} \tab \strong{G2} \tab
+ \strong{G3} \cr t1 \tab 0.8272480342 \tab 0.7257430901 \tab 0.3894130418 \cr
+ t2 \tab 0.6542518342 \tab 0.6470658823 \tab 0.5088904888 \cr t1 \tab
+ 0.3519554463 \tab 0.3551279726 \tab 0.3207993604 \cr t2 \tab 0.4871730974
+ \tab 0.3706990326 \tab 0.447523615 }}
 
-\item{discr.algo}{Discretisation algorithm to be used when the input data
-needs to be discretised. The available algorithms are --
-discretizeData.2L.Tesla and discretizeData.2L.wt.l.}
+\item{num.timepts}{Numeric. Positive integer greater than 1. Number of
+distinct time points.}
 
-\item{mi.estimator}{Algorithm for estimating the mutual information. There is
-only one algorithm available at this moment. It is 'mi.pca.cmi'.}
+\item{true.net.filename}{Character string. Name of the file containing the
+ true network. In case it is non-empty, the name should refer to an '.RData'
+ file. The '.RData' file must have an object named 'true.net.adj.matrix'. The
+ object can either be a matrix or a list. \itemize{ \item If the object is a
+ matrix, then it represents the true summary GRN. The row names and column
+ names should be the gene names. Each cell can contain a value of 1 or 0. If
+ the (i, j)-th cell contains 1, then there exists an edge from the i-th gene
+ to the j-th gene. Otherwise, the edge does not exist. An example with three
+ genes \{G1, G2, G3\} is given below. \tabular{rrrr}{ \tab \strong{G1} \tab
+ \strong{G2} \tab \strong{G3} \cr \strong{G1} \tab 0 \tab 1 \tab 0 \cr
+ \strong{G2} \tab 0 \tab 0 \tab 0 \cr \strong{G3} \tab 1 \tab 0 \tab 0 }
 
-\item{apply.aracne}{1 if you wish to apply ARACNE for refining the mutual
-information matrix. Otherwise, 0.}
+ \item If the object is a list, then it represents the true time-varying
+ GRNs. The length of the list must be equal to the number of time intervals,
+ which is \code{(num.timepts - 1)}. Each element in the list should be a
+ matrix. The p-th matrix represents the true GRN corresponding to the p-th
+ time interval. The row names and column names should be the gene names. Each
+ cell can contain a value of 1 or 0. If the (i, j)-th cell contains 1, then
+ there exists an edge from the i-th gene to the j-th gene. Otherwise, the
+ edge does not exist. }}
 
-\item{clr.algo}{The CLR algorithm to use. The available algorithms are -- CLR,
-CLR2, CLR2.1, CLR3 and spearman.}
+\item{input.wt.data.filename}{Character string. Name of the file containing
+ the Wild Type expressions of the genes. If non-empty, then must be a '.tsv'
+ file. The first row should contain the names of the genes. Only exception is
+ the (1, 1)-th cell which should be empty. The second row should have the
+ wild type expressions. Therefore, the (2, j)-th cell must contain the wild
+ type expression of the j-th gene. Again the only exception is the (2, 1)-th
+ cell which should be empty. An example with three genes \{G1, G2, G3\} is
+ given below.
 
-\item{max.fanin}{Maximum number of regulators each gene can have.}
+ \tabular{rrrr}{ <empty> \tab \strong{G1} \tab \strong{G2} \tab \strong{G3}
+ \cr <empty>  \tab 0.5298713 \tab 0.5174261 \tab 0.8181522 }}
 
-\item{allow.self.loop}{1 if you wish to allow self loops. Otherwise, 0.}
+\item{is.discrete}{Logical. TRUE or FALSE. TRUE if the input data is discrete.
+Otherwise, FALSE.}
 
-\item{scoring.func}{Scoring function to use. At this moment, the only
-available option is 'BIC'.}
+\item{num.discr.levels}{Numeric. Positive integer greater than 1. Number of
+discrete levels that each gene has (if the input data is discrete) or each
+gene should have (if the input data needs to be discretised).}
 
-\item{input.dirname}{Absolute path to the directory where input files are
-kept. By default, the current working directory.}
+\item{discr.algo}{Character string. Name of the discretisation algorithm to be
+used when the input data needs to be discretised. The available algorithms
+are -- 'discretizeData.2L.Tesla' and 'discretizeData.2L.wt.l'.}
 
-\item{output.dirname}{File path to a directory where output files are to be
-saved. There are three options. \emph{Option 1:} It can be the absolute path
-to an existing directory. \emph{Option 2:} It can also be the absolute path
-to a non-exisitng directory. In this case, the directory will be created.
-\emph{Option 3 (default):} If provided an empty string, then it will be the
-current working directory.}
+\item{mi.estimator}{Character string. Name of the algorithm for estimating
+mutual informations. There is only one algorithm available at this moment.
+It is 'mi.pca.cmi'.}
 
-\item{json.file}{Absolute path to the JSON file if \code{isfile = 1}.}
+\item{apply.aracne}{Logical. TRUE or FALSE. TRUE if you wish to apply ARACNE
+for refining the mutual information matrix. Otherwise, FALSE.}
+
+\item{clr.algo}{Character string. Name of the context likelihood relatedness
+(CLR) algorithm to use. The available algorithms are -- 'CLR', 'CLR2',
+'CLR2.1', 'CLR3' and 'spearman'.}
+
+\item{max.fanin}{Numeric. Positive integer. Maximum number of regulators each
+gene can have.}
+
+\item{allow.self.loop}{Logical. TRUE or FALSE. TRUE if you wish to allow self
+loops. Otherwise, FALSE.}
+
+\item{scoring.func}{Character string. Name of the scoring function to use. At
+this moment, the only available option is 'BIC'.}
+
+\item{output.dirname}{Character string. File path to a directory where output
+files are to be saved. There are three options. \emph{Option 1:} It can be
+the absolute path to an existing directory. \emph{Option 2:} It can also be
+the absolute path to a non-exisitng directory. In this case, the directory
+will be created. \emph{Option 3 (default):} If provided an empty string,
+then it will be the current working directory.}
 }
 \value{
 \describe{ \item{input.data.discr.RData}{ Discretised version of the
@@ -151,17 +208,43 @@ The function does not return any values. Instead, it outputs a set of
 }
 \examples{
 \dontrun{
-LearnTgs(0, input.data.filename = "DmLc3E.RData", num.timepts = 6, is.discrete = TRUE,
- num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
- clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
- input.dirname = "location where file is stored",
- output.dirname = "location where output needs to be stored")
+  TGS::LearnTgs(
+  isfile = 0,
+  json.file = '',
+  input.dirname = 'C:/GitHub/TGS/inst/extdata',
+  input.data.filename = 'InSilicoSize10-Yeast1-trajectories.tsv',
+  num.timepts = 21,
+  true.net.filename = 'DREAM3GoldStandard_InSilicoSize10_Yeast1_TrueNet.RData',
+  input.wt.data.filename = 'InSilicoSize10-Yeast1-null-mutants.tsv',
+  is.discrete = FALSE,
+  num.discr.levels = 2,
+  discr.algo = 'discretizeData.2L.wt.l',
+  mi.estimator = 'mi.pca.cmi',
+  apply.aracne = FALSE,
+  clr.algo = 'CLR',
+  max.fanin = 14,
+  allow.self.loop = FALSE,
+  scoring.func = 'BIC',
+  output.dirname = 'C:/GitHub/TGS/inst/extdata/Output_Ds10n')
 
-LearnTgs(0, input.data.filename = "DmLc3L.RData", num.timepts = 2, is.discrete = TRUE,
- num.discr.levels = 2, mi.estimator = "mi.pca.cmi", apply.aracne = FALSE,
- clr.algo = "CLR", max.fanin = 14, allow.self.loop = TRUE,
- input.dirname = "location where file is stored",
- output.dirname = "location where output needs to be stored")
+  TGS::LearnTgs(
+  isfile = 0,
+  json.file = '',
+  input.dirname = 'C:/GitHub/TGS/inst/extdata',
+  input.data.filename = 'edi-data-10n.tsv',
+  num.timepts = 21,
+  true.net.filename = 'edi.net.10.adj.mx.RData',
+  input.wt.data.filename = '',
+  is.discrete = FALSE,
+  num.discr.levels = 2,
+  discr.algo = 'discretizeData.2L.Tesla',
+  mi.estimator = 'mi.pca.cmi',
+  apply.aracne = FALSE,
+  clr.algo = 'CLR',
+  max.fanin = 14,
+  allow.self.loop = TRUE,
+  scoring.func = 'BIC',
+  output.dirname = 'C:/GitHub/TGS/inst/extdata/Output_Ed10n')
 }
 
 }

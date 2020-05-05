@@ -13,6 +13,8 @@ test_that('Ds10n is processed correctly', {
 
   TGS::LearnTgs(
     isfile = 0,
+    json.file = '',
+    input.dirname = input_dir,
     input.data.filename = 'InSilicoSize10-Yeast1-trajectories.tsv',
     num.timepts = 21,
     true.net.filename = 'DREAM3GoldStandard_InSilicoSize10_Yeast1_TrueNet.RData',
@@ -26,9 +28,7 @@ test_that('Ds10n is processed correctly', {
     max.fanin = 14,
     allow.self.loop = FALSE,
     scoring.func = 'BIC',
-    input.dirname = input_dir,
-    output.dirname = output_dir,
-    json.file = ''
+    output.dirname = output_dir
   )
 
   pred_result <- base::load(

@@ -13,6 +13,8 @@ test_that('Ed10n is processed correctly', {
 
   TGS::LearnTgs(
     isfile = 0,
+    json.file = '',
+    input.dirname = input_dir,
     input.data.filename = 'edi-data-10n.tsv',
     num.timepts = 21,
     true.net.filename = 'edi.net.10.adj.mx.RData',
@@ -26,9 +28,7 @@ test_that('Ed10n is processed correctly', {
     max.fanin = 14,
     allow.self.loop = TRUE,
     scoring.func = 'BIC',
-    input.dirname = input_dir,
-    output.dirname = output_dir,
-    json.file = ''
+    output.dirname = output_dir
   )
 
   pred_result <- base::load(
