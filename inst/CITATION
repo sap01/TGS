@@ -1,0 +1,15 @@
+# year <- sub("-.*", "", meta$Date)
+# note <- sprintf("R package version %s", meta$Version)
+
+bibentry(bibtype = "article",
+         title = "Rapid Reconstruction of Time-varying Gene Regulatory Networks",
+         author = c(person("Saptarshi", "Pyne"),
+                    person("Alok Ranjan", "Kumar"),
+                    person("Ashish", "Anand")),
+         journal = "IEEE/ACM Transactions on Computational Biology and Bioinformatics",
+         month="Jan-Feb",
+         year = 2020,
+         volume = 17,
+         number = 1,
+         pages = "278-291",
+         doi = "10.1109/TCBB.2018.2861698")
