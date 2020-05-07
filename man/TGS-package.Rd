@@ -7,10 +7,13 @@
 \title{TGS: A package for Rapid Reconstruction of Time-Varying Gene Regulatory
 Networks}
 \description{
-The \code{TGS} package provides an implementation of the TGS algorithm (Pyne et
-al., 2018, \url{doi:10.1109/TCBB.2018.2861698}). This algorithm reconstructs
-time-varying gene regulatory networks from time-series gene expression
-datasets.
+The \code{TGS} package provides an implementation of the TGS algorithm
+and its variants. This algorithm reconstructs time-varying gene
+regulatory networks from time-series gene expression datasets. For
+algorithmic details, please see: Saptarshi Pyne, Alok Ranjan Kumar,
+and Ashish Anand. Rapid reconstruction of time-varying gene
+regulatory networks. IEEE/ACM Transactions on Computational Biology
+and Bioinformatics, 17(1):278--291, Jan--Feb 2020.
 }
 \section{The \code{LearnTgs} function}{
 

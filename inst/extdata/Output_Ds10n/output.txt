@@ -1,7 +1,7 @@
 elapsed.time just after the CLR step= 
 
    user  system elapsed 
-   0.02    0.00    0.02 
+   0.05    0.02    0.23 
 nextElem.ixforeach called with redo FALSE
 evaluation # 1:
 $centralNodeIdx
@@ -7845,4 +7845,4 @@ Prediction vs Truth =
 elapsed.time = 
 
    user  system elapsed 
-   4.52    0.11    4.69 
+   5.96    2.72   18.23 

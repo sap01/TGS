@@ -3,3 +3,6 @@
 ^packrat/
 ^\.Rprofile$
 ^cran-comments\.md$
+^doc$
+^Meta$
+^CRAN-RELEASE$

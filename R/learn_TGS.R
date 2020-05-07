@@ -6,7 +6,9 @@
 #'time-varying gene regulatory networks (GRNs). The TGS algorithm is extremely
 #'time-efficient and hence suitable for processing large datasets with hundreds
 #'to thousands of genes. More details about the algorithm can be found at
-#'\url{doi:10.1109/TCBB.2018.2861698}.
+#'Saptarshi Pyne, Alok Ranjan Kumar, and Ashish Anand. Rapid reconstruction of
+#'time-varying gene regulatory networks. IEEE/ACM Transactions on Computational
+#'Biology and Bioinformatics, 17(1):278--291, Jan--Feb 2020.
 #'
 #'@param isfile Numeric. 1 or 0. 1 if input arguments are given in a json file.
 #'  Otherwise, 0.
@@ -92,7 +94,9 @@
 #'
 #'@param discr.algo Character string. Name of the discretisation algorithm to be
 #'  used when the input data needs to be discretised. The available algorithms
-#'  are -- 'discretizeData.2L.Tesla' and 'discretizeData.2L.wt.l'.
+#'  are -- 'discretizeData.2L.Tesla' and 'discretizeData.2L.wt.l'. If you
+#'  choose algorithm 'discretizeData.2L.wt.l', please provide the wild type
+#'  data using argument \code{input.wt.data.filename}.
 #'
 #'@param mi.estimator Character string. Name of the algorithm for estimating
 #'  mutual informations. There is only one algorithm available at this moment.
@@ -117,7 +121,7 @@
 #'@param output.dirname Character string. File path to a directory where output
 #'  files are to be saved. There are three options. \emph{Option 1:} It can be
 #'  the absolute path to an existing directory. \emph{Option 2:} It can also be
-#'  the absolute path to a non-exisitng directory. In this case, the directory
+#'  the absolute path to a non-existing directory. In this case, the directory
 #'  will be created. \emph{Option 3 (default):} If provided an empty string,
 #'  then it will be the current working directory.
 #'
@@ -286,7 +290,7 @@ LearnTgs <- function(isfile = 0,
                             winslash = '\\',
                             mustWork = NA)
 
-      base::shell(
+      shell(
         base::paste('mkdir ', output.dirname, sep = ''),
         intern = TRUE,
         mustWork = TRUE
@@ -399,11 +403,11 @@ LearnTgs <- function(isfile = 0,
 
     } else if (discr.algo == 'discretizeData.2L.wt.l') {
       input.data.discr <-
-        TGS::discretizeData.2L.wt.l(input.data, input.wt.data.filename)
+        discretizeData.2L.wt.l(input.data, input.wt.data.filename)
 
     } else if (discr.algo == 'discretizeData.2L.Tesla') {
       input.data.discr <-
-        TGS::discretizeData.2L.Tesla(input.data)
+        discretizeData.2L.Tesla(input.data)
     }
 
     base::save(
@@ -483,7 +487,7 @@ LearnTgs <- function(isfile = 0,
         for (col.idx.2 in (col.idx + 1):num.nodes) {
           ## 'compute_cmi.R'
           mut.info <-
-            TGS::ComputeCmiPcaCmi(input.data.discr[, col.idx],
+            ComputeCmiPcaCmi(input.data.discr[, col.idx],
                                   input.data.discr[, col.idx.2])
 
           mut.info.matrix[col.idx, col.idx.2] <- mut.info
@@ -598,7 +602,7 @@ LearnTgs <- function(isfile = 0,
     # mi.net.adj.matrix <- LearnMiNetStructZstat(mut.info.matrix, mi.net.adj.matrix, entropy.matrix, alpha)
     # mi.net.adj.matrix <- LearnMiNetStructClr(mut.info.matrix, mi.net.adj.matrix, num.nodes)
     mi.net.adj.matrix <-
-      TGS::LearnClrNetMfi(mut.info.matrix,
+      LearnClrNetMfi(mut.info.matrix,
                           mi.net.adj.matrix,
                           num.nodes,
                           max.fanin,
@@ -606,7 +610,7 @@ LearnTgs <- function(isfile = 0,
 
   } else if (clr.algo == 'CLR2') {
     mi.net.adj.matrix <-
-      TGS::LearnClr2NetMfi(
+      LearnClr2NetMfi(
         input.data.discr,
         num.nodes,
         node.names,
@@ -618,7 +622,7 @@ LearnTgs <- function(isfile = 0,
 
   } else if (clr.algo == 'CLR2.1') {
     mi.net.adj.matrix <-
-      TGS::LearnClrNetMfiVer2.1(
+      LearnClrNetMfiVer2.1(
         input.data.discr,
         num.nodes,
         node.names,
@@ -630,7 +634,7 @@ LearnTgs <- function(isfile = 0,
 
   } else if (clr.algo == 'CLR3') {
     mi.net.adj.matrix.list <-
-      TGS::LearnClr3NetMfi(
+      LearnClr3NetMfi(
         input.data.discr.3D,
         num.nodes,
         node.names,
@@ -690,7 +694,7 @@ LearnTgs <- function(isfile = 0,
   if ((clr.algo == 'CLR') |
       (clr.algo == 'CLR2') | (clr.algo == 'CLR2.1')) {
     unrolled.DBN.adj.matrix.list <-
-      TGS::learnDbnStructMo1Layer3dParDeg1_v2(
+      learnDbnStructMo1Layer3dParDeg1_v2(
         input.data.discr.3D,
         mi.net.adj.matrix,
         num.discr.levels,
@@ -727,7 +731,7 @@ LearnTgs <- function(isfile = 0,
     base::rm(num.time.ivals, time.ival.spec.dbn.adj.matrix)
 
     unrolled.DBN.adj.matrix.list <-
-      TGS::LearnDbnStructMo1Clr3Ser(
+      LearnDbnStructMo1Clr3Ser(
         input.data.discr.3D,
         mi.net.adj.matrix.list.filename,
         num.discr.levels,
@@ -755,7 +759,7 @@ LearnTgs <- function(isfile = 0,
     # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, roll.method, allow.self.loop)
     # rolled.DBN.adj.matrix <- rollDbn(num.nodes, node.names, num.timepts, unrolled.DBN.adj.matrix, 'any', FALSE)
     rolled.DBN.adj.matrix <-
-      TGS::rollDbn_v2(
+      rollDbn_v2(
         num.nodes,
         node.names,
         num.timepts,
@@ -778,7 +782,7 @@ LearnTgs <- function(isfile = 0,
 
     ## Create an '.sif' file equivalent to the directed net adjacency matrix
     ## that is readable in Cytoscape.
-    TGS::adjmxToSif(di.net.adj.matrix, output.dirname)
+    adjmxToSif(di.net.adj.matrix, output.dirname)
     # rm(unrolled.DBN.adj.matrix)
     # base::rm(unrolled.DBN.adj.matrix.list)
     ##------------------------------------------------------------
@@ -817,7 +821,7 @@ LearnTgs <- function(isfile = 0,
         predicted.net.adj.matrix <- di.net.adj.matrix
 
         ResultVsTrue <-
-          TGS::calcPerfDiNet(predicted.net.adj.matrix,
+          calcPerfDiNet(predicted.net.adj.matrix,
                              true.net.adj.matrix,
                              Result,
                              num.nodes)
@@ -834,7 +838,7 @@ LearnTgs <- function(isfile = 0,
             unrolled.DBN.adj.matrix.list[[net.idx]]
 
           ResultVsTrue <-
-            TGS::calcPerfDiNet(predicted.net.adj.matrix,
+            calcPerfDiNet(predicted.net.adj.matrix,
                                true.net.adj.matrix[[net.idx]],
                                Result,
                                num.nodes)

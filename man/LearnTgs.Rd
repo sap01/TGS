@@ -108,7 +108,9 @@ gene should have (if the input data needs to be discretised).}
 
 \item{discr.algo}{Character string. Name of the discretisation algorithm to be
 used when the input data needs to be discretised. The available algorithms
-are -- 'discretizeData.2L.Tesla' and 'discretizeData.2L.wt.l'.}
+are -- 'discretizeData.2L.Tesla' and 'discretizeData.2L.wt.l'. If you
+choose algorithm 'discretizeData.2L.wt.l', please provide the wild type
+data using argument \code{input.wt.data.filename}.}
 
 \item{mi.estimator}{Character string. Name of the algorithm for estimating
 mutual informations. There is only one algorithm available at this moment.
@@ -133,7 +135,7 @@ this moment, the only available option is 'BIC'.}
 \item{output.dirname}{Character string. File path to a directory where output
 files are to be saved. There are three options. \emph{Option 1:} It can be
 the absolute path to an existing directory. \emph{Option 2:} It can also be
-the absolute path to a non-exisitng directory. In this case, the directory
+the absolute path to a non-existing directory. In this case, the directory
 will be created. \emph{Option 3 (default):} If provided an empty string,
 then it will be the current working directory.}
 }
@@ -199,7 +201,9 @@ regulatory events. The reconstructed output is given in the form of
 time-varying gene regulatory networks (GRNs). The TGS algorithm is extremely
 time-efficient and hence suitable for processing large datasets with hundreds
 to thousands of genes. More details about the algorithm can be found at
-\url{doi:10.1109/TCBB.2018.2861698}.
+Saptarshi Pyne, Alok Ranjan Kumar, and Ashish Anand. Rapid reconstruction of
+time-varying gene regulatory networks. IEEE/ACM Transactions on Computational
+Biology and Bioinformatics, 17(1):278--291, Jan--Feb 2020.
 }
 \details{
 The function does not return any values. Instead, it outputs a set of

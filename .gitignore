@@ -3,3 +3,5 @@
 .RData
 packrat/lib*/
 inst/doc
+doc
+Meta

@@ -1,0 +1,122 @@
+---
+title: "A Quick Start Guide to R Package 'TGS'"
+# author: "Saptarshi Pyne"
+# date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Chap 1: A Quick Start Guide}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Install R package 'TGS'.
+```{r, eval = FALSE}
+install.packages('TGS')
+```
+
+Attach R package 'TGS'.
+```{r setup}
+library(TGS)
+```
+Let us assume that you have a time-series gene expression data.
+It is comprised of multiple time series. Each time series 
+contains the expressions of $10$ genes across $21$ time 
+points. The data is saved in a file named 
+'input_data_10.tsv'. The file is saved inside directory
+'/home/saptarshi/datasets/'.  
+
+First, assign absolute path to the input directory.
+```{r, eval = FALSE}
+## Assign absolute path to the input directory.
+input_dir <- '/home/saptarshi/datasets'
+```
+
+Then reconstruct time-varying gene regulatory networks 
+(GRNs) using algorithm 'TGS'.
+```{r, eval = FALSE}
+## Assign the name of the desired output directory.
+## The output directory will be created automatically.
+output_dir <- '/home/saptarshi/My_TGS_output'
+
+## Run algorithm 'TGS'.
+## It is assumed that your data is continuous.
+## In case, your data is discrete, simply
+## make the following changes:
+## (a) is.discrete = TRUE,
+## (b) num.discr.levels = <number of discrete
+## levels each gene has>,
+## (c) discr.algo = ''.
+##
+TGS::LearnTgs(
+  isfile = 0,
+  json.file = '',
+  input.dirname = input_dir,
+  input.data.filename = 'input_data_10.tsv',
+  num.timepts = 21,
+  true.net.filename = '',
+  input.wt.data.filename = '',
+  is.discrete = FALSE,
+  num.discr.levels = 2,
+  discr.algo = 'discretizeData.2L.Tesla',
+  mi.estimator = 'mi.pca.cmi',
+  apply.aracne = FALSE,
+  clr.algo = 'CLR',
+  max.fanin = 14,
+  allow.self.loop = TRUE,
+  scoring.func = 'BIC',
+  output.dirname = output_dir
+)
+```
+
+You may also reconstruct time-varying GRNs
+using algorithm 'TGS+'. The only difference is that the input
+argument `apply.aracne` is set to `TRUE`.
+```{r, eval = FALSE}
+## Assign the name of the desired output directory.
+## The output directory will be created automatically.
+output_dir <- '/home/saptarshi/My_TGS_plus_output'
+
+## Run algorithm 'TGS'
+TGS::LearnTgs(
+  isfile = 0,
+  json.file = '',
+  input.dirname = input_dir,
+  input.data.filename = 'input_data_10.tsv',
+  num.timepts = 21,
+  true.net.filename = '',
+  input.wt.data.filename = '',
+  is.discrete = FALSE,
+  num.discr.levels = 2,
+  discr.algo = 'discretizeData.2L.Tesla',
+  mi.estimator = 'mi.pca.cmi',
+  apply.aracne = TRUE,
+  clr.algo = 'CLR',
+  max.fanin = 14,
+  allow.self.loop = TRUE,
+  scoring.func = 'BIC',
+  output.dirname = output_dir
+)
+```
+
+Once the reconstruction is complete, please go to the
+output directory. There should be a file named
+'unrolled.DBN.adj.matrix.list.RData'. This file 
+contains the reconstructed time-varying GRNs. 
+Load this file in an R session.
+```{r, eval = FALSE}
+## Loads a list named 'unrolled.DBN.adj.matrix.list'
+load('unrolled.DBN.adj.matrix.list.RData')
+```
+
+Print the reconstructed GRN of the $7^{th}$ time 
+interval.
+```{r, eval = FALSE}
+print(unrolled.DBN.adj.matrix.list[[7]])
+```
