@@ -1,5 +1,5 @@
 Package: TGS
-Version: 1.0.1
+Version: 1.0.1.9000
 Title: Rapid Reconstruction of Time-Varying Gene Regulatory Networks
 Description: Rapid advancements in high-throughput gene sequencing
     technologies have resulted in genome-scale time-series datasets. 
