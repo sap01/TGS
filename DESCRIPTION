@@ -7,8 +7,8 @@ Description: Rapid advancements in high-throughput gene sequencing
     in the form of time-varying gene regulatory networks demands 
     accurate and computationally efficient algorithms. Such an
     algorithm is 'TGS'. It is proposed in Saptarshi Pyne, Alok Ranjan 
-    Kumar, and Ashish Anand. Rapid reconstruction of time-varying 
-    gene regulatory networks. IEEE/ACM Transactions on Computational 
+    Kumar, and Ashish Anand; Rapid reconstruction of time-varying 
+    gene regulatory networks; IEEE/ACM Transactions on Computational 
     Biology and Bioinformatics, 17(1):278{291, Jan-Feb 2020. The TGS 
     algorithm is shown to consume only 29 minutes for a microarray 
     dataset with 4028 genes. This package provides an implementation 
