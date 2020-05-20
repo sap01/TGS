@@ -5,9 +5,9 @@
 #'regulatory events. The reconstructed output is given in the form of
 #'time-varying gene regulatory networks (GRNs). The TGS algorithm is extremely
 #'time-efficient and hence suitable for processing large datasets with hundreds
-#'to thousands of genes. More details about the algorithm can be found at
-#'Saptarshi Pyne, Alok Ranjan Kumar, and Ashish Anand. Rapid reconstruction of
-#'time-varying gene regulatory networks. IEEE/ACM Transactions on Computational
+#'to thousands of genes. More details about the algorithm can be found in
+#'Saptarshi Pyne, Alok Ranjan Kumar, and Ashish Anand; Rapid reconstruction of
+#'time-varying gene regulatory networks; IEEE/ACM Transactions on Computational
 #'Biology and Bioinformatics, 17(1):278--291, Jan--Feb 2020.
 #'
 #'@param isfile Numeric. 1 or 0. 1 if input arguments are given in a json file.
@@ -242,12 +242,13 @@ LearnTgs <- function(isfile = 0,
                      allow.self.loop = TRUE,
                      scoring.func = 'BIC',
                      output.dirname = '') {
-  if (isfile != 0) {
+  if (isfile == 1) {
     ##------------------------------------------------------------
     ## Begin: Read User-defined input Params
     ##------------------------------------------------------------
 
     input.params <- rjson::fromJSON(file = json.file)
+    input.dirname <- input.params$input.dirname
     input.data.filename <- input.params$input.data.filename
     num.timepts <- input.params$num.timepts
     true.net.filename <- input.params$true.net.filename
@@ -261,7 +262,6 @@ LearnTgs <- function(isfile = 0,
     max.fanin <- input.params$max.fanin
     allow.self.loop <- input.params$allow.self.loop
     scoring.func <- input.params$scoring.func
-    input.dirname <- input.params$input.dirname
     output.dirname <- input.params$output.dirname
     rm(input.params)
 

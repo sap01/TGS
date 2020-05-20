@@ -200,9 +200,9 @@ analyses the data and reconstructs the underlying temporal sequence of gene
 regulatory events. The reconstructed output is given in the form of
 time-varying gene regulatory networks (GRNs). The TGS algorithm is extremely
 time-efficient and hence suitable for processing large datasets with hundreds
-to thousands of genes. More details about the algorithm can be found at
-Saptarshi Pyne, Alok Ranjan Kumar, and Ashish Anand. Rapid reconstruction of
-time-varying gene regulatory networks. IEEE/ACM Transactions on Computational
+to thousands of genes. More details about the algorithm can be found in
+Saptarshi Pyne, Alok Ranjan Kumar, and Ashish Anand; Rapid reconstruction of
+time-varying gene regulatory networks; IEEE/ACM Transactions on Computational
 Biology and Bioinformatics, 17(1):278--291, Jan--Feb 2020.
 }
 \details{
