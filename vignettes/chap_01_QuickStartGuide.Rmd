@@ -18,7 +18,16 @@ knitr::opts_chunk$set(
 
 Install R package 'TGS'.
 ```{r, eval = FALSE}
-install.packages('TGS')
+## The 'type' argument is needed to be
+## set to 'source'. Otherwise, in 
+## Windows and macOS, 'binary' of
+## an older version of the package
+## may get installed.
+## For further details, please see
+## the 'Binary packages' section
+## of 'install.packages()' documentation
+## in package 'utils' version 3.5.1.
+install.packages('TGS', type = 'source')
 ```
 
 Attach R package 'TGS'.
