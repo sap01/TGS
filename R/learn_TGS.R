@@ -856,7 +856,7 @@ LearnTgs <- function(isfile = 0,
 
         ## Print mean performance averaged over
         ## all time-varying networks
-        ResultVsTrue <- base::colMeans(Result)
+        ResultVsTrue <- base::colMeans(Result, na.rm = TRUE)
         ResultVsTrue <-
           base::matrix(colMeans(Result),
                        nrow = 1,
