@@ -248,6 +248,7 @@ LearnTgs <- function(isfile = 0,
     ##------------------------------------------------------------
 
     input.params <- rjson::fromJSON(file = json.file)
+
     input.dirname <- input.params$input.dirname
     input.data.filename <- input.params$input.data.filename
     num.timepts <- input.params$num.timepts
@@ -263,6 +264,7 @@ LearnTgs <- function(isfile = 0,
     allow.self.loop <- input.params$allow.self.loop
     scoring.func <- input.params$scoring.func
     output.dirname <- input.params$output.dirname
+
     rm(input.params)
 
     ##------------------------------------------------------------
